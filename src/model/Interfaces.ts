@@ -19,3 +19,8 @@ export interface ILocationObj {
   place_rank: number;
   type: string;
 }
+
+export interface ILocation {
+  lat: number;
+  lng: number;
+}

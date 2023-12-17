@@ -2,10 +2,10 @@ import { Box, Flex, Heading } from "@chakra-ui/react";
 import { LeafletMap } from "../components/map/LeafletMap";
 import { SearchInput } from "../components/search/SearchInput";
 import { useState } from "react";
-import { ILocation } from "../model/Interfaces";
+import { ILocation, ILocationObj } from "../model/Interfaces";
 
 export const Locations = () => {
-  const [selectLocation, setSelectLocation] = useState<ILocation>({
+  const [selectLocation, setSelectLocation] = useState<ILocationObj>({
     address: {
       city: "",
       municipality: "",
@@ -27,6 +27,10 @@ export const Locations = () => {
     type: "",
   });
 
+  const [pinLocation, setPinLocation] = useState<ILocation | null>(null);
+
+  console.log(pinLocation);
+
   return (
     <>
       <h2>Location</h2>
@@ -41,7 +45,10 @@ export const Locations = () => {
         >
           <Heading>Set a Location</Heading>
           <Box border="black 2px solid" w="60vw" h="60vh">
-            <LeafletMap selectLocation={selectLocation} />
+            <LeafletMap
+              selectLocation={selectLocation}
+              setPinLocation={setPinLocation}
+            />
           </Box>
           <Box>
             <SearchInput setSelectLocation={setSelectLocation} />

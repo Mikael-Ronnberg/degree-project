@@ -1,24 +1,15 @@
 import { useMapEvents } from "react-leaflet";
+import { ILocation } from "../../model/Interfaces";
 
-interface ILocation {
-  lat: number;
-  lng: number;
+interface ILocationMarkerProps {
+  setPinLocation: (location: ILocation) => void;
 }
 
-interface LocationMarkerProps {
-  setLocation: (location: ILocation) => void;
-}
-
-interface MapProps {
-  markersData: ILocation[];
-  setLocation: (location: ILocation) => void;
-}
-
-export const LocationMarker = ({ setLocation }: ILocation) => {
-  const map = useMapEvents({
+export const LocationMarker = ({ setPinLocation }: ILocationMarkerProps) => {
+  useMapEvents({
     click(e) {
-      const { lat, long } = e.latlng;
-      setLocation({ lat, lng });
+      const { lat, lng } = e.latlng;
+      setPinLocation({ lat, lng });
     },
   });
 
