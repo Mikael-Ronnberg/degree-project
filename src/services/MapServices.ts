@@ -15,8 +15,12 @@ export const fetchLocations = async (
     });
 
     const response = await fetch(`${NOMATIM_BASE_URL}${params.toString()}`);
-    const result = await response.json();
-    setListLocations(result);
+    const results = await response.json();
+    const filteredResults = results.filter(
+      (location: ILocationObj) => location.address.country === "Sweden"
+    );
+
+    setListLocations(filteredResults);
   } catch (error) {
     console.error("Error fetching locations:", error);
   }

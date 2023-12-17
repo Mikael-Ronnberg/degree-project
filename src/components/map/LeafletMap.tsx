@@ -5,10 +5,10 @@ import { ILocation, ILocationObj } from "../../model/Interfaces";
 import { ResetCenterView } from "../resetcenterview/ResetCenterView";
 import { LocationMarker } from "../locationmarker/LocationMarker";
 
-const icon = L.icon({
-  iconUrl: "/pinpointSVG.png",
-  iconSize: [35, 35],
-});
+// const icon = L.icon({
+//   iconUrl: "/pinpointSVG.png",
+//   iconSize: [35, 35],
+// });
 
 interface ILeafletMapProps {
   selectLocation: ILocationObj;
@@ -38,7 +38,7 @@ export const LeafletMap = ({
         />
         <LocationMarker setPinLocation={setPinLocation} />
         {selectLocation && (
-          <Marker position={locationSelection} icon={icon}>
+          <Marker position={locationSelection}>
             <Popup>
               A pretty CSS3 popup. <br /> Easily customizable.
             </Popup>

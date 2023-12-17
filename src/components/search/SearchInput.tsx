@@ -1,13 +1,5 @@
-import {
-  Box,
-  Button,
-  Flex,
-  Input,
-  List,
-  ListIcon,
-  ListItem,
-} from "@chakra-ui/react";
-import { FormEvent, useState } from "react";
+import { Box, Flex, Input, List, ListItem } from "@chakra-ui/react";
+import { useState, useEffect } from "react";
 import { ILocationObj } from "../../model/Interfaces";
 import { fetchLocations } from "../../services/MapServices";
 
@@ -19,47 +11,50 @@ export const SearchInput = (props: ISearchInputProps) => {
   const { setSelectLocation } = props;
   const [searchInput, setSearchInput] = useState<string>("");
   const [listLocations, setListLocations] = useState<ILocationObj[]>([]);
+  const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
 
-  const handleSearch = (event: FormEvent) => {
-    event.preventDefault();
-    fetchLocations(searchInput, setListLocations);
-  };
+  useEffect(() => {
+    const timerId = setTimeout(() => {
+      if (searchInput.length >= 3) {
+        fetchLocations(searchInput, setListLocations);
+        setIsDropdownOpen(true);
+      } else {
+        setIsDropdownOpen(false);
+      }
+    }, 500);
+
+    return () => clearTimeout(timerId);
+  }, [searchInput]);
 
   return (
     <>
-      <form onSubmit={handleSearch}>
-        <Flex w="60vw">
-          <Input
-            variant="outline"
-            border="2px solid black"
-            rounded="small"
-            m="1rem"
-            onChange={(e) => {
-              setSearchInput(e.target.value);
-            }}
-          ></Input>
-          <Button m="1rem" w="10rem" rounded="sm" type="submit">
-            Sök
-          </Button>
-        </Flex>
-      </form>
-      <Box>
-        <List spacing="3">
-          {listLocations.map((item) => {
-            return (
+      <Flex w="60vw">
+        <Input
+          variant="outline"
+          border="2px solid black"
+          rounded="small"
+          m="1rem"
+          value={searchInput}
+          onChange={(e) => setSearchInput(e.target.value)}
+        />
+      </Flex>
+      {isDropdownOpen && (
+        <Box position="absolute" w="60vw" bg="white" zIndex="dropdown">
+          <List>
+            {listLocations.map((item) => (
               <ListItem
-                key={item?.place_id}
+                key={item.place_id}
                 onClick={() => {
                   setSelectLocation(item);
+                  setIsDropdownOpen(false);
                 }}
               >
-                <ListIcon as="address" color="blue" />
-                {item?.display_name}
+                {item.display_name}
               </ListItem>
-            );
-          })}
-        </List>
-      </Box>
+            ))}
+          </List>
+        </Box>
+      )}
     </>
   );
 };
