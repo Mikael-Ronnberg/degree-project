@@ -1,8 +1,6 @@
 import { Box, Flex, Heading } from "@chakra-ui/react";
 import { LeafletMap } from "../../components/map/LeafletMap";
 import { SearchInput } from "../../components/search/SearchInput";
-import { useState } from "react";
-import { ILocation, ILocationObj } from "../../model/Interfaces";
 import {
   formContainerStyles,
   mapBoxStyles,
@@ -10,31 +8,17 @@ import {
   pageContainerStyles,
 } from "./style/styleLocations";
 import { LocationsForm } from "../../components/forms/LocationsForm";
+import { useLocationStore } from "../../store/useLocationsStore";
 
 export const Locations = () => {
-  const [selectLocation, setSelectLocation] = useState<ILocationObj>({
-    address: {
-      city: "",
-      municipality: "",
-      county: "",
-      country: "",
-    },
-    addresstype: "",
-    boundingbox: [""],
-    class: "",
-    display_name: "",
-    importance: 0,
-    lat: "",
-    lon: "",
-    name: "",
-    osm_id: 0,
-    osm_type: "",
-    place_id: 0,
-    place_rank: 0,
-    type: "",
-  });
+  const { formSubmitted } = useLocationStore();
 
-  const [pinLocation, setPinLocation] = useState<ILocation | null>(null);
+  // const [formSubmitted, setFormSubmitted] = useState(false);
+
+  // const onFormSubmit = () => {
+  //   setFormSubmitted(true);
+  //   setPinLocation(null);
+  // };
 
   return (
     <>
@@ -42,18 +26,23 @@ export const Locations = () => {
         <Flex {...mapContainerStyles}>
           <Heading>Tipsa om en plats! Eller se vart vi snorklat</Heading>
           <Box {...mapBoxStyles}>
-            <LeafletMap
-              selectLocation={selectLocation}
-              setPinLocation={setPinLocation}
-            />
+            <LeafletMap />
           </Box>
           <Box>
-            <SearchInput setSelectLocation={setSelectLocation} />
+            <SearchInput />
           </Box>
         </Flex>
 
         <Flex {...formContainerStyles}>
-          <LocationsForm pinLocation={pinLocation} />
+          {formSubmitted ? (
+            <Box>
+              <Heading>
+                Tack för ditt bidrag! Vi kollar på det så fort vi kan :D
+              </Heading>
+            </Box>
+          ) : (
+            <LocationsForm />
+          )}
         </Flex>
       </Flex>
     </>

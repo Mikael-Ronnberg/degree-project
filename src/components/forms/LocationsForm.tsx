@@ -6,13 +6,12 @@ import {
   textareaStyles,
   inputStyles,
 } from "../../pages/locations/style/styleLocations";
-import { ILocation, ILocationsFormValues } from "../../model/Interfaces";
+import { ILocationsFormValues } from "../../model/Interfaces";
+import { useLocationStore } from "../../store/useLocationsStore";
 
-interface LocationsFormProps {
-  pinLocation: ILocation | null;
-}
+export const LocationsForm = () => {
+  const { pinLocation, setPinLocation, setFormSubmitted } = useLocationStore();
 
-export const LocationsForm = ({ pinLocation }: LocationsFormProps) => {
   const initialValues: ILocationsFormValues = {
     name: "",
     email: "",
@@ -29,6 +28,8 @@ export const LocationsForm = ({ pinLocation }: LocationsFormProps) => {
     //API call to our server later!
 
     resetForm();
+    setFormSubmitted(true);
+    setPinLocation(null);
   };
 
   return (

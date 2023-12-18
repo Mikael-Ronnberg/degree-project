@@ -1,24 +1,17 @@
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
-import { ILocation, ILocationObj } from "../../model/Interfaces";
 import { ResetCenterView } from "../resetcenterview/ResetCenterView";
 import { LocationMarker } from "../locationmarker/LocationMarker";
+import { useLocationStore } from "../../store/useLocationsStore";
 
 // const icon = L.icon({
 //   iconUrl: "/pinpointSVG.png",
 //   iconSize: [35, 35],
 // });
 
-interface LeafletMapProps {
-  selectLocation: ILocationObj;
-  setPinLocation: (location: ILocation) => void;
-}
-
-export const LeafletMap = ({
-  selectLocation,
-  setPinLocation,
-}: LeafletMapProps) => {
+export const LeafletMap = () => {
+  const { selectLocation } = useLocationStore();
   const locationSelection: L.LatLngExpression = [
     selectLocation?.lat ? parseFloat(selectLocation.lat) : 0,
     selectLocation?.lon ? parseFloat(selectLocation.lon) : 0,
@@ -36,7 +29,7 @@ export const LeafletMap = ({
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://api.maptiler.com/maps/basic-v2/256/{z}/{x}/{y}.png?key=WqQh8nBQFrHSaQDrbx5E"
         />
-        <LocationMarker setPinLocation={setPinLocation} />
+        <LocationMarker />
         {selectLocation && (
           <Marker position={locationSelection}>
             <Popup>

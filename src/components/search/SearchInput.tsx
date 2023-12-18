@@ -2,13 +2,10 @@ import { Box, Flex, Input, List, ListItem } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
 import { ILocationObj } from "../../model/Interfaces";
 import { fetchLocations } from "../../services/MapServices";
+import { useLocationStore } from "../../store/useLocationsStore";
 
-interface ISearchInputProps {
-  setSelectLocation: (location: ILocationObj) => void;
-}
-
-export const SearchInput = (props: ISearchInputProps) => {
-  const { setSelectLocation } = props;
+export const SearchInput = () => {
+  const { setSelectLocation } = useLocationStore();
   const [searchInput, setSearchInput] = useState<string>("");
   const [listLocations, setListLocations] = useState<ILocationObj[]>([]);
   const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);

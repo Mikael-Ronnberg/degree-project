@@ -1,23 +1,17 @@
 import { useMapEvents, Marker, Popup } from "react-leaflet";
-import { ILocation } from "../../model/Interfaces";
-import { useState } from "react";
+import { useLocationStore } from "../../store/useLocationsStore";
 
-interface ILocationMarkerProps {
-  setPinLocation: (location: ILocation) => void;
-}
-
-export const LocationMarker = ({ setPinLocation }: ILocationMarkerProps) => {
-  const [tempMarker, setTempMarker] = useState<ILocation | null>(null);
+export const LocationMarker = () => {
+  const { pinLocation, setPinLocation } = useLocationStore();
   useMapEvents({
     click(e) {
       const { lat, lng } = e.latlng;
       setPinLocation({ lat, lng });
-      setTempMarker({ lat, lng });
     },
   });
 
-  return tempMarker ? (
-    <Marker position={[tempMarker.lat, tempMarker.lng]}>
+  return pinLocation ? (
+    <Marker position={[pinLocation.lat, pinLocation.lng]}>
       <Popup>You clicked here</Popup>
     </Marker>
   ) : null;
