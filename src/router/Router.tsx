@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
-import { Home } from "../pages/Home";
-import { NewsBlog } from "../pages/NewsBlog";
+import { Home } from "../pages/home/Home";
+import { NewsBlog } from "../pages/newsblog/NewsBlog";
 import { Contact } from "../pages/contact/Contact";
 import { About } from "../pages/about/About";
 import { Locations } from "../pages/locations/Locations";

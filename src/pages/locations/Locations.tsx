@@ -1,23 +1,15 @@
-import {
-  Box,
-  Button,
-  Flex,
-  FormControl,
-  Heading,
-  Input,
-} from "@chakra-ui/react";
+import { Box, Flex, Heading } from "@chakra-ui/react";
 import { LeafletMap } from "../../components/map/LeafletMap";
 import { SearchInput } from "../../components/search/SearchInput";
 import { useState } from "react";
 import { ILocation, ILocationObj } from "../../model/Interfaces";
 import {
   formContainerStyles,
-  inputLargeStyles,
-  inputSmallStyles,
   mapBoxStyles,
   mapContainerStyles,
   pageContainerStyles,
 } from "./style/styleLocations";
+import { LocationsForm } from "../../components/forms/LocationsForm";
 
 export const Locations = () => {
   const [selectLocation, setSelectLocation] = useState<ILocationObj>({
@@ -61,14 +53,7 @@ export const Locations = () => {
         </Flex>
 
         <Flex {...formContainerStyles}>
-          <FormControl>
-            <Flex>
-              <Input {...inputSmallStyles} placeholder="Namn (Valfritt)" />
-              <Input {...inputSmallStyles} placeholder="Email (Valfritt)" />
-              <Input {...inputLargeStyles} placeholder="Meddelande" />
-              <Button type="submit">Skicka tipset!</Button>
-            </Flex>
-          </FormControl>
+          <LocationsForm pinLocation={pinLocation} />
         </Flex>
       </Flex>
     </>

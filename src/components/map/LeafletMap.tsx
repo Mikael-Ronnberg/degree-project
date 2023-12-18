@@ -10,7 +10,7 @@ import { LocationMarker } from "../locationmarker/LocationMarker";
 //   iconSize: [35, 35],
 // });
 
-interface ILeafletMapProps {
+interface LeafletMapProps {
   selectLocation: ILocationObj;
   setPinLocation: (location: ILocation) => void;
 }
@@ -18,7 +18,7 @@ interface ILeafletMapProps {
 export const LeafletMap = ({
   selectLocation,
   setPinLocation,
-}: ILeafletMapProps) => {
+}: LeafletMapProps) => {
   const locationSelection: L.LatLngExpression = [
     selectLocation?.lat ? parseFloat(selectLocation.lat) : 0,
     selectLocation?.lon ? parseFloat(selectLocation.lon) : 0,

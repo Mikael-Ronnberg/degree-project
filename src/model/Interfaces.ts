@@ -24,3 +24,11 @@ export interface ILocation {
   lat: number;
   lng: number;
 }
+
+export interface ILocationsFormValues {
+  name: string;
+  email: string;
+  message: string;
+  lat: number;
+  lng: number;
+}

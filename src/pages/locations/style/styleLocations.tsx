@@ -1,4 +1,9 @@
-import { BoxProps, FlexProps, InputProps } from "@chakra-ui/react";
+import {
+  BoxProps,
+  FlexProps,
+  InputProps,
+  TextareaProps,
+} from "@chakra-ui/react";
 
 export const pageContainerStyles: FlexProps = {
   w: "100vw",
@@ -32,14 +37,23 @@ export const formContainerStyles: FlexProps = {
   direction: "row",
 };
 
-export const inputSmallStyles: InputProps = {
+export const formContentStyles: FlexProps = {
+  justify: "center",
+  align: "center",
+  w: "90vw",
+  h: "80vh",
+  border: "black 2px solid",
+  direction: "column",
+};
+
+export const inputStyles: InputProps = {
   variant: "outline",
   rounded: "sm",
   w: "60vw",
   m: "1rem",
 };
 
-export const inputLargeStyles: InputProps = {
+export const textareaStyles: TextareaProps = {
   variant: "outline",
   rounded: "sm",
   w: "60vw",
