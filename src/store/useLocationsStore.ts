@@ -3,8 +3,11 @@ import { ILocation, ILocationObj } from "../model/Interfaces";
 
 interface LocationState {
   selectLocation: ILocationObj;
+  listLocations: ILocationObj[];
   pinLocation: ILocation | null;
   formSubmitted: boolean;
+
+  setListLocations: (locations: ILocationObj[]) => void;
   setSelectLocation: (location: ILocationObj) => void;
   setPinLocation: (location: ILocation | null) => void;
   setFormSubmitted: (submitted: boolean) => void;
@@ -32,11 +35,12 @@ export const useLocationStore = create<LocationState>((set) => ({
     place_rank: 0,
     type: "",
   },
+  listLocations: [],
   pinLocation: null,
   formSubmitted: false,
 
+  setListLocations: (locations) => set({ listLocations: locations }),
   setPinLocation: (location) => set({ pinLocation: location }),
   setFormSubmitted: (submitted) => set({ formSubmitted: submitted }),
-  setSelectLocation: (locationObject) =>
-    set({ selectLocation: locationObject }),
+  setSelectLocation: (location) => set({ selectLocation: location }),
 }));

@@ -1,9 +1,10 @@
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
-import { ResetCenterView } from "../resetcenterview/ResetCenterView";
-import { LocationMarker } from "../locationmarker/LocationMarker";
+import { ResetCenterView } from "../reset-center-view/ResetCenterView";
+import { LocationMarker } from "../location-marker/LocationMarker";
 import { useLocationStore } from "../../store/useLocationsStore";
+import { SearchResultMarkers } from "../search-result-markers/SearchResultMarkers";
 
 // const icon = L.icon({
 //   iconUrl: "/pinpointSVG.png",
@@ -11,7 +12,7 @@ import { useLocationStore } from "../../store/useLocationsStore";
 // });
 
 export const LeafletMap = () => {
-  const { selectLocation } = useLocationStore();
+  const { selectLocation, listLocations } = useLocationStore();
   const locationSelection: L.LatLngExpression = [
     selectLocation?.lat ? parseFloat(selectLocation.lat) : 0,
     selectLocation?.lon ? parseFloat(selectLocation.lon) : 0,
@@ -30,6 +31,7 @@ export const LeafletMap = () => {
           url="https://api.maptiler.com/maps/basic-v2/256/{z}/{x}/{y}.png?key=WqQh8nBQFrHSaQDrbx5E"
         />
         <LocationMarker />
+        <SearchResultMarkers locations={listLocations} />
         {selectLocation && (
           <Marker position={locationSelection}>
             <Popup>

@@ -3,9 +3,8 @@ import { ILocationObj } from "../model/Interfaces";
 const NOMATIM_BASE_URL = "https://nominatim.openstreetmap.org/search?";
 
 export const fetchLocations = async (
-  searchInput: string,
-  setListLocations: (locations: ILocationObj[]) => void
-) => {
+  searchInput: string
+): Promise<ILocationObj[]> => {
   try {
     const params = new URLSearchParams({
       q: searchInput,
@@ -16,12 +15,10 @@ export const fetchLocations = async (
 
     const response = await fetch(`${NOMATIM_BASE_URL}${params.toString()}`);
     const results = await response.json();
-    const filteredResults = results.filter(
-      (location: ILocationObj) => location.address.country === "Sweden"
-    );
 
-    setListLocations(filteredResults);
+    return results;
   } catch (error) {
     console.error("Error fetching locations:", error);
+    return [];
   }
 };

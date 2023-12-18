@@ -1,19 +1,27 @@
 import { Box, Flex, Input, List, ListItem } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
-import { ILocationObj } from "../../model/Interfaces";
 import { fetchLocations } from "../../services/MapServices";
 import { useLocationStore } from "../../store/useLocationsStore";
+import { ILocationObj } from "../../model/Interfaces";
 
 export const SearchInput = () => {
-  const { setSelectLocation } = useLocationStore();
+  const { setSelectLocation, listLocations, setListLocations } =
+    useLocationStore();
   const [searchInput, setSearchInput] = useState<string>("");
-  const [listLocations, setListLocations] = useState<ILocationObj[]>([]);
   const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
 
   useEffect(() => {
+    const fetchAndFilterLocations = async () => {
+      const locations = await fetchLocations(searchInput);
+      const filteredLocations = locations.filter(
+        (location: ILocationObj) => location.address.country === "Sweden"
+      );
+      setListLocations(filteredLocations);
+    };
+
     const timerId = setTimeout(() => {
       if (searchInput.length >= 3) {
-        fetchLocations(searchInput, setListLocations);
+        fetchAndFilterLocations();
         setIsDropdownOpen(true);
       } else {
         setIsDropdownOpen(false);
