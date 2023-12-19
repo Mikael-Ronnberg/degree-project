@@ -1,6 +1,20 @@
-import { ILocationObj } from "../pages/locations/model/Interfaces";
+import { db } from "../config/firebase";
+import {
+  ILocationObj,
+  ILocationsFormValues,
+  LocationResponse,
+} from "../pages/locations/model/Interfaces";
+
+import {
+  addDoc,
+  getDocs,
+  collection,
+  serverTimestamp,
+} from "firebase/firestore";
 
 const NOMATIM_BASE_URL = "https://nominatim.openstreetmap.org/search?";
+
+const locationCollectionRef = collection(db, "locations");
 
 export const fetchLocations = async (
   searchInput: string
@@ -19,6 +33,45 @@ export const fetchLocations = async (
     return results;
   } catch (error) {
     console.error("Error fetching locations:", error);
+    return [];
+  }
+};
+
+interface TransformedLocationResponse
+  extends Omit<LocationResponse, "createdAt"> {
+  createdAt: string; // The transformed date string
+}
+
+export const submitLocation = async (location: ILocationsFormValues) => {
+  try {
+    await addDoc(locationCollectionRef, {
+      ...location,
+      createdAt: serverTimestamp(),
+    });
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const getSubLocations = async (): Promise<LocationResponse[]> => {
+  try {
+    const data = await getDocs(locationCollectionRef);
+    const filteredData: TransformedLocationResponse[] = data.docs.map((doc) => {
+      const docData = doc.data() as LocationResponse;
+      const createdAtTimestamp = docData.createdAt;
+      const createdAtDate = createdAtTimestamp.toDate();
+      const readableDate = createdAtDate.toLocaleString();
+
+      return {
+        ...docData,
+        createdAt: readableDate,
+        id: doc.id,
+      };
+    });
+
+    return filteredData;
+  } catch (error) {
+    console.error(error);
     return [];
   }
 };

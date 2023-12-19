@@ -4,7 +4,7 @@ export const adminPageStyles: FlexProps = {
   direction: "column",
   justify: "center",
   align: "center",
-  h: "100vh",
+  h: "auto",
   w: "100vw",
   backgroundColor: "grey",
 };

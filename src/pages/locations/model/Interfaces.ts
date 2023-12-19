@@ -1,3 +1,5 @@
+import { Timestamp } from "firebase/firestore";
+
 export interface ILocationObj {
   address: {
     city: string;
@@ -31,4 +33,19 @@ export interface ILocationsFormValues {
   message: string;
   lat: number;
   lng: number;
+}
+
+export interface LocationResponse {
+  id: string;
+  name: string;
+  email: string;
+  message: string;
+  lat: number;
+  lng: number;
+  createdAt: Timestamp;
+}
+
+export interface TransformedLocationResponse
+  extends Omit<LocationResponse, "createdAt"> {
+  createdAt: string;
 }

@@ -1,46 +1,24 @@
 import { useState, useEffect } from "react";
-
-import { getDocs, collection } from "firebase/firestore";
-import { db } from "../../../config/firebase";
 import { Flex, VStack, Text, HStack } from "@chakra-ui/react";
 import { oneLocationStyles, oneLocationTextStyle } from "../style/styleAdmin";
-
-interface locationResponse {
-  id: string;
-  name: string;
-  email: string;
-  message: string;
-  lat: number;
-  lng: number;
-}
+import { getSubLocations } from "../../../services/MapServices";
+import { TransformedLocationResponse } from "../../locations/model/Interfaces";
 
 export const ViewSubmittedLocations = () => {
-  const [subLocations, setSubLocations] = useState<locationResponse[]>([]);
-
-  const locationCollectionRef = collection(db, "locations");
+  const [subLocations, setSubLocations] = useState<
+    TransformedLocationResponse[]
+  >([]);
 
   useEffect(() => {
-    const getSubLocations = async () => {
-      try {
-        const data = await getDocs(locationCollectionRef);
-        const filteredData: locationResponse[] = data.docs.map(
-          (doc) =>
-            ({
-              ...doc.data(),
-              id: doc.id,
-            } as locationResponse)
-        );
-
-        setSubLocations(filteredData);
-        // console.log(subLocations);
-      } catch (error) {
-        console.error(error);
-      }
+    const fetchLocations = async () => {
+      const locations = await getSubLocations();
+      setSubLocations(locations);
     };
 
-    getSubLocations();
+    fetchLocations();
   }, []);
 
+  console.log(subLocations);
   return (
     <>
       <VStack>
@@ -65,12 +43,16 @@ export const ViewSubmittedLocations = () => {
               <Text {...oneLocationTextStyle}>{location.message}</Text>
             </HStack>
             <HStack spacing="2rem">
-              <Text {...oneLocationTextStyle}>Lattitud:</Text>
+              <Text {...oneLocationTextStyle}>Lattitud: </Text>
               <Text>{location.lat}</Text>
             </HStack>
             <HStack spacing="2rem">
-              <Text {...oneLocationTextStyle}>Longitud:</Text>
+              <Text {...oneLocationTextStyle}>Longitud: </Text>
               <Text>{location.lng}</Text>
+            </HStack>
+            <HStack spacing="2rem">
+              <Text {...oneLocationTextStyle}>Skapad: </Text>
+              <Text>{location.createdAt}</Text>
             </HStack>
           </Flex>
         ))}

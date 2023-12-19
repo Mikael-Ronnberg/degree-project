@@ -8,6 +8,7 @@ import {
 } from "../style/styleLocations";
 import { ILocationsFormValues } from "../model/Interfaces";
 import { useLocationStore } from "../../../store/useLocationsStore";
+import { submitLocation } from "../../../services/MapServices";
 
 export const LocationsForm = () => {
   const { pinLocation, setPinLocation, setFormSubmitted } = useLocationStore();
@@ -24,8 +25,9 @@ export const LocationsForm = () => {
     values: ILocationsFormValues,
     { resetForm }: FormikHelpers<ILocationsFormValues>
   ) => {
-    console.log(values);
     //API call to our server later!
+
+    submitLocation(values);
 
     resetForm();
     setFormSubmitted(true);
