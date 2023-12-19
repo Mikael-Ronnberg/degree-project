@@ -5,9 +5,9 @@ import {
   formContentStyles,
   textareaStyles,
   inputStyles,
-} from "../../pages/locations/style/styleLocations";
-import { ILocationsFormValues } from "../../model/Interfaces";
-import { useLocationStore } from "../../store/useLocationsStore";
+} from "../style/styleLocations";
+import { ILocationsFormValues } from "../../../model/Interfaces";
+import { useLocationStore } from "../../../store/useLocationsStore";
 
 export const LocationsForm = () => {
   const { pinLocation, setPinLocation, setFormSubmitted } = useLocationStore();

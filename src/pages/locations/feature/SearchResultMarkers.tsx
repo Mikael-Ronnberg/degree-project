@@ -1,5 +1,5 @@
 import { Marker, Popup } from "react-leaflet";
-import { ILocationObj } from "../../model/Interfaces";
+import { ILocationObj } from "../../../model/Interfaces";
 
 interface SearchResultMarkersProps {
   locations: ILocationObj[];

@@ -1,7 +1,7 @@
 import { useMap } from "react-leaflet";
 
 import { useEffect } from "react";
-import { ILocationObj } from "../../model/Interfaces";
+import { ILocationObj } from "../../../model/Interfaces";
 import L from "leaflet";
 
 interface IResetCenterViewProps {
@@ -27,6 +27,7 @@ export const ResetCenterView = ({ selectLocation }: IResetCenterViewProps) => {
         }
       );
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectLocation]);
 
   return null;

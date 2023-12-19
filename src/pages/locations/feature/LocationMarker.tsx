@@ -1,5 +1,5 @@
 import { useMapEvents, Marker, Popup } from "react-leaflet";
-import { useLocationStore } from "../../store/useLocationsStore";
+import { useLocationStore } from "../../../store/useLocationsStore";
 
 export const LocationMarker = () => {
   const { pinLocation, setPinLocation } = useLocationStore();

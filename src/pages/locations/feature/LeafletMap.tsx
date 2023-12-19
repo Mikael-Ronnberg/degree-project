@@ -1,10 +1,11 @@
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
-import { ResetCenterView } from "../reset-center-view/ResetCenterView";
-import { LocationMarker } from "../location-marker/LocationMarker";
-import { useLocationStore } from "../../store/useLocationsStore";
-import { SearchResultMarkers } from "../search-result-markers/SearchResultMarkers";
+import { ResetCenterView } from "./ResetCenterView";
+import { LocationMarker } from "./LocationMarker";
+import { useLocationStore } from "../../../store/useLocationsStore";
+import { SearchResultMarkers } from "./SearchResultMarkers";
+import { FitBounds } from "./FitBounds";
 
 // const icon = L.icon({
 //   iconUrl: "/pinpointSVG.png",
@@ -17,6 +18,11 @@ export const LeafletMap = () => {
     selectLocation?.lat ? parseFloat(selectLocation.lat) : 0,
     selectLocation?.lon ? parseFloat(selectLocation.lon) : 0,
   ];
+
+  const locationLatLngs: [number, number][] = listLocations.map((location) => [
+    parseFloat(location.lat),
+    parseFloat(location.lon),
+  ]);
 
   return (
     <>
@@ -39,6 +45,7 @@ export const LeafletMap = () => {
             </Popup>
           </Marker>
         )}
+        <FitBounds locations={locationLatLngs} />
         <ResetCenterView selectLocation={selectLocation} />
       </MapContainer>
     </>

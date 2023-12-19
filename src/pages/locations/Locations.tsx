@@ -1,24 +1,17 @@
 import { Box, Flex, Heading } from "@chakra-ui/react";
-import { LeafletMap } from "../../components/map/LeafletMap";
-import { SearchInput } from "../../components/search/SearchInput";
+import { LeafletMap } from "./feature/LeafletMap";
+import { SearchInput } from "./feature/SearchInput";
 import {
   formContainerStyles,
   mapBoxStyles,
   mapContainerStyles,
   pageContainerStyles,
 } from "./style/styleLocations";
-import { LocationsForm } from "../../components/forms/LocationsForm";
+import { LocationsForm } from "./feature/LocationsForm";
 import { useLocationStore } from "../../store/useLocationsStore";
 
 export const Locations = () => {
   const { formSubmitted } = useLocationStore();
-
-  // const [formSubmitted, setFormSubmitted] = useState(false);
-
-  // const onFormSubmit = () => {
-  //   setFormSubmitted(true);
-  //   setPinLocation(null);
-  // };
 
   return (
     <>
