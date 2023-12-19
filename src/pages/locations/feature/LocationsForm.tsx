@@ -6,7 +6,7 @@ import {
   textareaStyles,
   inputStyles,
 } from "../style/styleLocations";
-import { ILocationsFormValues } from "../../../model/Interfaces";
+import { ILocationsFormValues } from "../model/Interfaces";
 import { useLocationStore } from "../../../store/useLocationsStore";
 
 export const LocationsForm = () => {

@@ -1,4 +1,4 @@
-import { ILocationObj } from "../model/Interfaces";
+import { ILocationObj } from "../pages/locations/model/Interfaces";
 
 const NOMATIM_BASE_URL = "https://nominatim.openstreetmap.org/search?";
 
