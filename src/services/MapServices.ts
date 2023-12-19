@@ -3,10 +3,13 @@ import {
   ILocationObj,
   ILocationsFormValues,
   LocationResponse,
+  TransformedLocationResponse,
 } from "../pages/locations/model/Interfaces";
 
 import {
   addDoc,
+  deleteDoc,
+  doc,
   getDocs,
   collection,
   serverTimestamp,
@@ -37,11 +40,6 @@ export const fetchLocations = async (
   }
 };
 
-interface TransformedLocationResponse
-  extends Omit<LocationResponse, "createdAt"> {
-  createdAt: string; // The transformed date string
-}
-
 export const submitLocation = async (location: ILocationsFormValues) => {
   try {
     await addDoc(locationCollectionRef, {
@@ -53,7 +51,9 @@ export const submitLocation = async (location: ILocationsFormValues) => {
   }
 };
 
-export const getSubLocations = async (): Promise<LocationResponse[]> => {
+export const getSubLocations = async (): Promise<
+  TransformedLocationResponse[]
+> => {
   try {
     const data = await getDocs(locationCollectionRef);
     const filteredData: TransformedLocationResponse[] = data.docs.map((doc) => {
@@ -74,4 +74,9 @@ export const getSubLocations = async (): Promise<LocationResponse[]> => {
     console.error(error);
     return [];
   }
+};
+
+export const deleteSubLocation = async (locationId: string) => {
+  const locationDoc = doc(db, "locations", locationId);
+  await deleteDoc(locationDoc);
 };

@@ -1,7 +1,10 @@
 import { useState, useEffect } from "react";
-import { Flex, VStack, Text, HStack } from "@chakra-ui/react";
+import { Flex, VStack, Text, HStack, Button } from "@chakra-ui/react";
 import { oneLocationStyles, oneLocationTextStyle } from "../style/styleAdmin";
-import { getSubLocations } from "../../../services/MapServices";
+import {
+  deleteSubLocation,
+  getSubLocations,
+} from "../../../services/MapServices";
 import { TransformedLocationResponse } from "../../locations/model/Interfaces";
 
 export const ViewSubmittedLocations = () => {
@@ -54,6 +57,9 @@ export const ViewSubmittedLocations = () => {
               <Text {...oneLocationTextStyle}>Skapad: </Text>
               <Text>{location.createdAt}</Text>
             </HStack>
+            <Button onClick={() => deleteSubLocation(location.id)}>
+              Ta Bord Tipset
+            </Button>
           </Flex>
         ))}
       </VStack>
