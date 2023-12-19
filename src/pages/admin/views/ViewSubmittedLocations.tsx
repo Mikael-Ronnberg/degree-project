@@ -21,7 +21,6 @@ export const ViewSubmittedLocations = () => {
     fetchLocations();
   }, []);
 
-  console.log(subLocations);
   return (
     <>
       <VStack>
