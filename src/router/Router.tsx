@@ -11,6 +11,8 @@ import { SubmittedLocations } from "../pages/admin/admin-pages/SubmittedLocation
 import { OurEvents } from "../pages/admin/admin-pages/OurEvents";
 import { OurArticles } from "../pages/admin/admin-pages/OurArticles";
 import { OurLocations } from "../pages/admin/admin-pages/OurLocations";
+import { CreateEvent } from "../pages/admin/admin-pages/CreateEvent";
+import { WriteArticle } from "../pages/admin/admin-pages/WriteArticle";
 
 export const router = createBrowserRouter([
   {
@@ -46,7 +48,7 @@ export const router = createBrowserRouter([
     ),
   },
   {
-    path: "/sublocations",
+    path: "/subLocations",
     element: (
       <RequireAuth>
         <SubmittedLocations />
@@ -54,7 +56,7 @@ export const router = createBrowserRouter([
     ),
   },
   {
-    path: "/ourlocations",
+    path: "/ourLocations",
     element: (
       <RequireAuth>
         <OurLocations />
@@ -70,10 +72,26 @@ export const router = createBrowserRouter([
     ),
   },
   {
+    path: "/writeArticle",
+    element: (
+      <RequireAuth>
+        <WriteArticle />
+      </RequireAuth>
+    ),
+  },
+  {
     path: "/ourEvents",
     element: (
       <RequireAuth>
         <OurEvents />
+      </RequireAuth>
+    ),
+  },
+  {
+    path: "/createEvents",
+    element: (
+      <RequireAuth>
+        <CreateEvent />
       </RequireAuth>
     ),
   },

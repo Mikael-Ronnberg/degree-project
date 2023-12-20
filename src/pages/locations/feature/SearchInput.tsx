@@ -2,7 +2,7 @@ import { Box, Flex, Input, List, ListItem } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
 import { fetchLocations } from "../../../services/MapServices";
 import { useLocationStore } from "../../../store/useLocationsStore";
-import { ILocationObj } from "../model/Interfaces";
+import { LocationObj } from "../model/Interfaces";
 
 export const SearchInput = () => {
   const { setSelectLocation, listLocations, setListLocations } =
@@ -14,7 +14,7 @@ export const SearchInput = () => {
     const fetchAndFilterLocations = async () => {
       const locations = await fetchLocations(searchInput);
       const filteredLocations = locations.filter(
-        (location: ILocationObj) => location.address.country === "Sweden"
+        (location: LocationObj) => location.address.country === "Sweden"
       );
       setListLocations(filteredLocations);
     };

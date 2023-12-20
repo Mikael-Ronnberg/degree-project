@@ -3,7 +3,7 @@ import { adminPageStyles } from "../style/styleAdmin";
 import { Navbar } from "../../../components/navbar/NavBar";
 import { adminNavItems } from "../../../helpers/helpers";
 
-export const OurArticles = () => {
+export const WriteArticle = () => {
   return (
     <>
       <Navbar navItems={adminNavItems} />

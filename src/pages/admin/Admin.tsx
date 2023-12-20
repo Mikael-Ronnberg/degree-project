@@ -1,13 +1,14 @@
 import { Flex } from "@chakra-ui/react";
-import { adminPageStyles, sideBarStyles } from "./style/styleAdmin";
-import { SideBar } from "./feature/SideBar";
+import { adminPageStyles } from "./style/styleAdmin";
 import { AdminContainer } from "./feature/AdminContainer";
+import { adminNavItems } from "../../helpers/helpers";
+import { Navbar } from "../../components/navbar/NavBar";
 
 export const Admin = () => {
   return (
     <>
+      <Navbar navItems={adminNavItems} />
       <Flex {...adminPageStyles}>
-        <SideBar {...sideBarStyles} />
         <AdminContainer />
       </Flex>
     </>

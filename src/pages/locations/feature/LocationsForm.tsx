@@ -6,14 +6,14 @@ import {
   textareaStyles,
   inputStyles,
 } from "../style/styleLocations";
-import { ILocationsFormValues } from "../model/Interfaces";
+import { LocationsFormValues } from "../model/Interfaces";
 import { useLocationStore } from "../../../store/useLocationsStore";
 import { submitLocation } from "../../../services/MapServices";
 
 export const LocationsForm = () => {
   const { pinLocation, setPinLocation, setFormSubmitted } = useLocationStore();
 
-  const initialValues: ILocationsFormValues = {
+  const initialValues: LocationsFormValues = {
     name: "",
     email: "",
     message: "",
@@ -22,13 +22,10 @@ export const LocationsForm = () => {
   };
 
   const handleSubmit = (
-    values: ILocationsFormValues,
-    { resetForm }: FormikHelpers<ILocationsFormValues>
+    values: LocationsFormValues,
+    { resetForm }: FormikHelpers<LocationsFormValues>
   ) => {
-    //API call to our server later!
-
     submitLocation(values);
-
     resetForm();
     setFormSubmitted(true);
     setPinLocation(null);

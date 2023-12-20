@@ -1,6 +1,6 @@
 import { Timestamp } from "firebase/firestore";
 
-export interface ILocationObj {
+export interface LocationObj {
   address: {
     city: string;
     municipality: string;
@@ -22,12 +22,12 @@ export interface ILocationObj {
   type: string;
 }
 
-export interface ILocation {
+export interface Location {
   lat: number;
   lng: number;
 }
 
-export interface ILocationsFormValues {
+export interface LocationsFormValues {
   name: string;
   email: string;
   message: string;

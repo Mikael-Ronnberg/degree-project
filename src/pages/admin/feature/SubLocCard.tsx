@@ -1,6 +1,9 @@
 import { Flex, HStack, Button, Text } from "@chakra-ui/react";
 import { deleteSubLocation } from "../../../services/MapServices";
-import { oneLocationStyles, oneLocationTextStyle } from "../style/styleAdmin";
+import {
+  subLocationCardStyles,
+  subLocationTextStyles,
+} from "../style/styleAdmin";
 import { TransformedLocationResponse } from "../../locations/model/Interfaces";
 
 interface SubLocCardProps {
@@ -10,35 +13,35 @@ interface SubLocCardProps {
 export const SubLocCard = ({ location }: SubLocCardProps) => {
   return (
     <>
-      <Flex key={location.id} {...oneLocationStyles}>
+      <Flex key={location.id} {...subLocationCardStyles}>
         <HStack spacing="2rem">
-          <Text {...oneLocationTextStyle} fontWeight="bold">
+          <Text {...subLocationTextStyles} fontWeight="bold">
             Namn:{" "}
           </Text>
-          <Text {...oneLocationTextStyle}>{location.name}</Text>
+          <Text {...subLocationTextStyles}>{location.name}</Text>
         </HStack>
         <HStack spacing="2rem">
-          <Text {...oneLocationTextStyle} fontWeight="bold">
+          <Text {...subLocationTextStyles} fontWeight="bold">
             Email:{" "}
           </Text>
-          <Text {...oneLocationTextStyle}>{location.email}</Text>
+          <Text {...subLocationTextStyles}>{location.email}</Text>
         </HStack>
         <HStack spacing="2rem">
-          <Text {...oneLocationTextStyle} fontWeight="bold">
+          <Text {...subLocationTextStyles} fontWeight="bold">
             Meddelande:{" "}
           </Text>
-          <Text {...oneLocationTextStyle}>{location.message}</Text>
+          <Text {...subLocationTextStyles}>{location.message}</Text>
         </HStack>
         <HStack spacing="2rem">
-          <Text {...oneLocationTextStyle}>Lattitud: </Text>
+          <Text {...subLocationTextStyles}>Lattitud: </Text>
           <Text>{location.lat}</Text>
         </HStack>
         <HStack spacing="2rem">
-          <Text {...oneLocationTextStyle}>Longitud: </Text>
+          <Text {...subLocationTextStyles}>Longitud: </Text>
           <Text>{location.lng}</Text>
         </HStack>
         <HStack spacing="2rem">
-          <Text {...oneLocationTextStyle}>Skapad: </Text>
+          <Text {...subLocationTextStyles}>Skapad: </Text>
           <Text>{location.createdAt}</Text>
         </HStack>
         <Button onClick={() => deleteSubLocation(location.id)}>

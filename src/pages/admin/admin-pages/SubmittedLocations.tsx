@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import { Flex, VStack, Button, HStack } from "@chakra-ui/react";
-import { adminPageStyles, sideBarStyles } from "../style/styleAdmin";
+import { adminPageStyles } from "../style/styleAdmin";
 import { getSubLocations } from "../../../services/MapServices";
 import { TransformedLocationResponse } from "../../locations/model/Interfaces";
-import { SideBar } from "../feature/SideBar";
 import { SubLocCard } from "../feature/SubLocCard";
+import { adminNavItems } from "../../../helpers/helpers";
+import { Navbar } from "../../../components/navbar/NavBar";
 
 const ITEMS_PER_PAGE = 3;
 
@@ -37,24 +38,24 @@ export const SubmittedLocations = () => {
 
   return (
     <>
+      <Navbar navItems={adminNavItems} />
       <Flex {...adminPageStyles}>
-        <SideBar {...sideBarStyles} />
         <VStack>
           {sortedLocations.map((location) => (
             <SubLocCard key={location.id} location={location} />
           ))}
-          <HStack spacing="2rem">
+          <HStack spacing="2rem" mb="2rem">
             <Button
               onClick={() => paginate(currentPage - 1)}
               disabled={currentPage === 1}
             >
-              Previous
+              Föregående
             </Button>
             <Button
               onClick={() => paginate(currentPage + 1)}
               disabled={indexOfLastItem >= subLocations.length}
             >
-              Next
+              Nästa
             </Button>
           </HStack>
         </VStack>
