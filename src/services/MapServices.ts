@@ -1,8 +1,13 @@
 import { db } from "../config/firebase";
 import {
-  ILocationObj,
-  ILocationsFormValues,
+  OurLocationFormValues,
+  OurLocationResponse,
+  TransformedOurLocationResponse,
+} from "../pages/admin/model/adminInterfaces";
+import {
+  LocationObj,
   LocationResponse,
+  LocationsFormValues,
   TransformedLocationResponse,
 } from "../pages/locations/model/Interfaces";
 
@@ -18,10 +23,11 @@ import {
 const NOMATIM_BASE_URL = "https://nominatim.openstreetmap.org/search?";
 
 const locationCollectionRef = collection(db, "locations");
+const ourLocationCollectionRef = collection(db, "ourLocations");
 
 export const fetchLocations = async (
   searchInput: string
-): Promise<ILocationObj[]> => {
+): Promise<LocationObj[]> => {
   try {
     const params = new URLSearchParams({
       q: searchInput,
@@ -40,7 +46,7 @@ export const fetchLocations = async (
   }
 };
 
-export const submitLocation = async (location: ILocationsFormValues) => {
+export const submitLocation = async (location: LocationsFormValues) => {
   try {
     await addDoc(locationCollectionRef, {
       ...location,
@@ -78,5 +84,48 @@ export const getSubLocations = async (): Promise<
 
 export const deleteSubLocation = async (locationId: string) => {
   const locationDoc = doc(db, "locations", locationId);
+  await deleteDoc(locationDoc);
+};
+
+export const submitOurLocation = async (location: OurLocationFormValues) => {
+  try {
+    await addDoc(ourLocationCollectionRef, {
+      ...location,
+      createdAt: serverTimestamp(),
+    });
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const getOurLocations = async (): Promise<
+  TransformedOurLocationResponse[]
+> => {
+  try {
+    const data = await getDocs(ourLocationCollectionRef);
+    const filteredData: TransformedOurLocationResponse[] = data.docs.map(
+      (doc) => {
+        const docData = doc.data() as OurLocationResponse;
+        const createdAtTimestamp = docData.createdAt;
+        const createdAtDate = createdAtTimestamp.toDate();
+        const readableDate = createdAtDate.toLocaleString();
+
+        return {
+          ...docData,
+          createdAt: readableDate,
+          id: doc.id,
+        };
+      }
+    );
+
+    return filteredData;
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
+};
+
+export const deleteOurLocation = async (locationId: string) => {
+  const locationDoc = doc(db, "ourLocations", locationId);
   await deleteDoc(locationDoc);
 };

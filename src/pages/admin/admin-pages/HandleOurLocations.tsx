@@ -1,24 +1,24 @@
-import { useState, useEffect } from "react";
-import { Flex, VStack, Button, HStack } from "@chakra-ui/react";
+import { Button, Flex, HStack, VStack } from "@chakra-ui/react";
 import { adminPageStyles } from "../style/styleAdmin";
-import { getSubLocations } from "../../../services/MapServices";
-import { TransformedLocationResponse } from "../../locations/model/Interfaces";
-import { SubLocationCard } from "../feature/SubLocationCard";
-import { adminNavItems } from "../../../helpers/helpers";
 import { Navbar } from "../../../components/navbar/NavBar";
+import { adminNavItems } from "../../../helpers/helpers";
+import { useEffect, useState } from "react";
+import { TransformedOurLocationResponse } from "../model/adminInterfaces";
+import { getOurLocations } from "../../../services/MapServices";
+import { OurLocationCard } from "../feature/OurLocationCard";
 
 const ITEMS_PER_PAGE = 3;
 
-export const SubmittedLocations = () => {
-  const [subLocations, setSubLocations] = useState<
-    TransformedLocationResponse[]
+export const HandleOurLocations = () => {
+  const [ourLocations, setOurLocations] = useState<
+    TransformedOurLocationResponse[]
   >([]);
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
     const fetchLocations = async () => {
-      const locations = await getSubLocations();
-      setSubLocations(locations);
+      const locations = await getOurLocations();
+      setOurLocations(locations);
     };
 
     fetchLocations();
@@ -26,7 +26,7 @@ export const SubmittedLocations = () => {
 
   const indexOfLastItem = currentPage * ITEMS_PER_PAGE;
   const indexOfFirstItem = indexOfLastItem - ITEMS_PER_PAGE;
-  const currentItems = subLocations.slice(indexOfFirstItem, indexOfLastItem);
+  const currentItems = ourLocations.slice(indexOfFirstItem, indexOfLastItem);
 
   const paginate = (pageNumber: number) => {
     setCurrentPage(pageNumber);
@@ -42,7 +42,7 @@ export const SubmittedLocations = () => {
       <Flex {...adminPageStyles}>
         <VStack>
           {sortedLocations.map((location) => (
-            <SubLocationCard key={location.id} location={location} />
+            <OurLocationCard key={location.id} location={location} />
           ))}
           <HStack spacing="2rem" mb="2rem">
             <Button
@@ -53,7 +53,7 @@ export const SubmittedLocations = () => {
             </Button>
             <Button
               onClick={() => paginate(currentPage + 1)}
-              disabled={indexOfLastItem >= subLocations.length}
+              disabled={indexOfLastItem >= ourLocations.length}
             >
               Nästa
             </Button>

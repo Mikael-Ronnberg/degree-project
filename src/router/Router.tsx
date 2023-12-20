@@ -13,6 +13,7 @@ import { OurArticles } from "../pages/admin/admin-pages/OurArticles";
 import { OurLocations } from "../pages/admin/admin-pages/OurLocations";
 import { CreateEvent } from "../pages/admin/admin-pages/CreateEvent";
 import { WriteArticle } from "../pages/admin/admin-pages/WriteArticle";
+import { HandleOurLocations } from "../pages/admin/admin-pages/HandleOurLocations";
 
 export const router = createBrowserRouter([
   {
@@ -60,6 +61,14 @@ export const router = createBrowserRouter([
     element: (
       <RequireAuth>
         <OurLocations />
+      </RequireAuth>
+    ),
+  },
+  {
+    path: "/handleOurLocations",
+    element: (
+      <RequireAuth>
+        <HandleOurLocations />
       </RequireAuth>
     ),
   },

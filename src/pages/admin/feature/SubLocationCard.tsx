@@ -6,11 +6,11 @@ import {
 } from "../style/styleAdmin";
 import { TransformedLocationResponse } from "../../locations/model/Interfaces";
 
-interface SubLocCardProps {
+interface SubLocationCardProps {
   location: TransformedLocationResponse;
 }
 
-export const SubLocCard = ({ location }: SubLocCardProps) => {
+export const SubLocationCard = ({ location }: SubLocationCardProps) => {
   return (
     <>
       <Flex key={location.id} {...subLocationCardStyles}>
@@ -44,8 +44,9 @@ export const SubLocCard = ({ location }: SubLocCardProps) => {
           <Text {...subLocationTextStyles}>Skapad: </Text>
           <Text>{location.createdAt}</Text>
         </HStack>
+
         <Button onClick={() => deleteSubLocation(location.id)}>
-          Ta Bord Tipset
+          Ta Bort Tipset
         </Button>
       </Flex>
     </>

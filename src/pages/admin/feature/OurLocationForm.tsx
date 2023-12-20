@@ -13,9 +13,11 @@ import {
   ourInputStyles,
   ourTextareaStyles,
 } from "../style/styleAdmin";
+import { submitOurLocation } from "../../../services/MapServices";
+import { useLocationStore } from "../../../store/useLocationsStore";
 
 export const OurLocationForm = () => {
-  // const { pinLocation, setPinLocation, setFormSubmitted } = useLocationStore();
+  const { pinLocation, setPinLocation } = useLocationStore();
 
   const initialValues: OurLocationFormValues = {
     locationName: "",
@@ -26,18 +28,18 @@ export const OurLocationForm = () => {
     glass: 0,
     other: 0,
     animals: 0,
-    lat: 0,
-    lng: 0,
+    lat: pinLocation?.lat || 0,
+    lng: pinLocation?.lng || 0,
   };
 
   const handleSubmit = (
     values: OurLocationFormValues,
     { resetForm }: FormikHelpers<OurLocationFormValues>
   ) => {
-    //   submitLocation(values);
+    submitOurLocation(values);
     resetForm();
     //   setFormSubmitted(true);
-    //   setPinLocation(null);
+    setPinLocation(null);
   };
 
   return (

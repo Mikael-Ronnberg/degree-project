@@ -13,6 +13,10 @@ export const adminNavItems: NavItem[] = [
     to: "/ourLocations",
   },
   {
+    label: "Hantera våra Platser",
+    to: "/handleOurLocations",
+  },
+  {
     label: "Artiklar",
     to: "/ourArticles",
   },
