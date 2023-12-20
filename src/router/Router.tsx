@@ -5,6 +5,9 @@ import { Contact } from "../pages/contact/Contact";
 import { About } from "../pages/about/About";
 import { Locations } from "../pages/locations/Locations";
 import { Admin } from "../pages/admin/Admin";
+import { Login } from "../pages/admin/feature/Login";
+import { RequireAuth } from "./RequireAuth";
+import { SubmittedLocations } from "../pages/admin/admin-pages/SubmittedLocations";
 
 export const router = createBrowserRouter([
   {
@@ -28,7 +31,23 @@ export const router = createBrowserRouter([
     element: <NewsBlog />,
   },
   {
+    path: "/login",
+    element: <Login />,
+  },
+  {
     path: "/admin",
-    element: <Admin />,
+    element: (
+      <RequireAuth>
+        <Admin />
+      </RequireAuth>
+    ),
+  },
+  {
+    path: "/sublocations",
+    element: (
+      <RequireAuth>
+        <SubmittedLocations />
+      </RequireAuth>
+    ),
   },
 ]);

@@ -1,14 +1,14 @@
 import { Flex } from "@chakra-ui/react";
-import { adminPageStyles } from "./style/styleAdmin";
-import { Auth } from "./feature/Auth";
-import { ViewSubmittedLocations } from "./views/viewSubmittedLocations";
+import { adminPageStyles, sideBarStyles } from "./style/styleAdmin";
+import { SideBar } from "./feature/SideBar";
+import { AdminContainer } from "./feature/AdminContainer";
 
 export const Admin = () => {
   return (
     <>
       <Flex {...adminPageStyles}>
-        <Auth></Auth>
-        <ViewSubmittedLocations />
+        <SideBar {...sideBarStyles} />
+        <AdminContainer />
       </Flex>
     </>
   );

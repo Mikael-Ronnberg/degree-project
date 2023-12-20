@@ -1,16 +1,11 @@
 import { Button, Flex, HStack, Heading, Input, VStack } from "@chakra-ui/react";
-import {
-  auth,
-  // googleProvider
-} from "../../../config/firebase";
-import {
-  createUserWithEmailAndPassword,
-  // signInWithPopup,
-  signOut,
-} from "firebase/auth";
+import { auth } from "../../../config/firebase";
+import { signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { useState } from "react";
 import { loginContainerStyles } from "../style/styleAdmin";
 import { useFormik } from "formik";
+import { useAuthStore } from "../../../store/authStore";
+import { useNavigate } from "react-router-dom";
 
 interface FormValues {
   email: string;
@@ -19,6 +14,8 @@ interface FormValues {
 
 export const Auth = () => {
   const [errorMessage, setErrorMessage] = useState("");
+  const { login, logout } = useAuthStore();
+  const navigate = useNavigate();
 
   const formik = useFormik<FormValues>({
     initialValues: {
@@ -38,22 +35,26 @@ export const Auth = () => {
       if (!values.password) {
         errors.password = "Required";
       }
-
       return errors;
     },
 
     onSubmit: async (values) => {
       try {
-        await createUserWithEmailAndPassword(
+        await signInWithEmailAndPassword(
           auth,
           values.email,
           values.password
-        );
-        setErrorMessage("");
+        ).then(() => {
+          // const user = userCredential.user;
+          // console.log(user);
+          login();
+          setErrorMessage("");
+          navigate("/admin");
+        });
       } catch (error) {
         if (error instanceof Error) {
           console.error(error);
-          setErrorMessage(error.message); // This is now safe
+          setErrorMessage(error.message);
         } else {
           console.error("An unknown error occurred:", error);
           setErrorMessage("An unknown error occurred");
@@ -62,25 +63,10 @@ export const Auth = () => {
     },
   });
 
-  // const signIn = async () => {
-  //   try {
-  //     await createUserWithEmailAndPassword(auth, email, password);
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
-
-  // const signInWithGoogle = async () => {
-  //   try {
-  //     await signInWithPopup(auth, googleProvider);
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
-
-  const logout = async () => {
+  const logOut = async () => {
     try {
       await signOut(auth);
+      logout();
     } catch (error) {
       console.error(error);
     }
@@ -118,7 +104,7 @@ export const Auth = () => {
         </VStack>
         <HStack spacing="2rem">
           <Button type="submit">Login</Button>
-          <Button onClick={logout}>Logout</Button>
+          <Button onClick={logOut}>Logout</Button>
         </HStack>
       </form>
       {errorMessage && <div>{errorMessage}</div>}
