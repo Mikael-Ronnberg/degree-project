@@ -1,4 +1,11 @@
-import { Button, Flex, FormControl, Input, Textarea } from "@chakra-ui/react";
+import {
+  Button,
+  Flex,
+  FormControl,
+  FormLabel,
+  Input,
+  Textarea,
+} from "@chakra-ui/react";
 import { Formik, FormikHelpers } from "formik";
 import { OurLocationFormValues } from "../model/adminInterfaces";
 import {
@@ -67,6 +74,7 @@ export const OurLocationForm = () => {
                 onBlur={handleBlur}
                 value={values.description}
               />
+              <FormLabel htmlFor="plastic">Plast</FormLabel>
               <Input
                 {...ourInputStyles}
                 name="plastic"
@@ -75,6 +83,7 @@ export const OurLocationForm = () => {
                 onBlur={handleBlur}
                 value={values.plastic}
               />
+              <FormLabel htmlFor="metal">Metall</FormLabel>
               <Input
                 {...ourInputStyles}
                 name="metal"
@@ -83,6 +92,7 @@ export const OurLocationForm = () => {
                 onBlur={handleBlur}
                 value={values.metal}
               />
+              <FormLabel htmlFor="glass">Glas</FormLabel>
               <Input
                 {...ourInputStyles}
                 name="glass"
@@ -91,6 +101,7 @@ export const OurLocationForm = () => {
                 onBlur={handleBlur}
                 value={values.glass}
               />
+              <FormLabel htmlFor="other">Övrigt</FormLabel>
               <Input
                 {...ourInputStyles}
                 name="other"
@@ -99,13 +110,16 @@ export const OurLocationForm = () => {
                 onBlur={handleBlur}
                 value={values.other}
               />
+              <FormLabel htmlFor="animals">
+                Invasiv art (antal individer, skriv i beskrivning vilka)
+              </FormLabel>
               <Input
                 {...ourInputStyles}
                 name="animals"
-                placeholder="Invasiv art (antal individer, skriv i beskrivning vilka)"
+                placeholder="Invasiva arter (antal individer, skriv i beskrivning vilka)"
                 onChange={handleChange}
                 onBlur={handleBlur}
-                value={values.other}
+                value={values.animals}
               />
               <Input
                 type="hidden"

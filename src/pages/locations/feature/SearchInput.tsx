@@ -34,16 +34,14 @@ export const SearchInput = () => {
 
   return (
     <>
-      <Flex w="60vw">
-        <Input
-          variant="outline"
-          border="2px solid black"
-          rounded="small"
-          m="1rem"
-          value={searchInput}
-          onChange={(e) => setSearchInput(e.target.value)}
-        />
-      </Flex>
+      <Input
+        variant="outline"
+        border="1px solid black"
+        rounded="small"
+        m="1rem"
+        value={searchInput}
+        onChange={(e) => setSearchInput(e.target.value)}
+      />
       {isDropdownOpen && (
         <Box position="absolute" w="60vw" bg="white" zIndex="dropdown">
           <List>

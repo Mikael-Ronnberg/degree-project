@@ -17,7 +17,7 @@ export const OurLocations = () => {
       <Navbar navItems={adminNavItems} />
       <Flex {...adminPageStyles}>
         <Flex {...ourMapContainerStyles}>
-          <Heading>Lägg in vår senaste snorkling</Heading>
+          <Heading m="3rem">Lägg in vår senaste snorkling</Heading>
           <Box {...ourMapBoxStyles}>
             <LeafletMap />
           </Box>
