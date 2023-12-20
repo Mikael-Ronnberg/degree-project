@@ -8,6 +8,9 @@ import { Admin } from "../pages/admin/Admin";
 import { Login } from "../pages/admin/feature/Login";
 import { RequireAuth } from "./RequireAuth";
 import { SubmittedLocations } from "../pages/admin/admin-pages/SubmittedLocations";
+import { OurEvents } from "../pages/admin/admin-pages/OurEvents";
+import { OurArticles } from "../pages/admin/admin-pages/OurArticles";
+import { OurLocations } from "../pages/admin/admin-pages/OurLocations";
 
 export const router = createBrowserRouter([
   {
@@ -47,6 +50,30 @@ export const router = createBrowserRouter([
     element: (
       <RequireAuth>
         <SubmittedLocations />
+      </RequireAuth>
+    ),
+  },
+  {
+    path: "/ourlocations",
+    element: (
+      <RequireAuth>
+        <OurLocations />
+      </RequireAuth>
+    ),
+  },
+  {
+    path: "/ourArticles",
+    element: (
+      <RequireAuth>
+        <OurArticles />
+      </RequireAuth>
+    ),
+  },
+  {
+    path: "/ourEvents",
+    element: (
+      <RequireAuth>
+        <OurEvents />
       </RequireAuth>
     ),
   },

@@ -13,10 +13,10 @@ export const SideBar = () => {
           <Link to="/ourlocations">
             <ListItem {...sideBarListStyle}>Våra besökta Platser</ListItem>
           </Link>
-          <Link to="events">
+          <Link to="/ourevents">
             <ListItem {...sideBarListStyle}>Kommande Händelser</ListItem>
           </Link>
-          <Link to="ourarticles">
+          <Link to="/ourarticles">
             <ListItem {...sideBarListStyle}>Artiklar</ListItem>
           </Link>
         </List>

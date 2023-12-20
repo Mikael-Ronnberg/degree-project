@@ -1,22 +1,18 @@
 import { useState, useEffect } from "react";
-import { Flex, VStack, Text, HStack, Button } from "@chakra-ui/react";
-import {
-  adminPageStyles,
-  oneLocationStyles,
-  oneLocationTextStyle,
-  sideBarStyles,
-} from "../style/styleAdmin";
-import {
-  deleteSubLocation,
-  getSubLocations,
-} from "../../../services/MapServices";
+import { Flex, VStack, Button, HStack } from "@chakra-ui/react";
+import { adminPageStyles, sideBarStyles } from "../style/styleAdmin";
+import { getSubLocations } from "../../../services/MapServices";
 import { TransformedLocationResponse } from "../../locations/model/Interfaces";
 import { SideBar } from "../feature/SideBar";
+import { SubLocCard } from "../feature/SubLocCard";
+
+const ITEMS_PER_PAGE = 3;
 
 export const SubmittedLocations = () => {
   const [subLocations, setSubLocations] = useState<
     TransformedLocationResponse[]
   >([]);
+  const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
     const fetchLocations = async () => {
@@ -27,48 +23,40 @@ export const SubmittedLocations = () => {
     fetchLocations();
   }, []);
 
+  const indexOfLastItem = currentPage * ITEMS_PER_PAGE;
+  const indexOfFirstItem = indexOfLastItem - ITEMS_PER_PAGE;
+  const currentItems = subLocations.slice(indexOfFirstItem, indexOfLastItem);
+
+  const paginate = (pageNumber: number) => {
+    setCurrentPage(pageNumber);
+  };
+
+  const sortedLocations = [...currentItems].sort((a, b) => {
+    return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
+  });
+
   return (
     <>
       <Flex {...adminPageStyles}>
         <SideBar {...sideBarStyles} />
         <VStack>
-          {subLocations.map((location) => (
-            <Flex key={location.id} {...oneLocationStyles}>
-              <HStack spacing="2rem">
-                <Text {...oneLocationTextStyle} fontWeight="bold">
-                  Namn:{" "}
-                </Text>
-                <Text {...oneLocationTextStyle}>{location.name}</Text>
-              </HStack>
-              <HStack spacing="2rem">
-                <Text {...oneLocationTextStyle} fontWeight="bold">
-                  Email:{" "}
-                </Text>
-                <Text {...oneLocationTextStyle}>{location.email}</Text>
-              </HStack>
-              <HStack spacing="2rem">
-                <Text {...oneLocationTextStyle} fontWeight="bold">
-                  Meddelande:{" "}
-                </Text>
-                <Text {...oneLocationTextStyle}>{location.message}</Text>
-              </HStack>
-              <HStack spacing="2rem">
-                <Text {...oneLocationTextStyle}>Lattitud: </Text>
-                <Text>{location.lat}</Text>
-              </HStack>
-              <HStack spacing="2rem">
-                <Text {...oneLocationTextStyle}>Longitud: </Text>
-                <Text>{location.lng}</Text>
-              </HStack>
-              <HStack spacing="2rem">
-                <Text {...oneLocationTextStyle}>Skapad: </Text>
-                <Text>{location.createdAt}</Text>
-              </HStack>
-              <Button onClick={() => deleteSubLocation(location.id)}>
-                Ta Bord Tipset
-              </Button>
-            </Flex>
+          {sortedLocations.map((location) => (
+            <SubLocCard key={location.id} location={location} />
           ))}
+          <HStack spacing="2rem">
+            <Button
+              onClick={() => paginate(currentPage - 1)}
+              disabled={currentPage === 1}
+            >
+              Previous
+            </Button>
+            <Button
+              onClick={() => paginate(currentPage + 1)}
+              disabled={indexOfLastItem >= subLocations.length}
+            >
+              Next
+            </Button>
+          </HStack>
         </VStack>
       </Flex>
     </>

@@ -8,7 +8,7 @@ import {
 export const adminPageStyles: FlexProps = {
   direction: "row",
   justify: "space-between",
-  align: "center",
+  // align: "center",
   h: "auto",
   w: "100vw",
   backgroundColor: "grey",
