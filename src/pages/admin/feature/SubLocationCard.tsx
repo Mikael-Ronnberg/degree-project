@@ -1,5 +1,5 @@
 import { Flex, HStack, Button, Text } from "@chakra-ui/react";
-import { deleteSubLocation } from "../../../services/MapServices";
+import { deleteSubLocation } from "../../locations/services/MapServices";
 import {
   subLocationCardStyles,
   subLocationTextStyles,

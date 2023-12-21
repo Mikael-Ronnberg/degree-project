@@ -3,43 +3,47 @@ import {
   Flex,
   FormControl,
   FormLabel,
+  HStack,
   Input,
   Textarea,
 } from "@chakra-ui/react";
-import { Formik, FormikHelpers } from "formik";
-import { OurLocationFormValues } from "../model/adminInterfaces";
+import { Formik } from "formik";
+import { TransformedOurLocationResponse } from "../model/adminInterfaces";
 import {
   ourFormStyles,
   ourInputStyles,
   ourTextareaStyles,
 } from "../style/styleAdmin";
-import { useLocationStore } from "../../../store/useLocationsStore";
-import { submitOurLocation } from "../services/AdminServices";
+import { updateOurLocation } from "../services/AdminServices";
 
-export const OurLocationForm = () => {
-  const { pinLocation, setPinLocation } = useLocationStore();
+interface UpdateOurLocationFormProps {
+  formValues: TransformedOurLocationResponse;
+  onClose: () => void;
+}
 
-  const initialValues: OurLocationFormValues = {
-    locationName: "",
-    date: "",
-    description: "",
-    plastic: 0,
-    metal: 0,
-    glass: 0,
-    other: 0,
-    animals: 0,
-    lat: pinLocation?.lat || 0,
-    lng: pinLocation?.lng || 0,
+export const UpdateOurLocationForm = ({
+  formValues,
+  onClose,
+}: UpdateOurLocationFormProps) => {
+  const initialValues: Omit<TransformedOurLocationResponse, "createdAt"> = {
+    id: formValues.id,
+    locationName: formValues.locationName,
+    date: formValues.date,
+    description: formValues.description,
+    plastic: formValues.plastic,
+    metal: formValues.metal,
+    glass: formValues.glass,
+    other: formValues.other,
+    animals: formValues.animals,
+    lat: formValues.lat,
+    lng: formValues.lng,
   };
 
   const handleSubmit = (
-    values: OurLocationFormValues,
-    { resetForm }: FormikHelpers<OurLocationFormValues>
+    values: Omit<TransformedOurLocationResponse, "createdAt">
   ) => {
-    submitOurLocation(values);
-    setPinLocation(null);
-
-    resetForm();
+    updateOurLocation(values);
+    onClose();
   };
 
   return (
@@ -137,7 +141,12 @@ export const OurLocationForm = () => {
                 onBlur={handleBlur}
                 value={values.lng}
               />
-              <Button type="submit">Skicka till databasen</Button>
+              <HStack spacing="2rem">
+                <Button colorScheme="blue" onClick={onClose}>
+                  Close
+                </Button>
+                <Button type="submit">Updatera</Button>
+              </HStack>
             </Flex>
           </FormControl>
         </form>

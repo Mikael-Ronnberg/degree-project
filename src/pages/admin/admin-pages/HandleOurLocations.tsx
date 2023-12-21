@@ -4,8 +4,8 @@ import { Navbar } from "../../../components/navbar/NavBar";
 import { adminNavItems } from "../../../helpers/helpers";
 import { useEffect, useState } from "react";
 import { TransformedOurLocationResponse } from "../model/adminInterfaces";
-import { getOurLocations } from "../../../services/MapServices";
 import { OurLocationCard } from "../feature/OurLocationCard";
+import { getOurLocations } from "../services/AdminServices";
 
 const ITEMS_PER_PAGE = 3;
 

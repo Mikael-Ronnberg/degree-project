@@ -4,7 +4,8 @@ import {
   subLocationTextStyles,
 } from "../style/styleAdmin";
 import { TransformedOurLocationResponse } from "../model/adminInterfaces";
-import { deleteOurLocation } from "../../../services/MapServices";
+import { EditOurLocationModal } from "./EditOurLocationModal";
+import { deleteOurLocation } from "../services/AdminServices";
 
 interface OurLocationCardProps {
   location: TransformedOurLocationResponse;
@@ -64,12 +65,10 @@ export const OurLocationCard = ({ location }: OurLocationCardProps) => {
         </HStack>
         <HStack spacing="2rem">
           <Text {...subLocationTextStyles}>Skapad: </Text>
-          <Text>{location.createdAt}</Text>
+          <Text>{location?.createdAt}</Text>
         </HStack>
         <HStack>
-          <Button onClick={() => deleteOurLocation(location.id)}>
-            Uppdatera
-          </Button>
+          <EditOurLocationModal formValues={location} />
           <Button onClick={() => deleteOurLocation(location.id)}>
             Ta Bort Platsen!
           </Button>
