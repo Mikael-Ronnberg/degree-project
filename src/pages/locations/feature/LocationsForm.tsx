@@ -6,7 +6,7 @@ import {
   textareaStyles,
   inputStyles,
 } from "../style/styleLocations";
-import { LocationsFormValues } from "../model/Interfaces";
+import { LocationsFormValues } from "../model/LocationsInterfaces";
 import { useLocationStore } from "../../../store/useLocationsStore";
 import { submitLocation } from "../services/MapServices";
 

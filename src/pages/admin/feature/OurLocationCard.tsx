@@ -3,7 +3,7 @@ import {
   subLocationCardStyles,
   subLocationTextStyles,
 } from "../style/styleAdmin";
-import { TransformedOurLocationResponse } from "../model/adminInterfaces";
+import { TransformedOurLocationResponse } from "../model/AdminInterfaces";
 import { EditOurLocationModal } from "./EditOurLocationModal";
 import { deleteOurLocation } from "../services/AdminServices";
 

@@ -7,7 +7,7 @@ import {
   Textarea,
 } from "@chakra-ui/react";
 import { Formik, FormikHelpers } from "formik";
-import { OurLocationFormValues } from "../model/adminInterfaces";
+import { OurLocationFormValues } from "../model/AdminInterfaces";
 import {
   ourFormStyles,
   ourInputStyles,

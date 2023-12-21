@@ -8,7 +8,7 @@ import {
   Textarea,
 } from "@chakra-ui/react";
 import { Formik } from "formik";
-import { TransformedOurLocationResponse } from "../model/adminInterfaces";
+import { TransformedOurLocationResponse } from "../model/AdminInterfaces";
 import {
   ourFormStyles,
   ourInputStyles,

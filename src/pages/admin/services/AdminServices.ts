@@ -12,7 +12,7 @@ import {
   OurLocationFormValues,
   TransformedOurLocationResponse,
   OurLocationResponse,
-} from "../model/adminInterfaces";
+} from "../model/AdminInterfaces";
 
 const ourLocationCollectionRef = collection(db, "ourLocations");
 

@@ -4,7 +4,7 @@ import {
   subLocationCardStyles,
   subLocationTextStyles,
 } from "../style/styleAdmin";
-import { TransformedLocationResponse } from "../../locations/model/Interfaces";
+import { TransformedLocationResponse } from "../../locations/model/LocationsInterfaces";
 
 interface SubLocationCardProps {
   location: TransformedLocationResponse;

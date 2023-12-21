@@ -1,7 +1,7 @@
 import { useMap } from "react-leaflet";
 
 import { useEffect } from "react";
-import { ILocationObj } from "../model/Interfaces";
+import { ILocationObj } from "../model/LocationsInterfaces";
 import L from "leaflet";
 
 interface IResetCenterViewProps {

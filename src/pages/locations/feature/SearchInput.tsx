@@ -2,7 +2,7 @@ import { Box, Flex, Input, List, ListItem } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
 import { fetchLocations } from "../services/MapServices";
 import { useLocationStore } from "../../../store/useLocationsStore";
-import { LocationObj } from "../model/Interfaces";
+import { LocationObj } from "../model/LocationsInterfaces";
 
 export const SearchInput = () => {
   const { setSelectLocation, listLocations, setListLocations } =

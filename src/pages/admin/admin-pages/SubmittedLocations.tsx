@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Flex, VStack, Button, HStack } from "@chakra-ui/react";
 import { adminPageStyles } from "../style/styleAdmin";
 import { getSubLocations } from "../../locations/services/MapServices";
-import { TransformedLocationResponse } from "../../locations/model/Interfaces";
+import { TransformedLocationResponse } from "../../locations/model/LocationsInterfaces";
 import { SubLocationCard } from "../feature/SubLocationCard";
 import { adminNavItems } from "../../../helpers/helpers";
 import { Navbar } from "../../../components/navbar/NavBar";

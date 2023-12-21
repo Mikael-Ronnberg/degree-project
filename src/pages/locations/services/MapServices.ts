@@ -4,7 +4,7 @@ import {
   LocationResponse,
   LocationsFormValues,
   TransformedLocationResponse,
-} from "../model/Interfaces";
+} from "../model/LocationsInterfaces";
 
 import {
   addDoc,

@@ -9,7 +9,7 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import { UpdateOurLocationForm } from "./UpdateOurLocationForm";
-import { TransformedOurLocationResponse } from "../model/adminInterfaces";
+import { TransformedOurLocationResponse } from "../model/AdminInterfaces";
 
 interface UpdateOurLocationFormProps {
   formValues: TransformedOurLocationResponse;

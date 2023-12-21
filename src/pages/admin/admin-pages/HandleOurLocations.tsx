@@ -3,7 +3,7 @@ import { adminPageStyles } from "../style/styleAdmin";
 import { Navbar } from "../../../components/navbar/NavBar";
 import { adminNavItems } from "../../../helpers/helpers";
 import { useEffect, useState } from "react";
-import { TransformedOurLocationResponse } from "../model/adminInterfaces";
+import { TransformedOurLocationResponse } from "../model/AdminInterfaces";
 import { OurLocationCard } from "../feature/OurLocationCard";
 import { getOurLocations } from "../services/AdminServices";
 
