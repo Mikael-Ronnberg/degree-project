@@ -3,20 +3,25 @@ import {
   Flex,
   FormControl,
   FormLabel,
+  HStack,
   Input,
   Textarea,
 } from "@chakra-ui/react";
 import { Formik, FormikHelpers } from "formik";
-import {
-  ourFormStyles,
-  ourInputStyles,
-  ourTextareaStyles,
-} from "../../admin/style/styleAdmin";
 import { useLocationStore } from "../../../store/useLocationsStore";
 import { submitOurLocation } from "../../../services/AdminServices";
 import { OurLocationFormValues } from "../../../model/AdminInterfaces";
+import {
+  createFormStyles,
+  createInputFormStyles,
+  createTextareaFormStyles,
+} from "../../admin/style/styleAdmin";
 
-export const OurLocationForm = () => {
+interface OurFormProps {
+  onClose: () => void;
+}
+
+export const OurForm = ({ onClose }: OurFormProps) => {
   const { pinLocation, setPinLocation } = useLocationStore();
 
   const initialValues: OurLocationFormValues = {
@@ -38,8 +43,8 @@ export const OurLocationForm = () => {
   ) => {
     submitOurLocation(values);
     setPinLocation(null);
-
     resetForm();
+    onClose();
   };
 
   return (
@@ -51,9 +56,9 @@ export const OurLocationForm = () => {
       {({ values, handleChange, handleBlur, handleSubmit }) => (
         <form onSubmit={handleSubmit}>
           <FormControl>
-            <Flex {...ourFormStyles}>
+            <Flex {...createFormStyles}>
               <Input
-                {...ourInputStyles}
+                {...createInputFormStyles}
                 name="locationName"
                 placeholder="Platsens Namn"
                 onChange={handleChange}
@@ -61,7 +66,7 @@ export const OurLocationForm = () => {
                 value={values.locationName}
               />
               <Input
-                {...ourInputStyles}
+                {...createInputFormStyles}
                 name="date"
                 placeholder="Datum"
                 onChange={handleChange}
@@ -69,7 +74,7 @@ export const OurLocationForm = () => {
                 value={values.date}
               />
               <Textarea
-                {...ourTextareaStyles}
+                {...createTextareaFormStyles}
                 name="description"
                 placeholder="Skriv något om platsen och vad vi gjorde denna dag"
                 onChange={handleChange}
@@ -78,7 +83,7 @@ export const OurLocationForm = () => {
               />
               <FormLabel htmlFor="plastic">Plast</FormLabel>
               <Input
-                {...ourInputStyles}
+                {...createInputFormStyles}
                 name="plastic"
                 placeholder="Plast i vikt (kg)"
                 onChange={handleChange}
@@ -87,7 +92,7 @@ export const OurLocationForm = () => {
               />
               <FormLabel htmlFor="metal">Metall</FormLabel>
               <Input
-                {...ourInputStyles}
+                {...createInputFormStyles}
                 name="metal"
                 placeholder="Metall i vikt (kg)"
                 onChange={handleChange}
@@ -96,7 +101,7 @@ export const OurLocationForm = () => {
               />
               <FormLabel htmlFor="glass">Glas</FormLabel>
               <Input
-                {...ourInputStyles}
+                {...createInputFormStyles}
                 name="glass"
                 placeholder="Glas i vikt (kg)"
                 onChange={handleChange}
@@ -105,7 +110,7 @@ export const OurLocationForm = () => {
               />
               <FormLabel htmlFor="other">Övrigt</FormLabel>
               <Input
-                {...ourInputStyles}
+                {...createInputFormStyles}
                 name="other"
                 placeholder="Övrigt i vikt (kg)"
                 onChange={handleChange}
@@ -116,7 +121,7 @@ export const OurLocationForm = () => {
                 Invasiv art (antal individer, skriv i beskrivning vilka)
               </FormLabel>
               <Input
-                {...ourInputStyles}
+                {...createInputFormStyles}
                 name="animals"
                 placeholder="Invasiva arter (antal individer, skriv i beskrivning vilka)"
                 onChange={handleChange}
@@ -137,7 +142,12 @@ export const OurLocationForm = () => {
                 onBlur={handleBlur}
                 value={values.lng}
               />
-              <Button type="submit">Skicka till databasen</Button>
+              <HStack spacing="2rem">
+                <Button colorScheme="blue" onClick={onClose}>
+                  Stäng
+                </Button>
+                <Button type="submit">Spara</Button>
+              </HStack>
             </Flex>
           </FormControl>
         </form>

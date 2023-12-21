@@ -22,7 +22,7 @@ export interface LocationObj {
   type: string;
 }
 
-export interface Location {
+export interface LocationCoords {
   lat: number;
   lng: number;
 }

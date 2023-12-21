@@ -13,7 +13,7 @@ export const adminPageStyles: FlexProps = {
   justify: "center",
   direction: "column",
   backgroundColor: "grey",
-  h: "auto",
+  minH: "100vh",
   w: "100vw",
   mt: "3rem",
 };
@@ -77,25 +77,40 @@ export const ourFormContainerStyles: FlexProps = {
   m: "2rem",
 };
 
-export const ourFormStyles: FlexProps = {
+export const createContainerStyles: FlexProps = {
+  justify: "center",
+  align: "center",
+  w: { sm: "90vw", lg: "65vw" },
+  h: "80vh",
+  border: "black 1px solid",
+  direction: "column",
+  background: "white",
+  mt: "3rem",
+  p: "2rem",
+};
+
+export const createFormStyles: FlexProps = {
   justify: "center",
   align: "center",
   w: { sm: "90vw", lg: "65vw" },
   h: "auto",
+  border: "black 2px solid",
   direction: "column",
-  m: "2rem",
+  background: "white",
+  mt: "3rem",
+  p: "2rem",
 };
 
-export const ourInputStyles: InputProps = {
+export const createInputFormStyles: InputProps = {
   variant: "outline",
-  border: "black 1px solid",
+  border: "black 2px solid",
   rounded: "sm",
   w: "60vw",
   m: "1rem",
 };
 
-export const ourTextareaStyles: TextareaProps = {
-  border: "black 1px solid",
+export const createTextareaFormStyles: TextareaProps = {
+  border: "black 2px solid",
   variant: "outline",
   rounded: "sm",
   w: "60vw",

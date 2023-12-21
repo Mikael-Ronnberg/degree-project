@@ -3,7 +3,7 @@ import { auth } from "../../../config/firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
 import { useFormik } from "formik";
-import { useAuthStore } from "../../../store/authStore";
+import { useAuthStore } from "../../../store/useAuthStore";
 import { useNavigate } from "react-router-dom";
 import { AuthDetails } from "./AuthDetails";
 import { LoginFormValues } from "../../../model/AdminInterfaces";

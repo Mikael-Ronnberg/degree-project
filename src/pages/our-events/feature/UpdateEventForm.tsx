@@ -7,32 +7,40 @@ import {
   Input,
   Textarea,
 } from "@chakra-ui/react";
-import { Formik, FormikHelpers } from "formik";
-import { CreateEventFormValues } from "../../../model/AdminInterfaces";
+import { Formik } from "formik";
+import { TransformedEventResponse } from "../../../model/AdminInterfaces";
 import { submitEvent } from "../../../services/AdminServices";
+import { useEventsStore } from "../../../store/useEventsStore";
 import {
   createFormStyles,
   createInputFormStyles,
   createTextareaFormStyles,
 } from "../../admin/style/styleAdmin";
 
-interface CreateEventFormProps {
+interface UpdateEventFormProps {
+  formValues: TransformedEventResponse;
   onClose: () => void;
 }
 
-export const CreateEventForm = ({ onClose }: CreateEventFormProps) => {
-  const initialValues: CreateEventFormValues = {
-    heading: "",
-    date: "",
-    description: "",
+export const UpdateEventForm = ({
+  formValues,
+  onClose,
+}: UpdateEventFormProps) => {
+  const initialValues: Omit<TransformedEventResponse, "createdAt"> = {
+    id: formValues.id,
+    heading: formValues.heading,
+    date: formValues.date,
+    description: formValues.description,
   };
 
+  const { updateEvent } = useEventsStore();
+
   const handleSubmit = (
-    values: CreateEventFormValues,
-    { resetForm }: FormikHelpers<CreateEventFormValues>
+    values: Omit<TransformedEventResponse, "createdAt">
   ) => {
+    updateEvent(values as TransformedEventResponse);
+    localStorage.removeItem("events");
     submitEvent(values);
-    resetForm();
     onClose();
   };
 
@@ -77,7 +85,7 @@ export const CreateEventForm = ({ onClose }: CreateEventFormProps) => {
                 <Button colorScheme="blue" onClick={onClose}>
                   Stäng
                 </Button>
-                <Button type="submit">Spara</Button>
+                <Button type="submit">Updatera</Button>
               </HStack>
             </Flex>
           </FormControl>

@@ -4,8 +4,8 @@ import {
   subLocationTextStyles,
 } from "../../admin/style/styleAdmin";
 import { TransformedOurLocationResponse } from "../../../model/AdminInterfaces";
-import { EditOurLocationModal } from "./EditOurLocationModal";
 import { deleteOurLocation } from "../../../services/AdminServices";
+import { UpdateOurLocationModal } from "./UpdateOurLocationModal";
 
 interface OurLocationCardProps {
   location: TransformedOurLocationResponse;
@@ -68,7 +68,7 @@ export const OurLocationCard = ({ location }: OurLocationCardProps) => {
           <Text>{location.createdAt}</Text>
         </HStack>
         <HStack>
-          <EditOurLocationModal formValues={location} />
+          <UpdateOurLocationModal formValues={location} />
           <Button onClick={() => deleteOurLocation(location.id)}>
             Ta Bort Platsen!
           </Button>

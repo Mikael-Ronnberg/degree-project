@@ -8,16 +8,14 @@ import {
   ModalOverlay,
   useDisclosure,
 } from "@chakra-ui/react";
-import { UpdateOurLocationForm } from "../../our-locations/feature/UpdateOurLocationForm";
-import { TransformedOurLocationResponse } from "../../../model/AdminInterfaces";
+import { TransformedEventResponse } from "../../../model/AdminInterfaces";
+import { UpdateEventForm } from "./UpdateEventForm";
 
-interface UpdateOurLocationFormProps {
-  formValues: TransformedOurLocationResponse;
+interface UpdateEventFormProps {
+  formValues: TransformedEventResponse;
 }
 
-export const EditOurLocationModal = ({
-  formValues,
-}: UpdateOurLocationFormProps) => {
+export const UpdateEventModal = ({ formValues }: UpdateEventFormProps) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <>
@@ -26,10 +24,10 @@ export const EditOurLocationModal = ({
       <Modal isOpen={isOpen} onClose={onClose} size="l">
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Ändra Denna Plats</ModalHeader>
+          <ModalHeader>Ändra Denna Händelse</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <UpdateOurLocationForm formValues={formValues} onClose={onClose} />
+            <UpdateEventForm formValues={formValues} onClose={onClose} />
           </ModalBody>
         </ModalContent>
       </Modal>

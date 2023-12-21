@@ -9,12 +9,12 @@ import {
 } from "@chakra-ui/react";
 import { Formik } from "formik";
 import { TransformedOurLocationResponse } from "../../../model/AdminInterfaces";
-import {
-  ourFormStyles,
-  ourInputStyles,
-  ourTextareaStyles,
-} from "../../admin/style/styleAdmin";
 import { updateOurLocation } from "../../../services/AdminServices";
+import {
+  createFormStyles,
+  createInputFormStyles,
+  createTextareaFormStyles,
+} from "../../admin/style/styleAdmin";
 
 interface UpdateOurLocationFormProps {
   formValues: TransformedOurLocationResponse;
@@ -55,9 +55,9 @@ export const UpdateOurLocationForm = ({
       {({ values, handleChange, handleBlur, handleSubmit }) => (
         <form onSubmit={handleSubmit}>
           <FormControl>
-            <Flex {...ourFormStyles}>
+            <Flex {...createFormStyles}>
               <Input
-                {...ourInputStyles}
+                {...createInputFormStyles}
                 name="locationName"
                 placeholder="Platsens Namn"
                 onChange={handleChange}
@@ -65,7 +65,7 @@ export const UpdateOurLocationForm = ({
                 value={values.locationName}
               />
               <Input
-                {...ourInputStyles}
+                {...createInputFormStyles}
                 name="date"
                 placeholder="Datum"
                 onChange={handleChange}
@@ -73,7 +73,7 @@ export const UpdateOurLocationForm = ({
                 value={values.date}
               />
               <Textarea
-                {...ourTextareaStyles}
+                {...createTextareaFormStyles}
                 name="description"
                 placeholder="Skriv något om platsen och vad vi gjorde denna dag"
                 onChange={handleChange}
@@ -82,7 +82,7 @@ export const UpdateOurLocationForm = ({
               />
               <FormLabel htmlFor="plastic">Plast</FormLabel>
               <Input
-                {...ourInputStyles}
+                {...createInputFormStyles}
                 name="plastic"
                 placeholder="Plast i vikt (kg)"
                 onChange={handleChange}
@@ -91,7 +91,7 @@ export const UpdateOurLocationForm = ({
               />
               <FormLabel htmlFor="metal">Metall</FormLabel>
               <Input
-                {...ourInputStyles}
+                {...createInputFormStyles}
                 name="metal"
                 placeholder="Metall i vikt (kg)"
                 onChange={handleChange}
@@ -100,7 +100,7 @@ export const UpdateOurLocationForm = ({
               />
               <FormLabel htmlFor="glass">Glas</FormLabel>
               <Input
-                {...ourInputStyles}
+                {...createInputFormStyles}
                 name="glass"
                 placeholder="Glas i vikt (kg)"
                 onChange={handleChange}
@@ -109,7 +109,7 @@ export const UpdateOurLocationForm = ({
               />
               <FormLabel htmlFor="other">Övrigt</FormLabel>
               <Input
-                {...ourInputStyles}
+                {...createInputFormStyles}
                 name="other"
                 placeholder="Övrigt i vikt (kg)"
                 onChange={handleChange}
@@ -120,7 +120,7 @@ export const UpdateOurLocationForm = ({
                 Invasiv art (antal individer, skriv i beskrivning vilka)
               </FormLabel>
               <Input
-                {...ourInputStyles}
+                {...createInputFormStyles}
                 name="animals"
                 placeholder="Invasiva arter (antal individer, skriv i beskrivning vilka)"
                 onChange={handleChange}

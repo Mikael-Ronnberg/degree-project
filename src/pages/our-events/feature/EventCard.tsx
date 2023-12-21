@@ -5,6 +5,7 @@ import {
 } from "../../admin/style/styleAdmin";
 import { TransformedEventResponse } from "../../../model/AdminInterfaces";
 import { deleteEvent } from "../../../services/AdminServices";
+import { UpdateEventModal } from "./UpdateEventModal";
 
 interface EventCardProps {
   event: TransformedEventResponse;
@@ -35,7 +36,7 @@ export const EventCard = ({ event }: EventCardProps) => {
           <Text>{event.createdAt}</Text>
         </HStack>
         <HStack>
-          {/* <EditEventModal formValues={event} /> */}
+          <UpdateEventModal formValues={event} />
           <Button onClick={() => deleteEvent(event.id)}>
             Ta Bort Händelsen!
           </Button>

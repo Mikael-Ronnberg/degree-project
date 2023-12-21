@@ -1,15 +1,15 @@
 import { create } from "zustand";
-import { ILocation, ILocationObj } from "../model/LocationsInterfaces";
+import { LocationCoords, LocationObj } from "../model/LocationsInterfaces";
 
 interface LocationState {
-  selectLocation: ILocationObj;
-  listLocations: ILocationObj[];
-  pinLocation: ILocation | null;
+  selectLocation: LocationObj;
+  listLocations: LocationObj[];
+  pinLocation: LocationCoords | null;
   formSubmitted: boolean;
 
-  setListLocations: (locations: ILocationObj[]) => void;
-  setSelectLocation: (location: ILocationObj) => void;
-  setPinLocation: (location: ILocation | null) => void;
+  setListLocations: (locations: LocationObj[]) => void;
+  setSelectLocation: (location: LocationObj) => void;
+  setPinLocation: (location: LocationCoords | null) => void;
   setFormSubmitted: (submitted: boolean) => void;
 }
 

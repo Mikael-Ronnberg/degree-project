@@ -2,7 +2,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import { useEffect } from "react";
 import { auth } from "../../../config/firebase";
 import { HStack } from "@chakra-ui/react";
-import { useAuthStore } from "../../../store/authStore";
+import { useAuthStore } from "../../../store/useAuthStore";
 import { Navigate } from "react-router-dom";
 
 export const AuthDetails = () => {
