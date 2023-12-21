@@ -44,7 +44,7 @@ export const HandleOurLocations = () => {
           {sortedLocations.map((location) => (
             <OurLocationCard key={location.id} location={location} />
           ))}
-          <HStack spacing="2rem" mb="2rem">
+          <HStack spacing="2rem" mb="2rem" mt="2rem">
             <Button
               onClick={() => paginate(currentPage - 1)}
               disabled={currentPage === 1}

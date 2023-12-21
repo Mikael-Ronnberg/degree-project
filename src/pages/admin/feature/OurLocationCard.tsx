@@ -29,7 +29,7 @@ export const OurLocationCard = ({ location }: OurLocationCardProps) => {
         </HStack>
         <HStack spacing="2rem">
           <Text {...subLocationTextStyles} fontWeight="bold">
-            Information on denna plats:{" "}
+            Information om denna plats:{" "}
           </Text>
           <Text {...subLocationTextStyles}>{location.description}</Text>
         </HStack>
@@ -65,7 +65,7 @@ export const OurLocationCard = ({ location }: OurLocationCardProps) => {
         </HStack>
         <HStack spacing="2rem">
           <Text {...subLocationTextStyles}>Skapad: </Text>
-          <Text>{location?.createdAt}</Text>
+          <Text>{location.createdAt}</Text>
         </HStack>
         <HStack>
           <EditOurLocationModal formValues={location} />

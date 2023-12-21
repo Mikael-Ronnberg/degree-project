@@ -7,7 +7,6 @@ import {
   Textarea,
 } from "@chakra-ui/react";
 import { Formik, FormikHelpers } from "formik";
-import { OurLocationFormValues } from "../model/AdminInterfaces";
 import {
   ourFormStyles,
   ourInputStyles,
@@ -15,6 +14,7 @@ import {
 } from "../style/styleAdmin";
 import { useLocationStore } from "../../../store/useLocationsStore";
 import { submitOurLocation } from "../services/AdminServices";
+import { OurLocationFormValues } from "../model/AdminInterfaces";
 
 export const OurLocationForm = () => {
   const { pinLocation, setPinLocation } = useLocationStore();
