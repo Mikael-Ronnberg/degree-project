@@ -2,7 +2,7 @@ import { Box } from "@chakra-ui/react";
 import { navbarStyles } from "./style";
 import { DesktopNavbar } from "./DesktopNavbar";
 import { MobileNavbar } from "./MobileNavbar";
-import { NavItem } from "../../helpers/helpers";
+import { NavItem } from "../../model/GlobalInterfaces";
 
 interface NavbarProps {
   navItems: NavItem[];

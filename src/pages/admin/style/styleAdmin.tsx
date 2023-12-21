@@ -31,17 +31,6 @@ export const adminContainerStyles: FlexProps = {
   w: { s: "85vw", l: "80vw" },
 };
 
-export const loginContainerStyles: FlexProps = {
-  direction: "column",
-  justify: "center",
-  align: "center",
-  h: "70vh",
-  w: { sm: "90vw", lg: "70vh" },
-  backgroundColor: "white",
-  border: "2px solid black",
-  p: "3rem",
-};
-
 export const subLocationCardStyles: FlexProps = {
   direction: "column",
   justify: "center",

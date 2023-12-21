@@ -1,16 +1,13 @@
 import { Flex } from "@chakra-ui/react";
-import { adminPageStyles } from "./style/styleAdmin";
-import { AdminContainer } from "./feature/AdminContainer";
+import { adminPageStyles } from "../admin/style/styleAdmin";
 import { Navbar } from "../../components/navbar/NavBar";
 import { adminNavItems } from "../../helpers/AdminHelpers";
 
-export const Admin = () => {
+export const WriteArticle = () => {
   return (
     <>
       <Navbar navItems={adminNavItems} />
-      <Flex {...adminPageStyles}>
-        <AdminContainer />
-      </Flex>
+      <Flex {...adminPageStyles}></Flex>
     </>
   );
 };

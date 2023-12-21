@@ -1,13 +1,12 @@
+import { User } from "firebase/auth";
 import { create } from "zustand";
 
 interface AuthState {
-  currentUser: boolean;
-  login: () => void;
-  logout: () => void;
+  currentUser: User | null;
+  setCurrentUser: (user: User | null) => void;
 }
 
 export const useAuthStore = create<AuthState>((set) => ({
-  currentUser: false,
-  login: () => set({ currentUser: true }),
-  logout: () => set({ currentUser: false }),
+  currentUser: null,
+  setCurrentUser: (user) => set({ currentUser: user }),
 }));

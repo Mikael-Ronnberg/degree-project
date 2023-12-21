@@ -1,8 +1,5 @@
 import { create } from "zustand";
-import {
-  ILocation,
-  ILocationObj,
-} from "../pages/locations/model/LocationsInterfaces";
+import { ILocation, ILocationObj } from "../model/LocationsInterfaces";
 
 interface LocationState {
   selectLocation: ILocationObj;

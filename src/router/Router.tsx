@@ -5,15 +5,15 @@ import { Contact } from "../pages/contact/Contact";
 import { About } from "../pages/about/About";
 import { Locations } from "../pages/locations/Locations";
 import { Admin } from "../pages/admin/Admin";
-import { Login } from "../pages/admin/feature/Login";
+import { Login } from "../pages/login/Login";
 import { RequireAuth } from "./RequireAuth";
-import { SubmittedLocations } from "../pages/admin/admin-pages/SubmittedLocations";
-import { OurEvents } from "../pages/admin/admin-pages/OurEvents";
-import { OurArticles } from "../pages/admin/admin-pages/OurArticles";
-import { OurLocations } from "../pages/admin/admin-pages/OurLocations";
-import { CreateEvent } from "../pages/admin/admin-pages/CreateEvent";
-import { WriteArticle } from "../pages/admin/admin-pages/WriteArticle";
-import { HandleOurLocations } from "../pages/admin/admin-pages/HandleOurLocations";
+import { SubmittedLocations } from "../pages/submitted-locations/SubmittedLocations";
+import { OurEvents } from "../pages/our-events/OurEvents";
+import { OurArticles } from "../pages/our-articles/OurArticles";
+import { OurLocations } from "../pages/our-locations/OurLocations";
+import { CreateEvent } from "../pages/create-event/CreateEvent";
+import { WriteArticle } from "../pages/write-articles/WriteArticle";
+import { HandleOurLocations } from "../pages/handle-our-locations/HandleOurLocations";
 
 export const router = createBrowserRouter([
   {

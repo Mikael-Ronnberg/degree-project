@@ -1,15 +1,22 @@
 import { Flex } from "@chakra-ui/react";
-import { adminPageStyles } from "./style/styleAdmin";
-import { AdminContainer } from "./feature/AdminContainer";
+
+import {
+  adminPageStyles,
+  ourMapContainerStyles,
+} from "../admin/style/styleAdmin";
+
 import { Navbar } from "../../components/navbar/NavBar";
+import { CreateEventForm } from "./feature/CreateEventForm";
 import { adminNavItems } from "../../helpers/AdminHelpers";
 
-export const Admin = () => {
+export const CreateEvent = () => {
   return (
     <>
       <Navbar navItems={adminNavItems} />
       <Flex {...adminPageStyles}>
-        <AdminContainer />
+        <Flex {...ourMapContainerStyles}>
+          <CreateEventForm />
+        </Flex>
       </Flex>
     </>
   );

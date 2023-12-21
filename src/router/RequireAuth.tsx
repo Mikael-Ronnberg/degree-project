@@ -8,5 +8,6 @@ interface AuthProp {
 
 export const RequireAuth = ({ children }: AuthProp) => {
   const { currentUser } = useAuthStore();
+
   return currentUser ? children : <Navigate to="/login" />;
 };

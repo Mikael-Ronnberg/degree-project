@@ -1,7 +1,7 @@
 import { MobileMenu } from "./MobileMenu";
 import { Box, Flex } from "@chakra-ui/react";
 import { mobileNavContainerStyles } from "./style";
-import { NavItem } from "../../helpers/helpers";
+import { NavItem } from "../../model/GlobalInterfaces";
 
 interface MobileNavbarProps {
   navItems: NavItem[];

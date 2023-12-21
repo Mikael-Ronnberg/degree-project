@@ -1,11 +1,10 @@
 import { useMap } from "react-leaflet";
-
 import { useEffect } from "react";
-import { ILocationObj } from "../model/LocationsInterfaces";
 import L from "leaflet";
+import { LocationObj } from "../../../model/LocationsInterfaces";
 
 interface IResetCenterViewProps {
-  selectLocation: ILocationObj;
+  selectLocation: LocationObj;
 }
 
 export const ResetCenterView = ({ selectLocation }: IResetCenterViewProps) => {
