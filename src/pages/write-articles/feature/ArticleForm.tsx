@@ -24,15 +24,18 @@ export const ArticleForm = ({ onClose }: ArticleFormProps) => {
   const initialValues: CreateArticleFormValues = {
     mainHeading: "",
     mainImg: "",
+    mainImgName: "",
     date: "",
     author: "",
     subHeading1: "",
     section1: "",
     subImg1: "",
+    subImg1Name: "",
     subImgDescription1: "",
     subHeading2: "",
     section2: "",
     subImg2: "",
+    subImg2Name: "",
     subImgDescription2: "",
     subHeading3: "",
     section3: "",
@@ -74,6 +77,17 @@ export const ArticleForm = ({ onClose }: ArticleFormProps) => {
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.mainImg}
+              />
+              <FormLabel htmlFor="mainImgName">
+                Ange ett namn för bilden(Viktigt!)
+              </FormLabel>
+              <Input
+                {...createInputFormStyles}
+                name="mainImgName"
+                placeholder="Namn för bilden"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.mainImgName}
               />
               <FormLabel htmlFor="date">Datum för Artikeln</FormLabel>
               <Input
@@ -120,8 +134,19 @@ export const ArticleForm = ({ onClose }: ArticleFormProps) => {
                 onBlur={handleBlur}
                 value={values.subImg1}
               />
+              <FormLabel htmlFor="subImg1Name">
+                Ange ett namn för bilden(Viktigt!)
+              </FormLabel>
+              <Input
+                {...createInputFormStyles}
+                name="subImg1Name"
+                placeholder="Namn för bilden"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.subImg1Name}
+              />
               <FormLabel htmlFor="subImgDescription1">
-                Beskrivning Sektionsbild 1
+                Bildtext för Sektionsbild 1
               </FormLabel>
               <Input
                 {...createInputFormStyles}
@@ -157,6 +182,17 @@ export const ArticleForm = ({ onClose }: ArticleFormProps) => {
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.subImg2}
+              />
+              <FormLabel htmlFor="subImg2Name">
+                Ange ett namn för bilden(Viktigt!)
+              </FormLabel>
+              <Input
+                {...createInputFormStyles}
+                name="subImg2Name"
+                placeholder="Namn för bilden"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.subImg2Name}
               />
               <FormLabel htmlFor="subImgDescription1">
                 Beskrivning Sektionsbild 2

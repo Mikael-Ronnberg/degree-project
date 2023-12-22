@@ -1,10 +1,10 @@
 import { Flex, HStack, Button, Text } from "@chakra-ui/react";
 import { deleteSubLocation } from "../../../services/MapServices";
-import {
-  subLocationCardStyles,
-  subLocationTextStyles,
-} from "../../admin/style/styleAdmin";
 import { TransformedLocationResponse } from "../../../model/LocationsInterfaces";
+import {
+  adminCardStyles,
+  adminCardTextStyles,
+} from "../../admin/style/styleAdmin";
 
 interface SubLocationCardProps {
   location: TransformedLocationResponse;
@@ -13,35 +13,35 @@ interface SubLocationCardProps {
 export const SubLocationCard = ({ location }: SubLocationCardProps) => {
   return (
     <>
-      <Flex key={location.id} {...subLocationCardStyles}>
+      <Flex key={location.id} {...adminCardStyles}>
         <HStack spacing="2rem">
-          <Text {...subLocationTextStyles} fontWeight="bold">
+          <Text {...adminCardTextStyles} fontWeight="bold">
             Namn:{" "}
           </Text>
-          <Text {...subLocationTextStyles}>{location.name}</Text>
+          <Text {...adminCardTextStyles}>{location.name}</Text>
         </HStack>
         <HStack spacing="2rem">
-          <Text {...subLocationTextStyles} fontWeight="bold">
+          <Text {...adminCardTextStyles} fontWeight="bold">
             Email:{" "}
           </Text>
-          <Text {...subLocationTextStyles}>{location.email}</Text>
+          <Text {...adminCardTextStyles}>{location.email}</Text>
         </HStack>
         <HStack spacing="2rem">
-          <Text {...subLocationTextStyles} fontWeight="bold">
+          <Text {...adminCardTextStyles} fontWeight="bold">
             Meddelande:{" "}
           </Text>
-          <Text {...subLocationTextStyles}>{location.message}</Text>
+          <Text {...adminCardTextStyles}>{location.message}</Text>
         </HStack>
         <HStack spacing="2rem">
-          <Text {...subLocationTextStyles}>Lattitud: </Text>
+          <Text {...adminCardTextStyles}>Lattitud: </Text>
           <Text>{location.lat}</Text>
         </HStack>
         <HStack spacing="2rem">
-          <Text {...subLocationTextStyles}>Longitud: </Text>
+          <Text {...adminCardTextStyles}>Longitud: </Text>
           <Text>{location.lng}</Text>
         </HStack>
         <HStack spacing="2rem">
-          <Text {...subLocationTextStyles}>Skapad: </Text>
+          <Text {...adminCardTextStyles}>Skapad: </Text>
           <Text>{location.createdAt}</Text>
         </HStack>
 

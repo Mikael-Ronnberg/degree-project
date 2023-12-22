@@ -31,7 +31,7 @@ export const adminContainerStyles: FlexProps = {
   w: { s: "85vw", l: "80vw" },
 };
 
-export const subLocationCardStyles: FlexProps = {
+export const adminCardStyles: FlexProps = {
   direction: "column",
   justify: "center",
   align: "flexStart",
@@ -43,7 +43,7 @@ export const subLocationCardStyles: FlexProps = {
   m: "2rem",
 };
 
-export const subLocationTextStyles: TextProps = {
+export const adminCardTextStyles: TextProps = {
   m: "0.5rem",
 };
 
@@ -64,17 +64,6 @@ export const ourMapBoxStyles: BoxProps = {
   w: "40vw",
   h: "35vh",
   zIndex: "1",
-};
-
-export const ourFormContainerStyles: FlexProps = {
-  justify: "center",
-  align: "center",
-  w: { sm: "90vw", lg: "65vw" },
-  h: "auto",
-  border: "black 1px solid",
-  direction: "row",
-  background: "white",
-  m: "2rem",
 };
 
 export const createContainerStyles: FlexProps = {

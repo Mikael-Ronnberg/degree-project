@@ -1,7 +1,7 @@
 import { Flex, HStack, Button, Text, Heading } from "@chakra-ui/react";
 import {
-  subLocationCardStyles,
-  subLocationTextStyles,
+  adminCardStyles,
+  adminCardTextStyles,
 } from "../../admin/style/styleAdmin";
 import { TransformedEventResponse } from "../../../model/AdminInterfaces";
 import { deleteEvent } from "../../../services/AdminServices";
@@ -14,25 +14,25 @@ interface EventCardProps {
 export const EventCard = ({ event }: EventCardProps) => {
   return (
     <>
-      <Flex key={event.id} {...subLocationCardStyles}>
+      <Flex key={event.id} {...adminCardStyles}>
         <HStack spacing="2rem">
           <Heading>{event.heading}</Heading>
         </HStack>
         <HStack spacing="2rem">
-          <Text {...subLocationTextStyles} fontWeight="bold">
+          <Text {...adminCardTextStyles} fontWeight="bold">
             Datum:{" "}
           </Text>
-          <Text {...subLocationTextStyles}>{event.date}</Text>
+          <Text {...adminCardTextStyles}>{event.date}</Text>
         </HStack>
         <HStack spacing="2rem">
-          <Text {...subLocationTextStyles} fontWeight="bold">
+          <Text {...adminCardTextStyles} fontWeight="bold">
             Information om händelsen:{" "}
           </Text>
-          <Text {...subLocationTextStyles}>{event.description}</Text>
+          <Text {...adminCardTextStyles}>{event.description}</Text>
         </HStack>
 
         <HStack spacing="2rem">
-          <Text {...subLocationTextStyles}>Skapad: </Text>
+          <Text {...adminCardTextStyles}>Skapad: </Text>
           <Text>{event.createdAt}</Text>
         </HStack>
         <HStack>
