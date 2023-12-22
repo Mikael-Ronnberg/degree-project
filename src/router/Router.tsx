@@ -14,6 +14,7 @@ import { OurLocations } from "../pages/our-locations/OurLocations";
 import { CreateEvent } from "../pages/create-event/CreateEvent";
 import { WriteArticle } from "../pages/write-articles/WriteArticle";
 import { HandleOurLocations } from "../pages/handle-our-locations/HandleOurLocations";
+import { AddUser } from "../pages/add-user/AddUser";
 
 export const router = createBrowserRouter([
   {
@@ -101,6 +102,14 @@ export const router = createBrowserRouter([
     element: (
       <RequireAuth>
         <CreateEvent />
+      </RequireAuth>
+    ),
+  },
+  {
+    path: "/addUser",
+    element: (
+      <RequireAuth>
+        <AddUser />
       </RequireAuth>
     ),
   },

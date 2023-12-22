@@ -11,6 +11,7 @@ import {
 import { CreateEventForm } from "../../create-event/feature/CreateEventForm";
 import { AddNewLocation } from "../../our-locations/feature/AddNewLocation";
 import { ArticleForm } from "../../write-articles/feature/ArticleForm";
+import { AddUserForm } from "../../add-user/feature/AddUserForm";
 
 interface CreateModalProps {
   buttonLabel: string;
@@ -31,6 +32,8 @@ export const CreateModal = ({
         return <AddNewLocation onClose={onClose} />;
       case "article":
         return <ArticleForm onClose={onClose} />;
+      case "user":
+        return <AddUserForm onClose={onClose} />;
       default:
         break;
     }

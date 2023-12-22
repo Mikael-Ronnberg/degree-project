@@ -6,8 +6,9 @@ import {
   doc,
   getDocs,
   serverTimestamp,
+  setDoc,
 } from "firebase/firestore";
-import { db } from "../config/firebase";
+import { auth, db } from "../config/firebase";
 import {
   ArticleResponse,
   CreateArticleFormValues,
@@ -15,14 +16,18 @@ import {
   EventResponse,
   OurLocationFormValues,
   OurLocationResponse,
+  SubmitUserResponse,
+  SubmitUserValues,
   TransformedArticleResponse,
   TransformedEventResponse,
   TransformedOurLocationResponse,
 } from "../model/AdminInterfaces";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 
 const ourLocationCollectionRef = collection(db, "ourLocations");
 const eventCollectionRef = collection(db, "events");
 const articleCollectionRef = collection(db, "articles");
+// const userCollectionRef = collection(db, "users");
 
 export const submitOurLocation = async (location: OurLocationFormValues) => {
   try {
@@ -157,4 +162,26 @@ export const updateArticle = async (
 ) => {
   const articleDoc = doc(db, "articles", article.id);
   await updateDoc(articleDoc, { ...article });
+};
+
+export const submitUser = async (
+  user: SubmitUserValues
+): Promise<SubmitUserResponse> => {
+  try {
+    const res = await createUserWithEmailAndPassword(
+      auth,
+      user.email,
+      user.password
+    );
+    await setDoc(doc(db, "users", res.user.uid), {
+      ...user,
+      createdAt: serverTimestamp(),
+    });
+    return { success: true };
+  } catch (error) {
+    console.error(error);
+    const errorMessage =
+      error instanceof Error ? error.message : "An unknown error occurred";
+    return { success: false, error: errorMessage };
+  }
 };

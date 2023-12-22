@@ -29,4 +29,8 @@ export const adminNavItems: NavItem[] = [
     label: "Skapa Händelse",
     to: "/createEvents",
   },
+  {
+    label: "Lägg till Ny Användare",
+    to: "/addUser",
+  },
 ];
