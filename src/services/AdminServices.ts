@@ -79,6 +79,46 @@ export const updateOurLocation = async (
   await updateDoc(locationDoc, { ...location });
 };
 
+export const fetchAndAggregateData = async () => {
+  try {
+    const ourLocationCollectionRef = collection(db, "ourLocations");
+
+    const querySnapshot = await getDocs(ourLocationCollectionRef);
+
+    let totalPlastic = 0;
+    let totalMetal = 0;
+    let totalGlass = 0;
+    let totalOther = 0;
+    let totalAnimals = 0;
+
+    querySnapshot.forEach((doc) => {
+      const data = doc.data();
+      totalPlastic += data.plastic ?? 0;
+      totalMetal += data.metal ?? 0;
+      totalGlass += data.glass ?? 0;
+      totalOther += data.other ?? 0;
+      totalAnimals += data.animals ?? 0;
+    });
+
+    return {
+      totalPlastic,
+      totalMetal,
+      totalGlass,
+      totalOther,
+      totalAnimals,
+    };
+  } catch (error) {
+    console.error("Error fetching documents: ", error);
+    return {
+      totalPlastic: 0,
+      totalMetal: 0,
+      totalGlass: 0,
+      totalOther: 0,
+      totalAnimals: 0,
+    };
+  }
+};
+
 export const submitEvent = async (event: CreateEventFormValues) => {
   try {
     await addDoc(eventCollectionRef, {
@@ -87,6 +127,7 @@ export const submitEvent = async (event: CreateEventFormValues) => {
     });
   } catch (error) {
     console.error(error);
+    throw error;
   }
 };
 
@@ -110,6 +151,18 @@ export const getEvents = async (): Promise<TransformedEventResponse[]> => {
   } catch (error) {
     console.error(error);
     return [];
+  }
+};
+
+export const updateEvent = async (
+  event: Omit<TransformedEventResponse, "createdAt">
+) => {
+  try {
+    const eventDoc = doc(db, "events", event.id);
+    await updateDoc(eventDoc, { ...event });
+  } catch (error) {
+    console.error(error);
+    throw error;
   }
 };
 

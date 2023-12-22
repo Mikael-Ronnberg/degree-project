@@ -1,48 +1,61 @@
 import {
-  Button,
-  Flex,
   FormControl,
+  Flex,
   FormLabel,
-  HStack,
   Input,
   Textarea,
+  HStack,
+  Button,
 } from "@chakra-ui/react";
-import { Formik } from "formik";
-import { TransformedEventResponse } from "../../../model/AdminInterfaces";
-import { updateEvent } from "../../../services/AdminServices";
+import { Formik, FormikHelpers } from "formik";
+import {
+  CreateEventFormValues,
+  TransformedEventResponse,
+} from "../../../model/AdminInterfaces";
 import {
   createFormStyles,
   createInputFormStyles,
   createTextareaFormStyles,
 } from "../../admin/style/styleAdmin";
 
-interface UpdateEventFormProps {
-  formValues: TransformedEventResponse;
+interface EventFormProps {
+  formType: "create" | "update";
+  formValues?: Omit<TransformedEventResponse, "createdAt">;
   onClose: () => void;
+  onSubmit: (
+    values: CreateEventFormValues | Omit<TransformedEventResponse, "createdAt">,
+    formikHelpers: FormikHelpers<
+      CreateEventFormValues | Omit<TransformedEventResponse, "createdAt">
+    >
+  ) => void;
 }
 
-export const UpdateEventForm = ({
+export const EventForm = ({
+  formType,
+  onSubmit,
   formValues,
   onClose,
-}: UpdateEventFormProps) => {
-  const initialValues: Omit<TransformedEventResponse, "createdAt"> = {
-    id: formValues.id,
-    heading: formValues.heading,
-    date: formValues.date,
-    description: formValues.description,
-  };
-
-  const handleSubmit = (
-    values: Omit<TransformedEventResponse, "createdAt">
-  ) => {
-    updateEvent(values);
-    onClose();
-  };
+}: EventFormProps) => {
+  const isUpdateForm = formType === "update";
+  const submitButtonText = isUpdateForm ? "Updatera" : "Spara";
+  const initialValues =
+    formType === "update" && formValues
+      ? {
+          id: formValues.id,
+          heading: formValues.heading,
+          date: formValues.date,
+          description: formValues.description,
+        }
+      : {
+          heading: "",
+          date: "",
+          description: "",
+        };
 
   return (
     <Formik
       initialValues={initialValues}
-      onSubmit={handleSubmit}
+      onSubmit={onSubmit}
       enableReinitialize
     >
       {({ values, handleChange, handleBlur, handleSubmit }) => (
@@ -80,7 +93,7 @@ export const UpdateEventForm = ({
                 <Button colorScheme="blue" onClick={onClose}>
                   Stäng
                 </Button>
-                <Button type="submit">Updatera</Button>
+                <Button type="submit">{submitButtonText}</Button>
               </HStack>
             </Flex>
           </FormControl>

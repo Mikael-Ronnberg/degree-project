@@ -1,31 +1,23 @@
 import { Button, Flex, HStack, VStack } from "@chakra-ui/react";
-import { adminPageStyles } from "../admin/style/styleAdmin";
-import { Navbar } from "../../components/navbar/NavBar";
 import { useEffect, useState } from "react";
 import { EventCard } from "./feature/EventCard";
 import { getEvents } from "../../services/AdminServices";
 import { adminNavItems } from "../../helpers/AdminHelpers";
-import { useEventsStore } from "../../store/useEventsStore";
+import { TransformedEventResponse } from "../../model/AdminInterfaces";
+import { Navbar } from "../../components/navbar/NavBar";
+import { adminPageStyles } from "../admin/style/styleAdmin";
 
 const ITEMS_PER_PAGE = 3;
 
 export const OurEvents = () => {
-  const { events, setEvents } = useEventsStore();
-
+  const [events, setEvents] = useState<TransformedEventResponse[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
     const fetchEvents = async () => {
-      const storedEvents = localStorage.getItem("events");
-      if (storedEvents) {
-        setEvents(JSON.parse(storedEvents));
-      } else {
-        const eventsData = await getEvents();
-        setEvents(eventsData);
-        localStorage.setItem("events", JSON.stringify(eventsData));
-      }
+      const eventsData = await getEvents();
+      setEvents(eventsData);
     };
-
     fetchEvents();
   }, []);
 
@@ -40,8 +32,6 @@ export const OurEvents = () => {
   const sortedEvents = [...currentItems].sort((a, b) => {
     return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
   });
-
-  console.log(events);
 
   return (
     <>

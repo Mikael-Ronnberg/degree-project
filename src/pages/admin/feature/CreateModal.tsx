@@ -8,10 +8,12 @@ import {
   ModalCloseButton,
   ModalBody,
 } from "@chakra-ui/react";
-import { CreateEventForm } from "../../create-event/feature/CreateEventForm";
 import { AddNewLocation } from "../../our-locations/feature/AddNewLocation";
 import { ArticleForm } from "../../write-articles/feature/ArticleForm";
 import { AddUserForm } from "../../add-user/feature/AddUserForm";
+import { EventForm } from "../../create-event/feature/EventForm";
+import { CreateEventFormValues } from "../../../model/AdminInterfaces";
+import { submitEvent } from "../../../services/AdminServices";
 
 interface CreateModalProps {
   buttonLabel: string;
@@ -27,7 +29,18 @@ export const CreateModal = ({
   const renderComponent = (mode: string) => {
     switch (mode) {
       case "event":
-        return <CreateEventForm onClose={onClose} />;
+        return (
+          <EventForm
+            formType="create"
+            onSubmit={(values, { resetForm }) => {
+              submitEvent(values as CreateEventFormValues).then(() => {
+                resetForm();
+                onClose();
+              });
+            }}
+            onClose={onClose}
+          />
+        );
       case "location":
         return <AddNewLocation onClose={onClose} />;
       case "article":

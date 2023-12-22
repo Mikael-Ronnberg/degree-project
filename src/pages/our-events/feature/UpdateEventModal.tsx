@@ -9,7 +9,8 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import { TransformedEventResponse } from "../../../model/AdminInterfaces";
-import { UpdateEventForm } from "./UpdateEventForm";
+import { EventForm } from "../../create-event/feature/EventForm";
+import { updateEvent } from "../../../services/AdminServices";
 
 interface UpdateEventFormProps {
   formValues: TransformedEventResponse;
@@ -27,7 +28,16 @@ export const UpdateEventModal = ({ formValues }: UpdateEventFormProps) => {
           <ModalHeader>Ändra Denna Händelse</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <UpdateEventForm formValues={formValues} onClose={onClose} />
+            <EventForm
+              formType="update"
+              formValues={formValues}
+              onSubmit={(values) => {
+                updateEvent(values as TransformedEventResponse).then(() => {
+                  onClose();
+                });
+              }}
+              onClose={onClose}
+            />
           </ModalBody>
         </ModalContent>
       </Modal>
