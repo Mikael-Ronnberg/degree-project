@@ -9,16 +9,20 @@ import {
 } from "firebase/firestore";
 import { db } from "../config/firebase";
 import {
+  ArticleResponse,
+  CreateArticleFormValues,
   CreateEventFormValues,
   EventResponse,
   OurLocationFormValues,
   OurLocationResponse,
+  TransformedArticleResponse,
   TransformedEventResponse,
   TransformedOurLocationResponse,
 } from "../model/AdminInterfaces";
 
 const ourLocationCollectionRef = collection(db, "ourLocations");
 const eventCollectionRef = collection(db, "events");
+const articleCollectionRef = collection(db, "articles");
 
 export const submitOurLocation = async (location: OurLocationFormValues) => {
   try {
@@ -107,4 +111,50 @@ export const getEvents = async (): Promise<TransformedEventResponse[]> => {
 export const deleteEvent = async (eventId: string) => {
   const eventDoc = doc(db, "events", eventId);
   await deleteDoc(eventDoc);
+};
+
+export const submitArticle = async (article: CreateArticleFormValues) => {
+  try {
+    await addDoc(articleCollectionRef, {
+      ...article,
+      createdAt: serverTimestamp(),
+    });
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const getArticles = async (): Promise<TransformedArticleResponse[]> => {
+  try {
+    const data = await getDocs(articleCollectionRef);
+    const filteredData: TransformedArticleResponse[] = data.docs.map((doc) => {
+      const docData = doc.data() as ArticleResponse;
+      const createdAtTimestamp = docData.createdAt;
+      const createdAtDate = createdAtTimestamp.toDate();
+      const readableDate = createdAtDate.toLocaleString();
+
+      return {
+        ...docData,
+        createdAt: readableDate,
+        id: doc.id,
+      };
+    });
+
+    return filteredData;
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
+};
+
+export const deleteArticle = async (articleId: string) => {
+  const articleDoc = doc(db, "articles", articleId);
+  await deleteDoc(articleDoc);
+};
+
+export const updateArticle = async (
+  article: Omit<TransformedArticleResponse, "createdAt">
+) => {
+  const articleDoc = doc(db, "articles", article.id);
+  await updateDoc(articleDoc, { ...article });
 };

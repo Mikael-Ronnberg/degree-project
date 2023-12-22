@@ -10,6 +10,7 @@ import {
 } from "@chakra-ui/react";
 import { CreateEventForm } from "../../create-event/feature/CreateEventForm";
 import { AddNewLocation } from "../../our-locations/feature/AddNewLocation";
+import { ArticleForm } from "../../write-articles/feature/ArticleForm";
 
 interface CreateModalProps {
   buttonLabel: string;
@@ -28,6 +29,8 @@ export const CreateModal = ({
         return <CreateEventForm onClose={onClose} />;
       case "location":
         return <AddNewLocation onClose={onClose} />;
+      case "article":
+        return <ArticleForm onClose={onClose} />;
       default:
         break;
     }

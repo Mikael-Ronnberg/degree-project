@@ -37,7 +37,6 @@ export interface TransformedOurLocationResponse
   extends Omit<OurLocationResponse, "createdAt"> {
   createdAt: string;
 }
-
 export interface CreateEventFormValues {
   heading: string;
   date: string;
@@ -54,5 +53,46 @@ export interface EventResponse {
 
 export interface TransformedEventResponse
   extends Omit<EventResponse, "createdAt"> {
+  createdAt: string;
+}
+
+export interface CreateArticleFormValues {
+  mainHeading: string;
+  mainImg: string;
+  date: string;
+  author: string;
+  subHeading1: string;
+  section1: string;
+  subImg1?: string;
+  subImgDescription1?: string;
+  subHeading2?: string;
+  section2?: string;
+  subImg2?: string;
+  subImgDescription2?: string;
+  subHeading3?: string;
+  section3?: string;
+}
+
+export interface ArticleResponse {
+  id: string;
+  mainHeading: string;
+  mainImg: string;
+  date: string;
+  author: string;
+  subHeading1: string;
+  section1: string;
+  subImg1?: string;
+  subImgDescription1?: string;
+  subHeading2?: string;
+  section2?: string;
+  subImg2?: string;
+  subImgDescription2?: string;
+  subHeading3?: string;
+  section3?: string;
+  createdAt: Timestamp;
+}
+
+export interface TransformedArticleResponse
+  extends Omit<ArticleResponse, "createdAt"> {
   createdAt: string;
 }
