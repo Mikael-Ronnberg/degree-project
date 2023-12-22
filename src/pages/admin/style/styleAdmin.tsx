@@ -1,6 +1,7 @@
 import {
   BoxProps,
   FlexProps,
+  ImageProps,
   InputProps,
   StackProps,
   TextProps,
@@ -34,7 +35,7 @@ export const adminContainerStyles: FlexProps = {
 export const adminCardStyles: FlexProps = {
   direction: "column",
   justify: "center",
-  align: "flexStart",
+  align: "center",
   h: "auto",
   w: { sm: "90vw", lg: "65vw" },
   backgroundColor: "white",
@@ -45,6 +46,18 @@ export const adminCardStyles: FlexProps = {
 
 export const adminCardTextStyles: TextProps = {
   m: "0.5rem",
+};
+
+export const subImageTextCardStyles: TextProps = {
+  fontSize: "0.7rem",
+};
+
+export const mainImageCardStyles: ImageProps = {
+  w: "80vw",
+};
+
+export const subImageCardStyles: ImageProps = {
+  w: "60vw",
 };
 
 export const ourMapContainerStyles: FlexProps = {

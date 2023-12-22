@@ -7,7 +7,7 @@ import {
   Input,
   Textarea,
 } from "@chakra-ui/react";
-import { Formik, FormikHelpers } from "formik";
+import { Field, Formik, FormikHelpers } from "formik";
 import {
   createFormStyles,
   createInputFormStyles,
@@ -15,12 +15,19 @@ import {
 } from "../../admin/style/styleAdmin";
 import { CreateArticleFormValues } from "../../../model/AdminInterfaces";
 import { submitArticle } from "../../../services/AdminServices";
+import { useState } from "react";
+import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { storage } from "../../../config/firebase";
 
 interface ArticleFormProps {
   onClose: () => void;
 }
 
 export const ArticleForm = ({ onClose }: ArticleFormProps) => {
+  const [mainImgFile, setMainImgFile] = useState<File | null>(null);
+  const [subImg1File, setSubImg1File] = useState<File | null>(null);
+  const [subImg2File, setSubImg2File] = useState<File | null>(null);
+
   const initialValues: CreateArticleFormValues = {
     mainHeading: "",
     mainImg: "",
@@ -41,13 +48,45 @@ export const ArticleForm = ({ onClose }: ArticleFormProps) => {
     section3: "",
   };
 
-  const handleSubmit = (
+  const handleFileChange =
+    (setter: React.Dispatch<React.SetStateAction<File | null>>) =>
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      if (event.target.files && event.target.files[0]) {
+        setter(event.target.files[0]);
+      }
+    };
+
+  const uploadFile = async (file: File | null): Promise<string> => {
+    if (file) {
+      const fileName = new Date().getTime() + file.name;
+      const storageRef = ref(storage, fileName);
+      const uploadTask = uploadBytesResumable(storageRef, file);
+
+      await uploadTask;
+      return getDownloadURL(uploadTask.snapshot.ref);
+    }
+    return "";
+  };
+
+  const handleSubmit = async (
     values: CreateArticleFormValues,
     { resetForm }: FormikHelpers<CreateArticleFormValues>
   ) => {
-    submitArticle(values);
-    resetForm();
-    onClose();
+    try {
+      const mainImgUrl = await uploadFile(mainImgFile);
+      const subImg1Url = await uploadFile(subImg1File);
+      const subImg2Url = await uploadFile(subImg2File);
+
+      values.mainImg = mainImgUrl;
+      values.subImg1 = subImg1Url;
+      values.subImg2 = subImg2Url;
+
+      submitArticle(values);
+      resetForm();
+      onClose();
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
@@ -69,15 +108,17 @@ export const ArticleForm = ({ onClose }: ArticleFormProps) => {
                 onBlur={handleBlur}
                 value={values.mainHeading}
               />
-              <FormLabel htmlFor="mainImg">Url för huvudBild</FormLabel>
-              <Input
-                {...createInputFormStyles}
-                name="mainImg"
-                placeholder="Url"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.mainImg}
-              />
+              <Field name="mainImg">
+                {() => (
+                  <Input
+                    type="file"
+                    name="mainImg"
+                    placeholder="Ladda upp huvudbild"
+                    onChange={handleFileChange(setMainImgFile)}
+                    accept="image/*"
+                  />
+                )}
+              </Field>
               <FormLabel htmlFor="mainImgName">
                 Ange ett namn för bilden(Viktigt!)
               </FormLabel>
@@ -125,15 +166,17 @@ export const ArticleForm = ({ onClose }: ArticleFormProps) => {
                 onBlur={handleBlur}
                 value={values.section1}
               />
-              <FormLabel htmlFor="subImg1">URL för Sektionsbild 1</FormLabel>
-              <Input
-                {...createInputFormStyles}
-                name="subImg1"
-                placeholder="Url (Valfritt)"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.subImg1}
-              />
+              <Field name="subImg1">
+                {() => (
+                  <Input
+                    type="file"
+                    name="subImg1"
+                    placeholder="Ladda upp sectionsbild 1"
+                    onChange={handleFileChange(setSubImg1File)}
+                    accept="image/*"
+                  />
+                )}
+              </Field>
               <FormLabel htmlFor="subImg1Name">
                 Ange ett namn för bilden(Viktigt!)
               </FormLabel>
@@ -174,15 +217,17 @@ export const ArticleForm = ({ onClose }: ArticleFormProps) => {
                 onBlur={handleBlur}
                 value={values.section2}
               />
-              <FormLabel htmlFor="subImg2">URL för Sektionsbild 2</FormLabel>
-              <Input
-                {...createInputFormStyles}
-                name="subImg2"
-                placeholder="Url (Valfritt)"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.subImg2}
-              />
+              <Field name="subImg2">
+                {() => (
+                  <Input
+                    type="file"
+                    name="subImg2"
+                    placeholder="Ladda upp sectionsbild 2"
+                    onChange={handleFileChange(setSubImg2File)}
+                    accept="image/*"
+                  />
+                )}
+              </Field>
               <FormLabel htmlFor="subImg2Name">
                 Ange ett namn för bilden(Viktigt!)
               </FormLabel>
