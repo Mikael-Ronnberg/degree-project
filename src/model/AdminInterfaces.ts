@@ -5,7 +5,7 @@ export interface LoginFormValues {
   password: string;
 }
 
-export interface OurLocationFormValues {
+export interface CreateOurLocationFormValues {
   locationName: string;
   date: string;
   description: string;

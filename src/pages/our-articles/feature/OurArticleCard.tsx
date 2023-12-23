@@ -16,6 +16,7 @@ import {
   subImageTextCardStyles,
 } from "../../admin/style/styleAdmin";
 import { deleteArticle } from "../../../services/AdminServices";
+import { UpdateOurArticleModal } from "./UpdateOurArticleModal";
 
 interface OurArticleProps {
   article: TransformedArticleResponse;
@@ -96,7 +97,7 @@ export const OurArticleCard = ({ article }: OurArticleProps) => {
           <Text>{article.createdAt}</Text>
         </VStack>
         <HStack>
-          {/* <UpdateEventModal formValues={event} /> */}
+          <UpdateOurArticleModal formValues={article} />
           <Button onClick={() => deleteArticle(article.id)}>
             Ta Bort Artikeln!
           </Button>

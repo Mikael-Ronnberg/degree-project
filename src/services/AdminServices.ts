@@ -8,13 +8,13 @@ import {
   serverTimestamp,
   setDoc,
 } from "firebase/firestore";
-import { auth, db } from "../config/firebase";
+import { auth, db, storage } from "../config/firebase";
 import {
   ArticleResponse,
   CreateArticleFormValues,
   CreateEventFormValues,
+  CreateOurLocationFormValues,
   EventResponse,
-  OurLocationFormValues,
   OurLocationResponse,
   SubmitUserResponse,
   SubmitUserValues,
@@ -23,13 +23,16 @@ import {
   TransformedOurLocationResponse,
 } from "../model/AdminInterfaces";
 import { createUserWithEmailAndPassword } from "firebase/auth";
+import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 
 const ourLocationCollectionRef = collection(db, "ourLocations");
 const eventCollectionRef = collection(db, "events");
 const articleCollectionRef = collection(db, "articles");
 // const userCollectionRef = collection(db, "users");
 
-export const submitOurLocation = async (location: OurLocationFormValues) => {
+export const submitOurLocation = async (
+  location: CreateOurLocationFormValues
+) => {
   try {
     await addDoc(ourLocationCollectionRef, {
       ...location,
@@ -37,6 +40,7 @@ export const submitOurLocation = async (location: OurLocationFormValues) => {
     });
   } catch (error) {
     console.error(error);
+    throw error;
   }
 };
 
@@ -75,8 +79,13 @@ export const deleteOurLocation = async (locationId: string) => {
 export const updateOurLocation = async (
   location: Omit<TransformedOurLocationResponse, "createdAt">
 ) => {
-  const locationDoc = doc(db, "ourLocations", location.id);
-  await updateDoc(locationDoc, { ...location });
+  try {
+    const locationDoc = doc(db, "ourLocations", location.id);
+    await updateDoc(locationDoc, { ...location });
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
 };
 
 export const fetchAndAggregateData = async () => {
@@ -179,6 +188,7 @@ export const submitArticle = async (article: CreateArticleFormValues) => {
     });
   } catch (error) {
     console.error(error);
+    throw error;
   }
 };
 
@@ -213,8 +223,25 @@ export const deleteArticle = async (articleId: string) => {
 export const updateArticle = async (
   article: Omit<TransformedArticleResponse, "createdAt">
 ) => {
-  const articleDoc = doc(db, "articles", article.id);
-  await updateDoc(articleDoc, { ...article });
+  try {
+    const articleDoc = doc(db, "articles", article.id);
+    await updateDoc(articleDoc, { ...article });
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+};
+
+export const uploadFile = async (file: File | null): Promise<string> => {
+  if (file) {
+    const fileName = new Date().getTime() + file.name;
+    const storageRef = ref(storage, fileName);
+    const uploadTask = uploadBytesResumable(storageRef, file);
+
+    await uploadTask;
+    return getDownloadURL(uploadTask.snapshot.ref);
+  }
+  return "";
 };
 
 export const submitUser = async (

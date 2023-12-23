@@ -1,55 +1,79 @@
 import {
-  Button,
-  Flex,
   FormControl,
-  FormLabel,
-  HStack,
+  Flex,
   Input,
   Textarea,
+  FormLabel,
+  HStack,
+  Button,
 } from "@chakra-ui/react";
-import { Formik } from "formik";
-import { TransformedOurLocationResponse } from "../../../model/AdminInterfaces";
-import { updateOurLocation } from "../../../services/AdminServices";
+import { FormikHelpers, Formik } from "formik";
+import {
+  TransformedOurLocationResponse,
+  CreateOurLocationFormValues,
+} from "../../../model/AdminInterfaces";
 import {
   createFormStyles,
   createInputFormStyles,
   createTextareaFormStyles,
-} from "../../admin/style/styleAdmin";
+} from "../style/styleAdmin";
+import { useLocationStore } from "../../../store/useLocationsStore";
 
-interface UpdateOurLocationFormProps {
-  formValues: TransformedOurLocationResponse;
+interface OurLocationFormProps {
+  formType: "create" | "update";
+  formValues?: TransformedOurLocationResponse; // Optional for update
   onClose: () => void;
+  onSubmit: (
+    values:
+      | CreateOurLocationFormValues
+      | Omit<TransformedOurLocationResponse, "createdAt">,
+    formikHelpers: FormikHelpers<
+      | CreateOurLocationFormValues
+      | Omit<TransformedOurLocationResponse, "createdAt">
+    >
+  ) => void;
 }
 
-export const UpdateOurLocationForm = ({
+export const OurLocationForm = ({
+  formType,
   formValues,
   onClose,
-}: UpdateOurLocationFormProps) => {
-  const initialValues: Omit<TransformedOurLocationResponse, "createdAt"> = {
-    id: formValues.id,
-    locationName: formValues.locationName,
-    date: formValues.date,
-    description: formValues.description,
-    plastic: formValues.plastic,
-    metal: formValues.metal,
-    glass: formValues.glass,
-    other: formValues.other,
-    animals: formValues.animals,
-    lat: formValues.lat,
-    lng: formValues.lng,
-  };
+  onSubmit,
+}: OurLocationFormProps) => {
+  const { pinLocation } = useLocationStore();
 
-  const handleSubmit = (
-    values: Omit<TransformedOurLocationResponse, "createdAt">
-  ) => {
-    updateOurLocation(values);
-    onClose();
-  };
+  const initialValues =
+    formType === "update" && formValues
+      ? {
+          id: formValues.id,
+          locationName: formValues.locationName,
+          date: formValues.date,
+          description: formValues.description,
+          plastic: formValues.plastic,
+          metal: formValues.metal,
+          glass: formValues.glass,
+          other: formValues.other,
+          animals: formValues.animals,
+          lat: formValues.lat,
+          lng: formValues.lng,
+        }
+      : {
+          locationName: "",
+          date: "",
+          description: "",
+          plastic: 0,
+          metal: 0,
+          glass: 0,
+          other: 0,
+          animals: 0,
+          lat: pinLocation?.lat || 0,
+          lng: pinLocation?.lng || 0,
+        };
 
   return (
     <Formik
       initialValues={initialValues}
-      onSubmit={handleSubmit}
+      onSubmit={onSubmit}
       enableReinitialize
     >
       {({ values, handleChange, handleBlur, handleSubmit }) => (
@@ -58,6 +82,7 @@ export const UpdateOurLocationForm = ({
             <Flex {...createFormStyles}>
               <Input
                 {...createInputFormStyles}
+                id="locationName"
                 name="locationName"
                 placeholder="Platsens Namn"
                 onChange={handleChange}
@@ -66,6 +91,7 @@ export const UpdateOurLocationForm = ({
               />
               <Input
                 {...createInputFormStyles}
+                id="date"
                 name="date"
                 placeholder="Datum"
                 onChange={handleChange}
@@ -74,6 +100,7 @@ export const UpdateOurLocationForm = ({
               />
               <Textarea
                 {...createTextareaFormStyles}
+                id="description"
                 name="description"
                 placeholder="Skriv något om platsen och vad vi gjorde denna dag"
                 onChange={handleChange}
@@ -83,6 +110,7 @@ export const UpdateOurLocationForm = ({
               <FormLabel htmlFor="plastic">Plast</FormLabel>
               <Input
                 {...createInputFormStyles}
+                id="plastic"
                 name="plastic"
                 placeholder="Plast i vikt (kg)"
                 onChange={handleChange}
@@ -92,6 +120,7 @@ export const UpdateOurLocationForm = ({
               <FormLabel htmlFor="metal">Metall</FormLabel>
               <Input
                 {...createInputFormStyles}
+                id="metal"
                 name="metal"
                 placeholder="Metall i vikt (kg)"
                 onChange={handleChange}
@@ -101,6 +130,7 @@ export const UpdateOurLocationForm = ({
               <FormLabel htmlFor="glass">Glas</FormLabel>
               <Input
                 {...createInputFormStyles}
+                id="glass"
                 name="glass"
                 placeholder="Glas i vikt (kg)"
                 onChange={handleChange}
@@ -110,6 +140,7 @@ export const UpdateOurLocationForm = ({
               <FormLabel htmlFor="other">Övrigt</FormLabel>
               <Input
                 {...createInputFormStyles}
+                id="other"
                 name="other"
                 placeholder="Övrigt i vikt (kg)"
                 onChange={handleChange}
@@ -121,6 +152,7 @@ export const UpdateOurLocationForm = ({
               </FormLabel>
               <Input
                 {...createInputFormStyles}
+                id="animals"
                 name="animals"
                 placeholder="Invasiva arter (antal individer, skriv i beskrivning vilka)"
                 onChange={handleChange}
@@ -128,6 +160,7 @@ export const UpdateOurLocationForm = ({
                 value={values.animals}
               />
               <Input
+                id="lat"
                 type="hidden"
                 name="lat"
                 onChange={handleChange}
@@ -135,6 +168,7 @@ export const UpdateOurLocationForm = ({
                 value={values.lat}
               />
               <Input
+                id="lon"
                 type="hidden"
                 name="lon"
                 onChange={handleChange}

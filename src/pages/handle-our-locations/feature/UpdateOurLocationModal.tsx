@@ -8,8 +8,9 @@ import {
   ModalOverlay,
   useDisclosure,
 } from "@chakra-ui/react";
-import { UpdateOurLocationForm } from "./UpdateOurLocationForm";
 import { TransformedOurLocationResponse } from "../../../model/AdminInterfaces";
+import { OurLocationForm } from "../../admin/feature/OurLocationForm";
+import { updateOurLocation } from "../../../services/AdminServices";
 
 interface UpdateOurLocationFormProps {
   formValues: TransformedOurLocationResponse;
@@ -29,7 +30,18 @@ export const UpdateOurLocationModal = ({
           <ModalHeader>Ändra Denna Plats</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <UpdateOurLocationForm formValues={formValues} onClose={onClose} />
+            <OurLocationForm
+              formType="update"
+              formValues={formValues}
+              onSubmit={(values) => {
+                updateOurLocation(
+                  values as TransformedOurLocationResponse
+                ).then(() => {
+                  onClose();
+                });
+              }}
+              onClose={onClose}
+            />
           </ModalBody>
         </ModalContent>
       </Modal>

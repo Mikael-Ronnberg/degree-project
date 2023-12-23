@@ -65,6 +65,7 @@ export const EventForm = ({
               <FormLabel htmlFor="heading">Titel för händelsen</FormLabel>
               <Input
                 {...createInputFormStyles}
+                id="heading"
                 name="heading"
                 placeholder="Titel"
                 onChange={handleChange}
@@ -74,6 +75,7 @@ export const EventForm = ({
               <FormLabel htmlFor="date">Datum för händelsen</FormLabel>
               <Input
                 {...createInputFormStyles}
+                id="date"
                 name="date"
                 placeholder="Datum"
                 onChange={handleChange}
@@ -83,6 +85,7 @@ export const EventForm = ({
               <FormLabel htmlFor="description">Skriv om händelsen</FormLabel>
               <Textarea
                 {...createTextareaFormStyles}
+                id="description"
                 name="description"
                 placeholder="Skriv om kommande händelse och plats"
                 onChange={handleChange}

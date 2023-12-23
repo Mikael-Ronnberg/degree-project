@@ -44,7 +44,7 @@ export const CreateModal = ({
       case "location":
         return <AddNewLocation onClose={onClose} />;
       case "article":
-        return <ArticleForm onClose={onClose} />;
+        return <ArticleForm formType="create" onClose={onClose} />;
       case "user":
         return <AddUserForm onClose={onClose} />;
       default:

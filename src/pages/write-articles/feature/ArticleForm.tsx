@@ -13,40 +13,77 @@ import {
   createInputFormStyles,
   createTextareaFormStyles,
 } from "../../admin/style/styleAdmin";
-import { CreateArticleFormValues } from "../../../model/AdminInterfaces";
-import { submitArticle } from "../../../services/AdminServices";
+import {
+  CreateArticleFormValues,
+  TransformedArticleResponse,
+} from "../../../model/AdminInterfaces";
+import {
+  submitArticle,
+  updateArticle,
+  uploadFile,
+} from "../../../services/AdminServices";
 import { useState } from "react";
-import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import { storage } from "../../../config/firebase";
 
 interface ArticleFormProps {
+  formType: "create" | "update";
+  formValues?: Omit<TransformedArticleResponse, "createdAt">;
   onClose: () => void;
 }
 
-export const ArticleForm = ({ onClose }: ArticleFormProps) => {
+export const ArticleForm = ({
+  formType,
+  formValues,
+  onClose,
+}: ArticleFormProps) => {
   const [mainImgFile, setMainImgFile] = useState<File | null>(null);
   const [subImg1File, setSubImg1File] = useState<File | null>(null);
   const [subImg2File, setSubImg2File] = useState<File | null>(null);
 
-  const initialValues: CreateArticleFormValues = {
-    mainHeading: "",
-    mainImg: "",
-    mainImgName: "",
-    date: "",
-    author: "",
-    subHeading1: "",
-    section1: "",
-    subImg1: "",
-    subImg1Name: "",
-    subImgDescription1: "",
-    subHeading2: "",
-    section2: "",
-    subImg2: "",
-    subImg2Name: "",
-    subImgDescription2: "",
-    subHeading3: "",
-    section3: "",
-  };
+  const isUpdateForm = formType === "update";
+  const submitButtonText = isUpdateForm ? "Updatera" : "Spara";
+  const initialValues:
+    | CreateArticleFormValues
+    | Omit<TransformedArticleResponse, "createdAt"> =
+    formType === "update" && formValues
+      ? {
+          id: formValues.id,
+          mainHeading: formValues.mainHeading,
+          mainImg: formValues.mainImg,
+          mainImgName: formValues.mainImgName,
+          date: formValues.date,
+          author: formValues.author,
+          subHeading1: formValues.subHeading1,
+          section1: formValues.section1,
+          subImg1: formValues.subImg1,
+          subImg1Name: formValues.subImg1Name,
+          subImgDescription1: formValues.subImgDescription1,
+          subHeading2: formValues.subHeading2,
+          section2: formValues.section2,
+          subImg2: formValues.subImg2,
+          subImg2Name: formValues.subImg2Name,
+          subImgDescription2: formValues.subImgDescription2,
+          subHeading3: formValues.subHeading3,
+          section3: formValues.section3,
+        }
+      : {
+          mainHeading: "",
+          mainImg: "",
+          mainImgName: "",
+          date: "",
+          author: "",
+          subHeading1: "",
+          section1: "",
+          subImg1: "",
+          subImg1Name: "",
+          subImgDescription1: "",
+          subHeading2: "",
+          section2: "",
+          subImg2: "",
+          subImg2Name: "",
+          subImgDescription2: "",
+          subHeading3: "",
+          section3: "",
+        };
 
   const handleFileChange =
     (setter: React.Dispatch<React.SetStateAction<File | null>>) =>
@@ -56,20 +93,10 @@ export const ArticleForm = ({ onClose }: ArticleFormProps) => {
       }
     };
 
-  const uploadFile = async (file: File | null): Promise<string> => {
-    if (file) {
-      const fileName = new Date().getTime() + file.name;
-      const storageRef = ref(storage, fileName);
-      const uploadTask = uploadBytesResumable(storageRef, file);
-
-      await uploadTask;
-      return getDownloadURL(uploadTask.snapshot.ref);
-    }
-    return "";
-  };
-
   const handleSubmit = async (
-    values: CreateArticleFormValues,
+    values:
+      | CreateArticleFormValues
+      | Omit<TransformedArticleResponse, "createdAt">,
     { resetForm }: FormikHelpers<CreateArticleFormValues>
   ) => {
     try {
@@ -81,7 +108,13 @@ export const ArticleForm = ({ onClose }: ArticleFormProps) => {
       values.subImg1 = subImg1Url;
       values.subImg2 = subImg2Url;
 
-      submitArticle(values);
+      if (formType === "create") {
+        submitArticle(values as CreateArticleFormValues);
+      }
+      if (formType === "update") {
+        updateArticle(values as Omit<TransformedArticleResponse, "createdAt">);
+      }
+
       resetForm();
       onClose();
     } catch (error) {
@@ -102,6 +135,7 @@ export const ArticleForm = ({ onClose }: ArticleFormProps) => {
               <FormLabel htmlFor="mainHeading">Titel för händelsen</FormLabel>
               <Input
                 {...createInputFormStyles}
+                id="mainHeading"
                 name="mainHeading"
                 placeholder="Article Titel"
                 onChange={handleChange}
@@ -111,6 +145,7 @@ export const ArticleForm = ({ onClose }: ArticleFormProps) => {
               <Field name="mainImg">
                 {() => (
                   <Input
+                    id="mainImg"
                     type="file"
                     name="mainImg"
                     placeholder="Ladda upp huvudbild"
@@ -124,6 +159,7 @@ export const ArticleForm = ({ onClose }: ArticleFormProps) => {
               </FormLabel>
               <Input
                 {...createInputFormStyles}
+                id="mainImgName"
                 name="mainImgName"
                 placeholder="Namn för bilden"
                 onChange={handleChange}
@@ -133,6 +169,7 @@ export const ArticleForm = ({ onClose }: ArticleFormProps) => {
               <FormLabel htmlFor="date">Datum för Artikeln</FormLabel>
               <Input
                 {...createInputFormStyles}
+                id="date"
                 name="date"
                 placeholder="Datum"
                 onChange={handleChange}
@@ -142,6 +179,7 @@ export const ArticleForm = ({ onClose }: ArticleFormProps) => {
               <FormLabel htmlFor="author">Författare</FormLabel>
               <Input
                 {...createInputFormStyles}
+                id="author"
                 name="author"
                 placeholder="Författare"
                 onChange={handleChange}
@@ -151,6 +189,7 @@ export const ArticleForm = ({ onClose }: ArticleFormProps) => {
               <FormLabel htmlFor="subHeading1">Sektionsrubrik 1</FormLabel>
               <Textarea
                 {...createTextareaFormStyles}
+                id="subHeading1"
                 name="subHeading1"
                 placeholder="Sektionsrubrik"
                 onChange={handleChange}
@@ -160,6 +199,7 @@ export const ArticleForm = ({ onClose }: ArticleFormProps) => {
               <FormLabel htmlFor="section1">Sektion 1</FormLabel>
               <Textarea
                 {...createTextareaFormStyles}
+                id="section1"
                 name="section1"
                 placeholder="Sektion"
                 onChange={handleChange}
@@ -169,6 +209,7 @@ export const ArticleForm = ({ onClose }: ArticleFormProps) => {
               <Field name="subImg1">
                 {() => (
                   <Input
+                    id="subImg1"
                     type="file"
                     name="subImg1"
                     placeholder="Ladda upp sectionsbild 1"
@@ -182,6 +223,7 @@ export const ArticleForm = ({ onClose }: ArticleFormProps) => {
               </FormLabel>
               <Input
                 {...createInputFormStyles}
+                id="subImg1Name"
                 name="subImg1Name"
                 placeholder="Namn för bilden"
                 onChange={handleChange}
@@ -193,6 +235,7 @@ export const ArticleForm = ({ onClose }: ArticleFormProps) => {
               </FormLabel>
               <Input
                 {...createInputFormStyles}
+                id="subImgDescription1"
                 name="subImgDescription1"
                 placeholder="Beskrivning (Valfritt)"
                 onChange={handleChange}
@@ -202,6 +245,7 @@ export const ArticleForm = ({ onClose }: ArticleFormProps) => {
               <FormLabel htmlFor="subHeading2">Sektionsrubrik 2</FormLabel>
               <Textarea
                 {...createTextareaFormStyles}
+                id="subHeading2"
                 name="subHeading2"
                 placeholder="Sektionsrubrik 2 (Valfritt)"
                 onChange={handleChange}
@@ -211,6 +255,7 @@ export const ArticleForm = ({ onClose }: ArticleFormProps) => {
               <FormLabel htmlFor="section1">Sektion 2</FormLabel>
               <Textarea
                 {...createTextareaFormStyles}
+                id="section2"
                 name="section2"
                 placeholder="Sektion 2 (Valfritt)"
                 onChange={handleChange}
@@ -220,6 +265,7 @@ export const ArticleForm = ({ onClose }: ArticleFormProps) => {
               <Field name="subImg2">
                 {() => (
                   <Input
+                    id="subImg2"
                     type="file"
                     name="subImg2"
                     placeholder="Ladda upp sectionsbild 2"
@@ -233,6 +279,7 @@ export const ArticleForm = ({ onClose }: ArticleFormProps) => {
               </FormLabel>
               <Input
                 {...createInputFormStyles}
+                id="subImg2Name"
                 name="subImg2Name"
                 placeholder="Namn för bilden"
                 onChange={handleChange}
@@ -244,6 +291,7 @@ export const ArticleForm = ({ onClose }: ArticleFormProps) => {
               </FormLabel>
               <Input
                 {...createInputFormStyles}
+                id="subImgDescription2"
                 name="subImgDescription2"
                 placeholder="Beskrivning (Valfritt)"
                 onChange={handleChange}
@@ -253,6 +301,7 @@ export const ArticleForm = ({ onClose }: ArticleFormProps) => {
               <FormLabel htmlFor="subHeading3">Sektionsrubrik 3</FormLabel>
               <Textarea
                 {...createTextareaFormStyles}
+                id="subHeading3"
                 name="subHeading3"
                 placeholder="Sektionsrubrik 3 (Valfritt)"
                 onChange={handleChange}
@@ -262,6 +311,7 @@ export const ArticleForm = ({ onClose }: ArticleFormProps) => {
               <FormLabel htmlFor="section1">Sektion 3</FormLabel>
               <Textarea
                 {...createTextareaFormStyles}
+                id="section3"
                 name="section3"
                 placeholder="Sektion 3 (Valfritt)"
                 onChange={handleChange}
@@ -272,7 +322,7 @@ export const ArticleForm = ({ onClose }: ArticleFormProps) => {
                 <Button colorScheme="blue" onClick={onClose}>
                   Stäng
                 </Button>
-                <Button type="submit">Spara</Button>
+                <Button type="submit">{submitButtonText}</Button>
               </HStack>
             </Flex>
           </FormControl>
