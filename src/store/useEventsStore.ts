@@ -5,7 +5,7 @@ interface EventState {
   events: TransformedEventResponse[];
   setEvents: (events: TransformedEventResponse[]) => void;
   deleteEvent: (eventId: string) => void;
-  updateEvent: (updatedEvent: TransformedEventResponse) => void;
+  updateEventStore: (updatedEvent: TransformedEventResponse) => void;
 }
 
 export const useEventsStore = create<EventState>((set) => ({
@@ -15,10 +15,10 @@ export const useEventsStore = create<EventState>((set) => ({
     set((state) => ({
       events: state.events.filter((event) => event.id !== eventId),
     })),
-  updateEvent: (updatedEvent) =>
+  updateEventStore: (updatedEvent) =>
     set((state) => ({
       events: state.events.map((event) =>
-        event.id === updatedEvent.id ? updatedEvent : event
+        event.id === updatedEvent.id ? { ...updatedEvent } : event
       ),
     })),
 }));

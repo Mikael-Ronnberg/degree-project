@@ -11,6 +11,7 @@ import {
 import { TransformedEventResponse } from "../../../model/AdminInterfaces";
 import { EventForm } from "../../create-event/feature/EventForm";
 import { updateEvent } from "../../../services/AdminServices";
+import { useEventsStore } from "../../../store/useEventsStore";
 
 interface UpdateEventFormProps {
   formValues: TransformedEventResponse;
@@ -18,6 +19,7 @@ interface UpdateEventFormProps {
 
 export const UpdateEventModal = ({ formValues }: UpdateEventFormProps) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const { updateEventStore } = useEventsStore();
   return (
     <>
       <Button onClick={onOpen}>Uppdatera</Button>
@@ -33,6 +35,7 @@ export const UpdateEventModal = ({ formValues }: UpdateEventFormProps) => {
               formValues={formValues}
               onSubmit={(values) => {
                 updateEvent(values as TransformedEventResponse).then(() => {
+                  updateEventStore(values as TransformedEventResponse);
                   onClose();
                 });
               }}

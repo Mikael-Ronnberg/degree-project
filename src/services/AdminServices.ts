@@ -30,6 +30,11 @@ const eventCollectionRef = collection(db, "events");
 const articleCollectionRef = collection(db, "articles");
 // const userCollectionRef = collection(db, "users");
 
+export const getCount = async (collectionName: string) => {
+  const querySnapshot = await getDocs(collection(db, collectionName));
+  return querySnapshot.size;
+};
+
 export const submitOurLocation = async (
   location: CreateOurLocationFormValues
 ) => {

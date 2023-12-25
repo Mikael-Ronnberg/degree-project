@@ -3,20 +3,23 @@ import { useEffect, useState } from "react";
 import { EventCard } from "./feature/EventCard";
 import { getEvents } from "../../services/AdminServices";
 import { adminNavItems } from "../../helpers/AdminHelpers";
-import { TransformedEventResponse } from "../../model/AdminInterfaces";
+// import { TransformedEventResponse } from "../../model/AdminInterfaces";
 import { Navbar } from "../../components/navbar/NavBar";
 import { adminPageStyles } from "../admin/style/styleAdmin";
+import { useEventsStore } from "../../store/useEventsStore";
 
 const ITEMS_PER_PAGE = 3;
 
 export const OurEvents = () => {
-  const [events, setEvents] = useState<TransformedEventResponse[]>([]);
+  const { events, setEvents } = useEventsStore();
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
     const fetchEvents = async () => {
-      const eventsData = await getEvents();
-      setEvents(eventsData);
+      if (events.length === 0) {
+        const eventsData = await getEvents();
+        setEvents(eventsData);
+      }
     };
     fetchEvents();
   }, []);

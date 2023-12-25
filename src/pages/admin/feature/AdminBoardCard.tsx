@@ -1,9 +1,5 @@
 import { Flex, VStack, Heading, Text } from "@chakra-ui/react";
-
-export interface RenderData {
-  label: string;
-  data: number;
-}
+import { RenderData } from "./AdminContainer";
 
 interface AdminBoardCardProps {
   heading: string;
@@ -17,18 +13,19 @@ export const AdminBoardCard = ({
   return (
     <>
       <Flex
-        w="20vw"
+        w="30vw"
         h="auto"
         justify="center"
         align="center"
         border="black solid 2px"
         background="white"
+        p="10rem"
       >
         <VStack>
           <Heading>{heading}</Heading>
           {renderData.map((data, i) => (
             <Text key={i}>
-              {data.label}: {data.data}
+              Antal {data.label}: {data.data as number}
             </Text>
           ))}
         </VStack>
