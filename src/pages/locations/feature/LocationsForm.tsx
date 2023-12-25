@@ -6,14 +6,15 @@ import {
   textareaStyles,
   inputStyles,
 } from "../style/styleLocations";
-import { LocationsFormValues } from "../../../model/LocationsInterfaces";
+
 import { useLocationStore } from "../../../store/useLocationsStore";
 import { submitLocation } from "../../../services/MapServices";
+import { SubLocationsFormValues } from "../../../model/LocationsInterfaces";
 
 export const LocationsForm = () => {
   const { pinLocation, setPinLocation, setFormSubmitted } = useLocationStore();
 
-  const initialValues: LocationsFormValues = {
+  const initialValues: SubLocationsFormValues = {
     name: "",
     email: "",
     message: "",
@@ -22,8 +23,8 @@ export const LocationsForm = () => {
   };
 
   const handleSubmit = (
-    values: LocationsFormValues,
-    { resetForm }: FormikHelpers<LocationsFormValues>
+    values: SubLocationsFormValues,
+    { resetForm }: FormikHelpers<SubLocationsFormValues>
   ) => {
     submitLocation(values);
     resetForm();
