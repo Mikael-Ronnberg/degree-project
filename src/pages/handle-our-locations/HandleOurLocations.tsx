@@ -1,10 +1,8 @@
 import { Button, Flex, HStack, VStack } from "@chakra-ui/react";
 import { adminPageStyles } from "../admin/style/styleAdmin";
-import { Navbar } from "../../components/navbar/NavBar";
 import { useEffect, useState } from "react";
 import { OurLocationCard } from "./feature/OurLocationCard";
 import { getOurLocations } from "../../services/AdminServices";
-import { adminNavItems } from "../../helpers/AdminHelpers";
 import { useOurLocationsStore } from "../../store/useOurLocationsStore";
 
 const ITEMS_PER_PAGE = 3;
@@ -38,7 +36,6 @@ export const HandleOurLocations = () => {
 
   return (
     <>
-      <Navbar navItems={adminNavItems} navType={"admin"} />
       <Flex {...adminPageStyles}>
         <VStack>
           {sortedLocations.map((location) => (

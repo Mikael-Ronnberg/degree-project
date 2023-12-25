@@ -1,12 +1,10 @@
 import { createBrowserRouter } from "react-router-dom";
 import { Home } from "../pages/home/Home";
-import { NewsBlog } from "../pages/newsblog/NewsBlog";
 import { Contact } from "../pages/contact/Contact";
 import { About } from "../pages/about/About";
 import { Locations } from "../pages/locations/Locations";
 import { Admin } from "../pages/admin/Admin";
 import { Login } from "../pages/login/Login";
-import { RequireAuth } from "./RequireAuth";
 import { SubmittedLocations } from "../pages/submitted-locations/SubmittedLocations";
 import { OurEvents } from "../pages/our-events/OurEvents";
 import { OurArticles } from "../pages/our-articles/OurArticles";
@@ -15,27 +13,59 @@ import { CreateEvent } from "../pages/create-event/CreateEvent";
 import { WriteArticle } from "../pages/write-articles/WriteArticle";
 import { HandleOurLocations } from "../pages/handle-our-locations/HandleOurLocations";
 import { AddUser } from "../pages/add-user/AddUser";
+import { Events } from "../pages/events/Events";
+import { RequireAuthLayout } from "./RequireAuthLayout";
+import { NormalLayout } from "./NormalLayout";
+import { Articles } from "../pages/articles/Articles";
 
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: <Home />,
+    element: (
+      <NormalLayout>
+        <Home />,
+      </NormalLayout>
+    ),
   },
   {
     path: "/about",
-    element: <About />,
+    element: (
+      <NormalLayout>
+        <About />
+      </NormalLayout>
+    ),
   },
   {
     path: "/contact",
-    element: <Contact />,
+    element: (
+      <NormalLayout>
+        <Contact />
+      </NormalLayout>
+    ),
   },
   {
     path: "/locations",
-    element: <Locations />,
+    element: (
+      <NormalLayout>
+        <Locations />
+      </NormalLayout>
+    ),
   },
   {
-    path: "/news",
-    element: <NewsBlog />,
+    path: "/articles",
+    element: (
+      <NormalLayout>
+        <Articles />
+      </NormalLayout>
+    ),
+  },
+  {
+    path: "/events",
+    element: (
+      <NormalLayout>
+        <Events />
+      </NormalLayout>
+    ),
   },
   {
     path: "/login",
@@ -44,73 +74,73 @@ export const router = createBrowserRouter([
   {
     path: "/admin",
     element: (
-      <RequireAuth>
+      <RequireAuthLayout>
         <Admin />
-      </RequireAuth>
+      </RequireAuthLayout>
     ),
   },
   {
     path: "/subLocations",
     element: (
-      <RequireAuth>
+      <RequireAuthLayout>
         <SubmittedLocations />
-      </RequireAuth>
+      </RequireAuthLayout>
     ),
   },
   {
     path: "/ourLocations",
     element: (
-      <RequireAuth>
+      <RequireAuthLayout>
         <OurLocations />
-      </RequireAuth>
+      </RequireAuthLayout>
     ),
   },
   {
     path: "/handleOurLocations",
     element: (
-      <RequireAuth>
+      <RequireAuthLayout>
         <HandleOurLocations />
-      </RequireAuth>
+      </RequireAuthLayout>
     ),
   },
   {
     path: "/ourArticles",
     element: (
-      <RequireAuth>
+      <RequireAuthLayout>
         <OurArticles />
-      </RequireAuth>
+      </RequireAuthLayout>
     ),
   },
   {
     path: "/writeArticle",
     element: (
-      <RequireAuth>
+      <RequireAuthLayout>
         <WriteArticle />
-      </RequireAuth>
+      </RequireAuthLayout>
     ),
   },
   {
     path: "/ourEvents",
     element: (
-      <RequireAuth>
+      <RequireAuthLayout>
         <OurEvents />
-      </RequireAuth>
+      </RequireAuthLayout>
     ),
   },
   {
     path: "/createEvents",
     element: (
-      <RequireAuth>
+      <RequireAuthLayout>
         <CreateEvent />
-      </RequireAuth>
+      </RequireAuthLayout>
     ),
   },
   {
     path: "/addUser",
     element: (
-      <RequireAuth>
+      <RequireAuthLayout>
         <AddUser />
-      </RequireAuth>
+      </RequireAuthLayout>
     ),
   },
 ]);

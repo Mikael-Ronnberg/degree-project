@@ -3,14 +3,11 @@ import {
   adminPageStyles,
   createContainerStyles,
 } from "../admin/style/styleAdmin";
-import { Navbar } from "../../components/navbar/NavBar";
-import { adminNavItems } from "../../helpers/AdminHelpers";
 import { CreateModal } from "../admin/feature/CreateModal";
 
 export const AddUser = () => {
   return (
     <>
-      <Navbar navItems={adminNavItems} navType={"admin"} />
       <Flex {...adminPageStyles}>
         <Flex {...createContainerStyles}>
           <VStack spacing="10rem">

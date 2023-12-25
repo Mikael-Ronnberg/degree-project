@@ -2,9 +2,6 @@ import { Button, Flex, HStack, VStack } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { EventCard } from "./feature/EventCard";
 import { getEvents } from "../../services/AdminServices";
-import { adminNavItems } from "../../helpers/AdminHelpers";
-// import { TransformedEventResponse } from "../../model/AdminInterfaces";
-import { Navbar } from "../../components/navbar/NavBar";
 import { adminPageStyles } from "../admin/style/styleAdmin";
 import { useEventsStore } from "../../store/useEventsStore";
 
@@ -40,7 +37,6 @@ export const OurEvents = () => {
 
   return (
     <>
-      <Navbar navItems={adminNavItems} navType={"admin"} />
       <Flex {...adminPageStyles}>
         <VStack>
           {sortedEvents.map((event) => (

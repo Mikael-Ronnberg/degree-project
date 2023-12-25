@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
 import { Flex, VStack, Button, HStack } from "@chakra-ui/react";
 import { adminPageStyles } from "../admin/style/styleAdmin";
-import { Navbar } from "../../components/navbar/NavBar";
-import { adminNavItems } from "../../helpers/AdminHelpers";
 import { OurArticleCard } from "./feature/OurArticleCard";
 import { getArticles } from "../../services/AdminServices";
 import { useArticlesStore } from "../../store/useArticlesStore";
@@ -39,7 +37,6 @@ export const OurArticles = () => {
 
   return (
     <>
-      <Navbar navItems={adminNavItems} navType={"admin"} />
       <Flex {...adminPageStyles}>
         <VStack>
           {sortedArticles.map((article) => (

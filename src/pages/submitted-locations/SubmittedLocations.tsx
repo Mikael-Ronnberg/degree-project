@@ -4,8 +4,6 @@ import { adminPageStyles } from "../admin/style/styleAdmin";
 import { getSubLocations } from "../../services/MapServices";
 
 import { SubLocationCard } from "./feature/SubLocationCard";
-import { Navbar } from "../../components/navbar/NavBar";
-import { adminNavItems } from "../../helpers/AdminHelpers";
 import { useSubLocationsStore } from "../../store/useSubLocationsStore";
 
 const ITEMS_PER_PAGE = 3;
@@ -40,7 +38,6 @@ export const SubmittedLocations = () => {
 
   return (
     <>
-      <Navbar navItems={adminNavItems} navType={"admin"} />
       <Flex {...adminPageStyles}>
         <VStack>
           {sortedLocations.map((location) => (
