@@ -22,7 +22,7 @@ import {
   TransformedEventResponse,
   TransformedOurLocationResponse,
 } from "../model/AdminInterfaces";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, signOut } from "firebase/auth";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 
 const ourLocationCollectionRef = collection(db, "ourLocations");
@@ -268,5 +268,15 @@ export const submitUser = async (
     const errorMessage =
       error instanceof Error ? error.message : "An unknown error occurred";
     return { success: false, error: errorMessage };
+  }
+};
+
+export const userSignOut = () => {
+  try {
+    signOut(auth).then(() => {
+      console.log("Sign out successful");
+    });
+  } catch (error) {
+    console.log(error);
   }
 };

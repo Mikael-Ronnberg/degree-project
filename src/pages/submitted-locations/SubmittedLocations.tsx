@@ -2,23 +2,25 @@ import { useState, useEffect } from "react";
 import { Flex, VStack, Button, HStack } from "@chakra-ui/react";
 import { adminPageStyles } from "../admin/style/styleAdmin";
 import { getSubLocations } from "../../services/MapServices";
-import { TransformedLocationResponse } from "../../model/LocationsInterfaces";
+
 import { SubLocationCard } from "./feature/SubLocationCard";
 import { Navbar } from "../../components/navbar/NavBar";
 import { adminNavItems } from "../../helpers/AdminHelpers";
+import { useSubLocationsStore } from "../../store/useSubLocationsStore";
 
 const ITEMS_PER_PAGE = 3;
 
 export const SubmittedLocations = () => {
-  const [subLocations, setSubLocations] = useState<
-    TransformedLocationResponse[]
-  >([]);
+  const { subLocations, setSubLocations } = useSubLocationsStore();
+
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
     const fetchLocations = async () => {
-      const locations = await getSubLocations();
-      setSubLocations(locations);
+      if (subLocations.length === 0) {
+        const locations = await getSubLocations();
+        setSubLocations(locations);
+      }
     };
 
     fetchLocations();
@@ -38,7 +40,7 @@ export const SubmittedLocations = () => {
 
   return (
     <>
-      <Navbar navItems={adminNavItems} />
+      <Navbar navItems={adminNavItems} navType={"admin"} />
       <Flex {...adminPageStyles}>
         <VStack>
           {sortedLocations.map((location) => (

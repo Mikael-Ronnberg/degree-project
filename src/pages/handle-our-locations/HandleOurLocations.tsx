@@ -38,7 +38,7 @@ export const HandleOurLocations = () => {
 
   return (
     <>
-      <Navbar navItems={adminNavItems} />
+      <Navbar navItems={adminNavItems} navType={"admin"} />
       <Flex {...adminPageStyles}>
         <VStack>
           {sortedLocations.map((location) => (

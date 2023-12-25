@@ -5,14 +5,15 @@ import { NavItem } from "../../model/GlobalInterfaces";
 
 interface MobileNavbarProps {
   navItems: NavItem[];
+  navType?: string;
 }
 
-export const MobileNavbar = ({ navItems }: MobileNavbarProps) => {
+export const MobileNavbar = ({ navItems, navType }: MobileNavbarProps) => {
   return (
     <>
       <Flex {...mobileNavContainerStyles}>
         <Box>
-          <MobileMenu navItems={navItems} />
+          <MobileMenu navItems={navItems} navType={navType} />
         </Box>
         {/* <NavLogo/> */}
       </Flex>

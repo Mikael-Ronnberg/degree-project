@@ -27,7 +27,7 @@ export interface LocationCoords {
   lng: number;
 }
 
-export interface LocationsFormValues {
+export interface SubLocationsFormValues {
   name: string;
   email: string;
   message: string;
@@ -35,7 +35,7 @@ export interface LocationsFormValues {
   lng: number;
 }
 
-export interface LocationResponse {
+export interface SubLocationResponse {
   id: string;
   name: string;
   email: string;
@@ -45,7 +45,7 @@ export interface LocationResponse {
   createdAt: Timestamp;
 }
 
-export interface TransformedLocationResponse
-  extends Omit<LocationResponse, "createdAt"> {
+export interface TransformedSubLocationResponse
+  extends Omit<SubLocationResponse, "createdAt"> {
   createdAt: string;
 }

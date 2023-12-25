@@ -10,16 +10,19 @@ import {
   Box,
 } from "@chakra-ui/react";
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { NavItem } from "../../model/GlobalInterfaces";
+import { userSignOut } from "../../services/AdminServices";
 
 interface MobileMenuProps {
   navItems: NavItem[];
+  navType?: string;
 }
 
-export const MobileMenu = ({ navItems }: MobileMenuProps) => {
+export const MobileMenu = ({ navItems, navType }: MobileMenuProps) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef<HTMLButtonElement>(null);
+  const navigate = useNavigate();
 
   return (
     <>
@@ -59,6 +62,17 @@ export const MobileMenu = ({ navItems }: MobileMenuProps) => {
                 >
                   {navItem.label}
                 </Box>
+                {navType && navType === "admin" ? (
+                  <Box>
+                    <Button
+                      onClick={() => {
+                        userSignOut(), navigate("/");
+                      }}
+                    >
+                      Logga Ut
+                    </Button>
+                  </Box>
+                ) : null}
               </Link>
             ))}
           </DrawerBody>

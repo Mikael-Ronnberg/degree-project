@@ -39,7 +39,7 @@ export const OurArticles = () => {
 
   return (
     <>
-      <Navbar navItems={adminNavItems} />
+      <Navbar navItems={adminNavItems} navType={"admin"} />
       <Flex {...adminPageStyles}>
         <VStack>
           {sortedArticles.map((article) => (

@@ -22,17 +22,6 @@ export const AuthDetails = () => {
     };
   }, []);
 
-  // const userSignOut = () => {
-  //   signOut(auth)
-  //     .then(() => {
-  //       console.log("Sign out successful");
-  //     })
-  //     .catch((error) => console.log(error));
-  // };
-
-  // <Button onClick={userSignOut}>Logga Ut</Button>
-  // console.log(currentUser);
-
   return (
     <>
       <HStack>

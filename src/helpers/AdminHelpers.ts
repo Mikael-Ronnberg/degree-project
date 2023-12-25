@@ -6,11 +6,11 @@ export const adminNavItems: NavItem[] = [
     to: "/subLocations",
   },
   {
-    label: "Våra Platser",
+    label: "Skapa Besökta Platser",
     to: "/ourLocations",
   },
   {
-    label: "Hantera våra Platser",
+    label: "Hantera Besökta Platser",
     to: "/handleOurLocations",
   },
   {
@@ -18,7 +18,7 @@ export const adminNavItems: NavItem[] = [
     to: "/ourArticles",
   },
   {
-    label: "Skriv Artikel",
+    label: "Skapa Artikel",
     to: "/writeArticle",
   },
   {
@@ -30,7 +30,7 @@ export const adminNavItems: NavItem[] = [
     to: "/createEvents",
   },
   {
-    label: "Lägg till Ny Användare",
+    label: "Skapa Användare",
     to: "/addUser",
   },
 ];

@@ -7,7 +7,7 @@ import { adminNavItems } from "../../helpers/AdminHelpers";
 export const Admin = () => {
   return (
     <>
-      <Navbar navItems={adminNavItems} />
+      <Navbar navItems={adminNavItems} navType={"admin"} />
       <Flex {...adminPageStyles}>
         <AdminContainer />
       </Flex>

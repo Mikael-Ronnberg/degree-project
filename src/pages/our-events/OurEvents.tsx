@@ -40,7 +40,7 @@ export const OurEvents = () => {
 
   return (
     <>
-      <Navbar navItems={adminNavItems} />
+      <Navbar navItems={adminNavItems} navType={"admin"} />
       <Flex {...adminPageStyles}>
         <VStack>
           {sortedEvents.map((event) => (

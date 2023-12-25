@@ -6,14 +6,15 @@ import { NavItem } from "../../model/GlobalInterfaces";
 
 interface NavbarProps {
   navItems: NavItem[];
+  navType?: string;
 }
 
-export const Navbar = ({ navItems }: NavbarProps) => {
+export const Navbar = ({ navItems, navType }: NavbarProps) => {
   return (
     <>
       <Box {...navbarStyles}>
-        <DesktopNavbar navItems={navItems} />
-        <MobileNavbar navItems={navItems} />
+        <DesktopNavbar navItems={navItems} navType={navType} />
+        <MobileNavbar navItems={navItems} navType={navType} />
       </Box>
     </>
   );

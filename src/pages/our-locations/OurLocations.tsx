@@ -10,7 +10,7 @@ import { CreateModal } from "../admin/feature/CreateModal";
 export const OurLocations = () => {
   return (
     <>
-      <Navbar navItems={adminNavItems} />
+      <Navbar navItems={adminNavItems} navType={"admin"} />
       <Flex {...adminPageStyles}>
         <Flex {...createContainerStyles}>
           <VStack spacing="10rem">
