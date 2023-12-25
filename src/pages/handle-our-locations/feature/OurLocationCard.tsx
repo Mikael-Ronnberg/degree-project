@@ -14,7 +14,7 @@ interface OurLocationCardProps {
 export const OurLocationCard = ({ location }: OurLocationCardProps) => {
   return (
     <>
-      <Flex key={location.id} {...adminCardStyles}>
+      <Flex {...adminCardStyles}>
         <HStack spacing="2rem">
           <Text {...adminCardTextStyles} fontWeight="bold">
             Namn på platsen:{" "}

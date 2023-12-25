@@ -24,6 +24,8 @@ export const OurEvents = () => {
     fetchEvents();
   }, []);
 
+  console.log(events);
+
   const indexOfLastItem = currentPage * ITEMS_PER_PAGE;
   const indexOfFirstItem = indexOfLastItem - ITEMS_PER_PAGE;
   const currentItems = events.slice(indexOfFirstItem, indexOfLastItem);
