@@ -2,23 +2,23 @@ import { Button, Flex, HStack, VStack } from "@chakra-ui/react";
 import { adminPageStyles } from "../admin/style/styleAdmin";
 import { Navbar } from "../../components/navbar/NavBar";
 import { useEffect, useState } from "react";
-import { TransformedOurLocationResponse } from "../../model/AdminInterfaces";
 import { OurLocationCard } from "./feature/OurLocationCard";
 import { getOurLocations } from "../../services/AdminServices";
 import { adminNavItems } from "../../helpers/AdminHelpers";
+import { useOurLocationsStore } from "../../store/useOurLocationsStore";
 
 const ITEMS_PER_PAGE = 3;
 
 export const HandleOurLocations = () => {
-  const [ourLocations, setOurLocations] = useState<
-    TransformedOurLocationResponse[]
-  >([]);
+  const { ourLocations, setOurLocations } = useOurLocationsStore();
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
     const fetchLocations = async () => {
-      const locations = await getOurLocations();
-      setOurLocations(locations);
+      if (ourLocations.length === 0) {
+        const locations = await getOurLocations();
+        setOurLocations(locations);
+      }
     };
 
     fetchLocations();

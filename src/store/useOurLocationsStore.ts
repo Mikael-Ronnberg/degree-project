@@ -11,7 +11,7 @@ interface OurLocationsState {
   ) => void;
 }
 
-export const useArticlesStore = create<OurLocationsState>((set) => ({
+export const useOurLocationsStore = create<OurLocationsState>((set) => ({
   ourLocations: [],
   setOurLocations: (ourLocations) => set({ ourLocations }),
   setSingleOurLocation: (ourLocation) =>
