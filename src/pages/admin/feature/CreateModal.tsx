@@ -12,8 +12,12 @@ import { AddNewLocation } from "../../our-locations/feature/AddNewLocation";
 import { ArticleForm } from "../../write-articles/feature/ArticleForm";
 import { AddUserForm } from "../../add-user/feature/AddUserForm";
 import { EventForm } from "../../create-event/feature/EventForm";
-import { CreateEventFormValues } from "../../../model/AdminInterfaces";
+import {
+  CreateEventFormValues,
+  TransformedEventResponse,
+} from "../../../model/AdminInterfaces";
 import { submitEvent } from "../../../services/AdminServices";
+import { useEventsStore } from "../../../store/useEventsStore";
 
 interface CreateModalProps {
   buttonLabel: string;
@@ -26,6 +30,8 @@ export const CreateModal = ({
   modalHeader,
   mode,
 }: CreateModalProps) => {
+  const { setSingleEvent } = useEventsStore();
+
   const renderComponent = (mode: string) => {
     switch (mode) {
       case "event":
@@ -34,6 +40,7 @@ export const CreateModal = ({
             formType="create"
             onSubmit={(values, { resetForm }) => {
               submitEvent(values as CreateEventFormValues).then(() => {
+                setSingleEvent(values as TransformedEventResponse);
                 resetForm();
                 onClose();
               });

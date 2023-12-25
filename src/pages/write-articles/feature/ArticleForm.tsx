@@ -23,6 +23,7 @@ import {
   uploadFile,
 } from "../../../services/AdminServices";
 import { useState } from "react";
+import { useArticlesStore } from "../../../store/useArticlesStore";
 
 interface ArticleFormProps {
   formType: "create" | "update";
@@ -38,6 +39,8 @@ export const ArticleForm = ({
   const [mainImgFile, setMainImgFile] = useState<File | null>(null);
   const [subImg1File, setSubImg1File] = useState<File | null>(null);
   const [subImg2File, setSubImg2File] = useState<File | null>(null);
+
+  const { setSingleArticle, updateArticleStore } = useArticlesStore();
 
   const isUpdateForm = formType === "update";
   const submitButtonText = isUpdateForm ? "Updatera" : "Spara";
@@ -110,9 +113,11 @@ export const ArticleForm = ({
 
       if (formType === "create") {
         submitArticle(values as CreateArticleFormValues);
+        setSingleArticle(values as TransformedArticleResponse);
       }
       if (formType === "update") {
         updateArticle(values as Omit<TransformedArticleResponse, "createdAt">);
+        updateArticleStore(values as TransformedArticleResponse);
       }
 
       resetForm();

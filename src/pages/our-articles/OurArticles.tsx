@@ -5,18 +5,21 @@ import { Navbar } from "../../components/navbar/NavBar";
 import { adminNavItems } from "../../helpers/AdminHelpers";
 import { OurArticleCard } from "./feature/OurArticleCard";
 import { getArticles } from "../../services/AdminServices";
-import { TransformedArticleResponse } from "../../model/AdminInterfaces";
+import { useArticlesStore } from "../../store/useArticlesStore";
 
 const ITEMS_PER_PAGE = 1;
 
 export const OurArticles = () => {
-  const [articles, setArticles] = useState<TransformedArticleResponse[]>([]);
+  const { articles, setArticles } = useArticlesStore();
+
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
     const fetchArticles = async () => {
-      const articles = await getArticles();
-      setArticles(articles);
+      if (articles.length === 0) {
+        const articles = await getArticles();
+        setArticles(articles);
+      }
     };
 
     fetchArticles();

@@ -17,15 +17,17 @@ import {
 } from "../../admin/style/styleAdmin";
 import { deleteArticle } from "../../../services/AdminServices";
 import { UpdateOurArticleModal } from "./UpdateOurArticleModal";
+import { useArticlesStore } from "../../../store/useArticlesStore";
 
 interface OurArticleProps {
   article: TransformedArticleResponse;
 }
 
 export const OurArticleCard = ({ article }: OurArticleProps) => {
+  const { deleteSingleArticle } = useArticlesStore();
   return (
     <>
-      <Flex key={article.id} {...adminCardStyles}>
+      <Flex {...adminCardStyles}>
         <VStack spacing="2rem">
           <Heading>{article.mainHeading}</Heading>
           <Image
@@ -98,7 +100,11 @@ export const OurArticleCard = ({ article }: OurArticleProps) => {
         </VStack>
         <HStack>
           <UpdateOurArticleModal formValues={article} />
-          <Button onClick={() => deleteArticle(article.id)}>
+          <Button
+            onClick={() => {
+              deleteArticle(article.id), deleteSingleArticle(article.id);
+            }}
+          >
             Ta Bort Artikeln!
           </Button>
         </HStack>

@@ -138,7 +138,7 @@ export const submitEvent = async (event: CreateEventFormValues) => {
     await addDoc(eventCollectionRef, {
       ...event,
       createdAt: serverTimestamp(),
-    });
+    }).then((docRef) => console.log(docRef.id));
   } catch (error) {
     console.error(error);
     throw error;

@@ -6,15 +6,17 @@ import {
 import { TransformedEventResponse } from "../../../model/AdminInterfaces";
 import { deleteEvent } from "../../../services/AdminServices";
 import { UpdateEventModal } from "./UpdateEventModal";
+import { useEventsStore } from "../../../store/useEventsStore";
 
 interface EventCardProps {
   event: TransformedEventResponse;
 }
 
 export const EventCard = ({ event }: EventCardProps) => {
+  const { deleteSingleEvent } = useEventsStore();
   return (
     <>
-      <Flex key={event.id} {...adminCardStyles}>
+      <Flex {...adminCardStyles}>
         <HStack spacing="2rem">
           <Heading>{event.heading}</Heading>
         </HStack>
@@ -37,7 +39,11 @@ export const EventCard = ({ event }: EventCardProps) => {
         </HStack>
         <HStack>
           <UpdateEventModal formValues={event} />
-          <Button onClick={() => deleteEvent(event.id)}>
+          <Button
+            onClick={() => {
+              deleteEvent(event.id), deleteSingleEvent(event.id);
+            }}
+          >
             Ta Bort Händelsen!
           </Button>
         </HStack>
