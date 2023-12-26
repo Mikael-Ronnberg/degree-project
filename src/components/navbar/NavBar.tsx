@@ -1,5 +1,5 @@
 import { Box } from "@chakra-ui/react";
-import { navbarStyles } from "./style";
+import { navbarStyles } from "./navbarStyle";
 import { DesktopNavbar } from "./DesktopNavbar";
 import { MobileNavbar } from "./MobileNavbar";
 import { NavItem } from "../../model/GlobalInterfaces";

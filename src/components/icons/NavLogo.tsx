@@ -5,7 +5,7 @@ export const NavLogo = () => {
   return (
     <>
       <Link to="/">
-        <Icon viewBox="0 0 40 40" boxSize="2.5rem">
+        <Icon viewBox="0 0 40 40" boxSize={{ sm: "2.8rem", lg: "3.8rem" }}>
           <svg fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle cx="20" cy="20" r="20" fill="#05286A" />
             <path

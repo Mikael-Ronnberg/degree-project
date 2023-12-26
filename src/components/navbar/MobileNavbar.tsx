@@ -1,6 +1,6 @@
 import { MobileMenu } from "./MobileMenu";
 import { Box, Flex } from "@chakra-ui/react";
-import { mobileNavContainerStyles } from "./style";
+import { mobileNavContainerStyles } from "./navbarStyle";
 import { NavItem } from "../../model/GlobalInterfaces";
 import { NavLogo } from "../icons/NavLogo";
 
