@@ -7,7 +7,7 @@ export const LitterContainer = () => {
     <>
       <Flex {...litterContainerStyles}>
         <Heading color="white" textAlign="center">
-          Vanligaste Skräpet Vi Hittar
+          Vanligaste Ting Vi Hittar
         </Heading>
         <Litter />
       </Flex>

@@ -13,6 +13,8 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { NavItem } from "../../model/GlobalInterfaces";
 import { userSignOut } from "../../services/AdminServices";
+import { Burger } from "../icons/Burger";
+import { burgerButtonStyles } from "../buttons/style/buttonStyles";
 
 interface MobileMenuProps {
   navItems: NavItem[];
@@ -26,18 +28,8 @@ export const MobileMenu = ({ navItems, navType }: MobileMenuProps) => {
 
   return (
     <>
-      <Button
-        ref={btnRef}
-        onClick={onOpen}
-        variant="ghost"
-        // _hover={{
-        //   bgColor: "transparent",
-        // }}
-        color="black"
-        fontSize="1rem"
-        pt="1rem"
-      >
-        Hamburgare
+      <Button {...burgerButtonStyles} ref={btnRef} onClick={onOpen}>
+        <Burger />
       </Button>
       <Drawer
         isOpen={isOpen}
