@@ -5,13 +5,9 @@ import {
   getCount,
 } from "../../../services/AdminServices";
 import { AdminBoardCard } from "./AdminBoardCard";
-interface Totals {
-  totalPlastic: number;
-  totalMetal: number;
-  totalGlass: number;
-  totalOther: number;
-  totalAnimals: number;
-}
+import { Totals } from "../../../model/GlobalInterfaces";
+// import { useTotalLitterStore } from "../../../store/useTotalLitterStore";
+
 export interface RenderData {
   label: string;
   data: number | RenderData[];
@@ -19,14 +15,7 @@ export interface RenderData {
 
 export const AdminContainer = () => {
   const [dataCounts, setDataCounts] = useState<RenderData[]>([]);
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [totals, setTotals] = useState({
-    totalPlastic: 0,
-    totalMetal: 0,
-    totalGlass: 0,
-    totalOther: 0,
-    totalAnimals: 0,
-  });
+  // const { setTotals } = useTotalLitterStore();
 
   const convertTotalsToRenderData = (totals: Totals): RenderData[] => {
     return [
@@ -46,7 +35,6 @@ export const AdminContainer = () => {
       const ourLocationsCount = await getCount("ourLocations");
       const subLocationsCount = await getCount("locations");
       const aggregatedTotals = await fetchAndAggregateData();
-      setTotals(aggregatedTotals);
 
       const renderData: RenderData[] = [
         { label: "Användare", data: usersCount },

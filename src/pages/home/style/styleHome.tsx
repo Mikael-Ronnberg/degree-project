@@ -1,4 +1,10 @@
-import { FlexProps, GridProps, TextProps, keyframes } from "@chakra-ui/react";
+import {
+  FlexProps,
+  GridProps,
+  ModalContentProps,
+  TextProps,
+  keyframes,
+} from "@chakra-ui/react";
 
 export const homePageStyles: FlexProps = {
   justify: "center",
@@ -10,6 +16,14 @@ export const homePageStyles: FlexProps = {
   minH: "100vh",
 };
 
+export const blueWaveBoxStyles: FlexProps = {
+  w: { sm: "100vw", md: "90vw" },
+  overflow: "hidden",
+  h: "15vh",
+  borderRight: "2px solid black",
+  borderLeft: "2px solid black",
+};
+
 export const introContainerStyle: FlexProps = {
   background: "brand.blue",
   w: { sm: "100vw", md: "90vw" },
@@ -17,7 +31,9 @@ export const introContainerStyle: FlexProps = {
   justify: "center",
   align: "center",
   direction: "column",
-  gap: "3rem",
+  gap: "5rem",
+  borderRight: "2px solid black",
+  borderLeft: "2px solid black",
 };
 
 export const introWhiteBoxStyles: FlexProps = {
@@ -34,7 +50,7 @@ export const introWhiteBoxStyles: FlexProps = {
 export const introWhiteTextStyles: TextProps = {
   textAlign: "center",
   color: "black",
-  fontSize: { sm: "1rem", md: "1.3rem", lg: "1.5rem" },
+  fontSize: { sm: "1.3rem", md: "1.7rem", lg: "1.9rem" },
   fontWeight: "bold",
 };
 
@@ -60,6 +76,22 @@ export const litterIconsStyles: GridProps = {
       justifySelf: "center",
     },
   },
+};
+
+export const litterModalStyles: ModalContentProps = {
+  background: "brand.pink",
+  border: "solid 2px black",
+  m: { sm: "5rem", md: "10rem", lg: "20rem" },
+  rounded: "sm",
+};
+
+export const litterCardStyles: FlexProps = {
+  // maxW: { base: "60vw", lg: "75vw" },
+  h: "auto",
+  justify: "center",
+  align: "center",
+  direction: "column",
+  p: "2rem",
 };
 
 export const tireAnimation = keyframes`

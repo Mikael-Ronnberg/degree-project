@@ -1,8 +1,8 @@
-import { Box, Flex } from "@chakra-ui/react";
+import { Flex } from "@chakra-ui/react";
 import { Hero } from "./feature/Hero";
 import { LitterContainer } from "./feature/LitterContainer";
 import { IntroContainer } from "./feature/IntroContainer";
-import { homePageStyles } from "./style/styleHome";
+import { blueWaveBoxStyles, homePageStyles } from "./style/styleHome";
 import { BlueWave } from "../../components/waves/BlueWave";
 
 export const Home = () => {
@@ -10,9 +10,9 @@ export const Home = () => {
     <>
       <Flex {...homePageStyles}>
         <Hero />
-        <Box w="90vw" overflow="hidden">
+        <Flex {...blueWaveBoxStyles}>
           <BlueWave />
-        </Box>
+        </Flex>
         <IntroContainer />
         <LitterContainer />
       </Flex>

@@ -8,6 +8,8 @@ export const burgerButtonStyles: ButtonProps = {
 };
 
 export const greyButtonStyles: ButtonProps = {
+  fontSize: "1.5rem",
+  p: "1.4rem",
   borderRadius: "50px",
   border: "solid 2px black",
 };
