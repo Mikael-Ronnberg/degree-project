@@ -30,6 +30,10 @@ export const desktopNavSectionStyles: GridItemProps = {
   justifyContent: "center",
   alignItems: "center",
   p: "1rem",
+  _hover: {
+    bg: "brand.blue",
+    color: "white",
+  },
 };
 
 export const desktopTextStyles: TextProps = {

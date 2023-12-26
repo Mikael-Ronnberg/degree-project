@@ -24,7 +24,11 @@ export const DesktopNavbar = ({ navItems, navType }: DesktopNavbarProps) => {
           <NavLogo />
         </GridItem>
         {navItems.map((navItem) => (
-          <GridItem key={navItem.label} {...desktopNavSectionStyles}>
+          <GridItem
+            key={navItem.label}
+            {...desktopNavSectionStyles}
+            _hover={{ bg: navItem.bgColor, color: "white" }}
+          >
             <Link to={navItem.to}>
               <Text {...desktopTextStyles}>{navItem.label}</Text>
             </Link>
