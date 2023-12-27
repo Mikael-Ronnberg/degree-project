@@ -1,4 +1,5 @@
 import {
+  BoxProps,
   FlexProps,
   GridProps,
   ModalContentProps,
@@ -14,19 +15,37 @@ export const homePageStyles: FlexProps = {
   pt: "2rem",
   w: "100vw",
   minH: "100vh",
+  overflow: "hidden",
+  m: "auto",
 };
 
-export const blueWaveBoxStyles: FlexProps = {
-  w: { sm: "100vw", md: "90vw" },
+export const heroContainerStyles: FlexProps = {
+  w: { base: "100vw", md: "95vw" },
+  h: "auto",
+  justify: "center",
+  align: "center",
+};
+
+export const blueWaveBoxStyles: BoxProps = {
+  w: { base: "100vw", md: "95vw" },
   overflow: "hidden",
-  h: "15vh",
+  // sx: {
+  //   contain: "strict",
+  // },
+  h: "30h",
   borderRight: "2px solid black",
   borderLeft: "2px solid black",
 };
 
+export const sandWaveBoxStyles: BoxProps = {
+  w: { base: "100vw" },
+  background: "#e3b059",
+  h: "30vh",
+};
+
 export const introContainerStyle: FlexProps = {
   background: "brand.blue",
-  w: { sm: "100vw", md: "90vw" },
+  w: { base: "100vw", md: "95vw" },
   h: "auto",
   justify: "center",
   align: "center",
@@ -38,7 +57,7 @@ export const introContainerStyle: FlexProps = {
 
 export const introWhiteBoxStyles: FlexProps = {
   border: "solid black 2px",
-  w: { sm: "100vw", md: "90vw" },
+  w: { sm: "100vw", md: "95vw" },
   h: "auto",
   background: "white",
   justify: "center",
@@ -56,7 +75,7 @@ export const introWhiteTextStyles: TextProps = {
 
 export const litterContainerStyles: FlexProps = {
   background: "brand.blue",
-  w: { sm: "100vw", md: "90vw" },
+  w: { sm: "100vw", md: "95vw" },
   minH: "100vh",
   borderRight: "solid black 2px",
   borderLeft: "solid black 2px",
@@ -96,13 +115,13 @@ export const litterCardStyles: FlexProps = {
 
 export const tireAnimation = keyframes`
 0% { transform: rotate(0deg) translateX(0px) translateY(0px); }
-50% { transform: rotate(45deg) translateX(50px) translateY(50px); }
-75% { transform: translateX(-25px) translateY(-25px);}
+45% { transform: rotate(45deg) translateX(50px) translateY(50px); }
+74% { transform: translateX(-25px) translateY(-25px);}
 100% {transform: rotate(0deg) translateX(0px) translateY(0px);}
 `;
 export const glassAnimation = keyframes`
 0% { transform: rotate(0deg) translateX(0px) translateY(0px); }
-50% { transform: rotate(-45deg) translateX(25px) translateY(-50px); }
+43% { transform: rotate(-45deg) translateX(25px) translateY(-50px); }
 70% { transform: translateX(-25px) translateY(-25px);}
 100% {transform: rotate(0deg) translateX(0px) translateY(0px);}
 `;

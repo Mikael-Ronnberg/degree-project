@@ -1,10 +1,12 @@
 import {
   Box,
   Grid,
+  Heading,
   Modal,
   ModalBody,
   ModalCloseButton,
   ModalContent,
+  ModalHeader,
   ModalOverlay,
 } from "@chakra-ui/react";
 import { Tire } from "../../../components/icons/Tire";
@@ -23,6 +25,7 @@ import {
 } from "../style/styleHome";
 import { useState } from "react";
 import { LitterCard } from "./LitterCard";
+import { modalCloseButtonStyles } from "../../../components/buttons/style/buttonStyles";
 
 export const Litter = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -75,7 +78,10 @@ export const Litter = () => {
       >
         <ModalOverlay />
         <ModalContent {...litterModalStyles}>
-          <ModalCloseButton />
+          <ModalHeader border="solid black 2px">
+            <Heading>Hejsan</Heading>
+            <ModalCloseButton p="4rem" {...modalCloseButtonStyles} />
+          </ModalHeader>
           <ModalBody>
             <LitterCard type={selectedType} />
           </ModalBody>

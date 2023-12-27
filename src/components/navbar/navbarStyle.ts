@@ -3,6 +3,7 @@ import {
   FlexProps,
   GridItemProps,
   GridProps,
+  ModalHeaderProps,
   TextProps,
 } from "@chakra-ui/react";
 
@@ -18,8 +19,6 @@ export const mobileNavContainerStyles: FlexProps = {
 
 export const desktopNavStyles: GridProps = {
   templateColumns: "repeat(6, 1fr)",
-  // px: "2rem",
-  // py: "0.5rem",
   borderBottom: "2px black solid",
   display: { base: "none", lg: "grid" },
 };
@@ -36,8 +35,42 @@ export const desktopNavSectionStyles: GridItemProps = {
   },
 };
 
+export const drawerHeaderStyles: ModalHeaderProps = {
+  border: "2px black solid",
+  h: "auto",
+  p: "1.5rem",
+};
+
+export const mobileMenuStyles: GridProps = {
+  templateColumns: "repeat(2, 1fr)",
+  // sx: {
+  //   "& > :last-child": {
+  //     gridColumn: "1 / -1",
+  //     justifySelf: "center",
+  //     w: "auto",
+  //   },
+  // },
+};
+
+export const mobileMenuSectionStyles: GridItemProps = {
+  outline: "1px black solid",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  p: "1rem",
+  _hover: {
+    bg: "brand.blue",
+    color: "white",
+  },
+};
+
 export const desktopTextStyles: TextProps = {
   fontSize: "1.5rem",
+  fontWeight: "bold",
+};
+
+export const mobileTextStyles: TextProps = {
+  fontSize: "1.2rem",
   fontWeight: "bold",
 };
 

@@ -7,14 +7,27 @@ import {
   DrawerCloseButton,
   DrawerBody,
   DrawerFooter,
-  Box,
+  DrawerHeader,
+  Grid,
+  GridItem,
+  Text,
 } from "@chakra-ui/react";
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { NavItem } from "../../model/GlobalInterfaces";
 import { userSignOut } from "../../services/AdminServices";
 import { Burger } from "../icons/Burger";
-import { burgerButtonStyles } from "../buttons/style/buttonStyles";
+import {
+  burgerButtonStyles,
+  drawerCloseButtonStyles,
+} from "../buttons/style/buttonStyles";
+import {
+  drawerHeaderStyles,
+  mobileMenuSectionStyles,
+  mobileMenuStyles,
+  mobileTextStyles,
+} from "./navbarStyle";
+// import { BigLogo } from "../icons/BigLogo";
 
 interface MobileMenuProps {
   navItems: NavItem[];
@@ -39,34 +52,35 @@ export const MobileMenu = ({ navItems, navType }: MobileMenuProps) => {
       >
         <DrawerOverlay />
         <DrawerContent>
-          <DrawerCloseButton color="black" rounded="sm" />
+          <DrawerHeader {...drawerHeaderStyles}>
+            {/* <BigLogo /> */}
+            <DrawerCloseButton {...drawerCloseButtonStyles} />
+          </DrawerHeader>
 
           <DrawerBody bgColor="white">
-            {navItems.map((navItem, i) => (
-              <Link to={navItem.to} key={i}>
-                <Box
-                  color="black"
-                  p="0.5rem"
-                  //   _hover={{
-                  //     bgColor: "brand.primary",
-                  //     color: "brand.whiteCream",
-                  //   }}
-                >
-                  {navItem.label}
-                </Box>
-                {navType && navType === "admin" ? (
-                  <Box>
-                    <Button
-                      onClick={() => {
-                        userSignOut(), navigate("/");
-                      }}
-                    >
-                      Logga Ut
-                    </Button>
-                  </Box>
-                ) : null}
-              </Link>
-            ))}
+            <Grid {...mobileMenuStyles}>
+              {navItems.map((navItem, i) => (
+                <Link to={navItem.to} key={i}>
+                  <GridItem
+                    {...mobileMenuSectionStyles}
+                    _hover={{ bg: navItem.bgColor, color: "white" }}
+                  >
+                    <Text {...mobileTextStyles}>{navItem.label}</Text>
+                  </GridItem>
+                  {navType && navType === "admin" ? (
+                    <GridItem {...mobileMenuSectionStyles}>
+                      <Button
+                        onClick={() => {
+                          userSignOut(), navigate("/");
+                        }}
+                      >
+                        Logga Ut
+                      </Button>
+                    </GridItem>
+                  ) : null}
+                </Link>
+              ))}
+            </Grid>
           </DrawerBody>
 
           <DrawerFooter bgColor="white"></DrawerFooter>

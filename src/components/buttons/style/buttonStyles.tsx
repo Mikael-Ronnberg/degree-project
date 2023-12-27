@@ -1,4 +1,8 @@
-import { ButtonProps } from "@chakra-ui/react";
+import {
+  ButtonProps,
+  CloseButtonProps,
+  ModalCloseButtonProps,
+} from "@chakra-ui/react";
 
 export const burgerButtonStyles: ButtonProps = {
   variant: "ghost",
@@ -8,8 +12,29 @@ export const burgerButtonStyles: ButtonProps = {
 };
 
 export const greyButtonStyles: ButtonProps = {
-  fontSize: "1.5rem",
+  fontSize: { base: "1.2rem", sm: "1.3rem", md: "1.5rem" },
   p: "1.4rem",
   borderRadius: "50px",
   border: "solid 2px black",
+};
+
+export const modalCloseButtonStyles: ModalCloseButtonProps = {
+  fontSize: { base: "1.2rem", sm: "1.3rem", md: "1.5rem" },
+  p: "1.4rem",
+  // borderRadius: "50px",
+  rounded: "sm",
+  _hover: { bg: "transparent", textDecoration: "none" },
+};
+
+//   _hover={{
+//     bgColor: "brand.primary",
+//     color: "brand.whiteCream",
+//   }}
+
+export const drawerCloseButtonStyles: CloseButtonProps = {
+  fontSize: { base: "1.2rem", sm: "1.3rem", md: "1.5rem" },
+  color: "black",
+  p: "1.4rem",
+  rounded: "sm",
+  _hover: { bg: "transparent", textDecoration: "none" },
 };

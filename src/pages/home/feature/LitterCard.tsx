@@ -22,11 +22,9 @@ export const LitterCard = ({ type }: LitterCardProps) => {
       // }
       const totalRes = await fetchAndAggregateData();
       setTotals(totalRes);
-
-      for (let i = 0; i < totalsDisplay.length; i++) {
-        if (totalsDisplay[i].label === type) {
-          setTempDisplay(totalsDisplay[i]);
-        }
+      const foundDisplay = totalsDisplay.find((item) => item.label === type);
+      if (foundDisplay) {
+        setTempDisplay(foundDisplay);
       }
     };
     fetchData();
