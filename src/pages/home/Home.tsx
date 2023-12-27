@@ -21,10 +21,10 @@ export const Home = () => {
         </Box>
         <IntroContainer />
         <LitterContainer />
+        <Box {...sandWaveBoxStyles}>
+          <SandWave />
+        </Box>
       </Flex>
-      <Box {...sandWaveBoxStyles}>
-        <SandWave />
-      </Box>
     </>
   );
 };
