@@ -18,6 +18,20 @@ export const greyButtonStyles: ButtonProps = {
   border: "solid 2px black",
 };
 
+export const purpleButtonStyles: ButtonProps = {
+  fontSize: { base: "1.2rem", sm: "1.3rem", md: "1.5rem" },
+  w: { base: "20rem" },
+  px: "1.4rem",
+  borderRadius: "50px",
+  border: "solid 2px black",
+  color: "white",
+  background: "brand.purple",
+  _hover: {
+    bgColor: "#0efffF",
+    color: "black",
+  },
+};
+
 export const modalCloseButtonStyles: ModalCloseButtonProps = {
   fontSize: { base: "1.2rem", sm: "1.3rem", md: "1.5rem" },
   p: "1.4rem",
