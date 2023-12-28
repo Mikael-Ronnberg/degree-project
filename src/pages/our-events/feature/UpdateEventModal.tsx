@@ -8,9 +8,9 @@ import {
   ModalOverlay,
   useDisclosure,
 } from "@chakra-ui/react";
-import { TransformedEventResponse } from "../../../model/AdminInterfaces";
+import { TransformedEventResponse } from "../../../model/EventsInterfaces";
 import { EventForm } from "../../create-event/feature/EventForm";
-import { updateEvent } from "../../../services/AdminServices";
+import { updateEvent } from "../../../services/EventServices";
 import { useEventsStore } from "../../../store/useEventsStore";
 
 interface UpdateEventFormProps {

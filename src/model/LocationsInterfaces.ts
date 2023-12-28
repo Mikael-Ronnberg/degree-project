@@ -1,6 +1,6 @@
 import { Timestamp } from "firebase/firestore";
 
-export interface LocationObj {
+export interface SubLocation {
   address: {
     city: string;
     municipality: string;
@@ -47,5 +47,38 @@ export interface SubLocationResponse {
 
 export interface TransformedSubLocationResponse
   extends Omit<SubLocationResponse, "createdAt"> {
+  createdAt: string;
+}
+
+export interface CreateOurLocationFormValues {
+  locationName: string;
+  date: string;
+  description: string;
+  plastic: number;
+  metal: number;
+  glass: number;
+  other: number;
+  animals: number;
+  lat: number;
+  lng: number;
+}
+
+export interface OurLocationResponse {
+  id: string;
+  locationName: string;
+  date: string;
+  description: string;
+  plastic: number;
+  metal: number;
+  glass: number;
+  other: number;
+  animals: number;
+  lat: number;
+  lng: number;
+  createdAt: Timestamp;
+}
+
+export interface TransformedOurLocationResponse
+  extends Omit<OurLocationResponse, "createdAt"> {
   createdAt: string;
 }

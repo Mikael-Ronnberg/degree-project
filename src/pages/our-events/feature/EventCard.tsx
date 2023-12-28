@@ -3,8 +3,8 @@ import {
   adminCardStyles,
   adminCardTextStyles,
 } from "../../admin/style/styleAdmin";
-import { TransformedEventResponse } from "../../../model/AdminInterfaces";
-import { deleteEvent } from "../../../services/AdminServices";
+import { TransformedEventResponse } from "../../../model/EventsInterfaces";
+import { deleteEvent } from "../../../services/EventServices";
 import { UpdateEventModal } from "./UpdateEventModal";
 import { useEventsStore } from "../../../store/useEventsStore";
 

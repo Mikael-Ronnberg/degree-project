@@ -8,7 +8,7 @@ import {
   ModalOverlay,
   useDisclosure,
 } from "@chakra-ui/react";
-import { TransformedArticleResponse } from "../../../model/AdminInterfaces";
+import { TransformedArticleResponse } from "../../../model/ArticlesInterfaces";
 import { ArticleForm } from "../../write-articles/feature/ArticleForm";
 
 interface UpdateOurArticleProps {

@@ -2,7 +2,7 @@ import { Button, Flex, HStack, VStack } from "@chakra-ui/react";
 import { adminPageStyles } from "../admin/style/styleAdmin";
 import { useEffect, useState } from "react";
 import { OurLocationCard } from "./feature/OurLocationCard";
-import { getOurLocations } from "../../services/AdminServices";
+import { getOurLocations } from "../../services/MapServices";
 import { useOurLocationsStore } from "../../store/useOurLocationsStore";
 
 const ITEMS_PER_PAGE = 3;

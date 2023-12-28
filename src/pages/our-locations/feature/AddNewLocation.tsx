@@ -1,5 +1,5 @@
-import { CreateOurLocationFormValues } from "../../../model/AdminInterfaces";
-import { submitOurLocation } from "../../../services/AdminServices";
+import { CreateOurLocationFormValues } from "../../../model/LocationsInterfaces";
+import { submitOurLocation } from "../../../services/MapServices";
 import { useLocationStore } from "../../../store/useLocationsStore";
 import { OurLocationForm } from "../../admin/feature/OurLocationForm";
 import { OurMap } from "./OurMap";

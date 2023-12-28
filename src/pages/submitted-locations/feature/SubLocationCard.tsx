@@ -1,13 +1,13 @@
 import { Flex, HStack, Button, Text } from "@chakra-ui/react";
 import { deleteSubLocation } from "../../../services/MapServices";
-import { TransformedLocationResponse } from "../../../model/LocationsInterfaces";
+import { TransformedSubLocationResponse } from "../../../model/LocationsInterfaces";
 import {
   adminCardStyles,
   adminCardTextStyles,
 } from "../../admin/style/styleAdmin";
 
 interface SubLocationCardProps {
-  location: TransformedLocationResponse;
+  location: TransformedSubLocationResponse;
 }
 
 export const SubLocationCard = ({ location }: SubLocationCardProps) => {

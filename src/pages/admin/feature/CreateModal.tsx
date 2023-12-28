@@ -15,8 +15,8 @@ import { EventForm } from "../../create-event/feature/EventForm";
 import {
   CreateEventFormValues,
   TransformedEventResponse,
-} from "../../../model/AdminInterfaces";
-import { submitEvent } from "../../../services/AdminServices";
+} from "../../../model/EventsInterfaces";
+import { submitEvent } from "../../../services/EventServices";
 import { useEventsStore } from "../../../store/useEventsStore";
 
 interface CreateModalProps {

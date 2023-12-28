@@ -7,7 +7,7 @@ import {
   VStack,
   Image,
 } from "@chakra-ui/react";
-import { TransformedArticleResponse } from "../../../model/AdminInterfaces";
+import { TransformedArticleResponse } from "../../../model/ArticlesInterfaces";
 import {
   adminCardStyles,
   adminCardTextStyles,
@@ -15,7 +15,7 @@ import {
   subImageCardStyles,
   subImageTextCardStyles,
 } from "../../admin/style/styleAdmin";
-import { deleteArticle } from "../../../services/AdminServices";
+import { deleteArticle } from "../../../services/articleServices";
 import { UpdateOurArticleModal } from "./UpdateOurArticleModal";
 import { useArticlesStore } from "../../../store/useArticlesStore";
 

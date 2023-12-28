@@ -1,8 +1,8 @@
 import { Marker, Popup } from "react-leaflet";
-import { LocationObj } from "../../../model/LocationsInterfaces";
+import { SubLocation } from "../../../model/LocationsInterfaces";
 
 interface SearchResultMarkersProps {
-  locations: LocationObj[];
+  locations: SubLocation[];
 }
 
 export const SearchResultMarkers = ({
@@ -10,7 +10,7 @@ export const SearchResultMarkers = ({
 }: SearchResultMarkersProps) => {
   return (
     <>
-      {locations.map((location: LocationObj) => (
+      {locations.map((location: SubLocation) => (
         <Marker
           key={location.place_id}
           position={[parseFloat(location.lat), parseFloat(location.lon)]}

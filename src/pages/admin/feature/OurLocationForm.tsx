@@ -11,7 +11,7 @@ import { FormikHelpers, Formik } from "formik";
 import {
   TransformedOurLocationResponse,
   CreateOurLocationFormValues,
-} from "../../../model/AdminInterfaces";
+} from "../../../model/LocationsInterfaces";
 import {
   createFormStyles,
   createInputFormStyles,

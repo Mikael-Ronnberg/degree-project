@@ -1,96 +1,17 @@
 import {
-  addDoc,
   collection,
-  deleteDoc,
-  updateDoc,
   doc,
   getDocs,
   serverTimestamp,
   setDoc,
 } from "firebase/firestore";
-import { auth, db, storage } from "../config/firebase";
-import {
-  ArticleResponse,
-  CreateArticleFormValues,
-  CreateEventFormValues,
-  CreateOurLocationFormValues,
-  EventResponse,
-  OurLocationResponse,
-  SubmitUserResponse,
-  SubmitUserValues,
-  TransformedArticleResponse,
-  TransformedEventResponse,
-  TransformedOurLocationResponse,
-} from "../model/AdminInterfaces";
+import { auth, db } from "../config/firebase";
+import { SubmitUserResponse, SubmitUserValues } from "../model/AdminInterfaces";
 import { createUserWithEmailAndPassword, signOut } from "firebase/auth";
-import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
-
-const ourLocationCollectionRef = collection(db, "ourLocations");
-const eventCollectionRef = collection(db, "events");
-const articleCollectionRef = collection(db, "articles");
-// const userCollectionRef = collection(db, "users");
 
 export const getCount = async (collectionName: string) => {
   const querySnapshot = await getDocs(collection(db, collectionName));
   return querySnapshot.size;
-};
-
-export const submitOurLocation = async (
-  location: CreateOurLocationFormValues
-) => {
-  try {
-    await addDoc(ourLocationCollectionRef, {
-      ...location,
-      createdAt: serverTimestamp(),
-    });
-  } catch (error) {
-    console.error(error);
-    throw error;
-  }
-};
-
-export const getOurLocations = async (): Promise<
-  TransformedOurLocationResponse[]
-> => {
-  try {
-    const data = await getDocs(ourLocationCollectionRef);
-    const filteredData: TransformedOurLocationResponse[] = data.docs.map(
-      (doc) => {
-        const docData = doc.data() as OurLocationResponse;
-        const createdAtTimestamp = docData.createdAt;
-        const createdAtDate = createdAtTimestamp.toDate();
-        const readableDate = createdAtDate.toLocaleString();
-
-        return {
-          ...docData,
-          createdAt: readableDate,
-          id: doc.id,
-        };
-      }
-    );
-
-    return filteredData;
-  } catch (error) {
-    console.error(error);
-    return [];
-  }
-};
-
-export const deleteOurLocation = async (locationId: string) => {
-  const locationDoc = doc(db, "ourLocations", locationId);
-  await deleteDoc(locationDoc);
-};
-
-export const updateOurLocation = async (
-  location: Omit<TransformedOurLocationResponse, "createdAt">
-) => {
-  try {
-    const locationDoc = doc(db, "ourLocations", location.id);
-    await updateDoc(locationDoc, { ...location });
-  } catch (error) {
-    console.error(error);
-    throw error;
-  }
 };
 
 export const fetchAndAggregateData = async () => {
@@ -131,122 +52,6 @@ export const fetchAndAggregateData = async () => {
       totalAnimals: 0,
     };
   }
-};
-
-export const submitEvent = async (event: CreateEventFormValues) => {
-  try {
-    await addDoc(eventCollectionRef, {
-      ...event,
-      createdAt: serverTimestamp(),
-    }).then((docRef) => console.log(docRef.id));
-  } catch (error) {
-    console.error(error);
-    throw error;
-  }
-};
-
-export const getEvents = async (): Promise<TransformedEventResponse[]> => {
-  try {
-    const data = await getDocs(eventCollectionRef);
-    const filteredData: TransformedEventResponse[] = data.docs.map((doc) => {
-      const docData = doc.data() as EventResponse;
-      const createdAtTimestamp = docData.createdAt;
-      const createdAtDate = createdAtTimestamp.toDate();
-      const readableDate = createdAtDate.toLocaleString();
-
-      return {
-        ...docData,
-        createdAt: readableDate,
-        id: doc.id,
-      };
-    });
-
-    return filteredData;
-  } catch (error) {
-    console.error(error);
-    return [];
-  }
-};
-
-export const updateEvent = async (
-  event: Omit<TransformedEventResponse, "createdAt">
-) => {
-  try {
-    const eventDoc = doc(db, "events", event.id);
-    await updateDoc(eventDoc, { ...event });
-  } catch (error) {
-    console.error(error);
-    throw error;
-  }
-};
-
-export const deleteEvent = async (eventId: string) => {
-  const eventDoc = doc(db, "events", eventId);
-  await deleteDoc(eventDoc);
-};
-
-export const submitArticle = async (article: CreateArticleFormValues) => {
-  try {
-    await addDoc(articleCollectionRef, {
-      ...article,
-      createdAt: serverTimestamp(),
-    });
-  } catch (error) {
-    console.error(error);
-    throw error;
-  }
-};
-
-export const getArticles = async (): Promise<TransformedArticleResponse[]> => {
-  try {
-    const data = await getDocs(articleCollectionRef);
-    const filteredData: TransformedArticleResponse[] = data.docs.map((doc) => {
-      const docData = doc.data() as ArticleResponse;
-      const createdAtTimestamp = docData.createdAt;
-      const createdAtDate = createdAtTimestamp.toDate();
-      const readableDate = createdAtDate.toLocaleString();
-
-      return {
-        ...docData,
-        createdAt: readableDate,
-        id: doc.id,
-      };
-    });
-
-    return filteredData;
-  } catch (error) {
-    console.error(error);
-    return [];
-  }
-};
-
-export const deleteArticle = async (articleId: string) => {
-  const articleDoc = doc(db, "articles", articleId);
-  await deleteDoc(articleDoc);
-};
-
-export const updateArticle = async (
-  article: Omit<TransformedArticleResponse, "createdAt">
-) => {
-  try {
-    const articleDoc = doc(db, "articles", article.id);
-    await updateDoc(articleDoc, { ...article });
-  } catch (error) {
-    console.error(error);
-    throw error;
-  }
-};
-
-export const uploadFile = async (file: File | null): Promise<string> => {
-  if (file) {
-    const fileName = new Date().getTime() + file.name;
-    const storageRef = ref(storage, fileName);
-    const uploadTask = uploadBytesResumable(storageRef, file);
-
-    await uploadTask;
-    return getDownloadURL(uploadTask.snapshot.ref);
-  }
-  return "";
 };
 
 export const submitUser = async (

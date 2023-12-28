@@ -16,12 +16,12 @@ import {
 import {
   CreateArticleFormValues,
   TransformedArticleResponse,
-} from "../../../model/AdminInterfaces";
+} from "../../../model/ArticlesInterfaces";
 import {
   submitArticle,
   updateArticle,
   uploadFile,
-} from "../../../services/AdminServices";
+} from "../../../services/articleServices";
 import { useState } from "react";
 import { useArticlesStore } from "../../../store/useArticlesStore";
 
@@ -54,6 +54,7 @@ export const ArticleForm = ({
           mainImg: formValues.mainImg,
           mainImgName: formValues.mainImgName,
           date: formValues.date,
+          category: formValues.category,
           author: formValues.author,
           subHeading1: formValues.subHeading1,
           section1: formValues.section1,
@@ -73,6 +74,7 @@ export const ArticleForm = ({
           mainImg: "",
           mainImgName: "",
           date: "",
+          category: "",
           author: "",
           subHeading1: "",
           section1: "",
@@ -180,6 +182,16 @@ export const ArticleForm = ({
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.date}
+              />
+              <FormLabel htmlFor="date">Kategori för Artikeln</FormLabel>
+              <Input
+                {...createInputFormStyles}
+                id="category"
+                name="category"
+                placeholder="Kategori"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.category}
               />
               <FormLabel htmlFor="author">Författare</FormLabel>
               <Input

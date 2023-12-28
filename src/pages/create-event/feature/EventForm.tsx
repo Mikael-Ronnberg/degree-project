@@ -11,7 +11,7 @@ import { Formik, FormikHelpers } from "formik";
 import {
   CreateEventFormValues,
   TransformedEventResponse,
-} from "../../../model/AdminInterfaces";
+} from "../../../model/EventsInterfaces";
 import {
   createFormStyles,
   createInputFormStyles,

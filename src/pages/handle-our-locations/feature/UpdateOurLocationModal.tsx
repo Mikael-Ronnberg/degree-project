@@ -8,9 +8,9 @@ import {
   ModalOverlay,
   useDisclosure,
 } from "@chakra-ui/react";
-import { TransformedOurLocationResponse } from "../../../model/AdminInterfaces";
+import { TransformedOurLocationResponse } from "../../../model/LocationsInterfaces";
 import { OurLocationForm } from "../../admin/feature/OurLocationForm";
-import { updateOurLocation } from "../../../services/AdminServices";
+import { updateOurLocation } from "../../../services/MapServices";
 
 interface UpdateOurLocationFormProps {
   formValues: TransformedOurLocationResponse;

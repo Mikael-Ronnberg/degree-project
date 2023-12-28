@@ -1,4 +1,5 @@
 import {
+  BoxProps,
   FlexProps,
   HeadingProps,
   InputProps,
@@ -11,7 +12,7 @@ export const contactPageStyles: FlexProps = {
   align: "center",
   direction: "column",
   background: "white",
-  pt: "2rem",
+  pt: "5rem",
   w: "100vw",
   gap: "5rem",
   minH: "100vh",
@@ -36,7 +37,8 @@ export const formContainerStyles: FlexProps = {
   direction: "column",
   gap: "2rem",
   p: "2rem",
-  w: { base: "95vw", lg: "95vw" },
+  h: "auto",
+  maxW: { base: "95vw", sm: "95vw", md: "80vw", lg: "1000px" },
   background: "white",
   outline: "2px solid black",
 };
@@ -45,7 +47,7 @@ export const headingContainerStyles: FlexProps = {
   outline: "2px solid black",
   justify: "center",
   align: "center",
-  w: { base: "95vw", lg: "95vw" },
+  maxW: { base: "95vw", sm: "95vw", md: "80vw", lg: "1000px" },
   background: "white",
 };
 
@@ -54,13 +56,13 @@ export const formHeadingStyles: HeadingProps = {
 };
 
 export const contactFormInputStyles: InputProps = {
-  w: { base: "20rem", sm: "20rem", md: "26rem", lg: "35rem" },
+  w: { base: "90vw", sm: "90vw", md: "75vw", lg: "950px" },
   border: "2px solid black",
   rounded: "sm",
 };
 
 export const contactFormTextareaStyles: TextareaProps = {
-  w: { base: "20rem", sm: "20rem", md: "26rem", lg: "35rem" },
+  w: { base: "90vw", sm: "90vw", md: "75vw", lg: "950px" },
   border: "2px solid black",
   rounded: "sm",
 };
@@ -84,6 +86,11 @@ export const supportContainerStyles: FlexProps = {
   p: "2rem",
   w: { base: "95vw", lg: "95vw" },
   //   background: "white",
+};
+
+export const supportBoxWrapperStyles: BoxProps = {
+  w: { base: "90vw", sm: "90vw", md: "75vw", lg: "950px" },
+  h: "auto",
 };
 
 export const supportTextStyles: TextProps = {

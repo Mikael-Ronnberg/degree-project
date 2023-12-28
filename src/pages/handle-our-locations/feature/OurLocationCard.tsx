@@ -1,6 +1,6 @@
 import { Flex, HStack, Button, Text } from "@chakra-ui/react";
-import { TransformedOurLocationResponse } from "../../../model/AdminInterfaces";
-import { deleteOurLocation } from "../../../services/AdminServices";
+import { TransformedOurLocationResponse } from "../../../model/LocationsInterfaces";
+import { deleteOurLocation } from "../../../services/MapServices";
 import { UpdateOurLocationModal } from "./UpdateOurLocationModal";
 import {
   adminCardStyles,

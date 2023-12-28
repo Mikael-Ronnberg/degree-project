@@ -1,7 +1,7 @@
 import { Button, Flex, HStack, VStack } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { EventCard } from "./feature/EventCard";
-import { getEvents } from "../../services/AdminServices";
+import { getEvents } from "../../services/EventServices";
 import { adminPageStyles } from "../admin/style/styleAdmin";
 import { useEventsStore } from "../../store/useEventsStore";
 
