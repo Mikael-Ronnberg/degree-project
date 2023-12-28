@@ -1,17 +1,12 @@
-import { Flex, Heading, VStack } from "@chakra-ui/react";
+import { Button, Flex, Heading, VStack } from "@chakra-ui/react";
 import {
   articleContainerStyles,
   articlePageStyles,
 } from "./style/articleStyle";
 import { ArticleCard } from "./feature/ArticleCard";
-// import { TransformedArticleResponse } from "../../model/AdminInterfaces";
 import { useArticlesStore } from "../../store/useArticlesStore";
 import { useEffect, useState } from "react";
 import { getArticles } from "../../services/articleServices";
-
-// interface ArticlesProps {
-//   articles: TransformedArticleResponse[];
-// }
 
 export const Articles = () => {
   const { articles, setArticles } = useArticlesStore();
@@ -49,9 +44,7 @@ export const Articles = () => {
               <ArticleCard key={index} {...article} />
             ))}
           </VStack>
-          {hasMore && (
-            <button onClick={loadMoreArticles}>Load More Articles</button>
-          )}
+          {hasMore && <Button onClick={loadMoreArticles}>Visa Fler</Button>}
         </Flex>
       </Flex>
     </>
