@@ -17,6 +17,7 @@ import { Events } from "../pages/events/Events";
 import { RequireAuthLayout } from "./RequireAuthLayout";
 import { NormalLayout } from "./NormalLayout";
 import { Articles } from "../pages/articles/Articles";
+import { ArticleRoute } from "../pages/articles/feature/ArticleRoute";
 
 export const router = createBrowserRouter([
   {
@@ -56,6 +57,14 @@ export const router = createBrowserRouter([
     element: (
       <NormalLayout>
         <Articles />
+      </NormalLayout>
+    ),
+  },
+  {
+    path: "/viewArticle/:articleId/:article",
+    element: (
+      <NormalLayout>
+        <ArticleRoute />
       </NormalLayout>
     ),
   },

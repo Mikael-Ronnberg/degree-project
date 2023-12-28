@@ -21,7 +21,7 @@ import {
   submitArticle,
   updateArticle,
   uploadFile,
-} from "../../../services/articleServices";
+} from "../../../services/ArticleServices";
 import { useState } from "react";
 import { useArticlesStore } from "../../../store/useArticlesStore";
 

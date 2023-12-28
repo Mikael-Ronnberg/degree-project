@@ -1,14 +1,14 @@
 import { create } from "zustand";
-import { LocationCoords, LocationObj } from "../model/LocationsInterfaces";
+import { LocationCoords, SubLocation } from "../model/LocationsInterfaces";
 
 interface LocationState {
-  selectLocation: LocationObj;
-  listLocations: LocationObj[];
+  selectLocation: SubLocation;
+  listLocations: SubLocation[];
   pinLocation: LocationCoords | null;
   formSubmitted: boolean;
 
-  setListLocations: (locations: LocationObj[]) => void;
-  setSelectLocation: (location: LocationObj) => void;
+  setListLocations: (locations: SubLocation[]) => void;
+  setSelectLocation: (location: SubLocation) => void;
   setPinLocation: (location: LocationCoords | null) => void;
   setFormSubmitted: (submitted: boolean) => void;
 }

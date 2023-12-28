@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { TransformedArticleResponse } from "../model/AdminInterfaces";
+import { TransformedArticleResponse } from "../model/ArticlesInterfaces";
 
 interface ArticleState {
   articles: TransformedArticleResponse[];

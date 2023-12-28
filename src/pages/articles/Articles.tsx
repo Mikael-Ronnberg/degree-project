@@ -6,7 +6,8 @@ import {
 import { ArticleCard } from "./feature/ArticleCard";
 import { useArticlesStore } from "../../store/useArticlesStore";
 import { useEffect, useState } from "react";
-import { getArticles } from "../../services/articleServices";
+import { getArticles } from "../../services/ArticleServices";
+import { Link } from "react-router-dom";
 
 export const Articles = () => {
   const { articles, setArticles } = useArticlesStore();
@@ -38,10 +39,17 @@ export const Articles = () => {
     <>
       <Flex {...articlePageStyles}>
         <Flex {...articleContainerStyles}>
-          <Heading>Alla Artiklar</Heading>
+          <Heading m="1rem">Alla Artiklar</Heading>
           <VStack spacing="1rem">
             {articles.map((article, index) => (
-              <ArticleCard key={index} {...article} />
+              <Link
+                key={index}
+                to={`/viewArticle/${article.id}/${encodeURIComponent(
+                  article.mainHeading
+                )}`}
+              >
+                <ArticleCard {...article} />
+              </Link>
             ))}
           </VStack>
           {hasMore && <Button onClick={loadMoreArticles}>Visa Fler</Button>}

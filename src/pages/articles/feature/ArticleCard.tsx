@@ -1,12 +1,26 @@
-import { Flex, HStack, Heading, Image, Text } from "@chakra-ui/react";
 import {
-  articleCardStyles,
-  articleCategoryStyles,
-  articleDateStyles,
-  articleHeadingStyles,
-  articleImageStyles,
-  articleSubHeadingStyles,
+  Grid,
+  GridItem,
+  HStack,
+  Heading,
+  Box,
+  Image,
+  Text,
+  VStack,
+} from "@chakra-ui/react";
+import {
+  articleCardCategoryStyles,
+  articleCardDateStyles,
+  articleCardGridStyles,
+  articleCardHeadingStyles,
+  articleCardImageStyles,
+  articleCardSubHeadingStyles,
+  articleCardImageBoxStyles,
+  articleImgItemStyles,
+  articleTextItemStyles,
+  textStackStyles,
 } from "../style/articleStyle";
+import { getSubstring } from "../../../helpers/globalHelpers";
 
 interface ArticleCardProps {
   mainImg: string;
@@ -27,15 +41,33 @@ export const ArticleCard = ({
 }: ArticleCardProps) => {
   return (
     <>
-      <Flex {...articleCardStyles}>
-        <Image src={mainImg} alt={mainImgName} {...articleImageStyles} />
-        <HStack>
-          <Text {...articleCategoryStyles}>{category}</Text>
-          <Text {...articleDateStyles}>{date}</Text>
-        </HStack>
-        <Heading {...articleHeadingStyles}>{mainHeading}</Heading>
-        <Text {...articleSubHeadingStyles}>{subHeading1}</Text>
-      </Flex>
+      <Grid {...articleCardGridStyles}>
+        <GridItem {...articleImgItemStyles}>
+          <Box {...articleCardImageBoxStyles}>
+            <Image
+              src={mainImg}
+              alt={mainImgName}
+              {...articleCardImageStyles}
+            />
+          </Box>
+        </GridItem>
+        <GridItem {...articleTextItemStyles}>
+          <VStack>
+            <HStack spacing="10rem">
+              <Text {...articleCardCategoryStyles}>{category}</Text>
+              <Text {...articleCardDateStyles}>{date}</Text>
+            </HStack>
+            <VStack {...textStackStyles}>
+              <Heading {...articleCardHeadingStyles}>
+                {getSubstring(mainHeading, 80)}
+              </Heading>
+              <Text {...articleCardSubHeadingStyles}>
+                {getSubstring(subHeading1, 100)}
+              </Text>
+            </VStack>
+          </VStack>
+        </GridItem>
+      </Grid>
     </>
   );
 };

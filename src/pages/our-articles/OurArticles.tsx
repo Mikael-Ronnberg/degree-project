@@ -3,7 +3,7 @@ import { Flex, VStack, Button, HStack } from "@chakra-ui/react";
 import { adminPageStyles } from "../admin/style/styleAdmin";
 import { OurArticleCard } from "./feature/OurArticleCard";
 import { useArticlesStore } from "../../store/useArticlesStore";
-import { getArticles } from "../../services/articleServices";
+import { getArticles } from "../../services/ArticleServices";
 
 const ITEMS_PER_PAGE = 1;
 

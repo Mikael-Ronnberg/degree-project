@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { TransformedEventResponse } from "../model/AdminInterfaces";
+import { TransformedEventResponse } from "../model/EventsInterfaces";
 
 interface EventState {
   events: TransformedEventResponse[];

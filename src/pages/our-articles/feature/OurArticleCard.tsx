@@ -15,7 +15,7 @@ import {
   subImageCardStyles,
   subImageTextCardStyles,
 } from "../../admin/style/styleAdmin";
-import { deleteArticle } from "../../../services/articleServices";
+import { deleteArticle } from "../../../services/ArticleServices";
 import { UpdateOurArticleModal } from "./UpdateOurArticleModal";
 import { useArticlesStore } from "../../../store/useArticlesStore";
 

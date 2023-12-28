@@ -10,6 +10,7 @@ import {
   deleteDoc,
   updateDoc,
   collection,
+  getDoc,
 } from "firebase/firestore";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { db, storage } from "../config/firebase";
@@ -82,6 +83,28 @@ async function getLastDocumentOfPreviousPage(
   const lastPageData = await getDocs(lastPageQuery);
   return lastPageData.docs[lastPageData.docs.length - 1];
 }
+
+export const getArticleById = async (articleId: string) => {
+  try {
+    const docRef = doc(articleCollectionRef, articleId);
+    const docSnap = await getDoc(docRef);
+
+    if (docSnap.exists()) {
+      const docData = docSnap.data() as ArticleResponse;
+
+      return {
+        ...docData,
+        id: docSnap.id,
+      };
+    } else {
+      console.log("No such document!");
+      return null;
+    }
+  } catch (error) {
+    console.error("Error fetching document: ", error);
+    return null;
+  }
+};
 
 export const deleteArticle = async (articleId: string) => {
   const articleDoc = doc(db, "articles", articleId);

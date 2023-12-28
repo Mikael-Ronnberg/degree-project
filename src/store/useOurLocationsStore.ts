@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { TransformedOurLocationResponse } from "../model/AdminInterfaces";
+import { TransformedOurLocationResponse } from "../model/LocationsInterfaces";
 
 interface OurLocationsState {
   ourLocations: TransformedOurLocationResponse[];
