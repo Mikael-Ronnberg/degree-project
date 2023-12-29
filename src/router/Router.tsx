@@ -18,6 +18,7 @@ import { RequireAuthLayout } from "./RequireAuthLayout";
 import { NormalLayout } from "./NormalLayout";
 import { Articles } from "../pages/articles/Articles";
 import { ArticleRoute } from "../pages/articles/feature/ArticleRoute";
+import { NotFound } from "../pages/404/NotFound";
 
 export const router = createBrowserRouter([
   {
@@ -57,6 +58,14 @@ export const router = createBrowserRouter([
     element: (
       <NormalLayout>
         <Articles />
+      </NormalLayout>
+    ),
+  },
+  {
+    path: "/404",
+    element: (
+      <NormalLayout>
+        <NotFound />
       </NormalLayout>
     ),
   },

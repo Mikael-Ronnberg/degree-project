@@ -1,22 +1,25 @@
 import {
   BoxProps,
   FlexProps,
+  HeadingProps,
   ImageProps,
   InputProps,
+  ModalBodyProps,
+  ModalContentProps,
+  ModalHeaderProps,
   StackProps,
   TextProps,
   TextareaProps,
 } from "@chakra-ui/react";
 
 export const adminPageStyles: FlexProps = {
-  boxSizing: "border-box",
   align: "center",
   justify: "center",
   direction: "column",
   backgroundColor: "grey",
   minH: "100vh",
   w: "100vw",
-  mt: "3rem",
+  py: { base: "4rem", md: "5.5rem", lg: "6rem" },
 };
 
 export const subLocationsStyles: StackProps = {
@@ -84,11 +87,16 @@ export const createContainerStyles: FlexProps = {
   align: "center",
   w: { sm: "90vw", lg: "65vw" },
   h: "80vh",
+  gap: "10rem",
   border: "black 1px solid",
   direction: "column",
   background: "white",
   mt: "3rem",
   p: "2rem",
+};
+
+export const createHeadingStyles: HeadingProps = {
+  fontSize: { base: "2.5rem", md: "2.8rem", lg: "3rem" },
 };
 
 export const createFormStyles: FlexProps = {
@@ -118,4 +126,25 @@ export const createTextareaFormStyles: TextareaProps = {
   w: "60vw",
   h: "40vh",
   m: "1rem",
+};
+
+export const createModalStyles: ModalContentProps = {
+  // background: "brand.pink",
+  // border: "solid 2px black",
+  maxW: { base: "inherit" },
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  m: { base: "5rem", md: "6rem" },
+  mx: { lg: "8rem", xl: "20rem" },
+  pb: "2rem",
+  rounded: "sm",
+};
+
+export const createModalHeaderStyles: ModalHeaderProps = {
+  fontSize: { base: "1.4rem", md: "1.6rem", lg: "2rem" },
+};
+
+export const createModalBodyStyles: ModalBodyProps = {
+  // maxW: "800px",
 };

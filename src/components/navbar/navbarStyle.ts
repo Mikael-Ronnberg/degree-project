@@ -82,10 +82,3 @@ export const navbarStyles: BoxProps = {
   mb: "1rem",
   zIndex: 10,
 };
-
-// export const logoSectionStyles: StackProps = {
-//   direction: "row",
-//   gap: 6,
-//   flex: 2,
-//   alignItems: "center",
-// };

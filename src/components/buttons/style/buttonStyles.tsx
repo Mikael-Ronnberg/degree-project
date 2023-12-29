@@ -52,3 +52,11 @@ export const drawerCloseButtonStyles: CloseButtonProps = {
   rounded: "sm",
   _hover: { bg: "transparent", textDecoration: "none" },
 };
+
+export const logoutButtonStyles: ButtonProps = {
+  fontSize: { base: "1.2rem", sm: "1.3rem", md: "1.5rem" },
+  color: "black",
+  p: "1.4rem",
+  rounded: "sm",
+  _hover: { bg: "white", textDecoration: "none" },
+};

@@ -11,6 +11,7 @@ interface EventState {
 
 export const useEventsStore = create<EventState>((set) => ({
   events: [],
+  loadedPages: new Set(),
   setEvents: (events) => set({ events }),
   setSingleEvent: (event) =>
     set((state) => ({ events: [...state.events, event] })),

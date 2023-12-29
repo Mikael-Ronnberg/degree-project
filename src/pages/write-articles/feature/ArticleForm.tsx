@@ -152,6 +152,7 @@ export const ArticleForm = ({
               <Field name="mainImg">
                 {() => (
                   <Input
+                    {...createInputFormStyles}
                     id="mainImg"
                     type="file"
                     name="mainImg"
@@ -226,6 +227,7 @@ export const ArticleForm = ({
               <Field name="subImg1">
                 {() => (
                   <Input
+                    {...createInputFormStyles}
                     id="subImg1"
                     type="file"
                     name="subImg1"
@@ -282,6 +284,7 @@ export const ArticleForm = ({
               <Field name="subImg2">
                 {() => (
                   <Input
+                    {...createInputFormStyles}
                     id="subImg2"
                     type="file"
                     name="subImg2"

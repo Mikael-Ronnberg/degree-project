@@ -18,6 +18,12 @@ import {
 } from "../../../model/EventsInterfaces";
 import { submitEvent } from "../../../services/EventServices";
 import { useEventsStore } from "../../../store/useEventsStore";
+import {
+  createModalBodyStyles,
+  createModalHeaderStyles,
+  createModalStyles,
+} from "../style/styleAdmin";
+import { modalCloseButtonStyles } from "../../../components/buttons/style/buttonStyles";
 
 interface CreateModalProps {
   buttonLabel: string;
@@ -66,10 +72,12 @@ export const CreateModal = ({
 
       <Modal isOpen={isOpen} onClose={onClose} size="l">
         <ModalOverlay />
-        <ModalContent>
-          <ModalHeader>{modalHeader}</ModalHeader>
-          <ModalCloseButton />
-          <ModalBody>{renderComponent(mode)}</ModalBody>
+        <ModalContent {...createModalStyles}>
+          <ModalHeader {...createModalHeaderStyles}>{modalHeader}</ModalHeader>
+          <ModalCloseButton {...modalCloseButtonStyles} />
+          <ModalBody {...createModalBodyStyles}>
+            {renderComponent(mode)}
+          </ModalBody>
         </ModalContent>
       </Modal>
     </>
