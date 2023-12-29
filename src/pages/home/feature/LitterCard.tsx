@@ -3,8 +3,8 @@ import { useEffect, useState } from "react";
 import { useTotalLitterStore } from "../../../store/useTotalLitterStore";
 import { fetchAndAggregateData } from "../../../services/AdminServices";
 import { TempDisplayTotal } from "../../../model/GlobalInterfaces";
-import { totalsDisplay } from "../../../helpers/totalsHelpers";
 import { litterCardStyles } from "../style/styleHome";
+import { totalsDisplay } from "../../../constants/totals";
 
 interface LitterCardProps {
   type: string;

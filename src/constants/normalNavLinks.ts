@@ -14,7 +14,7 @@ export const normalNavItems: NavItem[] = [
   {
     label: "Artiklar",
     to: "/articles",
-    bgColor: "brand.pink",
+    bgColor: "brand.darkPink",
   },
   {
     label: "Platser",

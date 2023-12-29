@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import { Navbar } from "../components/navbar/NavBar";
-import { normalNavItems } from "../helpers/normalHelpers";
+import { normalNavItems } from "../constants/normalNavLinks";
 
 interface NormalLayoutProp {
   children: ReactNode;

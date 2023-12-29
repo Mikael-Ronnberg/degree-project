@@ -10,28 +10,30 @@ import { getArticles } from "../../services/ArticleServices";
 import { Link } from "react-router-dom";
 
 export const Articles = () => {
-  const { articles, setArticles } = useArticlesStore();
+  const { articles, setArticles, markPageAsLoaded, isPageLoaded } =
+    useArticlesStore();
   const [currentPage, setCurrentPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
 
   useEffect(() => {
     const fetchArticles = async () => {
-      if (articles.length === 0 || hasMore) {
+      if (!isPageLoaded(currentPage)) {
         const fetchedArticles = await getArticles(currentPage, 10);
         if (fetchedArticles.length < 10) {
           setHasMore(false);
         }
         setArticles([...articles, ...fetchedArticles]);
-        setCurrentPage(currentPage + 1);
+        markPageAsLoaded(currentPage);
       }
     };
 
     fetchArticles();
-  }, [currentPage]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentPage, articles, markPageAsLoaded, isPageLoaded]);
 
   const loadMoreArticles = () => {
     if (hasMore) {
-      setCurrentPage(currentPage + 1);
+      setCurrentPage((prevPage) => prevPage + 1);
     }
   };
 
