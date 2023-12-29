@@ -3,6 +3,10 @@ import { useState, useEffect } from "react";
 import { fetchLocations } from "../../../services/MapServices";
 import { useLocationStore } from "../../../store/useLocationsStore";
 import { SubLocation } from "../../../model/LocationsInterfaces";
+import {
+  searchDropdownStyles,
+  searchInputStyles,
+} from "../style/locationStyle";
 
 export const SearchInput = () => {
   const { setSelectLocation, listLocations, setListLocations } =
@@ -26,7 +30,7 @@ export const SearchInput = () => {
       } else {
         setIsDropdownOpen(false);
       }
-    }, 500);
+    }, 300);
 
     return () => clearTimeout(timerId);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -35,15 +39,12 @@ export const SearchInput = () => {
   return (
     <>
       <Input
-        variant="outline"
-        border="1px solid black"
-        rounded="small"
-        m="1rem"
+        {...searchInputStyles}
         value={searchInput}
         onChange={(e) => setSearchInput(e.target.value)}
       />
       {isDropdownOpen && (
-        <Box position="absolute" w="60vw" bg="white" zIndex="dropdown">
+        <Box {...searchDropdownStyles}>
           <List>
             {listLocations.map((item) => (
               <ListItem

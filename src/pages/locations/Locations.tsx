@@ -3,10 +3,11 @@ import { LeafletMap } from "./feature/LeafletMap";
 import { SearchInput } from "./feature/SearchInput";
 import {
   formContainerStyles,
+  locationPageStyles,
   mapBoxStyles,
   mapContainerStyles,
-  pageContainerStyles,
-} from "./style/styleLocations";
+  mapHeadingStyles,
+} from "./style/locationStyle";
 import { LocationsForm } from "./feature/LocationsForm";
 import { useLocationStore } from "../../store/useLocationsStore";
 
@@ -15,9 +16,11 @@ export const Locations = () => {
 
   return (
     <>
-      <Flex {...pageContainerStyles}>
+      <Flex {...locationPageStyles}>
         <Flex {...mapContainerStyles}>
-          <Heading>Tipsa om en plats! Eller se vart vi snorklat</Heading>
+          <Heading {...mapHeadingStyles}>
+            Tipsa om en plats! Eller se vart vi snorklat
+          </Heading>
           <Box {...mapBoxStyles}>
             <LeafletMap />
           </Box>

@@ -1,4 +1,4 @@
-import { Flex, HStack, Button, Text } from "@chakra-ui/react";
+import { Flex, HStack, Button, Text, Link } from "@chakra-ui/react";
 import { deleteSubLocation } from "../../../services/MapServices";
 import { TransformedSubLocationResponse } from "../../../model/LocationsInterfaces";
 import {
@@ -11,6 +11,8 @@ interface SubLocationCardProps {
 }
 
 export const SubLocationCard = ({ location }: SubLocationCardProps) => {
+  const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${location.lat},${location.lng}`;
+
   return (
     <>
       <Flex key={location.id} {...adminCardStyles}>
@@ -33,12 +35,11 @@ export const SubLocationCard = ({ location }: SubLocationCardProps) => {
           <Text {...adminCardTextStyles}>{location.message}</Text>
         </HStack>
         <HStack spacing="2rem">
-          <Text {...adminCardTextStyles}>Lattitud: </Text>
-          <Text>{location.lat}</Text>
-        </HStack>
-        <HStack spacing="2rem">
-          <Text {...adminCardTextStyles}>Longitud: </Text>
-          <Text>{location.lng}</Text>
+          <Text>
+            <Link href={googleMapsUrl} isExternal color="brand.blue">
+              Öppna platsen i Google Maps
+            </Link>
+          </Text>
         </HStack>
         <HStack spacing="2rem">
           <Text {...adminCardTextStyles}>Skapad: </Text>

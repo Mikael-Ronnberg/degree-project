@@ -1,4 +1,4 @@
-import { Flex, HStack, Button, Text } from "@chakra-ui/react";
+import { Flex, HStack, Button, Text, Link } from "@chakra-ui/react";
 import { TransformedOurLocationResponse } from "../../../model/LocationsInterfaces";
 import { deleteOurLocation } from "../../../services/MapServices";
 import { UpdateOurLocationModal } from "./UpdateOurLocationModal";
@@ -12,6 +12,8 @@ interface OurLocationCardProps {
 }
 
 export const OurLocationCard = ({ location }: OurLocationCardProps) => {
+  const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${location.lat},${location.lng}`;
+
   return (
     <>
       <Flex {...adminCardStyles}>
@@ -56,12 +58,11 @@ export const OurLocationCard = ({ location }: OurLocationCardProps) => {
           <Text>{location.animals}</Text>
         </HStack>
         <HStack spacing="2rem">
-          <Text {...adminCardTextStyles}>Lattitud: </Text>
-          <Text>{location.lat}</Text>
-        </HStack>
-        <HStack spacing="2rem">
-          <Text {...adminCardTextStyles}>Longitud: </Text>
-          <Text>{location.lng}</Text>
+          <Text {...adminCardTextStyles}>
+            <Link href={googleMapsUrl} isExternal color="brand.blue">
+              Öppna platsen i Google Maps
+            </Link>
+          </Text>
         </HStack>
         <HStack spacing="2rem">
           <Text {...adminCardTextStyles}>Skapad: </Text>

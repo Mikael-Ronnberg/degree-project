@@ -5,7 +5,7 @@ import {
   formContentStyles,
   textareaStyles,
   inputStyles,
-} from "../style/styleLocations";
+} from "../style/locationStyle";
 
 import { useLocationStore } from "../../../store/useLocationsStore";
 import { submitLocation } from "../../../services/MapServices";
