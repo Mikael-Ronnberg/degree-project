@@ -42,30 +42,35 @@ export const Litter = () => {
         <Box
           animation={`${tireAnimation} infinite 20s linear`}
           onClick={() => openModal("other")}
+          cursor="pointer"
         >
           <Tire />
         </Box>
         <Box
           animation={`${glassAnimation} infinite 20s linear`}
           onClick={() => openModal("glass")}
+          cursor="pointer"
         >
           <Glass />
         </Box>
         <Box
           animation={`${metalAnimation} infinite 20s linear`}
           onClick={() => openModal("metal")}
+          cursor="pointer"
         >
           <Metal />
         </Box>
         <Box
           animation={`${plasticAnimation} infinite 20s linear`}
           onClick={() => openModal("plastic")}
+          cursor="pointer"
         >
           <Plastic />
         </Box>
         <Box
           animation={`${animalAnimation} infinite 10s linear`}
           onClick={() => openModal("animal")}
+          cursor="pointer"
         >
           <Animal />
         </Box>

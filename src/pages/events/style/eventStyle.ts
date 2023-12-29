@@ -2,6 +2,8 @@ import {
   BoxProps,
   FlexProps,
   HeadingProps,
+  ModalContentProps,
+  ModalHeaderProps,
   StackProps,
   TextProps,
 } from "@chakra-ui/react";
@@ -83,4 +85,28 @@ export const eventCardHeadingStyles: TextProps = {
 
 export const eventCardDescSyles: TextProps = {
   fontSize: { base: "1.1rem", md: "1.2rem", lg: "1.3rem" },
+};
+
+export const eventModalContentStyles: ModalContentProps = {
+  border: "solid 2px black",
+  m: { sm: "5rem", md: "10rem", lg: "16rem" },
+  rounded: "sm",
+};
+
+export const eventModalHeaderStyles: ModalHeaderProps = {
+  fontWeight: "bold",
+  fontSize: { base: "1.7rem", md: "2rem", lg: "2.1rem" },
+  outline: "solid black 2px",
+};
+
+export const eventModalContainerStyles: StackProps = {
+  display: "flex",
+  justifyContent: "center",
+  align: "stretch",
+};
+
+export const eventModalRedStackStyles: StackProps = {
+  gap: "3rem",
+  background: "brand.red",
+  p: "2rem",
 };
