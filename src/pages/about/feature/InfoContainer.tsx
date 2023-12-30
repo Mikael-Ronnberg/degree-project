@@ -12,9 +12,7 @@ export const InfoContainer = () => {
     <>
       <Grid {...infoGridStyles}>
         <GridItem {...infoHeadingItemStyles}>
-          <Heading color="white" {...infoHeadingStyles}>
-            Visste Du?
-          </Heading>
+          <Heading {...infoHeadingStyles}>Visste du att...</Heading>
         </GridItem>
         <GridItem {...infoTextItemStyles}>
           <Text {...infoTextStyles}>

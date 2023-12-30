@@ -3,10 +3,7 @@ import { Icon } from "@chakra-ui/react";
 export const Snorkel = () => {
   return (
     <>
-      <Icon
-        viewBox="0 0 164 164"
-        boxSize={{ base: "3rem", sm: "4rem", md: "5rem", lg: "8rem" }}
-      >
+      <Icon viewBox="0 0 164 164" boxSize={{ base: "10.5rem", lg: "11.5rem" }}>
         <svg fill="none" xmlns="http://www.w3.org/2000/svg">
           <g clipPath="url(#clip0_80_2276)">
             <path

@@ -15,10 +15,11 @@ export const IntroContainer = () => {
         </GridItem>
         <GridItem>
           <Text {...introTextStyles}>
-            Vi upptäckte kärleken för snorkling under utlandsresor. När vi
-            testade svenska vatten slogs vi av mängden skräp vi hittade under
-            ytan. Med tiden blev det en hobby att plocka så mycket skräp vi
-            kunde.
+            Svepa Botten började som en idé bland en grupp miljömedvetna dykare
+            och snorklare som ville göra en konkret skillnad för Sveriges unika
+            undervattensmiljöer. Grundat 2024, har vår organisation en liten
+            grupp entusiaster med en stark gemenskap av medlemmar som delar vår
+            passion för att skydda och bevara våra vatten.
           </Text>
         </GridItem>
       </Grid>

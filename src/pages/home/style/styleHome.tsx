@@ -12,29 +12,33 @@ export const homePageStyles: FlexProps = {
   align: "center",
   direction: "column",
   background: "white",
-  pt: "2rem",
+  pt: { base: "3rem", lg: "5rem" },
   w: "100vw",
   minH: "100vh",
   overflow: "hidden",
-  m: "auto",
 };
 
-export const heroContainerStyles: FlexProps = {
-  w: { base: "100vw", md: "95vw" },
-  h: "auto",
-  justify: "center",
-  align: "center",
-};
-
-export const blueWaveBoxStyles: BoxProps = {
-  w: { base: "100vw", md: "95vw" },
+export const heroContainerStyles: BoxProps = {
+  display: "flex",
+  justifyContent: "center",
+  background: "linear-gradient(to top,white, #eff3ff)",
+  height: "801px",
   overflow: "hidden",
-  // sx: {
-  //   contain: "strict",
-  // },
-  h: "30h",
-  borderRight: "2px solid black",
-  borderLeft: "2px solid black",
+  outline: "2px solid black",
+};
+
+export const heroBgBoxStyles: BoxProps = {
+  as: "svg",
+  height: "801px",
+  width: "auto",
+};
+
+export const heroIconBoxStyles: BoxProps = {
+  as: "svg",
+  position: "absolute",
+  top: "18%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
 };
 
 export const sandWaveBoxStyles: BoxProps = {
@@ -56,8 +60,9 @@ export const introContainerStyle: FlexProps = {
 };
 
 export const introWhiteBoxStyles: FlexProps = {
-  border: "solid black 2px",
-  w: { sm: "100vw", md: "95vw" },
+  outline: "solid black 2px",
+  w: "100vw",
+  maxW: "2061px",
   h: "auto",
   background: "white",
   justify: "center",

@@ -1,4 +1,4 @@
-import { Flex } from "@chakra-ui/react";
+import { Flex, VStack } from "@chakra-ui/react";
 import { aboutPageStyles } from "./style/aboutStyle";
 import { SnorkelContainer } from "./feature/SnorkelContainer";
 import { BlueContainer } from "./feature/BlueContainer";
@@ -9,10 +9,16 @@ export const About = () => {
   return (
     <>
       <Flex {...aboutPageStyles}>
-        <IntroContainer />
-        <SnorkelContainer />
-        <InfoContainer />
-        <BlueContainer />
+        <VStack spacing="10">
+          <VStack spacing="0">
+            <IntroContainer />
+            <SnorkelContainer />
+          </VStack>
+          <VStack overflow="hidden" outline="2px solid black">
+            <InfoContainer />
+            <BlueContainer />
+          </VStack>
+        </VStack>
       </Flex>
     </>
   );
