@@ -12,7 +12,7 @@ import {
   CreateEventFormValues,
   TransformedEventResponse,
   EventResponse,
-} from "../model/AdminInterfaces";
+} from "../model/EventsInterfaces";
 
 const eventCollectionRef = collection(db, "events");
 
