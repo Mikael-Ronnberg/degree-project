@@ -61,7 +61,7 @@ export const MobileMenu = ({ navItems, navType }: MobileMenuProps) => {
           <DrawerBody bgColor="white">
             <Grid {...mobileMenuStyles}>
               {navItems.map((navItem, i) => (
-                <Link to={navItem.to} key={i}>
+                <Link to={navItem.to} key={i} onClick={onClose}>
                   <GridItem
                     {...mobileMenuSectionStyles}
                     _hover={{ bg: navItem.bgColor, color: "white" }}
