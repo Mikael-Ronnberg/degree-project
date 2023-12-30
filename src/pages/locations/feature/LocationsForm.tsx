@@ -1,7 +1,6 @@
 import { Formik, FormikHelpers } from "formik";
 import { Flex, FormControl, Input, Button, Textarea } from "@chakra-ui/react";
 import {
-  formContainerStyles,
   formContentStyles,
   textareaStyles,
   inputStyles,
@@ -40,51 +39,49 @@ export const LocationsForm = () => {
     >
       {({ values, handleChange, handleBlur, handleSubmit }) => (
         <form onSubmit={handleSubmit}>
-          <Flex {...formContainerStyles}>
-            <FormControl>
-              <Flex {...formContentStyles}>
-                <Input
-                  {...inputStyles}
-                  name="name"
-                  placeholder="Namn (Valfritt)"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.name}
-                />
-                <Input
-                  {...inputStyles}
-                  name="email"
-                  placeholder="Email (Valfritt)"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.email}
-                />
-                <Textarea
-                  {...textareaStyles}
-                  name="message"
-                  placeholder="Meddelande"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.message}
-                />
-                <Input
-                  type="hidden"
-                  name="lat"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.lat}
-                />
-                <Input
-                  type="hidden"
-                  name="lon"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.lng}
-                />
-                <Button type="submit">Skicka tipset!</Button>
-              </Flex>
-            </FormControl>
-          </Flex>
+          <FormControl>
+            <Flex {...formContentStyles}>
+              <Input
+                {...inputStyles}
+                name="name"
+                placeholder="Namn (Valfritt)"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.name}
+              />
+              <Input
+                {...inputStyles}
+                name="email"
+                placeholder="Email (Valfritt)"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.email}
+              />
+              <Textarea
+                {...textareaStyles}
+                name="message"
+                placeholder="Meddelande"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.message}
+              />
+              <Input
+                type="hidden"
+                name="lat"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.lat}
+              />
+              <Input
+                type="hidden"
+                name="lon"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.lng}
+              />
+              <Button type="submit">Skicka tipset!</Button>
+            </Flex>
+          </FormControl>
         </form>
       )}
     </Formik>

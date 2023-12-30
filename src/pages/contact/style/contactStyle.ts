@@ -12,7 +12,7 @@ export const contactPageStyles: FlexProps = {
   align: "center",
   direction: "column",
   background: "white",
-  pt: "5rem",
+  pt: { base: "5rem", md: "5.5rem", lg: "7.5rem" },
   w: "100vw",
   gap: "5rem",
   minH: "100vh",
@@ -25,10 +25,11 @@ export const formWrapperStyles: FlexProps = {
   align: "center",
   direction: "column",
   gap: "2rem",
-  //   w: { base: "95vw", lg: "95vw" },
-  w: "100vw",
+  w: { base: "100vw", md: "95vw", xl: "1280px" },
   background: "brand.yellow",
   border: "2px solid black",
+  py: { base: "0.7rem", md: "1.7rem" },
+  px: { base: "1rem", md: "2.3rem" },
 };
 
 export const formContainerStyles: FlexProps = {
@@ -52,17 +53,20 @@ export const headingContainerStyles: FlexProps = {
 };
 
 export const formHeadingStyles: HeadingProps = {
-  fontSize: { base: "2rem", sm: "2rem", md: "2.6rem", lg: "3.5rem" },
+  fontSize: { base: "3.2rem", md: "2.6rem", lg: "3.5rem" },
+  textAlign: "center",
+  py: { base: "0.7rem", md: "1.7rem" },
+  px: { base: "1rem", md: "2.3rem" },
 };
 
 export const contactFormInputStyles: InputProps = {
-  w: { base: "90vw", sm: "90vw", md: "75vw", lg: "950px" },
+  w: { base: "90vw", sm: "90vw", md: "75vw", xl: "950px" },
   border: "2px solid black",
   rounded: "sm",
 };
 
 export const contactFormTextareaStyles: TextareaProps = {
-  w: { base: "90vw", sm: "90vw", md: "75vw", lg: "950px" },
+  w: { base: "90vw", sm: "90vw", md: "75vw", xl: "950px" },
   border: "2px solid black",
   rounded: "sm",
 };
@@ -72,8 +76,7 @@ export const supportWrapperStyles: FlexProps = {
   align: "center",
   direction: "column",
   gap: "2rem",
-  //   w: { base: "95vw", lg: "95vw" },
-  w: "100vw",
+  w: { base: "100vw", md: "95vw", xl: "1280px" },
   background: "brand.green",
   border: "2px solid black",
 };
@@ -84,8 +87,7 @@ export const supportContainerStyles: FlexProps = {
   direction: "column",
   gap: "2rem",
   p: "2rem",
-  w: { base: "95vw", lg: "95vw" },
-  //   background: "white",
+  w: { base: "100vw", md: "95vw", xl: "1280px" },
 };
 
 export const supportBoxWrapperStyles: BoxProps = {
@@ -102,6 +104,6 @@ export const supportQRStyles: FlexProps = {
   justify: "center",
   align: "center",
   background: "white",
-  w: "100vw",
+  w: "inherit",
   border: "2px solid black",
 };
