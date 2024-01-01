@@ -10,6 +10,7 @@ import {
 } from "./style/locationStyle";
 import { LocationsForm } from "./feature/LocationsForm";
 import { useLocationStore } from "../../store/useLocationsStore";
+import { LocationCheckbox } from "./feature/LocationCheckbox";
 
 export const Locations = () => {
   const { formSubmitted } = useLocationStore();
@@ -21,7 +22,7 @@ export const Locations = () => {
           <Heading {...mapHeadingStyles}>
             Tipsa om en plats! Eller se vart vi snorklat
           </Heading>
-
+          <LocationCheckbox />
           <Box {...mapBoxStyles}>
             <LeafletMap />
           </Box>
