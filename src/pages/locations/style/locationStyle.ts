@@ -1,5 +1,6 @@
 import {
   BoxProps,
+  CheckboxProps,
   FlexProps,
   HeadingProps,
   InputProps,
@@ -26,20 +27,22 @@ export const mapContainerStyles: FlexProps = {
   w: { base: "100vw", md: "95vw", xl: "1280px" },
   h: "80vh",
   border: "black 2px solid",
+  py: { base: "2.7rem", md: "1.7rem" },
+  px: { base: "1rem", md: "2.3rem" },
   direction: "column",
 };
 
 export const mapHeadingStyles: HeadingProps = {
-  fontSize: { base: "3rem", md: "3.2rem", lg: "3.5rem" },
+  fontSize: { base: "2rem", md: "2.4rem", lg: "3rem" },
   textAlign: "center",
-  py: { base: "0.7rem", md: "1.7rem" },
+  pb: { base: "4rem", md: "1.7rem" },
   px: { base: "1rem", md: "2.3rem" },
 };
 
 export const mapBoxStyles: BoxProps = {
   border: "black 2px solid",
-  w: "60vw",
-  h: "60vh",
+  w: { base: "60vw", md: "60vw", lg: "700px" },
+  h: { base: "50vw", md: "60vw", lg: "700px" },
   zIndex: "2",
 };
 
@@ -48,7 +51,7 @@ export const searchInputStyles: InputProps = {
   border: "2px solid black",
   background: "white",
   placeholder: "Sök Plats",
-  w: "60vw",
+  w: { base: "50vw", md: "60vw", lg: "700px" },
   rounded: "sm",
   m: "1rem",
 };
@@ -95,4 +98,23 @@ export const textareaStyles: TextareaProps = {
   w: "60vw",
   h: "40vh",
   m: "1rem",
+};
+
+export const mapCheckboxStyles: CheckboxProps = {
+  size: "lg",
+  rounded: "sm",
+  colorScheme: "grey",
+  iconColor: "black",
+  iconSize: "1rem",
+  sx: {
+    ".chakra-checkbox__control": {
+      bg: "white", //
+      borderWidth: "2px",
+      borderColor: "black",
+    },
+    ".chakra-checkbox__control[data-checked]": {
+      bg: "white",
+      borderColor: "black", //
+    },
+  },
 };

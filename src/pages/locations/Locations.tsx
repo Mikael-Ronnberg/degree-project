@@ -21,6 +21,7 @@ export const Locations = () => {
           <Heading {...mapHeadingStyles}>
             Tipsa om en plats! Eller se vart vi snorklat
           </Heading>
+
           <Box {...mapBoxStyles}>
             <LeafletMap />
           </Box>
