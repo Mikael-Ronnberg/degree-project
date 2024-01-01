@@ -9,15 +9,28 @@ import { SearchResultMarkers } from "./SearchResultMarkers";
 import { FitBounds } from "./FitBounds";
 import { useOurLocationsStore } from "../../../store/useOurLocationsStore";
 import { LocationResultMarkers } from "./LocationResultMarkers";
-import { icon } from "../../../components/icons/Pinpoint";
+import { blackPin } from "../../../components/icons/Pinpoint";
+import { useEffect } from "react";
+import { getOurLocations } from "../../../services/MapServices";
 
 export const LeafletMap = () => {
   const { selectLocation, listLocations } = useLocationStore();
-  const { ourLocations } = useOurLocationsStore();
+  const { ourLocations, setOurLocations, showLocation } =
+    useOurLocationsStore();
   const locationSelection: L.LatLngExpression = [
     selectLocation?.lat ? parseFloat(selectLocation.lat) : 0,
     selectLocation?.lon ? parseFloat(selectLocation.lon) : 0,
   ];
+
+  useEffect(() => {
+    const fetchOurLocations = async () => {
+      if (ourLocations.length === 0) {
+        const locations = await getOurLocations();
+        setOurLocations(locations);
+      }
+    };
+    fetchOurLocations();
+  });
 
   const locationLatLngs: [number, number][] = listLocations.map((location) => [
     parseFloat(location.lat),
@@ -38,9 +51,9 @@ export const LeafletMap = () => {
         />
         <LocationMarker />
         <SearchResultMarkers locations={listLocations} />
-        <LocationResultMarkers locations={ourLocations} />
+        {showLocation && <LocationResultMarkers locations={ourLocations} />}
         {selectLocation && (
-          <Marker position={locationSelection} icon={icon}>
+          <Marker position={locationSelection} icon={blackPin}>
             <Popup className="popup-content-wrapper">
               A pretty CSS3 popup. <br /> Easily customizable.
             </Popup>
