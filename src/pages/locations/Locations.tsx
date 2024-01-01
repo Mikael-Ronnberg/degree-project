@@ -1,46 +1,33 @@
-import { Box, Flex, Heading } from "@chakra-ui/react";
-import { LeafletMap } from "./feature/LeafletMap";
-import { SearchInput } from "./feature/SearchInput";
+import { Flex, Heading, VStack } from "@chakra-ui/react";
 import {
   formContainerStyles,
   locationPageStyles,
-  mapBoxStyles,
-  mapContainerStyles,
   mapHeadingStyles,
 } from "./style/locationStyle";
 import { LocationsForm } from "./feature/LocationsForm";
+import { MapContainer } from "./feature/MapContainer";
 import { useLocationStore } from "../../store/useLocationsStore";
-import { LocationCheckbox } from "./feature/LocationCheckbox";
 
 export const Locations = () => {
   const { formSubmitted } = useLocationStore();
-
   return (
     <>
       <Flex {...locationPageStyles}>
-        <Flex {...mapContainerStyles}>
-          <Heading {...mapHeadingStyles}>
-            Tipsa om en plats! Eller se vart vi snorklat
-          </Heading>
-          <LocationCheckbox />
-          <Box {...mapBoxStyles}>
-            <LeafletMap />
-          </Box>
-          <Box>
-            <SearchInput />
-          </Box>
-        </Flex>
+        <Heading {...mapHeadingStyles}>
+          Tipsa om en plats! Eller se vart vi snorklat
+        </Heading>
+        <MapContainer />
 
         <Flex {...formContainerStyles}>
-          {formSubmitted ? (
-            <Box>
+          <VStack>
+            {formSubmitted ? (
               <Heading>
                 Tack för ditt bidrag! Vi kollar på det så fort vi kan :D
               </Heading>
-            </Box>
-          ) : (
-            <LocationsForm />
-          )}
+            ) : (
+              <LocationsForm />
+            )}
+          </VStack>
         </Flex>
       </Flex>
     </>

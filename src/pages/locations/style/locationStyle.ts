@@ -4,6 +4,7 @@ import {
   FlexProps,
   HeadingProps,
   InputProps,
+  StackProps,
   TextareaProps,
 } from "@chakra-ui/react";
 
@@ -23,13 +24,23 @@ export const locationPageStyles: FlexProps = {
 export const mapContainerStyles: FlexProps = {
   justify: "center",
   align: "center",
-  background: "brand.pink",
+  // background: "brand.pink",
   w: { base: "100vw", md: "95vw", xl: "1280px" },
-  h: "80vh",
-  border: "black 2px solid",
-  py: { base: "2.7rem", md: "1.7rem" },
-  px: { base: "1rem", md: "2.3rem" },
+  h: "auto",
+  overflow: "hidden",
+  pb: "2.3rem",
+  // px: { base: "1rem", md: "2.3rem" },
   direction: "column",
+};
+
+export const mapContainerStackStyles: StackProps = {
+  w: { base: "100vw", md: "95vw", xl: "1280px" },
+  background: "brand.pink",
+  // py: { base: "2.7rem", md: "1.7rem" },
+  border: "black 2px solid",
+  borderBottom: "none",
+  gap: "2rem",
+  h: "auto",
 };
 
 export const mapHeadingStyles: HeadingProps = {

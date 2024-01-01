@@ -9,6 +9,7 @@ import {
 import { useLocationStore } from "../../../store/useLocationsStore";
 import { submitLocation } from "../../../services/MapServices";
 import { SubLocationsFormValues } from "../../../model/LocationsInterfaces";
+import { purpleButtonStyles } from "../../../components/buttons/style/buttonStyles";
 
 export const LocationsForm = () => {
   const { pinLocation, setPinLocation, setFormSubmitted } = useLocationStore();
@@ -79,7 +80,9 @@ export const LocationsForm = () => {
                 onBlur={handleBlur}
                 value={values.lng}
               />
-              <Button type="submit">Skicka tipset!</Button>
+              <Button type="submit" {...purpleButtonStyles}>
+                Skicka tipset!
+              </Button>
             </Flex>
           </FormControl>
         </form>

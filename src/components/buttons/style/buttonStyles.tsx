@@ -27,7 +27,7 @@ export const purpleButtonStyles: ButtonProps = {
   color: "white",
   background: "brand.purple",
   _hover: {
-    bgColor: "#0efffF",
+    bgColor: "#d2befb",
     color: "black",
   },
 };
