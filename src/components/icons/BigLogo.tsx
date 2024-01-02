@@ -5,7 +5,7 @@ export const BigLogo = () => {
     <>
       <Icon
         viewBox="0 0 351 154"
-        boxSize={{ base: "30rem", md: "35rem", lg: "45rem" }}
+        boxSize={{ base: "23rem", md: "33rem", lg: "45rem" }}
       >
         <svg fill="none" xmlns="http://www.w3.org/2000/svg">
           <path

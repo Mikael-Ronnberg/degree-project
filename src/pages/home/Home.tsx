@@ -1,10 +1,9 @@
-import { Box, Flex } from "@chakra-ui/react";
+import { Flex } from "@chakra-ui/react";
 import { Hero } from "./feature/Hero";
 import { LitterContainer } from "./feature/LitterContainer";
 import { IntroContainer } from "./feature/IntroContainer";
-import { homePageStyles, sandWaveBoxStyles } from "./style/styleHome";
+import { homePageStyles } from "./style/styleHome";
 
-import { SandWave } from "../../components/waves/SandWave";
 import "./style/style.css";
 
 export const Home = () => {
@@ -14,9 +13,9 @@ export const Home = () => {
         <Hero />
         <IntroContainer />
         <LitterContainer />
-        <Box {...sandWaveBoxStyles}>
+        {/* <Box {...sandWaveBoxStyles}>
           <SandWave />
-        </Box>
+        </Box> */}
       </Flex>
     </>
   );

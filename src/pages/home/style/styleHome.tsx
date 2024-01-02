@@ -20,9 +20,14 @@ export const homePageStyles: FlexProps = {
 
 export const heroContainerStyles: BoxProps = {
   display: "flex",
+  h: "666px",
+  w: "100vw",
+  alignContent: "center",
   justifyContent: "center",
   background: "linear-gradient(to top,white, #eff3ff)",
-  height: "801px",
+  backgroundImage: "url(/svg/Background.svg)",
+  backgroundRepeat: "no-repeat",
+  backgroundPosition: "center",
   overflow: "hidden",
   outline: "2px solid black",
 };
@@ -74,7 +79,7 @@ export const introWhiteBoxStyles: FlexProps = {
 export const introWhiteTextStyles: TextProps = {
   textAlign: "center",
   color: "black",
-  fontSize: { sm: "1.3rem", md: "1.7rem", lg: "1.9rem" },
+  fontSize: { base: "1rem", md: "1.2rem", lg: "1.3rem" },
   fontWeight: "bold",
 };
 

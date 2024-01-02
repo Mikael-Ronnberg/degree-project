@@ -12,8 +12,11 @@ export const IntroContainer = () => {
       <Flex {...introContainerStyle}>
         <Flex {...introWhiteBoxStyles}>
           <Text {...introWhiteTextStyles}>
-            Med snorkel rensar vi våra vatten från skräp och skyddar havslivet.
-            Ingen erfarenhet behövs, bara passion för naturen.
+            Svepa Botten är en ideell förening dedikerad till att skydda och
+            bevara den svenska undervattensmiljön. Vårt mål är att rena våra
+            vatten från skräp som metall, glas, plast och annat avfall, samt att
+            rapportera invasiva arter. Genom snorkling utforskar och rensar våra
+            engagerade medlemmar Sveriges vackra men sårbara vattenmiljöer.
           </Text>
         </Flex>
         <GreyButton buttonText="Gå Med Du Också!" linkTo="/contact" />
@@ -24,7 +27,6 @@ export const IntroContainer = () => {
 
 // Hem
 // Välkommen till Svepa Botten!
-// Svepa Botten är en ideell förening dedikerad till att skydda och bevara den svenska undervattensmiljön. Vår mission är att rena våra vatten från skräp som metall, glas, plast och annat avfall, samt att övervaka och rapportera invasiva arter. Genom snorkling utforskar och rensar våra engagerade medlemmar Sveriges vackra men sårbara vattenmiljöer.
 
 // Om Oss
 // Vår Historia och Vision
