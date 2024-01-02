@@ -1,16 +1,22 @@
-import { Flex, Heading } from "@chakra-ui/react";
+import { Flex, Heading, Box } from "@chakra-ui/react";
 import { Litter } from "./Litter";
-import { litterContainerStyles } from "../style/styleHome";
+import { litterContainerStyles, litterHeadingStyles } from "../style/styleHome";
+import { SmallWave } from "../../../components/waves/SmallWave";
+import { JoinContainer } from "./JoinContainer";
 
 export const LitterContainer = () => {
   return (
     <>
       <Flex {...litterContainerStyles}>
-        <Heading color="white" textAlign="center">
+        <Heading {...litterHeadingStyles}>
           Vanligaste Saker Vi Hittar och Plockar Upp
         </Heading>
         <Litter />
+        <Box position="relative" bottom="-2px">
+          <SmallWave color="#e3b059" />
+        </Box>
       </Flex>
+      <JoinContainer />
     </>
   );
 };

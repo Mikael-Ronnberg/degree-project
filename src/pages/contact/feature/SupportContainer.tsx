@@ -61,3 +61,6 @@ export const SupportContainer = () => {
     </>
   );
 };
+
+//Ditt Bidrag Gör Skillnad
+// Din donation hjälper oss att fortsätta vårt arbete med att rena svenska vatten och skydda marina ekosystem. Varje bidrag, stort som litet, bidrar till inköp av utrustning, utbildningsmaterial och organisering av våra rensningsaktiviteter.

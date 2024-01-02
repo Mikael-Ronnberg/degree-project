@@ -1,8 +1,11 @@
 import {
   BoxProps,
   FlexProps,
+  GridItemProps,
   GridProps,
+  HeadingProps,
   ModalContentProps,
+  StackProps,
   TextProps,
   keyframes,
 } from "@chakra-ui/react";
@@ -32,39 +35,27 @@ export const heroContainerStyles: BoxProps = {
   outline: "2px solid black",
 };
 
-export const heroBgBoxStyles: BoxProps = {
-  as: "svg",
-  height: "801px",
-  width: "auto",
-};
-
-export const heroIconBoxStyles: BoxProps = {
-  as: "svg",
-  position: "absolute",
-  top: "18%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-};
-
-export const sandWaveBoxStyles: BoxProps = {
-  w: { base: "100vw" },
-  background: "#e3b059",
-  h: "30vh",
-};
+// export const sandWaveBoxStyles: BoxProps = {
+//   w: { base: "100vw" },
+//   background: "#e3b059",
+//   h: "30vh",
+// };
 
 export const introContainerStyle: FlexProps = {
   background: "brand.blue",
-  w: { base: "100vw", md: "95vw" },
+  w: { base: "100vw" },
   h: "auto",
   justify: "center",
   align: "center",
   direction: "column",
-  gap: "5rem",
+  gap: "2rem",
   borderRight: "2px solid black",
   borderLeft: "2px solid black",
+  pb: { base: "4rem", md: "5rem" },
+  // px: { base: "1rem", md: "2.3rem" },
 };
 
-export const introWhiteBoxStyles: FlexProps = {
+export const introWelcomeStyles: FlexProps = {
   outline: "solid black 2px",
   w: "100vw",
   maxW: "2061px",
@@ -76,23 +67,127 @@ export const introWhiteBoxStyles: FlexProps = {
   py: "1rem",
 };
 
-export const introWhiteTextStyles: TextProps = {
+export const introWelcomeTextStyles: TextProps = {
   textAlign: "center",
   color: "black",
-  fontSize: { base: "1rem", md: "1.2rem", lg: "1.3rem" },
+  fontSize: { base: "2.5rem", md: "3.2rem", lg: "3.3rem" },
   fontWeight: "bold",
 };
 
-export const litterContainerStyles: FlexProps = {
+export const introBlueFlexStyles: FlexProps = {
   background: "brand.blue",
-  w: { sm: "100vw", md: "95vw" },
-  minH: "100vh",
-  borderRight: "solid black 2px",
-  borderLeft: "solid black 2px",
+  w: "100vw",
+  h: "auto",
   justify: "center",
   align: "center",
   direction: "column",
-  gap: "3rem",
+};
+
+export const introWhiteStackStyles: StackProps = {
+  w: { base: "100vw", md: "95vw", xl: "1280px" },
+  h: "auto",
+  border: "2px solid black",
+  background: "white",
+};
+
+export const introStackHeadingStyles: BoxProps = {
+  w: { base: "100vw", md: "95vw", xl: "1280px" },
+  h: "auto",
+  outline: "2px solid black",
+  background: "white",
+};
+
+export const introGridStyles: GridProps = {
+  templateColumns: { base: "repeat(1, 1fr)", md: "repeat(2, 1fr)" },
+  w: { base: "100vw", md: "95vw", xl: "1280px" },
+  h: "auto",
+  minH: "50vh",
+};
+
+export const introTextGridItemStyles: GridItemProps = {
+  background: "white",
+  h: "auto",
+  outline: "2px solid black",
+};
+
+export const introGridHeadingStyles: HeadingProps = {
+  background: "brand.darkPink",
+  textAlign: "center",
+  fontSize: { base: "2rem", md: "2.2rem", lg: "2.4rem" },
+  outline: "2px solid black",
+  color: "white",
+  px: { base: "1rem", md: "0.5rem", lg: "2.2rem" },
+  py: "1rem",
+};
+
+export const introTextStyles: TextProps = {
+  textAlign: { base: "center" },
+  color: "black",
+  fontSize: { base: "1rem", md: "1.2rem", lg: "1.3rem" },
+  fontWeight: "bold",
+  p: "1.5rem",
+};
+
+export const introEarthGridItemStyles: GridItemProps = {
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  background: "#2fadf1",
+  h: "auto",
+  outline: "2px solid black",
+  py: { base: "2rem", md: "1rem" },
+};
+
+export const aboutPinkCurveStyles: BoxProps = {
+  w: { base: "100vw" },
+  minH: "88px",
+  backgroundImage: "url(/svg/pinkCurveBig.svg)",
+  backgroundRepeat: "no-repeat",
+  backgroundPosition: "top",
+  backgroundSize: "fit",
+  position: "relative",
+  top: "-40px",
+  // py: { base: "2rem", md: "2.3rem", lg: "2.4rem" },
+};
+
+export const aboutContainerStackStyles: StackProps = {
+  background: "brand.pink",
+  spacing: "2rem",
+  w: "100vw",
+  position: "relative",
+  top: "-88px",
+  pt: "5rem",
+  pb: "5rem",
+  borderBottom: "2px solid black",
+};
+
+// export const aboutStackStyles: StackProps = {
+//   maxW: { base: "95vw", md: "80vw", lg: "1000px" },
+//   h: "50vh",
+//   background: "white",
+
+//   border: "2px solid black",
+//   // borderRadius: "5rem",
+// };
+
+export const litterContainerStyles: FlexProps = {
+  background: "brand.blue",
+  w: { base: "100vw", md: "95vw", xl: "1280px" },
+  h: "auto",
+  border: "solid black 2px",
+  borderBottom: "none",
+  justify: "center",
+  align: "center",
+  direction: "column",
+  overflow: "hidden",
+};
+
+export const litterHeadingStyles: HeadingProps = {
+  color: "white",
+  textAlign: "center",
+  fontSize: { base: "1.7rem", md: "2rem", lg: "2.2rem" },
+  px: { base: "1rem", md: "1.5em", lg: "2.2rem" },
+  py: { base: "2rem", md: "2.5em", lg: "3.5rem" },
 };
 
 export const litterIconsStyles: GridProps = {
@@ -121,6 +216,26 @@ export const litterCardStyles: FlexProps = {
   align: "center",
   direction: "column",
   p: "2rem",
+};
+
+export const joinContainerStackStyles: StackProps = {
+  background: "#e3b059",
+  w: { base: "100vw", md: "95vw", xl: "1280px" },
+  border: "2px solid black",
+  borderTop: "none",
+};
+
+export const joinTextStackStyles: StackProps = {
+  w: { base: "100vw", xl: "1300px" },
+  outline: "2px solid black",
+  spacing: "5rem",
+  background: "white",
+  m: "1rem",
+};
+
+export const joinTextStyles: TextProps = {
+  w: " 40vw",
+  fontSize: { base: "1rem", md: "1.2rem", lg: "1.3rem" },
 };
 
 export const tireAnimation = keyframes`
