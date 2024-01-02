@@ -1,4 +1,5 @@
 import {
+  Button,
   FormControl,
   FormLabel,
   Input,
@@ -7,18 +8,15 @@ import {
   VisuallyHidden,
 } from "@chakra-ui/react";
 import { Formik } from "formik";
-import { useState } from "react";
 import {
   contactFormInputStyles,
   contactFormTextareaStyles,
+  formStackStyles,
 } from "../style/contactStyle";
-
-export interface ContactValues {
-  name: string;
-  email: string;
-  question: string;
-  message: string;
-}
+import emailjs from "@emailjs/browser";
+import { ContactValues } from "../../../model/GlobalInterfaces";
+import { purpleButtonStyles } from "../../../components/buttons/style/buttonStyles";
+import { useState } from "react";
 
 export const ContactForm = () => {
   const [submitted, setSubmitted] = useState(false);
@@ -29,10 +27,25 @@ export const ContactForm = () => {
     message: "",
   };
 
-  const onSubmit = (values: ContactValues) => {
-    console.log("Form data", values);
-
-    setSubmitted(true);
+  const handleFormSubmit = async (values: ContactValues) => {
+    try {
+      await emailjs.send(
+        import.meta.env.VITE_APP_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID,
+        {
+          from_name: values.name,
+          to_name: "Svepa Botten Gänget",
+          from_email: values.email,
+          to_email: "mikael.rnnberg@gmail.com",
+          question: values.question,
+          message: values.message,
+        },
+        import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY
+      );
+      setSubmitted(true);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
@@ -40,64 +53,69 @@ export const ContactForm = () => {
       {!submitted && (
         <Formik
           initialValues={initialValues}
-          onSubmit={onSubmit}
+          onSubmit={handleFormSubmit}
           enableReinitialize
         >
           {({ values, handleChange, handleBlur, handleSubmit }) => (
             <form onSubmit={handleSubmit}>
               <FormControl>
-                <VStack spacing="2rem">
-                  <FormLabel htmlFor="name" as={VisuallyHidden}>
-                    Namn
-                  </FormLabel>
-                  <Input
-                    {...contactFormInputStyles}
-                    id="name"
-                    name="name"
-                    placeholder="Namn"
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    value={values.name}
-                  />
-                  <FormLabel htmlFor="email" as={VisuallyHidden}>
-                    Email
-                  </FormLabel>
-                  <Input
-                    {...contactFormInputStyles}
-                    id="email"
-                    name="email"
-                    placeholder="Email"
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    value={values.email}
-                  />
-                  <FormLabel htmlFor="email" as={VisuallyHidden}>
-                    Vad gäller din fråga?
-                  </FormLabel>
-                  <Input
-                    {...contactFormInputStyles}
-                    id="question"
-                    name="question"
-                    placeholder="Fråga"
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    value={values.question}
-                  />
-                  <FormLabel htmlFor="message" as={VisuallyHidden}>
-                    Skriv ditt meddelande här
-                  </FormLabel>
-                  <Textarea
-                    {...contactFormTextareaStyles}
-                    id="message"
-                    name="message"
-                    placeholder="Skriv ditt meddelande här"
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    value={values.message}
-                  />
-                  {/* <HStack spacing="2rem">
-                    <Button type="submit">Skicka</Button>
-                  </HStack> */}
+                <VStack spacing="3rem">
+                  <VStack {...formStackStyles}>
+                    <FormLabel htmlFor="name" as={VisuallyHidden}>
+                      Namn
+                    </FormLabel>
+                    <Input
+                      {...contactFormInputStyles}
+                      required={true}
+                      id="name"
+                      name="name"
+                      placeholder="Namn"
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      value={values.name}
+                    />
+                    <FormLabel htmlFor="email" as={VisuallyHidden}>
+                      Email
+                    </FormLabel>
+                    <Input
+                      {...contactFormInputStyles}
+                      required={true}
+                      id="email"
+                      name="email"
+                      placeholder="Email"
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      value={values.email}
+                    />
+                    <FormLabel htmlFor="email" as={VisuallyHidden}>
+                      Vad gäller din fråga?
+                    </FormLabel>
+                    <Input
+                      {...contactFormInputStyles}
+                      id="question"
+                      name="question"
+                      placeholder="Fråga"
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      value={values.question}
+                    />
+                    <FormLabel htmlFor="message" as={VisuallyHidden}>
+                      Skriv ditt meddelande här
+                    </FormLabel>
+                    <Textarea
+                      {...contactFormTextareaStyles}
+                      required={true}
+                      id="message"
+                      name="message"
+                      placeholder="Skriv ditt meddelande här"
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      value={values.message}
+                    />
+                  </VStack>
+                  <Button type="submit" {...purpleButtonStyles}>
+                    Skicka
+                  </Button>
                 </VStack>
               </FormControl>
             </form>

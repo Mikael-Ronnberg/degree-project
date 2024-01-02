@@ -1,26 +1,31 @@
-import { Flex, Heading } from "@chakra-ui/react";
+import { Flex, Heading, Box, Grid, GridItem } from "@chakra-ui/react";
 import {
-  formContainerStyles,
+  formGridStyles,
+  formGriditemYellowBGStyles,
+  formGriditemYellowCurveStyles,
   formHeadingStyles,
   formWrapperStyles,
-  headingContainerStyles,
+  headingBoxStyles,
 } from "../style/contactStyle";
+
 import { ContactForm } from "./ContactForm";
-import { PurpleButton } from "../../../components/buttons/PurpleButton";
 
 export const FormContainer = () => {
   return (
     <>
       <Flex {...formWrapperStyles}>
-        <Flex {...headingContainerStyles}>
-          <Heading {...formHeadingStyles}>
-            Har du någon fråga eller något du undrar över?
-          </Heading>
-        </Flex>
-        <Flex {...formContainerStyles}>
-          <ContactForm />
-        </Flex>
-        <PurpleButton buttonText="Skicka" />
+        <Grid {...formGridStyles}>
+          <GridItem {...formGriditemYellowCurveStyles}>
+            <Box {...headingBoxStyles}>
+              <Heading {...formHeadingStyles}>
+                Har du någon fråga eller något du undrar över?
+              </Heading>
+            </Box>
+          </GridItem>
+          <GridItem {...formGriditemYellowBGStyles}>
+            <ContactForm />
+          </GridItem>
+        </Grid>
       </Flex>
     </>
   );

@@ -1,8 +1,11 @@
 import {
   BoxProps,
   FlexProps,
+  GridItemProps,
+  GridProps,
   HeadingProps,
   InputProps,
+  StackProps,
   TextProps,
   TextareaProps,
 } from "@chakra-ui/react";
@@ -13,8 +16,9 @@ export const contactPageStyles: FlexProps = {
   direction: "column",
   background: "white",
   pt: { base: "5rem", md: "5.5rem", lg: "7.5rem" },
+  pb: { base: "2rem", md: "2.5rem", lg: "3rem" },
   w: "100vw",
-  gap: "5rem",
+  gap: "2rem",
   minH: "100vh",
   overflow: "hidden",
   m: "auto",
@@ -25,35 +29,55 @@ export const formWrapperStyles: FlexProps = {
   align: "center",
   direction: "column",
   gap: "2rem",
-  w: { base: "100vw", md: "95vw", xl: "1280px" },
-  background: "brand.yellow",
-  border: "2px solid black",
   py: { base: "0.7rem", md: "1.7rem" },
   px: { base: "1rem", md: "2.3rem" },
 };
 
-export const formContainerStyles: FlexProps = {
-  justify: "center",
-  align: "center",
-  direction: "column",
-  gap: "2rem",
-  p: "2rem",
-  h: "auto",
-  maxW: { base: "95vw", sm: "95vw", md: "80vw", lg: "1000px" },
-  background: "white",
-  outline: "2px solid black",
+export const formGridStyles: GridProps = {
+  gridTemplate: "repeat(2, 1fr)",
 };
 
-export const headingContainerStyles: FlexProps = {
+export const formGriditemYellowCurveStyles: GridItemProps = {
+  w: { base: "100vw", md: "95vw", xl: "1280px" },
+  display: "flex",
+  justifyContent: "center",
+  background: "url(/svg/yellowCurve.svg)",
+  backgroundRepeat: "no-repeat",
+  backgroundPosition: "bottom",
+  backgroundSize: "contain",
+  h: "auto",
+  p: "1rem",
+};
+export const formGriditemYellowBGStyles: GridItemProps = {
+  w: { base: "100vw", md: "95vw", xl: "1280px" },
+  background: "brand.yellow",
+  h: "auto",
+  border: "1px solid black",
+  borderTop: "none",
+  p: "1rem",
+  mx: { base: "none", lg: "-.5px" },
+  position: "relative",
+  top: "-3",
+};
+
+export const formStackStyles: StackProps = {
+  background: "white",
+  maxW: { base: "95vw", md: "80vw", lg: "1000px" },
+  h: "auto",
   outline: "2px solid black",
-  justify: "center",
-  align: "center",
-  maxW: { base: "95vw", sm: "95vw", md: "80vw", lg: "1000px" },
+  p: "2rem",
+  spacing: "2rem",
+};
+
+export const headingBoxStyles: BoxProps = {
+  outline: "2px solid black",
+  h: "auto",
+  maxW: { base: "95vw", md: "80vw", lg: "1000px" },
   background: "white",
 };
 
 export const formHeadingStyles: HeadingProps = {
-  fontSize: { base: "3.2rem", md: "2.6rem", lg: "3.5rem" },
+  fontSize: { base: "2rem", md: "2.2rem", lg: "3rem" },
   textAlign: "center",
   py: { base: "0.7rem", md: "1.7rem" },
   px: { base: "1rem", md: "2.3rem" },
@@ -71,39 +95,116 @@ export const contactFormTextareaStyles: TextareaProps = {
   rounded: "sm",
 };
 
+export const purpleWaveStackStyles: StackProps = {
+  w: { base: "100vw" },
+  spacing: "10vh",
+  minH: "50vh",
+  border: "2px solid black",
+  borderBottom: "none",
+  background: "brand.pink",
+  backgroundImage: "url(/svg/purpleWaves.svg)",
+  backgroundRepeat: "no-repeat",
+  backgroundPosition: "bottom",
+  backgroundSize: "fit",
+  py: { base: "2rem", md: "2.3rem", lg: "2.4rem" },
+};
+
+export const pinkTextStyles: TextProps = {
+  fontSize: { base: "3rem", md: "3.4rem", lg: "3.5rem" },
+};
+
+export const purpleBoxStyles: BoxProps = {
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  h: "20vh",
+  w: { base: "90vw", sm: "90vw", md: "75vw", xl: "950px" },
+};
+
+export const purpleTextStyles: TextProps = {
+  color: "white",
+  textAlign: "center",
+  fontSize: { base: "1rem", md: "1.2rem", lg: "1.3rem" },
+};
+
 export const supportWrapperStyles: FlexProps = {
   justify: "center",
   align: "center",
   direction: "column",
-  gap: "2rem",
+  py: { base: "0.7rem", md: "1.7rem" },
+  px: { base: "1rem", md: "2.3rem" },
+};
+
+export const supportGridStyles: GridProps = {
+  gridTemplate: "repeat(2, 1fr)",
+};
+
+export const supportGridItemGreenBGStyles: GridItemProps = {
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  flexDirection: "column",
   w: { base: "100vw", md: "95vw", xl: "1280px" },
   background: "brand.green",
-  border: "2px solid black",
-};
-
-export const supportContainerStyles: FlexProps = {
-  justify: "center",
-  align: "center",
-  direction: "column",
-  gap: "2rem",
-  p: "2rem",
-  w: { base: "100vw", md: "95vw", xl: "1280px" },
-};
-
-export const supportBoxWrapperStyles: BoxProps = {
-  w: { base: "90vw", sm: "90vw", md: "75vw", lg: "950px" },
   h: "auto",
+  borderRight: "1px solid black",
+  borderLeft: "1px solid black",
+  borderTop: "1px solid black",
+  p: "1rem",
+  position: "relative",
+  top: "3",
+};
+
+export const supportGridItemGreenCurveStyles: GridItemProps = {
+  w: { base: "100vw", md: "95vw", xl: "1280px" },
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  flexDirection: "column",
+  background: "url(/svg/greenCurve.svg)",
+  backgroundRepeat: "no-repeat",
+  backgroundPosition: "top",
+  backgroundSize: "contain",
+  minH: "185px",
+  p: "1rem",
+};
+
+export const supportTextBoxStyles: BoxProps = {
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  background: "white",
+  border: "2px black solid",
+  h: "auto",
+  w: { base: "90vw", sm: "90vw", md: "75vw", xl: "950px" },
+  py: { base: "0.7rem", md: "1.7rem" },
+  px: { base: "1rem", md: "2.3rem" },
+  mb: "2rem",
 };
 
 export const supportTextStyles: TextProps = {
-  fontSize: { base: "1rem", sm: "1rem", md: "1.5rem", lg: "2rem" },
+  fontSize: { base: "1rem", md: "1.2rem", lg: "1.3rem" },
   color: "black",
+  textAlign: "center",
 };
 
-export const supportQRStyles: FlexProps = {
-  justify: "center",
-  align: "center",
+export const supportImageBoxStyles: BoxProps = {
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  h: "auto",
   background: "white",
-  w: "inherit",
-  border: "2px solid black",
+  border: "2px black solid",
+  w: { base: "90vw", sm: "90vw", md: "75vw", xl: "950px" },
+};
+
+export const supportSocialsBoxStyles: BoxProps = {
+  display: "flex",
+  justifyContent: "space-evenly",
+  alignItems: "center",
+  background: "white",
+  border: "2px black solid",
+  p: "1rem",
+  h: "auto",
+  w: { base: "90vw", sm: "90vw", md: "75vw", xl: "950px" },
 };

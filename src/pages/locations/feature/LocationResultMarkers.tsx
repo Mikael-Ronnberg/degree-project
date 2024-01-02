@@ -32,29 +32,39 @@ export const LocationResultMarkers = ({
                 </HStack>
               </HStack>
               <HStack spacing="1rem">
-                <HStack>
-                  <Text fontWeight="bold">Plast (kg):</Text>
-                  <Text>{location.plastic}</Text>
-                </HStack>
-                <HStack>
-                  <Text fontWeight="bold">Metall (kg):</Text>
-                  <Text>{location.metal}</Text>
-                </HStack>
+                {location.plastic > 0 && (
+                  <HStack>
+                    <Text fontWeight="bold">Plast (kg):</Text>
+                    <Text>{location.plastic}</Text>
+                  </HStack>
+                )}
+                {location.metal > 0 && (
+                  <HStack>
+                    <Text fontWeight="bold">Metall (kg):</Text>
+                    <Text>{location.metal}</Text>
+                  </HStack>
+                )}
               </HStack>
               <HStack spacing="1rem">
-                <HStack>
-                  <Text fontWeight="bold">Glas (kg):</Text>
-                  <Text>{location.glass}</Text>
-                </HStack>
-                <HStack>
-                  <Text fontWeight="bold">Övrigt (kg):</Text>
-                  <Text>{location.other}</Text>
-                </HStack>
+                {location.glass > 0 && (
+                  <HStack>
+                    <Text fontWeight="bold">Glas (kg):</Text>
+                    <Text>{location.glass}</Text>
+                  </HStack>
+                )}
+                {location.other > 0 && (
+                  <HStack>
+                    <Text fontWeight="bold">Övrigt (kg):</Text>
+                    <Text>{location.other}</Text>
+                  </HStack>
+                )}
               </HStack>
-              <HStack>
-                <Text fontWeight="bold">Djur (st):</Text>
-                <Text>{location.animals}</Text>
-              </HStack>
+              {location.animals > 0 && (
+                <HStack>
+                  <Text fontWeight="bold">Djur (st):</Text>
+                  <Text>{location.animals}</Text>
+                </HStack>
+              )}
             </VStack>
           </Popup>
         </Marker>

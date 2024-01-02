@@ -19,3 +19,10 @@ export interface TempDisplayTotal {
   description: string;
   article?: string;
 }
+
+export interface ContactValues {
+  name: string;
+  email: string;
+  question: string;
+  message: string;
+}
