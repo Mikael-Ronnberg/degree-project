@@ -16,10 +16,11 @@ import {
   supportGridStyles,
   supportTextStyles,
   supportSocialsBoxStyles,
+  supportHeadingStyles,
 } from "../style/contactStyle";
 import { Facebook } from "../../../components/icons/Facebook";
 import { Instagram } from "../../../components/icons/Instagram";
-import { Tiktok } from "../../../components/icons/Tiktok";
+import { Youtube } from "../../../components/icons/Tiktok";
 
 export const SupportContainer = () => {
   return (
@@ -28,32 +29,40 @@ export const SupportContainer = () => {
         <Grid {...supportGridStyles}>
           <GridItem {...supportGridItemGreenBGStyles}>
             <Box {...supportTextBoxStyles}>
+              <Heading {...supportHeadingStyles}>
+                Ditt Bidrag Gör Skillnad{" "}
+              </Heading>
               <Text {...supportTextStyles}>
-                Det går bra att Swisha oss men om ni vill donera på andra sätt
-                kan ni höra av er till oss. Alla donationer går oavkortat in i
-                organisationen igen i form av redskap och dylikt som behövs för
-                vårt ändamål.
+                Din donation hjälper oss att fortsätta vårt arbete med att rena
+                svenska vatten och skydda marina ekosystem. Varje bidrag, stort
+                som litet, bidrar till inköp av utrustning, utbildningsmaterial
+                och organisering av våra rensningsaktiviteter.
+              </Text>
+              <Text {...supportTextStyles}>
+                Swish-nummer 123 000 00 00 eller scanna koden. Vi är tacksamma
+                för alla bidrag!
               </Text>
             </Box>
             <Box {...supportImageBoxStyles}>
               <Image
-                src="https://firebasestorage.googleapis.com/v0/b/sb-project-a9f24.appspot.com/o/QR.png?alt=media&token=2899892e-c905-480a-aa90-0f453eb3685c"
+                src="/svg/QR.svg"
                 alt="QR Code"
+                w={{ base: "200px", md: "280px" }}
               />
             </Box>
-            <Heading textAlign="center" p="2rem">
-              Social?
+            <Heading textAlign="center" p="1rem">
+              Vill du veta mer?
             </Heading>
+            <Text p="0.5rem" fontWeight="bold">
+              Kolla in våra sociala Medier
+            </Text>
           </GridItem>
 
           <GridItem {...supportGridItemGreenCurveStyles}>
-            <Text p="2rem" fontWeight="bold">
-              Kolla in våra sociala Medier
-            </Text>
             <Box {...supportSocialsBoxStyles}>
               <Facebook />
               <Instagram />
-              <Tiktok />
+              <Youtube />
             </Box>
           </GridItem>
         </Grid>
@@ -61,6 +70,3 @@ export const SupportContainer = () => {
     </>
   );
 };
-
-//Ditt Bidrag Gör Skillnad
-// Din donation hjälper oss att fortsätta vårt arbete med att rena svenska vatten och skydda marina ekosystem. Varje bidrag, stort som litet, bidrar till inköp av utrustning, utbildningsmaterial och organisering av våra rensningsaktiviteter.

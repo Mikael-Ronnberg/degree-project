@@ -62,7 +62,7 @@ export const formGriditemYellowBGStyles: GridItemProps = {
 
 export const formStackStyles: StackProps = {
   background: "white",
-  maxW: { base: "95vw", md: "80vw", lg: "1000px" },
+  w: { base: "95vw", md: "80vw", xl: "1000px" },
   h: "auto",
   outline: "2px solid black",
   p: "2rem",
@@ -84,13 +84,13 @@ export const formHeadingStyles: HeadingProps = {
 };
 
 export const contactFormInputStyles: InputProps = {
-  w: { base: "90vw", sm: "90vw", md: "75vw", xl: "950px" },
+  w: { base: "90vw", md: "70vw", xl: "850px" },
   border: "2px solid black",
   rounded: "sm",
 };
 
 export const contactFormTextareaStyles: TextareaProps = {
-  w: { base: "90vw", sm: "90vw", md: "75vw", xl: "950px" },
+  w: { base: "90vw", md: "70vw", xl: "850px" },
   border: "2px solid black",
   rounded: "sm",
 };
@@ -173,6 +173,7 @@ export const supportTextBoxStyles: BoxProps = {
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
+  flexDirection: "column",
   background: "white",
   border: "2px black solid",
   h: "auto",
@@ -182,10 +183,18 @@ export const supportTextBoxStyles: BoxProps = {
   mb: "2rem",
 };
 
+export const supportHeadingStyles: HeadingProps = {
+  fontSize: { base: "1.4rem", md: "1.5rem", lg: "1.6rem" },
+  py: { base: "0.8rem", md: "1.7rem" },
+  color: "black",
+  textAlign: "center",
+};
+
 export const supportTextStyles: TextProps = {
   fontSize: { base: "1rem", md: "1.2rem", lg: "1.3rem" },
   color: "black",
   textAlign: "center",
+  py: { base: "0.8rem", md: "1.2rem" },
 };
 
 export const supportImageBoxStyles: BoxProps = {

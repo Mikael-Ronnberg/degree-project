@@ -1,4 +1,4 @@
-import { Text, keyframes, Flex } from "@chakra-ui/react";
+import { Text, keyframes, Flex, VStack } from "@chakra-ui/react";
 
 import { useEventsStore } from "../../../store/useEventsStore";
 import { useEffect, useState } from "react";
@@ -36,13 +36,17 @@ export const Marquee = () => {
 
   return (
     <Flex
-      w="1200px"
+      w="1280px"
       justify="flex-end"
-      border="2px solid black"
+      border="5px solid black"
+      borderRadius="20px"
       mb="2rem"
       overflow="hidden"
       background="brand.purple"
-      p="2rem"
+      backgroundImage="url(/svg/Line.svg)"
+      backgroundPosition="center"
+      backgroundRepeat="no-repeat"
+      p="1rem"
     >
       <Flex
         w="1200px"
@@ -55,30 +59,30 @@ export const Marquee = () => {
             align="center"
             justify="center"
             direction="column"
-            background="brand.green"
+            backgroundImage="url(/svg/calendarBG.svg)"
+            backgroundPosition="center"
+            backgroundSize="cover"
             w="200px"
             h="200px"
             mx="3rem"
-            borderRadius="50%"
-            border="2px solid black"
-            overflow="hidden"
+            // border="2px solid black"
+            // overflow="hidden"
           >
-            <Text
-              textAlign="center"
-              fontSize="0.8rem"
-              fontWeight="bold"
-              p="1rem"
-            >
-              {getSubstring(event.heading, 20)}
-            </Text>
-            <Text
-              textAlign="center"
-              fontSize="0.9rem"
-              fontWeight="bold"
-              p="1rem"
-            >
-              {convertDateFormat(event.date)}
-            </Text>
+            <VStack spacing="1rem">
+              <Text textAlign="center" fontSize="0.8rem" fontWeight="bold">
+                {convertDateFormat(event.date)}
+              </Text>
+              <Text
+                textAlign="center"
+                fontSize="0.9rem"
+                fontWeight="bold"
+                p="1rem"
+                w="180px"
+                minH="75px"
+              >
+                {getSubstring(event.heading, 20)}
+              </Text>
+            </VStack>
           </Flex>
         ))}
       </Flex>

@@ -122,7 +122,8 @@ export const introTextStyles: TextProps = {
   color: "black",
   fontSize: { base: "1rem", md: "1.2rem", lg: "1.3rem" },
   fontWeight: "bold",
-  p: "1.5rem",
+  px: { base: "1rem", md: "0.5rem", lg: "2.2rem" },
+  py: { base: "1.5rem", md: "2.5rem", lg: "3.5rem" },
 };
 
 export const introEarthGridItemStyles: GridItemProps = {
