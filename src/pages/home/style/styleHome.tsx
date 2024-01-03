@@ -14,7 +14,7 @@ export const homePageStyles: FlexProps = {
   justify: "center",
   align: "center",
   direction: "column",
-  background: "white",
+  background: "linear-gradient(to top, #fcfcfc, #e2e8fa)",
   pt: { base: "3rem", lg: "5rem" },
   w: "100vw",
   minH: "100vh",
@@ -25,25 +25,21 @@ export const heroContainerStyles: BoxProps = {
   display: "flex",
   h: "666px",
   w: "100vw",
+  maxW: "2080px",
   alignContent: "center",
   justifyContent: "center",
-  background: "linear-gradient(to top,white, #eff3ff)",
+  backgroundColor: "linear-gradient(to top, white, #6f8fee)",
   backgroundImage: "url(/svg/Background.svg)",
   backgroundRepeat: "no-repeat",
   backgroundPosition: "center",
   overflow: "hidden",
-  outline: "2px solid black",
+  border: "2px solid black",
 };
-
-// export const sandWaveBoxStyles: BoxProps = {
-//   w: { base: "100vw" },
-//   background: "#e3b059",
-//   h: "30vh",
-// };
 
 export const introContainerStyle: FlexProps = {
   background: "brand.blue",
   w: { base: "100vw" },
+  maxW: "2080px",
   h: "auto",
   justify: "center",
   align: "center",
@@ -58,7 +54,7 @@ export const introContainerStyle: FlexProps = {
 export const introWelcomeStyles: FlexProps = {
   outline: "solid black 2px",
   w: "100vw",
-  maxW: "2061px",
+  maxW: "2080px",
   h: "auto",
   background: "white",
   justify: "center",
@@ -77,6 +73,7 @@ export const introWelcomeTextStyles: TextProps = {
 export const introBlueFlexStyles: FlexProps = {
   background: "brand.blue",
   w: "100vw",
+  maxW: "2080px",
   h: "auto",
   justify: "center",
   align: "center",
@@ -147,28 +144,20 @@ export const aboutPinkCurveStyles: BoxProps = {
   backgroundSize: "fit",
   position: "relative",
   top: "-40px",
-  // py: { base: "2rem", md: "2.3rem", lg: "2.4rem" },
 };
 
 export const aboutContainerStackStyles: StackProps = {
   background: "brand.pink",
   spacing: "2rem",
   w: "100vw",
+  maxW: "2080px",
   position: "relative",
   top: "-88px",
   pt: "5rem",
   pb: "5rem",
-  borderBottom: "2px solid black",
+  border: "2px solid black",
+  borderTop: "none",
 };
-
-// export const aboutStackStyles: StackProps = {
-//   maxW: { base: "95vw", md: "80vw", lg: "1000px" },
-//   h: "50vh",
-//   background: "white",
-
-//   border: "2px solid black",
-//   // borderRadius: "5rem",
-// };
 
 export const litterContainerStyles: FlexProps = {
   background: "brand.blue",
@@ -178,6 +167,7 @@ export const litterContainerStyles: FlexProps = {
   borderBottom: "none",
   justify: "center",
   align: "center",
+  mt: "2rem",
   direction: "column",
   overflow: "hidden",
 };
@@ -205,8 +195,23 @@ export const litterIconsStyles: GridProps = {
 export const litterModalStyles: ModalContentProps = {
   background: "brand.pink",
   border: "solid 2px black",
-  m: { sm: "5rem", md: "10rem", lg: "20rem" },
+  w: { base: "95vw", md: "80vw" },
+  maxW: "1300px",
   rounded: "sm",
+};
+
+export const litterModalHeadingStyles: HeadingProps = {
+  fontSize: { base: "2rem", md: "2.3em", lg: "2.4rem" },
+  px: { base: "0.4rem", md: "0.5rem", lg: "1rem" },
+  py: { base: "0.3rem", md: "0.4rem", lg: "1rem" },
+};
+
+export const litterModalTextStyles: TextProps = {
+  fontSize: { base: "1rem", md: "1.1em", lg: "1.3rem" },
+  px: { base: "1rem", md: "1.5em", lg: "2.2rem" },
+  py: { base: "2rem", md: "2.5em", lg: "3.5rem" },
+  w: { base: "90vw", md: "70vw" },
+  maxW: "1000px",
 };
 
 export const litterCardStyles: FlexProps = {
@@ -223,19 +228,23 @@ export const joinContainerStackStyles: StackProps = {
   w: { base: "100vw", md: "95vw", xl: "1280px" },
   border: "2px solid black",
   borderTop: "none",
+  mb: "2rem",
 };
 
-export const joinTextStackStyles: StackProps = {
-  w: { base: "100vw", xl: "1300px" },
+export const joinTextFlexStyles: FlexProps = {
+  justify: "space-between",
+  align: "center",
+  direction: { base: "column" },
+  w: { base: "100vw", xl: "1400px" },
   outline: "2px solid black",
-  spacing: "5rem",
-  background: "white",
-  m: "1rem",
+  background: "#fdf3cf",
+  m: "0.5rem",
 };
 
 export const joinTextStyles: TextProps = {
-  w: " 40vw",
   fontSize: { base: "1rem", md: "1.2rem", lg: "1.3rem" },
+  px: { base: "2rem" },
+  py: { base: "2rem" },
 };
 
 export const tireAnimation = keyframes`

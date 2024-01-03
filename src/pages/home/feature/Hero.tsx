@@ -6,7 +6,9 @@ export const Hero = () => {
   return (
     <>
       <Box {...heroContainerStyles}>
-        <BigLogo />
+        <Box pt={{ base: "6.5rem", md: "5rem", lg: "0rem" }}>
+          <BigLogo />
+        </Box>
       </Box>
     </>
   );

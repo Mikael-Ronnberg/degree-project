@@ -7,6 +7,7 @@ import { homePageStyles } from "./style/styleHome";
 import "./style/style.css";
 import CookieConsent from "react-cookie-consent";
 import { AboutContainer } from "./feature/AboutContainer";
+import { Marquee } from "./feature/Marquee";
 
 export const Home = () => {
   return (
@@ -15,6 +16,7 @@ export const Home = () => {
         <Hero />
         <IntroContainer />
         <AboutContainer />
+        <Marquee />
         <LitterContainer />
 
         <CookieConsent

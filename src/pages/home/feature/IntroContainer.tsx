@@ -23,7 +23,7 @@ export const IntroContainer = () => {
           <Grid {...introGridStyles}>
             <GridItem {...introTextGridItemStyles}>
               <Heading {...introGridHeadingStyles}>
-                Kul att du har hittat hit!
+                Kul att du har hittat hit
               </Heading>
               <Text {...introTextStyles}>
                 Svepa Botten är en ideell förening dedikerad till att skydda och

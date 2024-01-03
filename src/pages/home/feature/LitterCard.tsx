@@ -1,10 +1,19 @@
-import { Flex, Heading, Text, VStack } from "@chakra-ui/react";
+import { Flex, HStack, Heading, Text, VStack } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { useTotalLitterStore } from "../../../store/useTotalLitterStore";
 import { fetchAndAggregateData } from "../../../services/AdminServices";
 import { TempDisplayTotal } from "../../../model/GlobalInterfaces";
-import { litterCardStyles } from "../style/styleHome";
+import {
+  litterCardStyles,
+  litterModalHeadingStyles,
+  litterModalTextStyles,
+} from "../style/styleHome";
 import { totalsDisplay } from "../../../constants/totals";
+import { Tire } from "../../../components/icons/Tire";
+import { Plastic } from "../../../components/icons/Plastic";
+import { Animal } from "../../../components/icons/Animal";
+import { Glass } from "../../../components/icons/Glass";
+import { Metal } from "../../../components/icons/Metal";
 
 interface LitterCardProps {
   type: string;
@@ -46,18 +55,41 @@ export const LitterCard = ({ type }: LitterCardProps) => {
         return 0;
     }
   };
+  const getTypeIcon = (type: string) => {
+    switch (type) {
+      case "other":
+        return <Tire />;
+      case "glass":
+        return <Glass />;
+      case "metal":
+        return <Metal />;
+      case "plastic":
+        return <Plastic />;
+      case "animal":
+        return <Animal />;
+      default:
+        return 0;
+    }
+  };
 
   return (
     <>
       {tempDisplay && (
         <Flex {...litterCardStyles}>
-          <Heading p="1rem">{tempDisplay.heading}</Heading>
-          <Text p="1rem">{tempDisplay.description}</Text>
+          <HStack spacing={{ base: "4rem", md: "5rem" }}>
+            <Heading {...litterModalHeadingStyles}>
+              {tempDisplay.heading}
+            </Heading>
+            {getTypeIcon(type)}
+          </HStack>
+          <Text {...litterModalTextStyles}>{tempDisplay.description}</Text>
           <VStack>
-            <Text fontWeight="bold">Vi har tagit hand om: {""}</Text>
-            <Text>
+            <Heading {...litterModalHeadingStyles}>
+              Vi har tagit hand om: {""}
+            </Heading>
+            <Heading {...litterModalHeadingStyles} color="brand.red">
               {getTypeAmount(type)} {type === "animal" ? "st" : "kg"}
-            </Text>
+            </Heading>
           </VStack>
         </Flex>
       )}

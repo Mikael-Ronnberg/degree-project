@@ -84,7 +84,7 @@ export const Litter = () => {
         <ModalOverlay />
         <ModalContent {...litterModalStyles}>
           <ModalHeader border="solid black 2px">
-            <Heading>Hejsan</Heading>
+            <Heading>Det här vet vi om...</Heading>
             <ModalCloseButton p="4rem" {...modalCloseButtonStyles} />
           </ModalHeader>
           <ModalBody>
