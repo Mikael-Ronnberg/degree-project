@@ -182,6 +182,7 @@ export const litterHeadingStyles: HeadingProps = {
 };
 
 export const litterIconsStyles: GridProps = {
+  w: "inherit",
   templateColumns: "repeat(2, 1fr)",
   gap: "10rem",
   mt: "2rem",
