@@ -77,7 +77,8 @@ export const headerSectionDateStyles: TextProps = {
 
 export const textSectionStackStyles: StackProps = {
   spacing: "2rem",
-  w: { base: "95vw", md: "90vw", xl: "1100px" },
+  w: { base: "95vw", md: "800px", lg: "900px", xl: "1100px" },
+  px: { base: "0.1rem", md: "2rem", lg: "0rem" },
 };
 
 export const textSectionStyles: TextProps = {
@@ -115,9 +116,9 @@ export const authorSectionBoxStyles: BoxProps = {
   alignContent: "center",
   flexDirection: "column",
   gap: "2rem",
-  w: { base: "95vw", md: "90vw", xl: "1000px" },
+  w: { base: "95vw", md: "800px", lg: "900px", xl: "1000px" },
   py: { base: "1rem" },
-  px: { base: "1rem" },
+  px: { base: "0.7rem", md: "2.5rem", lg: "0.5rem" },
 };
 
 export const authorSectionTextStyles: TextProps = {

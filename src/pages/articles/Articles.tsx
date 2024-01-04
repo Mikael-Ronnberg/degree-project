@@ -1,6 +1,7 @@
-import { Button, Flex, Heading, VStack } from "@chakra-ui/react";
+import { Button, Flex, Heading, VStack, Text, Box } from "@chakra-ui/react";
 import {
   articleContainerStyles,
+  articleHeadingStyles,
   articlePageStyles,
 } from "./style/articleStyle";
 import { ArticleCard } from "./feature/ArticleCard";
@@ -8,6 +9,8 @@ import { useArticlesStore } from "../../store/useArticlesStore";
 import { useEffect, useState } from "react";
 import { getArticles } from "../../services/ArticleServices";
 import { Link } from "react-router-dom";
+import { greyButtonStyles } from "../../components/buttons/style/buttonStyles";
+import { SmallWave } from "../../components/waves/SmallWave";
 
 export const Articles = () => {
   const { articles, setArticles, markPageAsLoaded, isPageLoaded } =
@@ -41,7 +44,10 @@ export const Articles = () => {
     <>
       <Flex {...articlePageStyles}>
         <Flex {...articleContainerStyles}>
-          <Heading m="1rem">Alla Artiklar</Heading>
+          <VStack>
+            <Heading {...articleHeadingStyles}>Alla Artiklar</Heading>
+            <Text></Text>
+          </VStack>
           <VStack spacing="1rem">
             {articles.map((article, index) => (
               <Link
@@ -54,7 +60,24 @@ export const Articles = () => {
               </Link>
             ))}
           </VStack>
-          {hasMore && <Button onClick={loadMoreArticles}>Visa Fler</Button>}
+
+          <Box position="relative" top="2">
+            <SmallWave color="#01D589" />
+          </Box>
+          <Box
+            w="1285px"
+            background="brand.green"
+            h="20vh"
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+          >
+            {hasMore && (
+              <Button onClick={loadMoreArticles} {...greyButtonStyles}>
+                Visa Fler
+              </Button>
+            )}
+          </Box>
         </Flex>
       </Flex>
     </>

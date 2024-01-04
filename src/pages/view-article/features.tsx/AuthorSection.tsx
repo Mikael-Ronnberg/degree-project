@@ -15,7 +15,7 @@ export const AuthorSection = ({ author, category }: AuthorSectionProps) => {
     <>
       <Box {...authorSectionBoxStyles}>
         <HStack>
-          <Text {...authorSectionTextStyles}>Skriven av: {""}</Text>
+          <Text {...authorSectionTextStyles}>Författare: {""}</Text>
           <Text fontWeight="bold" {...authorSectionTextStyles}>
             {author}
           </Text>
@@ -27,7 +27,7 @@ export const AuthorSection = ({ author, category }: AuthorSectionProps) => {
           px="1rem"
           w="fit-content"
         >
-          <Text {...authorSectionCategoryStyles}># {category}</Text>
+          <Text {...authorSectionCategoryStyles}>#{category}</Text>
         </Box>
       </Box>
     </>

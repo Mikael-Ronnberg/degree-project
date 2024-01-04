@@ -28,7 +28,7 @@ export const HeaderSection = ({
       <VStack {...headerSectionVStackStyles}>
         <Heading {...headerSectionHeadingStyles}>{mainHeading}</Heading>
         <Flex {...headerSectionFlexStyles}>
-          <Text {...headerSectionCategoryStyles}>{category}</Text>
+          <Text {...headerSectionCategoryStyles}>#{category}</Text>
           <Text {...headerSectionDateStyles}>{date}</Text>
         </Flex>
       </VStack>

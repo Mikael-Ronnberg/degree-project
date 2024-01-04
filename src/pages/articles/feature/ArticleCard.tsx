@@ -1,12 +1,12 @@
 import {
   Grid,
   GridItem,
-  HStack,
   Heading,
   Box,
   Image,
   Text,
   VStack,
+  Flex,
 } from "@chakra-ui/react";
 import {
   articleCardCategoryStyles,
@@ -16,9 +16,8 @@ import {
   articleCardImageStyles,
   articleCardSubHeadingStyles,
   articleCardImageBoxStyles,
-  articleImgItemStyles,
   articleTextItemStyles,
-  textStackStyles,
+  articleTextFlexStyles,
 } from "../style/articleStyle";
 import { getSubstring } from "../../../helpers/globalHelpers";
 
@@ -42,7 +41,7 @@ export const ArticleCard = ({
   return (
     <>
       <Grid {...articleCardGridStyles}>
-        <GridItem {...articleImgItemStyles}>
+        <GridItem>
           <Box {...articleCardImageBoxStyles}>
             <Image
               src={mainImg}
@@ -53,11 +52,11 @@ export const ArticleCard = ({
         </GridItem>
         <GridItem {...articleTextItemStyles}>
           <VStack>
-            <HStack spacing="10rem">
+            <Flex {...articleTextFlexStyles}>
               <Text {...articleCardCategoryStyles}>{category}</Text>
               <Text {...articleCardDateStyles}>{date}</Text>
-            </HStack>
-            <VStack {...textStackStyles}>
+            </Flex>
+            <VStack>
               <Heading {...articleCardHeadingStyles}>
                 {getSubstring(mainHeading, 80)}
               </Heading>

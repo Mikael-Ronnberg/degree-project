@@ -5,7 +5,6 @@ import {
   GridProps,
   HeadingProps,
   ImageProps,
-  StackProps,
   TextProps,
 } from "@chakra-ui/react";
 
@@ -13,14 +12,12 @@ export const articlePageStyles: FlexProps = {
   justify: "center",
   align: "center",
   direction: "column",
-  background: "white",
-  pt: { base: "5rem", md: "5.5rem", lg: "7.5rem" },
-  pb: { base: "2rem", md: "2.5rem", lg: "3rem" },
+  background: "linear-gradient(to bottom, #fcfcfc, #e2e8fa)",
+  pt: { base: "5rem", md: "6rem", lg: "8rem" },
   w: "100vw",
-  gap: "2rem",
-  minH: "100vh",
+  gap: "5rem",
+  minH: "auto",
   overflow: "hidden",
-  m: "auto",
 };
 
 export const articleContainerStyles: FlexProps = {
@@ -29,49 +26,55 @@ export const articleContainerStyles: FlexProps = {
   direction: "column",
   background: "white",
   w: { base: "100vw", md: "95vw" },
-  maxW: "1500px",
+  maxW: "1280px",
+  minH: "auto",
   border: "2px solid black",
-  h: "auto",
+  mb: "2rem",
+  overflow: "hidden",
+};
+
+export const articleHeadingStyles: HeadingProps = {
+  fontSize: { base: "2rem", md: "2.3rem", lg: "2.5rem" },
+  letterSpacing: "0.1rem",
+  py: { base: "1.7rem", md: "3rem", lg: "4rem" },
 };
 
 export const articleCardGridStyles: GridProps = {
   templateColumns: { base: "repeat(1, 1fr)", md: "repeat(2, 1fr)" },
-  w: "80vw",
+  w: { base: "100vw", md: "95vw" },
   maxW: "1200px",
   border: "2px solid black",
   h: "auto",
 };
 
-export const articleImgItemStyles: GridItemProps = {
-  alignItems: "center",
-  h: "auto",
-  p: "1rem",
-};
 export const articleTextItemStyles: GridItemProps = {
-  w: "auto",
   display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
+  justifyContent: "stretch",
+  alignItems: "stretch",
   h: "auto",
   p: "1rem",
 };
 
-export const textStackStyles: StackProps = {
-  maxW: { base: "60vw", md: "78vw", lg: "" },
+export const articleTextFlexStyles: FlexProps = {
+  w: "100%",
+  align: "center",
+  justify: "space-between",
 };
 
 export const articleCardImageBoxStyles: BoxProps = {
+  outline: "2px solid black",
   display: "flex",
-  alignItems: "center",
+  alignItems: "fit-content",
   justifyContent: "center",
-  w: { base: "auto", md: "30vw", lg: "350px" },
-  h: { base: "250px", md: "30vh", lg: "350px" },
   overflow: "hidden",
 };
 
 export const articleCardImageStyles: ImageProps = {
-  sizes: "(max-width: 480px) 300px, 350px",
-  objectFit: "contain",
+  w: { base: "100vw", md: "600px", lg: "900px", xl: "1000px" },
+  h: { base: "250px", md: "300px", lg: "400px" },
+  objectPosition: "center",
+  objectFit: "cover",
+  loading: "lazy",
 };
 
 export const articleCardCategoryStyles: TextProps = {
@@ -86,7 +89,6 @@ export const articleCardCategoryStyles: TextProps = {
 };
 
 export const articleCardDateStyles: TextProps = {
-  w: "",
   fontSize: { base: "0.6rem", md: "0.7rem", lg: "0.8rem" },
 };
 
