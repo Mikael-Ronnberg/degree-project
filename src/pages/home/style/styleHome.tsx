@@ -138,7 +138,7 @@ export const introEarthGridItemStyles: GridItemProps = {
 
 export const aboutPinkCurveStyles: BoxProps = {
   w: { base: "100vw" },
-  minH: "88px",
+  minH: "70px",
   backgroundImage: "url(/svg/pinkCurveBig.svg)",
   backgroundRepeat: "no-repeat",
   backgroundPosition: "top",
@@ -154,8 +154,8 @@ export const aboutContainerStackStyles: StackProps = {
   maxW: "2080px",
   position: "relative",
   top: "-88px",
-  pt: "5rem",
-  pb: "5rem",
+  pt: "0rem",
+  pb: "3rem",
   border: "2px solid black",
   borderTop: "none",
 };

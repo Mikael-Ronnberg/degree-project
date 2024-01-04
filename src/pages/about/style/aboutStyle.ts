@@ -8,18 +8,15 @@ import {
   TextProps,
 } from "@chakra-ui/react";
 
-import { theme } from "./../../../theme";
-
 export const aboutPageStyles: FlexProps = {
   justify: "center",
   align: "center",
   direction: "column",
-  background: `linear-gradient(to bottom,white, ${theme.colors.brand.purple})`,
+  background: "linear-gradient(to bottom,white, #e2e8fa)",
   pt: { base: "5rem", md: "5.5rem", lg: "7.5rem" },
   w: "100vw",
   minH: "100vh",
-  // overflow: "hidden",
-  m: "auto",
+  pb: "2rem",
 };
 
 export const introGridStyles: GridProps = {
@@ -32,20 +29,20 @@ export const introGridStyles: GridProps = {
 export const introItemStyles: GridItemProps = {
   outline: "2px black solid",
   display: "flex",
+  h: "inherit",
+  alignContent: "stretch",
   flexDir: "column",
   justifyContent: "center",
   alignItems: "center",
 };
 
 export const introHeadingStyles: HeadingProps = {
-  fontSize: { base: "3.2rem", md: "2.6rem", lg: "3.5rem" },
+  fontSize: { base: "2.6rem", md: "3rem", lg: "3.5rem" },
   py: { base: "0.7rem" },
 };
 
 export const introTextStyles: TextProps = {
-  outline: "2px black solid",
-  background: "brand.green",
-  fontSize: { base: "1.1rem", md: "1.3rem", lg: "1.4rem" },
+  fontSize: { base: "1.1rem", md: "1.2rem", lg: "1.3rem" },
   fontWeight: "bold",
   py: { base: "0.7rem", md: "1.7rem" },
   px: { base: "1rem", md: "2.3rem" },
@@ -86,6 +83,12 @@ export const snorkelHeadingStyles: HeadingProps = {
   textAlign: "center",
   py: { base: "0.7rem", md: "0.9rem", lg: "1.8rem" },
   px: { base: "0.7rem", md: "0.9rem" },
+};
+
+export const goalGridStyles: GridProps = {
+  w: { base: "100vw", md: "95vw", xl: "1280px" },
+  templateColumns: { base: "repeat(1, 1fr)", lg: "repeat(2, 1fr)" },
+  h: "auto",
 };
 
 export const infoGridStyles: GridProps = {

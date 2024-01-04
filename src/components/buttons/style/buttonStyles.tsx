@@ -13,7 +13,7 @@ export const burgerButtonStyles: ButtonProps = {
 
 export const greyButtonStyles: ButtonProps = {
   fontSize: { base: "1.2rem", sm: "1.3rem", md: "1.5rem" },
-  minW: { base: "30rem" },
+  minW: { base: "25rem", md: "27rem", lg: "30rem" },
   fontWeight: "bold",
   px: "2rem",
   borderRadius: "50px",
@@ -27,7 +27,7 @@ export const greyButtonStyles: ButtonProps = {
 
 export const purpleButtonStyles: ButtonProps = {
   fontSize: { base: "1.1rem", sm: "1.2rem", md: "1.5rem" },
-  minW: { base: "30rem" },
+  minW: { base: "25rem", md: "27rem", lg: "30rem" },
   px: "2rem",
   borderRadius: "50px",
   border: "solid 2px black",

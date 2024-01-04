@@ -19,7 +19,7 @@ export const WriteArticle = () => {
               mode="article"
             />
             <Button>
-              <Link to="/ourArticles">Våra Händelser</Link>
+              <Link to="/ourArticles">Våra Artiklar</Link>
             </Button>
           </HStack>
         </Flex>

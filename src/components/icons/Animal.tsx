@@ -5,7 +5,7 @@ export const Animal = () => {
     <>
       <Icon
         viewBox="0 0 71 71"
-        boxSize={{ sm: "4.5rem", md: "5.5rem", lg: "6.5rem" }}
+        boxSize={{ sm: "3.1rem", md: "4.5rem", lg: "5.5rem" }}
       >
         <svg fill="none" xmlns="http://www.w3.org/2000/svg">
           <g clipPath="url(#clip0_51_1295)">

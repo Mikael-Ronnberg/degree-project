@@ -105,13 +105,18 @@ export const ArticleForm = ({
     { resetForm }: FormikHelpers<CreateArticleFormValues>
   ) => {
     try {
-      const mainImgUrl = await uploadFile(mainImgFile);
-      const subImg1Url = await uploadFile(subImg1File);
-      const subImg2Url = await uploadFile(subImg2File);
-
-      values.mainImg = mainImgUrl;
-      values.subImg1 = subImg1Url;
-      values.subImg2 = subImg2Url;
+      if (mainImgFile) {
+        const mainImgUrl = await uploadFile(mainImgFile);
+        values.mainImg = mainImgUrl;
+      }
+      if (subImg1File) {
+        const subImg1Url = await uploadFile(subImg1File);
+        values.subImg1 = subImg1Url;
+      }
+      if (subImg2File) {
+        const subImg2Url = await uploadFile(subImg2File);
+        values.subImg2 = subImg2Url;
+      }
 
       if (formType === "create") {
         submitArticle(values as CreateArticleFormValues);

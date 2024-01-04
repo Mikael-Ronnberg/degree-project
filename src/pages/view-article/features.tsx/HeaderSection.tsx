@@ -1,8 +1,8 @@
-import { VStack, Heading, HStack, Text, Image } from "@chakra-ui/react";
+import { VStack, Heading, Flex, Text, Image } from "@chakra-ui/react";
 import {
   headerSectionCategoryStyles,
   headerSectionDateStyles,
-  headerSectionHStackStyles,
+  headerSectionFlexStyles,
   headerSectionHeadingStyles,
   headerSectionImageStyles,
   headerSectionVStackStyles,
@@ -27,10 +27,10 @@ export const HeaderSection = ({
     <>
       <VStack {...headerSectionVStackStyles}>
         <Heading {...headerSectionHeadingStyles}>{mainHeading}</Heading>
-        <HStack {...headerSectionHStackStyles}>
+        <Flex {...headerSectionFlexStyles}>
           <Text {...headerSectionCategoryStyles}>{category}</Text>
           <Text {...headerSectionDateStyles}>{date}</Text>
-        </HStack>
+        </Flex>
       </VStack>
       <Image src={mainImg} alt={mainImgName} {...headerSectionImageStyles} />
     </>

@@ -1,6 +1,7 @@
 import { VStack, Text, Image } from "@chakra-ui/react";
 import {
   imageSectionStackStyles,
+  imageSectionStyles,
   imageSectionTextStyles,
 } from "../style/viewArticleStyle";
 
@@ -19,7 +20,7 @@ export const ImageSection = ({
     <>
       {subImg && subImgName ? (
         <VStack {...imageSectionStackStyles}>
-          <Image src={subImg} alt={subImgName} />
+          <Image {...imageSectionStyles} src={subImg} alt={subImgName} />
           {subImgDescription && (
             <Text {...imageSectionTextStyles}>{subImgDescription}</Text>
           )}

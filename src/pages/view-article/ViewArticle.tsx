@@ -1,4 +1,4 @@
-import { Flex } from "@chakra-ui/react";
+import { Flex, Box } from "@chakra-ui/react";
 import { useArticlesStore } from "../../store/useArticlesStore";
 import { getArticleById } from "../../services/ArticleServices";
 import { useState, useEffect } from "react";
@@ -15,6 +15,7 @@ import { TextSection } from "./features.tsx/TextSection";
 import { ImageSection } from "./features.tsx/ImageSection";
 import { HeaderSection } from "./features.tsx/HeaderSection";
 import { AuthorSection } from "./features.tsx/AuthorSection";
+import { SmallWave } from "../../components/waves/SmallWave";
 
 interface ViewArticleProps {
   articleName: string;
@@ -89,6 +90,10 @@ export const ViewArticle = ({ articleName, id }: ViewArticleProps) => {
               author={displayArticle.author}
               category={displayArticle.category}
             />
+            <Box position="relative" top="2">
+              <SmallWave color="#01D589" />
+            </Box>
+            <Box w="1285px" background="brand.green" h="40px" />
           </Flex>
         </Flex>
       ) : (

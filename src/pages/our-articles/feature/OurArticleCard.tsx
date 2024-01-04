@@ -28,7 +28,7 @@ export const OurArticleCard = ({ article }: OurArticleProps) => {
   return (
     <>
       <Flex {...adminCardStyles}>
-        <VStack spacing="2rem">
+        <VStack spacing="2rem" w={{ base: "90vw", lg: "65vw" }}>
           <Heading>{article.mainHeading}</Heading>
           <Image
             src={article.mainImg}

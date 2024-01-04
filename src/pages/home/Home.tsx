@@ -21,13 +21,28 @@ export const Home = () => {
 
         <CookieConsent
           location="bottom"
-          buttonText="I understand"
+          buttonText="Godkänn"
           cookieName="SvepaBottenCookie"
-          style={{ background: "#2B373B" }}
-          buttonStyle={{ color: "#4e503b", fontSize: "13px" }}
+          style={{
+            background: "#1E42D4",
+            height: "15vh",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            fontSize: "1.1rem",
+          }}
+          buttonStyle={{
+            color: "#000000",
+            fontSize: "1.1rem",
+            border: "2px, black, solid",
+            background: "white",
+            borderRadius: "20px",
+            width: "15rem",
+          }}
           expires={150}
         >
-          This website uses cookies to enhance the user experience.
+          Den här sidan avnänder cookies 🍪 för att optimera
+          användarvänligheten. Kakor är gott!
         </CookieConsent>
       </Flex>
     </>

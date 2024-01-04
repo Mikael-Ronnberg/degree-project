@@ -4,6 +4,7 @@ import { SnorkelContainer } from "./feature/SnorkelContainer";
 import { BlueContainer } from "./feature/BlueContainer";
 import { InfoContainer } from "./feature/InfoContainer";
 import { IntroContainer } from "./feature/IntroContainer";
+import { GoalContainer } from "./feature/GoalContainer";
 
 export const About = () => {
   return (
@@ -14,6 +15,11 @@ export const About = () => {
             <IntroContainer />
             <SnorkelContainer />
           </VStack>
+
+          <VStack>
+            <GoalContainer />
+          </VStack>
+
           <VStack overflow="hidden" outline="2px solid black">
             <InfoContainer />
             <BlueContainer />
@@ -23,7 +29,3 @@ export const About = () => {
     </>
   );
 };
-
-//// Om Oss
-// Vår Historia och Vision
-// Svepa Botten grundades [år] av en grupp miljöentusiaster och dykare som såg behovet av att agera mot nedskräpningen i svenska vatten. Vår vision är klara, levande vatten där ekosystemen frodas och den biologiska mångfalden skyddas. Vi tror att genom gemensamma insatser kan vi göra en varaktig skillnad.

@@ -40,6 +40,9 @@ export const Litter = () => {
     <>
       <Grid {...litterIconsStyles}>
         <Box
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
           animation={`${tireAnimation} infinite 20s linear`}
           onClick={() => openModal("other")}
           cursor="pointer"
@@ -47,6 +50,9 @@ export const Litter = () => {
           <Tire />
         </Box>
         <Box
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
           animation={`${glassAnimation} infinite 20s linear`}
           onClick={() => openModal("glass")}
           cursor="pointer"
@@ -54,6 +60,9 @@ export const Litter = () => {
           <Glass />
         </Box>
         <Box
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
           animation={`${metalAnimation} infinite 20s linear`}
           onClick={() => openModal("metal")}
           cursor="pointer"
@@ -61,6 +70,9 @@ export const Litter = () => {
           <Metal />
         </Box>
         <Box
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
           animation={`${plasticAnimation} infinite 20s linear`}
           onClick={() => openModal("plastic")}
           cursor="pointer"
@@ -68,6 +80,9 @@ export const Litter = () => {
           <Plastic />
         </Box>
         <Box
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
           animation={`${animalAnimation} infinite 10s linear`}
           onClick={() => openModal("animal")}
           cursor="pointer"

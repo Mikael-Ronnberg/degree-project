@@ -1,8 +1,7 @@
 import { VStack, Text } from "@chakra-ui/react";
 import {
-  textSectionBoldStyles,
-  textSectionNormalStyles,
   textSectionStackStyles,
+  textSectionStyles,
 } from "../style/viewArticleStyle";
 
 interface TextSectionProps {
@@ -15,8 +14,10 @@ export const TextSection = ({ subHeading, section }: TextSectionProps) => {
     <>
       {subHeading ? (
         <VStack {...textSectionStackStyles}>
-          <Text {...textSectionBoldStyles}>{subHeading}</Text>
-          {section && <Text {...textSectionNormalStyles}>{section}</Text>}
+          <Text fontWeight="bold" {...textSectionStyles}>
+            {subHeading}
+          </Text>
+          {section && <Text {...textSectionStyles}>{section}</Text>}
         </VStack>
       ) : null}
     </>

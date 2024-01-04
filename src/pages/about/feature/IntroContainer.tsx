@@ -13,8 +13,8 @@ export const IntroContainer = () => {
         <GridItem {...introItemStyles}>
           <Heading {...introHeadingStyles}>Hur Allt Började</Heading>
         </GridItem>
-        <GridItem>
-          <Text {...introTextStyles}>
+        <GridItem {...introItemStyles}>
+          <Text background="brand.green" {...introTextStyles}>
             Svepa Botten började som en idé bland en grupp miljömedvetna dykare
             och snorklare som ville göra en konkret skillnad för Sveriges unika
             undervattensmiljöer. Grundat 2024, har vår organisation en liten

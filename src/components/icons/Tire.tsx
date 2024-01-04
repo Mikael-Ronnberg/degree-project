@@ -5,7 +5,7 @@ export const Tire = () => {
     <>
       <Icon
         viewBox="0 0 77 81"
-        boxSize={{ sm: "6rem", md: "7rem", lg: "9rem" }}
+        boxSize={{ sm: "4rem", md: "6rem", lg: "8rem" }}
       >
         <svg fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
