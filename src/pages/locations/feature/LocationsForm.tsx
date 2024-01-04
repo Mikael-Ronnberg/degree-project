@@ -45,7 +45,7 @@ export const LocationsForm = () => {
               <Input
                 {...inputStyles}
                 name="name"
-                placeholder="Namn (Valfritt)"
+                placeholder="Namn (Valfritt)..."
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.name}
@@ -53,15 +53,16 @@ export const LocationsForm = () => {
               <Input
                 {...inputStyles}
                 name="email"
-                placeholder="Email (Valfritt)"
+                placeholder="Email (Valfritt)..."
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.email}
               />
               <Textarea
                 {...textareaStyles}
+                required={true}
                 name="message"
-                placeholder="Meddelande"
+                placeholder="Meddelande..."
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.message}

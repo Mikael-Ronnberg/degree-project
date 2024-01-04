@@ -2,9 +2,12 @@ import {
   BoxProps,
   CheckboxProps,
   FlexProps,
+  GridItemProps,
+  GridProps,
   HeadingProps,
   InputProps,
-  StackProps,
+  ListItemProps,
+  TextProps,
   TextareaProps,
 } from "@chakra-ui/react";
 
@@ -15,46 +18,69 @@ export const locationPageStyles: FlexProps = {
   background: "linear-gradient(to top,#67D8C0 , #0F769F)",
   pt: { base: "5rem", md: "5.5rem", lg: "7.5rem" },
   w: "100vw",
-  gap: "2rem",
+  gap: "0rem",
   minH: "100vh",
   overflow: "hidden",
   pb: { base: "2rem", lg: "2.3rem" },
 };
 
-export const mapContainerStyles: FlexProps = {
-  justify: "center",
-  align: "center",
-  // background: "brand.pink",
-  w: { base: "100vw", md: "95vw", xl: "1280px" },
-  h: "auto",
-  overflow: "hidden",
-  pb: "2.3rem",
-  // px: { base: "1rem", md: "2.3rem" },
-  direction: "column",
-};
-
-export const mapContainerStackStyles: StackProps = {
-  w: { base: "100vw", md: "95vw", xl: "1280px" },
-  background: "brand.pink",
-  // py: { base: "2.7rem", md: "1.7rem" },
-  border: "black 2px solid",
-  borderBottom: "none",
-  gap: "2rem",
-  h: "auto",
+export const mapHeadingBoxStyles: BoxProps = {
+  w: { base: "100vw", xl: "1280px" },
+  background: "white",
+  outline: "2px solid black",
+  py: { base: "1.5rem", md: "0.8rem" },
 };
 
 export const mapHeadingStyles: HeadingProps = {
   fontSize: { base: "2rem", md: "2.4rem", lg: "3rem" },
   textAlign: "center",
-  pb: { base: "4rem", md: "1.7rem" },
   px: { base: "1rem", md: "2.3rem" },
+  pt: { base: "0.3rem", md: "1rem", lg: "1.4rem" },
+};
+
+export const mapHeadingTextStyles: TextProps = {
+  fontSize: { base: "1rem", md: "1.2rem", lg: "1.3rem" },
+  textAlign: "center",
+  fontWeight: "bold",
+  px: { base: "1rem", md: "2.3rem" },
+  py: { base: "1rem", md: "3rem", lg: "4rem" },
+};
+
+export const mapContainerStyles: FlexProps = {
+  justify: "center",
+  align: "center",
+  direction: "column",
+  w: { base: "95vw", md: "100vw", xl: "1280px" },
+  h: "auto",
+  overflow: "hidden",
+  pb: "0rem",
+};
+
+export const mapContainerGridStyles: GridProps = {
+  templateColumns: { base: "repeat(1, 1fr)", md: "repeat(2, 1fr)" },
+  h: "fit-content",
 };
 
 export const mapBoxStyles: BoxProps = {
   border: "black 2px solid",
-  w: { base: "60vw", md: "60vw", lg: "700px" },
-  h: { base: "50vw", md: "60vw", lg: "700px" },
-  zIndex: "2",
+  zIndex: "-2",
+  w: { base: "95vw", md: "50vw", xl: "637px" },
+  h: { base: "70vh", md: "50vh", lg: "700px" },
+};
+
+export const mapSearchGridItemSyles: GridItemProps = {
+  pt: "2rem",
+  display: "flex",
+  gap: "1rem",
+  alignItems: "center",
+  flexDirection: "column",
+  border: "black 2px solid",
+  borderBottom: "none",
+  background: "brand.pink",
+  w: { base: "95vw", md: "50vw", xl: "640px" },
+  minH: { base: "40vh", md: "50vh", lg: "700px" },
+  h: "fit-content",
+  zIndex: "4",
 };
 
 export const searchInputStyles: InputProps = {
@@ -62,33 +88,55 @@ export const searchInputStyles: InputProps = {
   border: "2px solid black",
   background: "white",
   placeholder: "Sök Plats",
-  w: { base: "50vw", md: "60vw", lg: "700px" },
+  w: { base: "80vw", md: "40vw", xl: "500px" },
+  h: "60px",
   rounded: "sm",
   m: "1rem",
+  _hover: {
+    outline: "black",
+  },
+  _highlighted: {
+    outline: "none",
+  },
+  fontFamily: "",
 };
 
 export const searchDropdownStyles: BoxProps = {
-  position: "absolute",
-  w: "60vw",
+  w: { base: "92vw", md: "46vw", xl: "500px" },
+  maxH: { base: "40vh" },
+  p: "1rem",
+  overflow: "scroll",
+  bg: "brand.pink",
+  zIndex: "1",
+};
+
+export const searchListItemStyles: ListItemProps = {
+  h: "auto",
+  outline: "2px solid black",
   bg: "white",
-  zIndex: "dropdown",
+  py: "1rem",
+  my: "0.5rem",
+  px: "0.8rem",
+  cursor: "pointer",
 };
 
 export const formContainerStyles: FlexProps = {
   justify: "center",
   align: "center",
-  background: "brand.green",
-  w: { base: "100vw", md: "95vw", xl: "1280px" },
-  h: "80vh",
-  outline: "black 2px solid",
-  direction: "row",
+  direction: "column",
+  h: "auto",
 };
 
 export const formContentStyles: FlexProps = {
-  justify: "center",
+  justify: "flex-start",
   align: "center",
-  w: "auto",
-  h: "80vh",
+  w: { base: "95vw", md: "100vw", xl: "1280px" },
+  background: "brand.green",
+  border: "2px solid black",
+  borderTop: "none",
+  h: "auto",
+  pb: "2rem",
+  pt: "2rem",
   direction: "column",
 };
 
@@ -97,7 +145,8 @@ export const inputStyles: InputProps = {
   background: "white",
   rounded: "sm",
   border: "black 2px solid",
-  w: "60vw",
+  w: { base: "80vw", md: "80vw", lg: "70vw", xl: "800px" },
+  h: "60px",
   m: "1rem",
 };
 
@@ -106,7 +155,7 @@ export const textareaStyles: TextareaProps = {
   rounded: "sm",
   border: "black 2px solid",
   background: "white",
-  w: "60vw",
+  w: { base: "80vw", md: "80vw", lg: "70vw", xl: "800px" },
   h: "40vh",
   m: "1rem",
 };
@@ -116,7 +165,7 @@ export const mapCheckboxStyles: CheckboxProps = {
   rounded: "sm",
   colorScheme: "grey",
   iconColor: "black",
-  iconSize: "1rem",
+  iconSize: "1.3rem",
   sx: {
     ".chakra-checkbox__control": {
       bg: "white", //

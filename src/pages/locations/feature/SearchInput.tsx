@@ -1,4 +1,4 @@
-import { Box, Input, List, ListItem } from "@chakra-ui/react";
+import { Box, Heading, Input, List, Text, ListItem } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
 import { fetchLocations } from "../../../services/MapServices";
 import { useLocationStore } from "../../../store/useLocationsStore";
@@ -6,6 +6,7 @@ import { SubLocation } from "../../../model/LocationsInterfaces";
 import {
   searchDropdownStyles,
   searchInputStyles,
+  searchListItemStyles,
 } from "../style/locationStyle";
 
 export const SearchInput = () => {
@@ -48,13 +49,15 @@ export const SearchInput = () => {
           <List>
             {listLocations.map((item) => (
               <ListItem
+                {...searchListItemStyles}
                 key={item.place_id}
                 onClick={() => {
                   setSelectLocation(item);
                   setIsDropdownOpen(false);
                 }}
               >
-                {item.display_name}
+                <Heading fontSize="1rem"> {item.name}</Heading>
+                <Text>{item.display_name}</Text>
               </ListItem>
             ))}
           </List>

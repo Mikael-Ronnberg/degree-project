@@ -43,7 +43,7 @@ export const LeafletMap = () => {
         center={[59.3497428, 17.855575321915243]}
         zoom={10}
         scrollWheelZoom={true}
-        style={{ width: "100%", height: "100%" }}
+        style={{ width: "inherit", height: "inherit", zIndex: "2" }}
       >
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
