@@ -3,11 +3,8 @@ import { Hero } from "./feature/Hero";
 import { LitterContainer } from "./feature/LitterContainer";
 import { IntroContainer } from "./feature/IntroContainer";
 import { homePageStyles } from "./style/styleHome";
-
-import "./style/style.css";
 import CookieConsent from "react-cookie-consent";
 import { AboutContainer } from "./feature/AboutContainer";
-import { Marquee } from "./feature/Marquee";
 
 export const Home = () => {
   return (
@@ -16,7 +13,6 @@ export const Home = () => {
         <Hero />
         <IntroContainer />
         <AboutContainer />
-        <Marquee />
         <LitterContainer />
 
         <CookieConsent
@@ -24,25 +20,27 @@ export const Home = () => {
           buttonText="Godkänn"
           cookieName="SvepaBottenCookie"
           style={{
-            background: "#1E42D4",
+            background: "#EAA83A",
             height: "15vh",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
             fontSize: "1.1rem",
+            color: "black",
           }}
           buttonStyle={{
             color: "#000000",
             fontSize: "1.1rem",
-            border: "2px, black, solid",
+            border: "2px black solid",
             background: "white",
             borderRadius: "20px",
+
             width: "15rem",
           }}
           expires={150}
         >
-          Den här sidan avnänder cookies 🍪 för att optimera
-          användarvänligheten. Kakor är gott!
+          Genom att fortsätta använda denna webbplats godkänner du användandet
+          av cookies 🍪 Kakor är gott!
         </CookieConsent>
       </Flex>
     </>

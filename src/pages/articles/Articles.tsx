@@ -48,7 +48,7 @@ export const Articles = () => {
             <Heading {...articleHeadingStyles}>Alla Artiklar</Heading>
             <Text></Text>
           </VStack>
-          <VStack spacing="1rem">
+          <VStack spacing="1rem" pb="2rem">
             {articles.map((article, index) => (
               <Link
                 key={index}

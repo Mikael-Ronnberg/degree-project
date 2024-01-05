@@ -78,6 +78,8 @@ export const introBlueFlexStyles: FlexProps = {
   justify: "center",
   align: "center",
   direction: "column",
+  mt: "3rem",
+  mb: "2rem",
 };
 
 export const introWhiteStackStyles: StackProps = {
@@ -118,10 +120,8 @@ export const introGridHeadingStyles: HeadingProps = {
 };
 
 export const introTextStyles: TextProps = {
-  textAlign: { base: "center" },
   color: "black",
   fontSize: { base: "1rem", md: "1.2rem", lg: "1.3rem" },
-  fontWeight: "bold",
   px: { base: "1rem", md: "0.5rem", lg: "2.2rem" },
   py: { base: "1.5rem", md: "2.5rem", lg: "3.5rem" },
 };
@@ -139,7 +139,7 @@ export const introEarthGridItemStyles: GridItemProps = {
 export const aboutPinkCurveStyles: BoxProps = {
   w: { base: "100vw" },
   minH: "70px",
-  backgroundImage: "url(/svg/pinkCurveBig.svg)",
+  backgroundImage: "url(/svg/curves/pinkCurveBig.svg)",
   backgroundRepeat: "no-repeat",
   backgroundPosition: "top",
   backgroundSize: "fit",
@@ -182,9 +182,9 @@ export const litterHeadingStyles: HeadingProps = {
 };
 
 export const litterIconsStyles: GridProps = {
-  w: "inherit",
+  w: { base: "80vw", md: "95vw", xl: "1280px" },
   templateColumns: "repeat(2, 1fr)",
-  gap: "10rem",
+  gap: { base: "6rem", md: "8rem", lg: "10rem" },
   mt: "2rem",
   sx: {
     "& > :last-child": {
@@ -231,6 +231,7 @@ export const joinContainerStackStyles: StackProps = {
   border: "2px solid black",
   borderTop: "none",
   mb: "2rem",
+  pb: "2rem",
 };
 
 export const joinTextFlexStyles: FlexProps = {
@@ -241,6 +242,7 @@ export const joinTextFlexStyles: FlexProps = {
   outline: "2px solid black",
   background: "#fdf3cf",
   m: "0.5rem",
+  pb: "2rem",
 };
 
 export const joinTextStyles: TextProps = {

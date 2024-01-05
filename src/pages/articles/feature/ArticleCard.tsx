@@ -56,12 +56,12 @@ export const ArticleCard = ({
               <Text {...articleCardCategoryStyles}>{category}</Text>
               <Text {...articleCardDateStyles}>{date}</Text>
             </Flex>
-            <VStack>
+            <VStack spacing={{ base: "0rem", md: "2rem", lg: "4rem" }}>
               <Heading {...articleCardHeadingStyles}>
-                {getSubstring(mainHeading, 80)}
+                {getSubstring(mainHeading, 50)}
               </Heading>
               <Text {...articleCardSubHeadingStyles}>
-                {getSubstring(subHeading1, 100)}
+                {getSubstring(subHeading1, 120)}
               </Text>
             </VStack>
           </VStack>

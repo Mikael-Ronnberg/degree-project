@@ -25,13 +25,16 @@ export const IntroContainer = () => {
               <Heading {...introGridHeadingStyles}>
                 Kul att du har hittat hit
               </Heading>
-              <Text {...introTextStyles}>
+              <Text
+                textAlign="center"
+                mt={{ base: "0rem", md: "0.2rem", lg: "0.4rem", xl: "1rem" }}
+                {...introTextStyles}
+              >
                 Svepa Botten är en ideell förening dedikerad till att skydda och
                 bevara den svenska undervattensmiljön. Vårt mål är att rena våra
-                vatten från skräp som metall, glas, plast och annat avfall, samt
-                att rapportera invasiva arter. Genom snorkling utforskar och
-                rensar våra engagerade medlemmar Sveriges vackra men sårbara
-                vattenmiljöer.
+                vatten från skräp och annat avfall, samt att rapportera invasiva
+                arter. Genom snorkling rensar våra medlemmar Sveriges vackra men
+                sårbara vattenmiljöer.
               </Text>
             </GridItem>
             <GridItem {...introEarthGridItemStyles}>

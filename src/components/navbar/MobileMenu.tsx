@@ -28,7 +28,6 @@ import {
   mobileMenuStyles,
   mobileTextStyles,
 } from "./navbarStyle";
-// import { BigLogo } from "../icons/BigLogo";
 
 interface MobileMenuProps {
   navItems: NavItem[];
@@ -54,7 +53,6 @@ export const MobileMenu = ({ navItems, navType }: MobileMenuProps) => {
         <DrawerOverlay />
         <DrawerContent>
           <DrawerHeader {...drawerHeaderStyles}>
-            {/* <BigLogo /> */}
             <DrawerCloseButton {...drawerCloseButtonStyles} />
           </DrawerHeader>
 

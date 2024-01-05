@@ -1,6 +1,4 @@
 import { extendTheme } from "@chakra-ui/react";
-import "@fontsource/dela-gothic-one";
-import "@fontsource/poppins/";
 export const colors = {
   brand: {
     blue: "#1E42D4",

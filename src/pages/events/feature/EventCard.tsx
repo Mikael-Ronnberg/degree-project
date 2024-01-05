@@ -1,15 +1,15 @@
-import { Flex, VStack, Text } from "@chakra-ui/react";
+import { Text, GridItem, Grid } from "@chakra-ui/react";
 import {
   eventCardContainerStyles,
   eventCardDateStyles,
   eventCardDescSyles,
   eventCardHeadingStyles,
-  eventCardRedBoxStyles,
-  eventCardWhiteBoxStyles,
+  eventCardRedItemStyles,
+  eventCardWhiteItemStyles,
 } from "../style/eventStyle";
 import { TransformedEventResponse } from "../../../model/EventsInterfaces";
 import { Calendar } from "../../../components/icons/Calendar";
-import { getSubstring } from "../../../helpers/globalHelpers";
+import { convertDateFormat } from "../../../helpers/globalHelpers";
 
 interface EventCard {
   event: TransformedEventResponse;
@@ -18,20 +18,16 @@ interface EventCard {
 export const EventCard = ({ event }: EventCard) => {
   return (
     <>
-      <Flex {...eventCardContainerStyles}>
-        <VStack {...eventCardRedBoxStyles}>
+      <Grid {...eventCardContainerStyles}>
+        <GridItem {...eventCardRedItemStyles}>
           <Calendar />
-          <Text {...eventCardDateStyles}>{event.date}</Text>
-        </VStack>
-        <VStack {...eventCardWhiteBoxStyles}>
-          <Text {...eventCardHeadingStyles}>
-            {getSubstring(event.heading, 50)}
-          </Text>
-          <Text {...eventCardDescSyles}>
-            {getSubstring(event.description, 100)}
-          </Text>
-        </VStack>
-      </Flex>
+          <Text {...eventCardDateStyles}>{convertDateFormat(event.date)}</Text>
+        </GridItem>
+        <GridItem {...eventCardWhiteItemStyles}>
+          <Text {...eventCardHeadingStyles}>{event.heading}</Text>
+          <Text {...eventCardDescSyles}>{event.description}</Text>
+        </GridItem>
+      </Grid>
     </>
   );
 };

@@ -1,10 +1,9 @@
 import {
   BoxProps,
   FlexProps,
+  GridItemProps,
+  GridProps,
   HeadingProps,
-  ModalContentProps,
-  ModalHeaderProps,
-  StackProps,
   TextProps,
 } from "@chakra-ui/react";
 
@@ -14,12 +13,12 @@ export const eventPageStyles: FlexProps = {
   direction: "column",
   background: "brand.green",
   pt: { base: "5rem", md: "5.5rem", lg: "7.5rem" },
-  // pt: "5rem",
   w: "100vw",
   gap: "2rem",
   minH: "100vh",
   overflow: "hidden",
   pb: { base: "2rem", lg: "2.3rem" },
+  border: "2px solid black",
 };
 
 export const eventHeadingBox: BoxProps = {
@@ -27,12 +26,12 @@ export const eventHeadingBox: BoxProps = {
   background: "white",
   border: "solid 2px black",
   py: { base: "1rem", md: "2rem", lg: "2.2rem" },
-  px: { base: "1.3rem", md: "2.8rem", lg: "2.2rem" },
+  px: { base: "1.3rem", md: "2.8rem", lg: "1rem" },
   justifySelf: "flex-start",
 };
 
 export const eventHeadingStyles: HeadingProps = {
-  fontSize: { base: "4rem", md: "4.2rem", lg: "4.6rem" },
+  fontSize: { base: "2rem", md: "3rem", lg: "4.3rem" },
   textAlign: "center",
 };
 
@@ -44,38 +43,41 @@ export const eventContainerStyles: FlexProps = {
   gap: "3rem",
 };
 
-export const eventCardContainerStyles: FlexProps = {
-  w: { base: "90vw", md: "85vw", lg: "80vw", xl: "1100px" },
-  justify: "space-between",
-  align: "stretch",
+export const eventCardContainerStyles: GridProps = {
+  templateColumns: { base: "repeat(1, 1fr)", md: "25% 75%" },
+  w: { base: "100vw", md: "95vw", lg: "80vw", xl: "1100px" },
+  border: "2px solid black",
   background: "white",
-  outline: "2px solid black",
   h: "auto",
 };
 
-export const eventCardRedBoxStyles: StackProps = {
-  w: { base: "20vw", md: "25vw", lg: "20vw" },
+export const eventCardRedItemStyles: GridItemProps = {
   display: "flex",
-  justifyContent: "center",
+  flexDirection: { base: "row", md: "column" },
+  w: "auto",
+  justifyContent: { base: "space-between", md: "center" },
+  h: "h",
+  gap: "1rem",
   alignItems: "center",
-  background: "brand.red",
   outline: "2px solid black",
-  p: "2rem",
-  h: "inherit",
+  background: "brand.red",
+  p: { base: "1rem", md: "2rem" },
+  px: { base: "2rem", md: "4rem" },
 };
 
 export const eventCardDateStyles: TextProps = {
   fontWeight: "bold",
-  fontSize: { base: "1.1rem", md: "1.3rem", lg: "1.6rem" },
-  px: { base: "3rem", md: "4rem" },
+  fontSize: { base: "1.6em", md: "1.3rem", lg: "1.6rem" },
 };
 
-export const eventCardWhiteBoxStyles: StackProps = {
-  w: "inherit",
+export const eventCardWhiteItemStyles: GridItemProps = {
+  w: "auto",
   display: "flex",
+  flexDirection: "column",
   justifyContent: "center",
   alignItems: "center",
   p: "2rem",
+  h: "auto",
 };
 
 export const eventCardHeadingStyles: TextProps = {
@@ -85,28 +87,4 @@ export const eventCardHeadingStyles: TextProps = {
 
 export const eventCardDescSyles: TextProps = {
   fontSize: { base: "1.1rem", md: "1.2rem", lg: "1.3rem" },
-};
-
-export const eventModalContentStyles: ModalContentProps = {
-  border: "solid 2px black",
-  m: { sm: "5rem", md: "10rem", lg: "16rem" },
-  rounded: "sm",
-};
-
-export const eventModalHeaderStyles: ModalHeaderProps = {
-  fontWeight: "bold",
-  fontSize: { base: "1.7rem", md: "2rem", lg: "2.1rem" },
-  outline: "solid black 2px",
-};
-
-export const eventModalContainerStyles: StackProps = {
-  display: "flex",
-  justifyContent: "center",
-  align: "stretch",
-};
-
-export const eventModalRedStackStyles: StackProps = {
-  gap: "3rem",
-  background: "brand.red",
-  p: "2rem",
 };

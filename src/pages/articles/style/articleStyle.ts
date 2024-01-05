@@ -34,7 +34,7 @@ export const articleContainerStyles: FlexProps = {
 };
 
 export const articleHeadingStyles: HeadingProps = {
-  fontSize: { base: "2rem", md: "2.3rem", lg: "2.5rem" },
+  fontSize: { base: "2rem", md: "2.3rem", lg: "2.7rem" },
   letterSpacing: "0.1rem",
   py: { base: "1.7rem", md: "3rem", lg: "4rem" },
 };
@@ -93,10 +93,10 @@ export const articleCardDateStyles: TextProps = {
 };
 
 export const articleCardHeadingStyles: HeadingProps = {
-  fontSize: "",
+  fontSize: { base: "1.4rem", md: "1.2rem", lg: "2rem" },
   m: "0.5rem",
 };
 
 export const articleCardSubHeadingStyles: TextProps = {
-  fontSize: "1rem",
+  fontSize: { base: "1rem", md: "1.2em", lg: "1.3rem" },
 };

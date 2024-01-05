@@ -38,18 +38,14 @@ export const desktopNavSectionStyles: GridItemProps = {
 export const drawerHeaderStyles: ModalHeaderProps = {
   border: "2px black solid",
   h: "auto",
-  p: "1.5rem",
+  p: "2rem",
 };
 
 export const mobileMenuStyles: GridProps = {
-  templateColumns: "repeat(2, 1fr)",
-  // sx: {
-  //   "& > :last-child": {
-  //     gridColumn: "1 / -1",
-  //     justifySelf: "center",
-  //     w: "auto",
-  //   },
-  // },
+  templateColumns: "repeat(1, 1fr)",
+  outline: "2px solid black",
+  h: "auto",
+  gap: "0",
 };
 
 export const mobileMenuSectionStyles: GridItemProps = {
@@ -57,6 +53,7 @@ export const mobileMenuSectionStyles: GridItemProps = {
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
+  h: "15vh",
   p: "1rem",
   _hover: {
     bg: "brand.blue",
@@ -65,7 +62,7 @@ export const mobileMenuSectionStyles: GridItemProps = {
 };
 
 export const desktopTextStyles: TextProps = {
-  fontSize: "1.5rem",
+  fontSize: "1rem",
   fontWeight: "bold",
 };
 
