@@ -5,7 +5,7 @@ export const Plastic = () => {
     <>
       <Icon
         viewBox="0 0 64 64"
-        boxSize={{ sm: "3.2rem", md: "4.5rem", lg: "5.5rem" }}
+        boxSize={{ base: "3.2rem", md: "4.5rem", lg: "5.5rem" }}
       >
         <svg fill="none" xmlns="http://www.w3.org/2000/svg">
           <path

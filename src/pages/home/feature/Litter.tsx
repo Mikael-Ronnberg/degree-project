@@ -1,6 +1,6 @@
 import {
-  Box,
   Grid,
+  GridItem,
   Heading,
   Modal,
   ModalBody,
@@ -17,7 +17,7 @@ import { Plastic } from "../../../components/icons/Plastic";
 import {
   animalAnimation,
   glassAnimation,
-  litterIconBoxStyles,
+  litterGridItemStyles,
   litterIconsStyles,
   litterModalStyles,
   metalAnimation,
@@ -40,41 +40,41 @@ export const Litter = () => {
   return (
     <>
       <Grid {...litterIconsStyles}>
-        <Box
-          {...litterIconBoxStyles}
+        <GridItem
+          {...litterGridItemStyles}
           animation={`${tireAnimation} infinite 20s linear`}
           onClick={() => openModal("other")}
         >
           <Tire />
-        </Box>
-        <Box
-          {...litterIconBoxStyles}
+        </GridItem>
+        <GridItem
+          {...litterGridItemStyles}
           animation={`${glassAnimation} infinite 20s linear`}
           onClick={() => openModal("glass")}
         >
           <Glass />
-        </Box>
-        <Box
-          {...litterIconBoxStyles}
+        </GridItem>
+        <GridItem
+          {...litterGridItemStyles}
           animation={`${metalAnimation} infinite 20s linear`}
           onClick={() => openModal("metal")}
         >
           <Metal />
-        </Box>
-        <Box
-          {...litterIconBoxStyles}
+        </GridItem>
+        <GridItem
+          {...litterGridItemStyles}
           animation={`${plasticAnimation} infinite 20s linear`}
           onClick={() => openModal("plastic")}
         >
           <Plastic />
-        </Box>
-        <Box
-          {...litterIconBoxStyles}
+        </GridItem>
+        <GridItem
+          {...litterGridItemStyles}
           animation={`${animalAnimation} infinite 10s linear`}
           onClick={() => openModal("animal")}
         >
           <Animal />
-        </Box>
+        </GridItem>
       </Grid>
 
       <Modal

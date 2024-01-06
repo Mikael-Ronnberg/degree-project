@@ -182,12 +182,11 @@ export const litterHeadingStyles: HeadingProps = {
 };
 
 export const litterIconsStyles: GridProps = {
-  // w: { base: "80vw", md: "80vw", xl: "1280px" },
-  w: "inherit",
+  w: { base: "100vw", md: "95vw", xl: "1280px" },
   minH: { base: "40vh", md: "50vh", lg: "60vh" },
   templateColumns: "50% 50%",
-  px: { base: "2rem", md: "3rem", lg: "3rem" },
-  gap: { base: "2rem", md: "3rem", lg: "3rem" },
+  px: { base: "0rem", md: "3rem", lg: "3rem" },
+  gap: { base: "0rem", md: "3rem", lg: "3rem" },
   mt: "2rem",
   sx: {
     "& > :last-child": {
@@ -197,15 +196,11 @@ export const litterIconsStyles: GridProps = {
   },
 };
 
-export const litterIconBoxStyles: BoxProps = {
-  w: "auto",
-  h: "auto",
-
-  // py: { base: "0.5rem" },
+export const litterGridItemStyles: GridItemProps = {
+  m: "3rem",
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
-
   cursor: "pointer",
 };
 
@@ -242,6 +237,7 @@ export const litterCardStyles: FlexProps = {
 export const joinFlexStyles: FlexProps = {
   align: "center",
   direction: "column",
+  h: "auto",
   w: { base: "100vw", md: "95vw", xl: "1280px" },
   border: "2px solid black",
   borderTop: "none",
@@ -253,9 +249,16 @@ export const joinFlexStyles: FlexProps = {
 export const joinStackStyles: StackProps = {
   background: "#fdf3cf",
   w: "100vw",
+  h: "auto",
   maxW: { xl: "1400px" },
   border: "2px solid black",
   pb: "2rem",
+};
+
+export const joinHeadingStyles: HeadingProps = {
+  fontSize: { base: "1.3rem", md: "1.4rem", lg: "2rem" },
+  pt: "1.5rem",
+  px: { base: "2rem" },
 };
 
 export const joinTextStyles: TextProps = {
@@ -266,34 +269,34 @@ export const joinTextStyles: TextProps = {
 
 export const tireAnimation = keyframes`
 0% { transform: rotate(0deg) translateX(0px) translateY(0px); }
-45% { transform: rotate(45deg) translateX(50px) translateY(50px); }
-74% { transform: translateX(-25px) translateY(-25px);}
+45% { transform: rotate(45deg) translateX(30px) translateY(30px); }
+74% { transform: translateX(-15px) translateY(-15px);}
 100% {transform: rotate(0deg) translateX(0px) translateY(0px);}
 `;
 export const glassAnimation = keyframes`
 0% { transform: rotate(0deg) translateX(0px) translateY(0px); }
-43% { transform: rotate(-45deg) translateX(25px) translateY(-50px); }
-70% { transform: translateX(-25px) translateY(-25px);}
+43% { transform: rotate(-45deg) translateX(30px) translateY(-30px); }
+70% { transform: translateX(-15px) translateY(-15px);}
 100% {transform: rotate(0deg) translateX(0px) translateY(0px);}
 `;
 export const metalAnimation = keyframes`
 0% { transform: rotate(0deg) translateX(0px) translateY(0px); }
-45% { transform: rotate(-45deg) translateX(-25px) translateY(25px); }
-78% { transform: translateX(25px) translateY(-25px);}
+45% { transform: rotate(-45deg) translateX(-30px) translateY(30px); }
+78% { transform: translateX(15px) translateY(-15px);}
 100% {transform: rotate(0deg) translateX(0px) translateY(0px);}
 `;
 export const plasticAnimation = keyframes`
 0% { transform: rotate(0deg) translateX(0px) translateY(0px); }
-55% { transform: rotate(45deg) translateX(25px) translateY(-25px); }
-78% { transform: translateX(-25px) translateY(-25px);}
+55% { transform: rotate(45deg) translateX(30px) translateY(-30px); }
+78% { transform: translateX(-15px) translateY(-15px);}
 100% {transform: rotate(0deg) translateX(0px) translateY(0px);}
 `;
 export const animalAnimation = keyframes`
   0% { transform: rotate(0deg) translate(-50px, 0); }
   10% { transform: rotate(45deg) }
-  20% { transform: translate(50px, -75px); } 
-  50% { transform: rotate(0deg) translate(75px, 0px); } 
+  20% { transform: translate(50px, -25px); } 
+  50% { transform: rotate(0deg) translate(25px, 0px); } 
   60% { transform: rotate(-45deg)  } 
-  70% { transform: translate(-50px, -75px); }
-  100% { transform: rotate(0deg) translate(-75px, 0px); } 
+  70% { transform: translate(-50px, -25px); }
+  100% { transform: rotate(0deg) translate(-25px, 0px); } 
 `;

@@ -4,6 +4,7 @@ import {
   joinStackStyles,
   joinFlexStyles,
   joinTextStyles,
+  joinHeadingStyles,
 } from "../style/styleHome";
 
 export const JoinContainer = () => {
@@ -11,7 +12,7 @@ export const JoinContainer = () => {
     <>
       <Flex {...joinFlexStyles}>
         <VStack {...joinStackStyles}>
-          <Heading pt="1.5rem" px="2rem">
+          <Heading {...joinHeadingStyles}>
             Vill du göra en skillnad för den svenska undervattensmiljön?
           </Heading>
           <Text {...joinTextStyles}>
