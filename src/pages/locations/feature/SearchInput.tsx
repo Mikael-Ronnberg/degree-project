@@ -29,6 +29,8 @@ export const SearchInput = () => {
         fetchAndFilterLocations();
         setIsDropdownOpen(true);
       } else {
+        setListLocations([]);
+        setSelectLocation(null);
         setIsDropdownOpen(false);
       }
     }, 300);
@@ -53,6 +55,8 @@ export const SearchInput = () => {
                 key={item.place_id}
                 onClick={() => {
                   setSelectLocation(item);
+                  // setListLocations([]);
+                  // setSearchInput("");
                   setIsDropdownOpen(false);
                 }}
               >

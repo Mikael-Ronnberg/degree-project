@@ -1,5 +1,5 @@
 import { Formik, FormikHelpers } from "formik";
-import { Flex, FormControl, Input, Button, Textarea } from "@chakra-ui/react";
+import { Flex, Input, Button, Textarea } from "@chakra-ui/react";
 import {
   formContentStyles,
   textareaStyles,
@@ -9,10 +9,16 @@ import {
 import { useLocationStore } from "../../../store/useLocationsStore";
 import { submitLocation } from "../../../services/MapServices";
 import { SubLocationsFormValues } from "../../../model/LocationsInterfaces";
-import { purpleButtonStyles } from "../../../components/buttons/style/buttonStyles";
+import {
+  purpleButtonStyles,
+  purpleDisabledButtonStyles,
+} from "../../../components/buttons/style/buttonStyles";
+import { useState } from "react";
 
 export const LocationsForm = () => {
   const { pinLocation, setPinLocation, setFormSubmitted } = useLocationStore();
+
+  const [submitTrue, setSubmitTrue] = useState(false);
 
   const initialValues: SubLocationsFormValues = {
     name: "",
@@ -38,14 +44,20 @@ export const LocationsForm = () => {
       onSubmit={handleSubmit}
       enableReinitialize
     >
-      {({ values, handleChange, handleBlur, handleSubmit }) => (
-        <form onSubmit={handleSubmit}>
-          <FormControl>
+      {({ values, handleChange, handleBlur, handleSubmit }) => {
+        if (values.message.length > 0 && values.lat !== 0 && values.lng !== 0) {
+          setSubmitTrue(true);
+        } else {
+          setSubmitTrue(false);
+        }
+
+        return (
+          <form onSubmit={handleSubmit}>
             <Flex {...formContentStyles}>
               <Input
                 {...inputStyles}
                 name="name"
-                placeholder="Namn (Valfritt)..."
+                placeholder="Namn... (valfritt)"
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.name}
@@ -53,20 +65,20 @@ export const LocationsForm = () => {
               <Input
                 {...inputStyles}
                 name="email"
-                placeholder="Email (Valfritt)..."
+                placeholder="Email... (valfritt)"
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.email}
               />
               <Textarea
                 {...textareaStyles}
-                required={true}
                 name="message"
                 placeholder="Meddelande..."
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.message}
               />
+
               <Input
                 type="hidden"
                 name="lat"
@@ -81,13 +93,19 @@ export const LocationsForm = () => {
                 onBlur={handleBlur}
                 value={values.lng}
               />
-              <Button type="submit" {...purpleButtonStyles}>
-                Skicka tipset!
-              </Button>
+              {submitTrue ? (
+                <Button type="submit" {...purpleButtonStyles}>
+                  Skicka tipset
+                </Button>
+              ) : (
+                <Button {...purpleDisabledButtonStyles}>
+                  Du har glömt något
+                </Button>
+              )}
             </Flex>
-          </FormControl>
-        </form>
-      )}
+          </form>
+        );
+      }}
     </Formik>
   );
 };

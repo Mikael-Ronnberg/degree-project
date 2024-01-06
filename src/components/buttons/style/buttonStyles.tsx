@@ -48,6 +48,25 @@ export const purpleButtonStyles: ButtonProps = {
     background: "brand.purple",
   },
 };
+export const purpleDisabledButtonStyles: ButtonProps = {
+  fontSize: { base: "1.1rem", sm: "1.2rem", md: "1.5rem" },
+  minW: { base: "22rem", md: "27rem", lg: "30rem" },
+  px: "2rem",
+  opacity: "0.5",
+  borderRadius: "50px",
+  border: "solid 2px black",
+  color: "white",
+  background: "brand.purple",
+  _hover: {
+    transform: "translateY(-4px)",
+    boxShadow: "-4px 4px 0px 0px black",
+  },
+  _active: {
+    transform: "translateY(0px)",
+    boxShadow: "0px 0px 0px 0px black",
+    background: "brand.purple",
+  },
+};
 
 export const modalCloseButtonStyles: ModalCloseButtonProps = {
   fontSize: { base: "1.2rem", sm: "1.3rem", md: "1.5rem" },

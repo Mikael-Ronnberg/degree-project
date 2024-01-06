@@ -1,5 +1,4 @@
 import { Marker, Popup } from "react-leaflet";
-import "./../style/location.css";
 import { SubLocation } from "../../../model/LocationsInterfaces";
 import { yellowPin } from "../../../components/icons/Pinpoint";
 
@@ -18,9 +17,7 @@ export const SearchResultMarkers = ({
           icon={yellowPin}
           position={[parseFloat(location.lat), parseFloat(location.lon)]}
         >
-          <Popup className="popup-content-wrapper">
-            {location.display_name}
-          </Popup>
+          <Popup>{location.display_name}</Popup>
         </Marker>
       ))}
     </>

@@ -67,7 +67,7 @@ export const mapContainerGridStyles: GridProps = {
 export const mapItemStyles: GridItemProps = {
   zIndex: "2",
   w: { base: "95vw", md: "auto" },
-  h: { base: "70vh", md: "auto" },
+  h: { base: "50vh", md: "auto" },
   outline: "2px solid black",
 };
 

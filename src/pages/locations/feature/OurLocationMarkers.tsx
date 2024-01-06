@@ -1,14 +1,13 @@
 import { Marker, Popup } from "react-leaflet";
-import "./../style/location.css";
 import { TransformedOurLocationResponse } from "../../../model/LocationsInterfaces";
-import { bluePin } from "../../../components/icons/Pinpoint";
+import { purplePin } from "../../../components/icons/Pinpoint";
 import { HStack, Text, VStack } from "@chakra-ui/react";
 
 interface LocationResultMarkersProps {
   locations: TransformedOurLocationResponse[];
 }
 
-export const LocationResultMarkers = ({
+export const OurLocationMarkers = ({
   locations,
 }: LocationResultMarkersProps) => {
   return (
@@ -17,9 +16,9 @@ export const LocationResultMarkers = ({
         <Marker
           key={location.id}
           position={[location.lat, location.lng]}
-          icon={bluePin}
+          icon={purplePin}
         >
-          <Popup className="popup-content-wrapper">
+          <Popup>
             <VStack spacing="0rem">
               <HStack spacing="1rem">
                 <HStack>

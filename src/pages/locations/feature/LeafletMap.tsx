@@ -1,17 +1,16 @@
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
-import "./../style/location.css";
 import { ResetCenterView } from "./ResetCenterView";
 import { LocationMarker } from "./LocationMarker";
 import { useLocationStore } from "../../../store/useLocationsStore";
 import { SearchResultMarkers } from "./SearchResultMarkers";
 import { FitBounds } from "./FitBounds";
 import { useOurLocationsStore } from "../../../store/useOurLocationsStore";
-import { LocationResultMarkers } from "./LocationResultMarkers";
 import { blackPin } from "../../../components/icons/Pinpoint";
 import { useEffect } from "react";
 import { getOurLocations } from "../../../services/MapServices";
+import { OurLocationMarkers } from "./OurLocationMarkers";
 
 export const LeafletMap = () => {
   const { selectLocation, listLocations } = useLocationStore();
@@ -37,6 +36,8 @@ export const LeafletMap = () => {
     parseFloat(location.lon),
   ]);
 
+  console.log(selectLocation);
+
   return (
     <>
       <MapContainer
@@ -51,16 +52,18 @@ export const LeafletMap = () => {
         />
         <LocationMarker />
         <SearchResultMarkers locations={listLocations} />
-        {showLocation && <LocationResultMarkers locations={ourLocations} />}
+
+        {showLocation && <OurLocationMarkers locations={ourLocations} />}
+
         {selectLocation && (
-          <Marker position={locationSelection} icon={blackPin}>
-            <Popup className="popup-content-wrapper">
-              A pretty CSS3 popup. <br /> Easily customizable.
-            </Popup>
-          </Marker>
+          <>
+            <Marker position={locationSelection} icon={blackPin}>
+              <Popup>{selectLocation.display_name}</Popup>
+            </Marker>
+            <ResetCenterView selectLocation={selectLocation} />
+          </>
         )}
         <FitBounds locations={locationLatLngs} />
-        <ResetCenterView selectLocation={selectLocation} />
       </MapContainer>
     </>
   );
