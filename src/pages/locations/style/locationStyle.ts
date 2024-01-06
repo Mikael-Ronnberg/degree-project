@@ -27,7 +27,7 @@ export const locationPageStyles: FlexProps = {
 export const mapHeadingBoxStyles: BoxProps = {
   w: { base: "100vw", xl: "1280px" },
   background: "white",
-  outline: "2px solid black",
+  border: "2px solid black",
   py: { base: "1.5rem", md: "0.8rem" },
 };
 
@@ -35,7 +35,7 @@ export const mapHeadingStyles: HeadingProps = {
   fontSize: { base: "2rem", md: "2.4rem", lg: "3rem" },
   textAlign: "center",
   px: { base: "1rem", md: "2.3rem" },
-  pt: { base: "0.3rem", md: "1rem", lg: "1.4rem" },
+  pt: { base: "0.3rem", md: "1rem", lg: "2rem" },
 };
 
 export const mapHeadingTextStyles: TextProps = {
@@ -54,18 +54,21 @@ export const mapContainerStyles: FlexProps = {
   h: "auto",
   overflow: "hidden",
   pb: "0rem",
+  borderRight: "black 2px solid",
+  borderLeft: "black 2px solid",
 };
 
 export const mapContainerGridStyles: GridProps = {
-  templateColumns: { base: "repeat(1, 1fr)", md: "repeat(2, 1fr)" },
+  w: { base: "95vw", md: "100vw", xl: "1280px" },
+  templateColumns: { base: "repeat(1, 1fr)", md: "50% 50%" },
   h: "fit-content",
 };
 
-export const mapBoxStyles: BoxProps = {
-  border: "black 2px solid",
-  zIndex: "-2",
-  w: { base: "95vw", md: "50vw", xl: "637px" },
-  h: { base: "70vh", md: "50vh", lg: "700px" },
+export const mapItemStyles: GridItemProps = {
+  zIndex: "2",
+  w: { base: "95vw", md: "auto" },
+  h: { base: "70vh", md: "auto" },
+  outline: "2px solid black",
 };
 
 export const mapSearchGridItemSyles: GridItemProps = {
@@ -74,10 +77,10 @@ export const mapSearchGridItemSyles: GridItemProps = {
   gap: "1rem",
   alignItems: "center",
   flexDirection: "column",
-  border: "black 2px solid",
-  borderBottom: "none",
+  borderTop: { base: "black 2px solid", md: "none" },
+  borderRight: "black 2px solid",
+  borderLeft: "black 2px solid",
   background: "brand.pink",
-  w: { base: "95vw", md: "50vw", xl: "640px" },
   minH: { base: "40vh", md: "50vh", lg: "700px" },
   h: "fit-content",
   zIndex: "4",
@@ -93,12 +96,13 @@ export const searchInputStyles: InputProps = {
   rounded: "sm",
   m: "1rem",
   _hover: {
-    outline: "black",
+    borderColor: "black",
   },
-  _highlighted: {
-    outline: "none",
+  _focus: {
+    transform: "translateY(-2px)",
+    boxShadow: "-4px 4px 0px 0px",
+    border: "2px black solid",
   },
-  fontFamily: "",
 };
 
 export const searchDropdownStyles: BoxProps = {
@@ -132,8 +136,6 @@ export const formContentStyles: FlexProps = {
   align: "center",
   w: { base: "95vw", md: "100vw", xl: "1280px" },
   background: "brand.green",
-  border: "2px solid black",
-  borderTop: "none",
   h: "auto",
   pb: "2rem",
   pt: "2rem",
@@ -148,6 +150,14 @@ export const inputStyles: InputProps = {
   w: { base: "80vw", md: "80vw", lg: "70vw", xl: "800px" },
   h: "60px",
   m: "1rem",
+  _hover: {
+    borderColor: "black",
+  },
+  _focus: {
+    transform: "translateY(-2px)",
+    boxShadow: "-4px 4px 0px 0px",
+    border: "2px black solid",
+  },
 };
 
 export const textareaStyles: TextareaProps = {
@@ -158,6 +168,14 @@ export const textareaStyles: TextareaProps = {
   w: { base: "80vw", md: "80vw", lg: "70vw", xl: "800px" },
   h: "40vh",
   m: "1rem",
+  _hover: {
+    borderColor: "black",
+  },
+  _focus: {
+    transform: "translateY(-2px)",
+    boxShadow: "-4px 4px 0px 0px",
+    border: "2px black solid",
+  },
 };
 
 export const mapCheckboxStyles: CheckboxProps = {

@@ -22,6 +22,7 @@ export const FormContainer = () => {
               </Heading>
             </Box>
           </GridItem>
+
           <GridItem {...formGriditemYellowBGStyles}>
             <ContactForm />
           </GridItem>

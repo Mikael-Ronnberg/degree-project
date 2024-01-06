@@ -20,7 +20,7 @@ import {
 } from "../style/contactStyle";
 import { Facebook } from "../../../components/icons/Facebook";
 import { Instagram } from "../../../components/icons/Instagram";
-import { Youtube } from "../../../components/icons/Tiktok";
+import { Youtube } from "../../../components/icons/Youtube";
 
 export const SupportContainer = () => {
   return (
@@ -30,7 +30,7 @@ export const SupportContainer = () => {
           <GridItem {...supportGridItemGreenBGStyles}>
             <Box {...supportTextBoxStyles}>
               <Heading {...supportHeadingStyles}>
-                Ditt Bidrag Gör Skillnad{" "}
+                Ditt Bidrag Gör Skillnad
               </Heading>
               <Text {...supportTextStyles}>
                 Din donation hjälper oss att fortsätta vårt arbete med att rena

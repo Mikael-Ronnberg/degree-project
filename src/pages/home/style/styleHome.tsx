@@ -11,13 +11,14 @@ import {
 } from "@chakra-ui/react";
 
 export const homePageStyles: FlexProps = {
+  w: "100vw",
+  minH: "100vh",
   justify: "center",
   align: "center",
   direction: "column",
   background: "linear-gradient(to top, #fcfcfc, #e2e8fa)",
   pt: { base: "3rem", lg: "5rem" },
-  w: "100vw",
-  minH: "100vh",
+  border: "2px solid black",
   overflow: "hidden",
 };
 
@@ -154,7 +155,7 @@ export const aboutContainerStackStyles: StackProps = {
   maxW: "2080px",
   position: "relative",
   top: "-88px",
-  pt: "0rem",
+  pt: "0",
   pb: "3rem",
   border: "2px solid black",
   borderTop: "none",
@@ -168,7 +169,7 @@ export const litterContainerStyles: FlexProps = {
   borderBottom: "none",
   justify: "center",
   align: "center",
-  mt: "2rem",
+  mt: "0",
   direction: "column",
   overflow: "hidden",
 };
@@ -178,13 +179,13 @@ export const litterHeadingStyles: HeadingProps = {
   textAlign: "center",
   fontSize: { base: "1.7rem", md: "2rem", lg: "2.2rem" },
   px: { base: "1rem", md: "1.5em", lg: "2.2rem" },
-  py: { base: "2rem", md: "2.5em", lg: "3.5rem" },
+  py: { base: "3rem", md: "2.5em", lg: "3.5rem" },
 };
 
 export const litterIconsStyles: GridProps = {
-  w: { base: "80vw", md: "95vw", xl: "1280px" },
+  w: { base: "90vw", md: "95vw", xl: "1280px" },
   templateColumns: "repeat(2, 1fr)",
-  gap: { base: "6rem", md: "8rem", lg: "10rem" },
+  gap: { base: "8rem", md: "8rem", lg: "10rem" },
   mt: "2rem",
   sx: {
     "& > :last-child": {
@@ -192,6 +193,17 @@ export const litterIconsStyles: GridProps = {
       justifySelf: "center",
     },
   },
+};
+
+export const litterIconBoxStyles: BoxProps = {
+  w: "auto",
+  h: "auto",
+  py: { base: "0.5rem" },
+  px: { base: "1rem" },
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  cursor: "pointer",
 };
 
 export const litterModalStyles: ModalContentProps = {
@@ -217,7 +229,6 @@ export const litterModalTextStyles: TextProps = {
 };
 
 export const litterCardStyles: FlexProps = {
-  // maxW: { base: "60vw", lg: "75vw" },
   h: "auto",
   justify: "center",
   align: "center",
@@ -231,7 +242,7 @@ export const joinContainerStackStyles: StackProps = {
   border: "2px solid black",
   borderTop: "none",
   mb: "2rem",
-  pb: "2rem",
+  pb: "3rem",
 };
 
 export const joinTextFlexStyles: FlexProps = {

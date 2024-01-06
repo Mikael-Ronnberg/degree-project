@@ -15,13 +15,12 @@ export const contactPageStyles: FlexProps = {
   align: "center",
   direction: "column",
   background: "white",
-  pt: { base: "5rem", md: "5.5rem", lg: "7.5rem" },
-  pb: { base: "2rem", md: "2.5rem", lg: "3rem" },
+  pt: { base: "5.5rem", md: "5rem", lg: "7rem" },
+  border: "2px solid black",
   w: "100vw",
   gap: "2rem",
   minH: "100vh",
   overflow: "hidden",
-  m: "auto",
 };
 
 export const formWrapperStyles: FlexProps = {
@@ -29,8 +28,8 @@ export const formWrapperStyles: FlexProps = {
   align: "center",
   direction: "column",
   gap: "2rem",
-  py: { base: "0.7rem", md: "1.7rem" },
   px: { base: "1rem", md: "2.3rem" },
+  pb: { md: "1.7rem" },
 };
 
 export const formGridStyles: GridProps = {
@@ -61,52 +60,75 @@ export const formGriditemYellowBGStyles: GridItemProps = {
 };
 
 export const formStackStyles: StackProps = {
-  background: "white",
-  w: { base: "95vw", md: "80vw", xl: "1000px" },
+  minW: { base: "95vw", md: "auto", xl: "1000px" },
+  maxW: { base: "95vw", md: "80vw" },
   h: "auto",
+  background: "white",
   outline: "2px solid black",
-  p: "2rem",
+  p: { base: "2rem", md: "2.3rem", lg: "4.5rem" },
   spacing: "2rem",
 };
 
 export const headingBoxStyles: BoxProps = {
   outline: "2px solid black",
   h: "auto",
-  maxW: { base: "95vw", md: "80vw", lg: "1000px" },
+  minW: { base: "95vw", md: "auto", xl: "1000px" },
+  maxW: { base: "95vw", md: "80vw", xl: "1000px" },
   background: "white",
 };
 
 export const formHeadingStyles: HeadingProps = {
   fontSize: { base: "2rem", md: "2.2rem", lg: "3rem" },
+  h: "auto",
   textAlign: "center",
   py: { base: "0.7rem", md: "1.7rem" },
-  px: { base: "1rem", md: "2.3rem" },
+  px: { base: "1rem", md: "1.3rem" },
 };
 
 export const contactFormInputStyles: InputProps = {
-  w: { base: "90vw", md: "70vw", xl: "850px" },
+  w: { base: "87vw", md: "70vw", xl: "800px" },
+  h: "60px",
+  mx: { base: "0rem", md: "2rem" },
   border: "2px solid black",
   rounded: "sm",
+  _hover: {
+    borderColor: "black",
+  },
+  _focus: {
+    transform: "translateY(-2px)",
+    boxShadow: "-4px 4px 0px 0px",
+    border: "2px black solid",
+  },
 };
 
 export const contactFormTextareaStyles: TextareaProps = {
-  w: { base: "90vw", md: "70vw", xl: "850px" },
+  w: { base: "87vw", md: "70vw", xl: "800px" },
+  h: "150px",
+  mx: { base: "0rem", md: "2rem" },
   border: "2px solid black",
   rounded: "sm",
+  _hover: {
+    borderColor: "black",
+  },
+  _focus: {
+    transform: "translateY(-2px)",
+    boxShadow: "-4px 4px 0px 0px",
+    border: "2px black solid",
+  },
 };
 
 export const purpleWaveStackStyles: StackProps = {
   w: { base: "100vw" },
-  spacing: "10vh",
-  minH: "50vh",
-  border: "2px solid black",
+  spacing: "5rem",
+  minH: "auto",
+  border: "1px solid black",
   borderBottom: "none",
   background: "brand.pink",
   backgroundImage: "url(/svg/waves/purpleBigWaves.svg)",
   backgroundRepeat: "no-repeat",
   backgroundPosition: "bottom",
   backgroundSize: "fit",
-  py: { base: "2rem", md: "2.3rem", lg: "2.4rem" },
+  py: { base: "1rem", md: "2.3rem", lg: "2.4rem" },
 };
 
 export const pinkTextStyles: TextProps = {
@@ -125,13 +147,14 @@ export const purpleTextStyles: TextProps = {
   color: "white",
   textAlign: "center",
   fontSize: { base: "1rem", md: "1.2rem", lg: "1.3rem" },
+  pb: { base: "1rem", lg: "0" },
 };
 
 export const supportWrapperStyles: FlexProps = {
   justify: "center",
   align: "center",
   direction: "column",
-  py: { base: "0.7rem", md: "1.7rem" },
+  py: { md: "1.7rem" },
   px: { base: "1rem", md: "2.3rem" },
 };
 
@@ -150,7 +173,7 @@ export const supportGridItemGreenBGStyles: GridItemProps = {
   borderRight: "1px solid black",
   borderLeft: "1px solid black",
   borderTop: "1px solid black",
-  p: "1rem",
+  pt: "4rem",
   position: "relative",
   top: "3",
 };
@@ -184,7 +207,7 @@ export const supportTextBoxStyles: BoxProps = {
 };
 
 export const supportHeadingStyles: HeadingProps = {
-  fontSize: { base: "1.4rem", md: "1.5rem", lg: "1.6rem" },
+  fontSize: { base: "1.4rem", md: "1.5rem", lg: "2rem" },
   py: { base: "0.8rem", md: "1.7rem" },
   color: "black",
   textAlign: "center",
@@ -195,6 +218,7 @@ export const supportTextStyles: TextProps = {
   color: "black",
   textAlign: "center",
   py: { base: "0.8rem", md: "1.2rem" },
+  px: "1rem",
 };
 
 export const supportImageBoxStyles: BoxProps = {

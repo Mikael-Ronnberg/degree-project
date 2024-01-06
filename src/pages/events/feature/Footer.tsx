@@ -1,7 +1,7 @@
 import { VStack, Heading, HStack, Box, Text } from "@chakra-ui/react";
 import { Facebook } from "../../../components/icons/Facebook";
 import { Instagram } from "../../../components/icons/Instagram";
-import { Youtube } from "../../../components/icons/Tiktok";
+import { Youtube } from "../../../components/icons/Youtube";
 import { SmallWave } from "../../../components/waves/SmallWave";
 
 export const Footer = () => {
@@ -18,13 +18,13 @@ export const Footer = () => {
           gap="2rem"
           py="2rem"
           h="auto"
-          w={{ base: "100vw", xl: "1282px" }}
+          w={{ base: "100vw", xl: "1280px" }}
           border="2px solid black"
           borderTop="none"
           position="relative"
           top="-3px"
         >
-          <Heading>Håll dig uppdaterad</Heading>
+          <Heading px="1rem">Håll dig uppdaterad</Heading>
           <Text>Följ oss på sociala medier</Text>
           <HStack spacing="4rem">
             <Facebook />

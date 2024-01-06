@@ -26,7 +26,7 @@ export const AboutContainer = () => {
           Vi dokumenterar och rapporterar även invasiva arter till relevanta
           myndigheter, vilket är avgörande för att skydda våra marina ekosystem.
         </Text>
-        <Heading color="black" textAlign="center" pb="1.5rem">
+        <Heading color="black" textAlign="center" pb="1.5rem" px="1rem">
           Kika in våra kommande händelser
         </Heading>
         <GreyButton

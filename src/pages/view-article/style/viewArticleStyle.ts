@@ -76,7 +76,7 @@ export const headerSectionDateStyles: TextProps = {
 };
 
 export const textSectionStackStyles: StackProps = {
-  spacing: "2rem",
+  spacing: "0rem",
   w: { base: "95vw", md: "800px", lg: "900px", xl: "1100px" },
   px: { base: "0.1rem", md: "2rem", lg: "0rem" },
 };
@@ -84,8 +84,8 @@ export const textSectionStackStyles: StackProps = {
 export const textSectionStyles: TextProps = {
   w: { xl: "1000px" },
   fontSize: { base: "1rem", md: "1.1rem", lg: "1.2rem" },
-  py: { base: "0.5rem", md: "0.8rem", lg: "0.9rem" },
-  px: { base: "0.8rem", md: "0.4rem", lg: "0.9rem" },
+  py: { base: "0.7rem", md: "0.8rem", lg: "0.9rem" },
+  px: { base: "0.8rem", md: "1.3rem", lg: "0.9rem" },
 };
 
 export const imageSectionStackStyles: StackProps = {

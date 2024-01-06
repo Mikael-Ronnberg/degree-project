@@ -45,7 +45,7 @@ export const Articles = () => {
       <Flex {...articlePageStyles}>
         <Flex {...articleContainerStyles}>
           <VStack>
-            <Heading {...articleHeadingStyles}>Alla Artiklar</Heading>
+            <Heading {...articleHeadingStyles}>Läs våra artiklar</Heading>
             <Text></Text>
           </VStack>
           <VStack spacing="1rem" pb="2rem">

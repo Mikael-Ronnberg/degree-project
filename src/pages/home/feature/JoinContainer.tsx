@@ -11,7 +11,7 @@ export const JoinContainer = () => {
     <>
       <VStack {...joinContainerStackStyles}>
         <Flex {...joinTextFlexStyles}>
-          <Heading pt="1.5rem" mx="3rem">
+          <Heading pt="1.5rem" px="2rem">
             Vill du göra en skillnad för den svenska undervattensmiljön?{" "}
           </Heading>
           <Text {...joinTextStyles}>
@@ -20,11 +20,6 @@ export const JoinContainer = () => {
             viktiga miljöinsatser. Ingen tidigare erfarenhet av snorkling krävs
             - bara en passion för miljön!
           </Text>
-          {/* <Text {...joinTextStyles}>
-            Har du frågor, vill samarbeta eller stödja vår verksamhet? Kontakta
-            oss eller följ oss på sociala medier för senaste nyheterna och
-            eventinformation.
-          </Text> */}
           <GreyButton buttonText="Kontakta oss" linkTo="/contact" />
         </Flex>
       </VStack>

@@ -9,6 +9,7 @@ import {
 import { LocationsForm } from "./feature/LocationsForm";
 import { MapContainer } from "./feature/MapContainer";
 import { useLocationStore } from "../../store/useLocationsStore";
+import { SmallWave } from "../../components/waves/SmallWave";
 
 export const Locations = () => {
   const { formSubmitted } = useLocationStore();
@@ -28,19 +29,19 @@ export const Locations = () => {
 
         <VStack
           spacing="0"
-          w={{ base: "95vw", md: "100vw", xl: "1281px" }}
+          w={{ base: "95vw", md: "100vw", xl: "1280px" }}
           overflow="hidden"
+          border="2px solid black"
+          borderTop="none"
         >
           <Box
-            background="url(/svg/waves/greenWaves.svg)"
-            h="55px"
-            w={{ base: "95vw", md: "100vw", xl: "1280px" }}
-            backgroundSize="contain"
-            backgroundRepeat="no-repeat"
-            backgroundPosition="bottom"
+            h="auto"
+            w={{ base: "100vw", xl: "1282px" }}
             position="relative"
-            top="2"
-          />
+            top="3px"
+          >
+            <SmallWave color="#01D589" />
+          </Box>
           <Flex {...formContainerStyles}>
             {formSubmitted ? (
               <Heading>

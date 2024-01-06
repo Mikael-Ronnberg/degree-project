@@ -13,7 +13,7 @@ export const articlePageStyles: FlexProps = {
   align: "center",
   direction: "column",
   background: "linear-gradient(to bottom, #fcfcfc, #e2e8fa)",
-  pt: { base: "5rem", md: "6rem", lg: "8rem" },
+  pt: { base: "6rem", md: "5.5rem", lg: "7.5rem" },
   w: "100vw",
   gap: "5rem",
   minH: "auto",
@@ -99,4 +99,5 @@ export const articleCardHeadingStyles: HeadingProps = {
 
 export const articleCardSubHeadingStyles: TextProps = {
   fontSize: { base: "1rem", md: "1.2em", lg: "1.3rem" },
+  m: "0.5rem",
 };

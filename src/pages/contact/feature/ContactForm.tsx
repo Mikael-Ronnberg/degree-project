@@ -59,17 +59,16 @@ export const ContactForm = () => {
           {({ values, handleChange, handleBlur, handleSubmit }) => (
             <form onSubmit={handleSubmit}>
               <FormControl>
-                <VStack spacing="3rem">
+                <VStack spacing="3rem" pb="2rem">
                   <VStack {...formStackStyles}>
                     <FormLabel htmlFor="name" as={VisuallyHidden}>
                       Namn
                     </FormLabel>
                     <Input
                       {...contactFormInputStyles}
-                      required={true}
                       id="name"
                       name="name"
-                      placeholder="Namn"
+                      placeholder="Namn..."
                       onChange={handleChange}
                       onBlur={handleBlur}
                       value={values.name}
@@ -79,10 +78,9 @@ export const ContactForm = () => {
                     </FormLabel>
                     <Input
                       {...contactFormInputStyles}
-                      required={true}
                       id="email"
                       name="email"
-                      placeholder="Email"
+                      placeholder="Email..."
                       onChange={handleChange}
                       onBlur={handleBlur}
                       value={values.email}
@@ -94,7 +92,7 @@ export const ContactForm = () => {
                       {...contactFormInputStyles}
                       id="question"
                       name="question"
-                      placeholder="Fråga"
+                      placeholder="Fråga..."
                       onChange={handleChange}
                       onBlur={handleBlur}
                       value={values.question}
@@ -107,7 +105,7 @@ export const ContactForm = () => {
                       required={true}
                       id="message"
                       name="message"
-                      placeholder="Skriv ditt meddelande här"
+                      placeholder="Skriv ditt meddelande här..."
                       onChange={handleChange}
                       onBlur={handleBlur}
                       value={values.message}

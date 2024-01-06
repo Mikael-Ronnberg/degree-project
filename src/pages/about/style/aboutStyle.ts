@@ -13,7 +13,7 @@ export const aboutPageStyles: FlexProps = {
   align: "center",
   direction: "column",
   background: "linear-gradient(to bottom,white, #e2e8fa)",
-  pt: { base: "5rem", md: "5.5rem", lg: "7.5rem" },
+  pt: { base: "6rem", md: "5.5rem", lg: "7.5rem" },
   w: "100vw",
   minH: "100vh",
   pb: "2rem",
@@ -38,13 +38,15 @@ export const introItemStyles: GridItemProps = {
 
 export const introHeadingStyles: HeadingProps = {
   fontSize: { base: "2.6rem", md: "3rem", lg: "3.5rem" },
-  py: { base: "0.7rem" },
+  textAlign: "center",
+  py: { base: "1rem" },
+  px: { base: "1rem", md: "" },
 };
 
 export const introTextStyles: TextProps = {
   fontSize: { base: "1.1rem", md: "1.2rem", lg: "1.3rem" },
   fontWeight: "bold",
-  py: { base: "0.7rem", md: "1.7rem" },
+  py: { base: "1rem", md: "1.7rem" },
   px: { base: "1rem", md: "2.3rem" },
 };
 
@@ -71,7 +73,7 @@ export const snorkelItemStyles: GridItemProps = {
   flexDir: "column",
   justifyContent: "center",
   alignItems: "center",
-  py: { base: "1.2rem", md: "2.3rem", lg: "1.8rem" },
+  py: { base: "2rem", md: "2.3rem", lg: "1.8rem" },
 };
 
 export const snorkelBoxStyles: BoxProps = {
@@ -117,7 +119,7 @@ export const infoHeadingStyles: HeadingProps = {
   fontSize: { base: "2.8rem", md: "3.4rem", lg: "3.5rem" },
   color: "white",
   py: { base: "2rem", md: "3.4rem" },
-  px: { base: "0.7rem", md: "0.2rem" },
+  px: { base: "1rem", md: "0.2rem" },
 };
 
 export const infoTextStyles: TextProps = {
@@ -138,7 +140,7 @@ export const contactGridStyles: GridProps = {
   position: "relative",
   w: { base: "100vw", md: "95vw", xl: "1280px" },
   templateColumns: { base: "repeat(1, 1fr)", lg: "repeat(2, 1fr)" },
-  top: "-20",
+  top: "-10",
 };
 
 export const contactItemStyles: GridItemProps = {
@@ -146,7 +148,7 @@ export const contactItemStyles: GridItemProps = {
   flexDir: "column",
   justifyContent: "center",
   alignItems: "center",
-  p: "1rem",
+  px: "1rem",
 };
 
 export const contactTextStyles: TextProps = {

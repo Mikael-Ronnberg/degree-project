@@ -14,7 +14,7 @@ export const AuthorSection = ({ author, category }: AuthorSectionProps) => {
   return (
     <>
       <Box {...authorSectionBoxStyles}>
-        <HStack>
+        <HStack px="1rem">
           <Text {...authorSectionTextStyles}>Författare: {""}</Text>
           <Text fontWeight="bold" {...authorSectionTextStyles}>
             {author}

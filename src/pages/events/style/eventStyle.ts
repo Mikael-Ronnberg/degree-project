@@ -12,7 +12,7 @@ export const eventPageStyles: FlexProps = {
   align: "center",
   direction: "column",
   background: "brand.green",
-  pt: { base: "5rem", md: "5.5rem", lg: "7.5rem" },
+  pt: { base: "6rem", md: "5.5rem", lg: "7.5rem" },
   w: "100vw",
   gap: "2rem",
   minH: "100vh",
@@ -40,7 +40,7 @@ export const eventContainerStyles: FlexProps = {
   justify: "center",
   align: "center",
   direction: "column",
-  gap: "3rem",
+  gap: "2rem",
 };
 
 export const eventCardContainerStyles: GridProps = {
