@@ -183,10 +183,11 @@ export const litterHeadingStyles: HeadingProps = {
 
 export const litterIconsStyles: GridProps = {
   // w: { base: "80vw", md: "80vw", xl: "1280px" },
-  w: "auto",
-  h: "auto",
-  templateColumns: "repeat(2, 2fr)",
-  gap: { base: "10rem", md: "8rem", lg: "10rem" },
+  w: "inherit",
+  minH: { base: "40vh", md: "50vh", lg: "60vh" },
+  templateColumns: "50% 50%",
+  px: { base: "2rem", md: "3rem", lg: "3rem" },
+  gap: { base: "2rem", md: "3rem", lg: "3rem" },
   mt: "2rem",
   sx: {
     "& > :last-child": {
@@ -199,11 +200,11 @@ export const litterIconsStyles: GridProps = {
 export const litterIconBoxStyles: BoxProps = {
   w: "auto",
   h: "auto",
-  px: { base: "1rem", md: "5rem", lg: "10rem" },
+
   // py: { base: "0.5rem" },
-  // display: "flex",
-  // justifyContent: "center",
-  // alignItems: "center",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
 
   cursor: "pointer",
 };
@@ -238,24 +239,22 @@ export const litterCardStyles: FlexProps = {
   p: "2rem",
 };
 
-export const joinContainerStackStyles: StackProps = {
-  background: "#e3b059",
+export const joinFlexStyles: FlexProps = {
+  align: "center",
+  direction: "column",
   w: { base: "100vw", md: "95vw", xl: "1280px" },
   border: "2px solid black",
   borderTop: "none",
+  background: "#e3b059",
+  pb: "2rem",
   mb: "2rem",
-  pb: "3rem",
 };
 
-export const joinTextFlexStyles: FlexProps = {
-  justify: "space-between",
-  align: "center",
-  direction: "column",
+export const joinStackStyles: StackProps = {
+  background: "#fdf3cf",
   w: "100vw",
   maxW: { xl: "1400px" },
-  outline: "2px solid black",
-  background: "#fdf3cf",
-  m: "0.5rem",
+  border: "2px solid black",
   pb: "2rem",
 };
 

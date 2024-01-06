@@ -1,16 +1,16 @@
 import { VStack, Text, Flex, Heading } from "@chakra-ui/react";
 import { GreyButton } from "../../../components/buttons/GreyButton";
 import {
-  joinContainerStackStyles,
-  joinTextFlexStyles,
+  joinStackStyles,
+  joinFlexStyles,
   joinTextStyles,
 } from "../style/styleHome";
 
 export const JoinContainer = () => {
   return (
     <>
-      <VStack {...joinContainerStackStyles}>
-        <Flex {...joinTextFlexStyles}>
+      <Flex {...joinFlexStyles}>
+        <VStack {...joinStackStyles}>
           <Heading pt="1.5rem" px="2rem">
             Vill du göra en skillnad för den svenska undervattensmiljön?
           </Heading>
@@ -21,8 +21,8 @@ export const JoinContainer = () => {
             - bara en passion för miljön!
           </Text>
           <GreyButton buttonText="Kontakta oss" linkTo="/contact" />
-        </Flex>
-      </VStack>
+        </VStack>
+      </Flex>
     </>
   );
 };
