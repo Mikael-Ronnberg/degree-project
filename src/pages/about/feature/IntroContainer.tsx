@@ -16,10 +16,10 @@ export const IntroContainer = () => {
         <GridItem {...introItemStyles}>
           <Text background="brand.green" {...introTextStyles}>
             Svepa Botten började som en idé bland en grupp miljömedvetna dykare
-            och snorklare som ville göra en konkret skillnad för Sveriges unika
-            undervattensmiljöer. Grundat 2024, har vår organisation en liten
-            grupp entusiaster med en stark gemenskap av medlemmar som delar vår
-            passion för att skydda och bevara våra vatten.
+            och snorklare som ville göra en konkret skillnad för Sveriges
+            vatten. Grundat 2024, har vår organisation en liten grupp
+            entusiaster som delar vår passion för att skydda och bevara våra
+            vatten.
           </Text>
         </GridItem>
       </Grid>

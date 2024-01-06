@@ -18,13 +18,15 @@ export const Footer = () => {
           gap="2rem"
           py="2rem"
           h="auto"
-          w={{ base: "100vw", xl: "1280px" }}
+          w={{ base: "100vw", xl: "1282px" }}
           border="2px solid black"
           borderTop="none"
           position="relative"
           top="-3px"
         >
-          <Heading px="1rem">Håll dig uppdaterad</Heading>
+          <Heading px="1rem" textAlign="center">
+            Håll dig uppdaterad
+          </Heading>
           <Text>Följ oss på sociala medier</Text>
           <HStack spacing="4rem">
             <Facebook />

@@ -99,7 +99,8 @@ export const introStackHeadingStyles: BoxProps = {
 
 export const introGridStyles: GridProps = {
   templateColumns: { base: "repeat(1, 1fr)", md: "repeat(2, 1fr)" },
-  w: { base: "100vw", md: "95vw", xl: "1280px" },
+  w: { base: "90vw", md: "95vw" },
+  maxW: "1280px",
   h: "auto",
   minH: "50vh",
 };

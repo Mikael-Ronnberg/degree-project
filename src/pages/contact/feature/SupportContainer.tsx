@@ -35,12 +35,12 @@ export const SupportContainer = () => {
               <Text {...supportTextStyles}>
                 Din donation hjälper oss att fortsätta vårt arbete med att rena
                 svenska vatten och skydda marina ekosystem. Varje bidrag, stort
-                som litet, bidrar till inköp av utrustning, utbildningsmaterial
-                och organisering av våra rensningsaktiviteter.
+                som litet, bidrar till organisering av våra
+                rensningsaktiviteter.
               </Text>
               <Text {...supportTextStyles}>
-                Swish-nummer 123 000 00 00 eller scanna koden. Vi är tacksamma
-                för alla bidrag!
+                Du kan också scanna koden för att swisha. Vi är tacksamma för
+                alla bidrag!
               </Text>
             </Box>
             <Box {...supportImageBoxStyles}>
@@ -50,7 +50,7 @@ export const SupportContainer = () => {
                 w={{ base: "200px", md: "280px" }}
               />
             </Box>
-            <Heading textAlign="center" p="1rem">
+            <Heading textAlign="center" mt="1.4rem" py="1rem">
               Vill du veta mer?
             </Heading>
             <Text p="0.5rem" fontWeight="bold">

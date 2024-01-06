@@ -34,12 +34,11 @@ export const GoalContainer = () => {
           </GridItem>
           <GridItem {...introItemStyles}>
             <Text background="brand.pink" {...introTextStyles}>
-              Vårt team består av individer från olika bakgrunder men med en
-              gemensam nämnare: en stark vilja att göra en skillnad. Vår styrka
-              ligger i vårt engagemang, samarbete och önskan att lära ut och
-              sprida kunskap. Vi tror starkt på kraften i gemensamma insatser
-              och det positiva inflytande som kunskap och medvetenhet kan ha på
-              miljöskydd.
+              Vårt team består av personer från olika bakgrunder men med en
+              gemensam nämnare: en vilja att göra skillnad. Vår styrka ligger i
+              vårt engagemang, samarbete och önskan att sprida kunskap. Vi tror
+              på kraften i gemensamma insatser och det positiva inflytande som
+              kunskap och medvetenhet kan ha på miljöskydd.
             </Text>
           </GridItem>
         </Grid>

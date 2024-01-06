@@ -37,7 +37,7 @@ export const formGridStyles: GridProps = {
 };
 
 export const formGriditemYellowCurveStyles: GridItemProps = {
-  w: { base: "100vw", md: "95vw", xl: "1280px" },
+  w: { base: "100vw", md: "95vw", xl: "1282px" },
   display: "flex",
   justifyContent: "center",
   background: "url(/svg/curves/yellowCurve.svg)",
@@ -48,7 +48,7 @@ export const formGriditemYellowCurveStyles: GridItemProps = {
   p: "1rem",
 };
 export const formGriditemYellowBGStyles: GridItemProps = {
-  w: { base: "100vw", md: "95vw", xl: "1280px" },
+  w: { base: "100vw", md: "95vw", xl: "1282px" },
   background: "brand.yellow",
   h: "auto",
   border: "1px solid black",
@@ -167,7 +167,7 @@ export const supportGridItemGreenBGStyles: GridItemProps = {
   justifyContent: "center",
   alignItems: "center",
   flexDirection: "column",
-  w: { base: "100vw", md: "95vw", xl: "1280px" },
+  w: { base: "100vw", md: "95vw", xl: "1282px" },
   background: "brand.green",
   h: "auto",
   borderRight: "1px solid black",
@@ -179,7 +179,7 @@ export const supportGridItemGreenBGStyles: GridItemProps = {
 };
 
 export const supportGridItemGreenCurveStyles: GridItemProps = {
-  w: { base: "100vw", md: "95vw", xl: "1280px" },
+  w: { base: "100vw", md: "95vw", xl: "1282px" },
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
