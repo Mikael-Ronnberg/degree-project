@@ -120,7 +120,7 @@ export const contactFormTextareaStyles: TextareaProps = {
 export const purpleWaveStackStyles: StackProps = {
   w: { base: "100vw" },
   spacing: "5rem",
-  minH: "auto",
+  h: "fit-content",
   border: "1px solid black",
   borderBottom: "none",
   background: "brand.pink",

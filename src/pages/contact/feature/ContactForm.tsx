@@ -127,7 +127,7 @@ export const ContactForm = () => {
                       </Button>
                     ) : (
                       <Button {...purpleDisabledButtonStyles}>
-                        Du har glömt något
+                        Fyll i för att skicka
                       </Button>
                     )}
                   </VStack>

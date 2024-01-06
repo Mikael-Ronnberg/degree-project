@@ -21,11 +21,11 @@ export const greyButtonStyles: ButtonProps = {
   background: "white",
   _hover: {
     transform: "translateY(-4px)",
-    boxShadow: "0px 4px 0px 0px black",
+    boxShadow: "-4px 4px 0px 0px black",
   },
   _active: {
     transform: "translateY(0px)",
-    boxShadow: "-4px 0px 0px 0px black",
+    boxShadow: "0px 0px 0px 0px black",
     background: "white",
   },
 };
@@ -69,8 +69,8 @@ export const purpleDisabledButtonStyles: ButtonProps = {
 };
 
 export const modalCloseButtonStyles: ModalCloseButtonProps = {
-  fontSize: { base: "1.2rem", sm: "1.3rem", md: "1.5rem" },
-  p: "1.4rem",
+  fontSize: { base: "1rem", sm: "1.3rem", md: "1.5rem" },
+  p: "1.2rem",
   rounded: "sm",
   _hover: { bg: "transparent", textDecoration: "none" },
 };

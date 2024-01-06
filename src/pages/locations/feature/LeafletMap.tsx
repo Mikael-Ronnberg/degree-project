@@ -11,6 +11,7 @@ import { blackPin } from "../../../components/icons/Pinpoint";
 import { useEffect } from "react";
 import { getOurLocations } from "../../../services/MapServices";
 import { OurLocationMarkers } from "./OurLocationMarkers";
+import { Text } from "@chakra-ui/react";
 
 export const LeafletMap = () => {
   const { selectLocation, listLocations } = useLocationStore();
@@ -58,7 +59,11 @@ export const LeafletMap = () => {
         {selectLocation && (
           <>
             <Marker position={locationSelection} icon={blackPin}>
-              <Popup>{selectLocation.display_name}</Popup>
+              <Popup>
+                <Text maxW={{ base: "35vw" }} fontWeight="bolder">
+                  {selectLocation.display_name}
+                </Text>
+              </Popup>
             </Marker>
             <ResetCenterView selectLocation={selectLocation} />
           </>

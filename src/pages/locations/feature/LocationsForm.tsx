@@ -99,7 +99,7 @@ export const LocationsForm = () => {
                 </Button>
               ) : (
                 <Button {...purpleDisabledButtonStyles}>
-                  Du har glömt något
+                  Fyll i för att skicka
                 </Button>
               )}
             </Flex>

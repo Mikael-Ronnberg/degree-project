@@ -17,7 +17,6 @@ export const MapContainer = () => {
         <Grid {...mapContainerGridStyles}>
           <GridItem {...mapItemStyles}>
             <LeafletMap />
-            {/* <Box {...mapBoxStyles}></Box> */}
           </GridItem>
           <GridItem {...mapSearchGridItemSyles}>
             <LocationCheckbox />

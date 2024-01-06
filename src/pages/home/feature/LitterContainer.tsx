@@ -2,7 +2,6 @@ import { Flex, Heading, Box } from "@chakra-ui/react";
 import { Litter } from "./Litter";
 import { litterContainerStyles, litterHeadingStyles } from "../style/styleHome";
 import { SmallWave } from "../../../components/waves/SmallWave";
-import { JoinContainer } from "./JoinContainer";
 
 export const LitterContainer = () => {
   return (
@@ -16,7 +15,6 @@ export const LitterContainer = () => {
           <SmallWave color="#e3b059" />
         </Box>
       </Flex>
-      <JoinContainer />
     </>
   );
 };

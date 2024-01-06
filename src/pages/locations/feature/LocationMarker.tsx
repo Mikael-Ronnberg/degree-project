@@ -39,7 +39,7 @@ export const LocationMarker = () => {
           >
             Klick!
           </Heading>
-          <Text maxW={{ base: "20vw", md: "25vw" }} fontWeight="bolder">
+          <Text maxW={{ base: "35vw" }} fontWeight="bolder">
             Du klickade här. Fyll i formuläret nedanför om du vill skicka ett
             tips till oss
           </Text>

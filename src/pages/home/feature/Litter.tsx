@@ -84,9 +84,9 @@ export const Litter = () => {
       >
         <ModalOverlay />
         <ModalContent {...litterModalStyles}>
-          <ModalHeader border="solid black 2px">
+          <ModalHeader py="2rem">
             <Heading>Det här vet vi om...</Heading>
-            <ModalCloseButton p="4rem" {...modalCloseButtonStyles} />
+            <ModalCloseButton {...modalCloseButtonStyles} />
           </ModalHeader>
           <ModalBody>
             <LitterCard type={selectedType} />

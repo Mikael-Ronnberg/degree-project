@@ -28,11 +28,11 @@ export const fetchAndAggregateData = async () => {
 
     querySnapshot.forEach((doc) => {
       const data = doc.data();
-      totalPlastic += data.plastic ?? 0;
-      totalMetal += data.metal ?? 0;
-      totalGlass += data.glass ?? 0;
-      totalOther += data.other ?? 0;
-      totalAnimals += data.animals ?? 0;
+      totalPlastic += Number(data.plastic) || 0;
+      totalMetal += Number(data.metal) || 0;
+      totalGlass += Number(data.glass) || 0;
+      totalOther += Number(data.other) || 0;
+      totalAnimals += Number(data.animals) || 0;
     });
 
     return {

@@ -12,7 +12,7 @@ export const JoinContainer = () => {
       <VStack {...joinContainerStackStyles}>
         <Flex {...joinTextFlexStyles}>
           <Heading pt="1.5rem" px="2rem">
-            Vill du göra en skillnad för den svenska undervattensmiljön?{" "}
+            Vill du göra en skillnad för den svenska undervattensmiljön?
           </Heading>
           <Text {...joinTextStyles}>
             Bli medlem i Svepa Botten! Som medlem får du delta i våra

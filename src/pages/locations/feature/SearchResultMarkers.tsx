@@ -1,6 +1,7 @@
 import { Marker, Popup } from "react-leaflet";
 import { SubLocation } from "../../../model/LocationsInterfaces";
 import { yellowPin } from "../../../components/icons/Pinpoint";
+import { Text } from "@chakra-ui/react";
 
 interface SearchResultMarkersProps {
   locations: SubLocation[];
@@ -17,7 +18,11 @@ export const SearchResultMarkers = ({
           icon={yellowPin}
           position={[parseFloat(location.lat), parseFloat(location.lon)]}
         >
-          <Popup>{location.display_name}</Popup>
+          <Popup>
+            <Text maxW={{ base: "35vw" }} fontWeight="bolder">
+              {location.display_name}
+            </Text>
+          </Popup>
         </Marker>
       ))}
     </>
