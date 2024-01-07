@@ -6,14 +6,14 @@ import {
   contactItemStyles,
   contactTextStyles,
 } from "../style/aboutStyle";
-import { BlueSmallWave } from "../../../components/waves/BlueSmallWave";
+import { SmallWave } from "../../../components/waves/SmallWave";
 
 export const BlueContainer = () => {
   return (
     <>
       <VStack {...blueContainerStackStyles}>
         <Box position="relative" top="-10">
-          <BlueSmallWave />
+          <SmallWave color="#1E42D4" />
         </Box>
         <Grid {...contactGridStyles}>
           <GridItem {...contactItemStyles}>

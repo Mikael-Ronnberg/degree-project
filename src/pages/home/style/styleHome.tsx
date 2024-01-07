@@ -5,6 +5,7 @@ import {
   GridItemProps,
   GridProps,
   HeadingProps,
+  ImageProps,
   ModalContentProps,
   StackProps,
   TextProps,
@@ -53,8 +54,7 @@ export const introContainerStyle: FlexProps = {
   gap: "2rem",
   borderRight: "2px solid black",
   borderLeft: "2px solid black",
-  pb: { base: "4rem", md: "5rem" },
-  // px: { base: "1rem", md: "2.3rem" },
+  pb: { base: "3rem", md: "4rem" },
 };
 
 export const introWelcomeStyles: FlexProps = {
@@ -151,31 +151,24 @@ export const aboutPinkCurveStyles: BoxProps = {
   backgroundPosition: "top",
   backgroundSize: "fit",
   position: "relative",
-  top: "-20px",
+  top: "-34px",
 };
 
-export const aboutContainerStackStyles: StackProps = {
-  // backgroundColor: "brand.pink",
-  // backgroundImage: "url(/svg/sunrise.svg)",
-  // backgroundPosition: "top",
-  // backgroundRepeat: "no-repeat",
-  // backgroundSize: "contain",
-  spacing: "0",
-  // w: "100vw",
-  // maxW: "2080px",
-  // position: "relative",
-  // top: "-50px",
-  // pb: "1em",
-  // border: "2px solid black",
-  // borderTop: "none",
+export const aboutImageStyles: ImageProps = {
+  pl: { base: "0rem", lg: "2rem" },
+  src: "/svg/sunrise.svg",
+  backgroundPosition: "center",
+  backgroundRepeat: "no-repeat",
+  backgroundSize: "contain",
+  h: { base: "14vh", md: "30vh", lg: "auto" },
+  w: { base: "40vw", md: "40vw", lg: "auto" },
 };
 
 export const aboutFlexContainerStyles: FlexProps = {
+  justify: "center",
+  align: "center",
+  direction: { base: "column", lg: "row" },
   backgroundColor: "brand.pink",
-  // backgroundImage: "url(/svg/sunrise.svg)",
-  // backgroundPosition: "top",
-  // backgroundRepeat: "no-repeat",
-  // backgroundSize: "contain",
   w: "100vw",
   maxW: "2080px",
   position: "relative",

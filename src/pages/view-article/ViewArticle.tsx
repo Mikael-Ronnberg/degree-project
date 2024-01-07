@@ -10,7 +10,7 @@ import {
   viewArticleContainerStyles,
   viewArticlePageStyles,
 } from "./style/viewArticleStyle";
-import { NotFound } from "../404/NotFound";
+import { NotFound } from "../notFound/NotFound";
 import { TextSection } from "./features.tsx/TextSection";
 import { ImageSection } from "./features.tsx/ImageSection";
 import { HeaderSection } from "./features.tsx/HeaderSection";

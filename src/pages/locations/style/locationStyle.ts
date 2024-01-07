@@ -54,8 +54,8 @@ export const mapContainerStyles: FlexProps = {
   h: "auto",
   overflow: "hidden",
   pb: "0rem",
-  borderRight: "black 2px solid",
-  borderLeft: "black 2px solid",
+  border: { base: "black 1px solid", lg: "black 2px solid" },
+  borderTop: { base: "none", lg: "none" },
 };
 
 export const mapContainerGridStyles: GridProps = {
@@ -78,8 +78,8 @@ export const mapSearchGridItemSyles: GridItemProps = {
   alignItems: "center",
   flexDirection: "column",
   borderTop: { base: "black 2px solid", md: "none" },
-  borderRight: "black 2px solid",
-  borderLeft: "black 2px solid",
+  borderRight: { base: "black 1px solid", lg: "black 2px solid" },
+  borderLeft: { base: "black 1px solid", lg: "black 2px solid" },
   background: "brand.pink",
   minH: { base: "40vh", md: "50vh", lg: "700px" },
   h: "fit-content",

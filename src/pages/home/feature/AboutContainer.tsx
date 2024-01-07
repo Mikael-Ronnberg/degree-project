@@ -1,7 +1,7 @@
 import { VStack, Text, Box, Flex, Image } from "@chakra-ui/react";
 import {
-  aboutContainerStackStyles,
   aboutFlexContainerStyles,
+  aboutImageStyles,
   aboutPinkCurveStyles,
   aboutTextStyles,
 } from "../style/styleHome";
@@ -10,23 +10,9 @@ export const AboutContainer = () => {
   return (
     <>
       <Box {...aboutPinkCurveStyles} />
-      <Flex
-        direction={{ base: "column", lg: "row" }}
-        {...aboutFlexContainerStyles}
-        justify="center"
-        align="center"
-      >
-        <Image
-          // display={{ base: "none", lg: "inline" }}
-          pl={{ base: "0rem", lg: "2rem" }}
-          src="/svg/sunrise.svg"
-          backgroundPosition="center"
-          backgroundRepeat="no-repeat"
-          backgroundSize="contain"
-          h={{ base: "14vh", md: "30vh", lg: "auto" }}
-          w={{ base: "40vw", md: "40vw", lg: "auto" }}
-        ></Image>
-        <VStack {...aboutContainerStackStyles}>
+      <Flex {...aboutFlexContainerStyles}>
+        <Image {...aboutImageStyles} />
+        <VStack spacing="0">
           <Text {...aboutTextStyles}>
             Varje sommarmånad organiserar vi snorklingsevent där våra medlemmar
             samlar skräp från botten i sjöar och hav.

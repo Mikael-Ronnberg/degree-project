@@ -8,7 +8,6 @@ import {
 import { LeafletMap } from "./LeafletMap";
 import { LocationCheckbox } from "./LocationCheckbox";
 import { SearchInput } from "./SearchInput";
-import { SmallWave } from "../../../components/waves/SmallWave";
 
 export const MapContainer = () => {
   return (
@@ -26,16 +25,18 @@ export const MapContainer = () => {
             <SearchInput />
           </GridItem>
         </Grid>
-        <Box
-          h="auto"
-          w={{ base: "100vw", xl: "1280px" }}
-          position="relative"
-          top="-3px"
-          transform="rotate(180deg)"
-        >
-          <SmallWave color="#F8DBDF" />
-        </Box>
       </Flex>
+      <Box
+        h={{ base: "30px", md: "50px" }}
+        w={{ base: "95vw", md: "100vw", xl: "1280px" }}
+        position="relative"
+        bottom={{ base: "2px", md: "4px" }}
+        backgroundImage="url(/svg/curves/pinkWaveCurve.svg
+          )"
+        backgroundRepeat="no-repeat"
+        backgroundSize="contain"
+        backgroundPosition="top"
+      ></Box>
     </>
   );
 };
