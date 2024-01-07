@@ -1,5 +1,6 @@
 import {
   BoxProps,
+  CardBodyProps,
   FlexProps,
   GridItemProps,
   GridProps,
@@ -9,6 +10,10 @@ import {
   TextProps,
   keyframes,
 } from "@chakra-ui/react";
+
+import { SwiperOptions } from "swiper/types";
+import { Autoplay, Navigation } from "swiper/modules";
+import { CSSProperties } from "react";
 
 export const homePageStyles: FlexProps = {
   w: "100vw",
@@ -146,20 +151,65 @@ export const aboutPinkCurveStyles: BoxProps = {
   backgroundPosition: "top",
   backgroundSize: "fit",
   position: "relative",
-  top: "-40px",
+  top: "-20px",
 };
 
 export const aboutContainerStackStyles: StackProps = {
-  background: "brand.pink",
-  spacing: "2rem",
+  // backgroundColor: "brand.pink",
+  // backgroundImage: "url(/svg/sunrise.svg)",
+  // backgroundPosition: "top",
+  // backgroundRepeat: "no-repeat",
+  // backgroundSize: "contain",
+  spacing: "0",
+  // w: "100vw",
+  // maxW: "2080px",
+  // position: "relative",
+  // top: "-50px",
+  // pb: "1em",
+  // border: "2px solid black",
+  // borderTop: "none",
+};
+
+export const aboutFlexContainerStyles: FlexProps = {
+  backgroundColor: "brand.pink",
+  // backgroundImage: "url(/svg/sunrise.svg)",
+  // backgroundPosition: "top",
+  // backgroundRepeat: "no-repeat",
+  // backgroundSize: "contain",
   w: "100vw",
   maxW: "2080px",
   position: "relative",
-  top: "-88px",
-  pt: "0",
-  pb: "3rem",
+  top: "-50px",
+  pb: "1em",
   border: "2px solid black",
   borderTop: "none",
+};
+
+export const aboutTextStyles: TextProps = {
+  maxW: { base: "95vw", md: "80vw", lg: "1000px" },
+  fontSize: { base: "1rem", md: "1.2rem", lg: "1.3rem" },
+  px: { base: "1rem", md: "0.5rem", lg: "2.2rem" },
+  py: { base: "0.5rem", md: "0.7rem" },
+};
+
+export const eventSlideSettings: SwiperOptions = {
+  modules: [Navigation, Autoplay],
+  spaceBetween: 10,
+  slidesPerView: "auto",
+  speed: 1000,
+  autoplay: {
+    delay: 3000,
+    disableOnInteraction: false,
+  },
+};
+
+export const eventSlideStyles: CSSProperties = {
+  boxSizing: "border-box",
+  maxWidth: "350px",
+};
+
+export const eventCardBodyStyles: CardBodyProps = {
+  minH: { base: "20vh", md: "25vh" },
 };
 
 export const litterContainerStyles: FlexProps = {

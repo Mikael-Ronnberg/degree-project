@@ -6,6 +6,7 @@ import { homePageStyles } from "./style/styleHome";
 import CookieConsent from "react-cookie-consent";
 import { AboutContainer } from "./feature/AboutContainer";
 import { JoinContainer } from "./feature/JoinContainer";
+import { EventSlider } from "./feature/EventSlider";
 
 export const Home = () => {
   return (
@@ -14,6 +15,7 @@ export const Home = () => {
         <Hero />
         <IntroContainer />
         <AboutContainer />
+        <EventSlider />
         <LitterContainer />
         <JoinContainer />
         <CookieConsent
