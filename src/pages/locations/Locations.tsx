@@ -27,7 +27,7 @@ export const Locations = () => {
         <MapContainer />
 
         <Box
-          h={{ base: "30px", md: "50px" }}
+          h={{ base: "32px", md: "50px" }}
           w={{ base: "95vw", md: "100vw", xl: "1280px" }}
           position="relative"
           top={{ base: "2px", md: "3px" }}

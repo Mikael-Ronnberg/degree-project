@@ -27,10 +27,10 @@ export const MapContainer = () => {
         </Grid>
       </Flex>
       <Box
-        h={{ base: "30px", md: "50px" }}
+        h={{ base: "32px", md: "50px" }}
         w={{ base: "95vw", md: "100vw", xl: "1280px" }}
         position="relative"
-        bottom={{ base: "2px", md: "4px" }}
+        bottom={{ base: "3px", md: "4px" }}
         backgroundImage="url(/svg/curves/pinkWaveCurve.svg
           )"
         backgroundRepeat="no-repeat"
