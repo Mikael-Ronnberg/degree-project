@@ -27,7 +27,7 @@ export const MapContainer = () => {
         </Grid>
       </Flex>
       <Box
-        h={{ base: "32px", md: "50px" }}
+        h={{ base: "30px", md: "50px" }}
         w={{ base: "95vw", md: "100vw", xl: "1280px" }}
         position="relative"
         bottom={{ base: "3px", md: "4px" }}
