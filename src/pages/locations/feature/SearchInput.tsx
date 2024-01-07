@@ -44,6 +44,7 @@ export const SearchInput = () => {
       <Input
         {...searchInputStyles}
         value={searchInput}
+        id="search"
         onChange={(e) => setSearchInput(e.target.value)}
       />
       {isDropdownOpen && (

@@ -1,4 +1,4 @@
-import { Button, Flex, Heading, VStack, Text, Box } from "@chakra-ui/react";
+import { Button, Flex, Heading, VStack, Box } from "@chakra-ui/react";
 import {
   articleContainerStyles,
   articleHeadingStyles,
@@ -44,10 +44,7 @@ export const Articles = () => {
     <>
       <Flex {...articlePageStyles}>
         <Flex {...articleContainerStyles}>
-          <VStack>
-            <Heading {...articleHeadingStyles}>Läs våra artiklar</Heading>
-            <Text></Text>
-          </VStack>
+          <Heading {...articleHeadingStyles}>Läs våra artiklar</Heading>
           <VStack spacing="1rem" pb="2rem">
             {articles.map((article, index) => (
               <Link
@@ -67,7 +64,7 @@ export const Articles = () => {
           <Box
             w="1285px"
             background="brand.green"
-            h="20vh"
+            h="18vh"
             display="flex"
             justifyContent="center"
             alignItems="center"

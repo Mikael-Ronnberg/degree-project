@@ -20,7 +20,6 @@ import { Burger } from "../icons/Burger";
 import {
   burgerButtonStyles,
   drawerCloseButtonStyles,
-  logoutButtonStyles,
 } from "../buttons/style/buttonStyles";
 import {
   drawerHeaderStyles,
@@ -69,15 +68,14 @@ export const MobileMenu = ({ navItems, navType }: MobileMenuProps) => {
                 </Link>
               ))}
               {navType && navType === "admin" ? (
-                <GridItem {...mobileMenuSectionStyles}>
-                  <Button
-                    onClick={() => {
-                      userSignOut(), navigate("/");
-                    }}
-                    {...logoutButtonStyles}
-                  >
-                    Logga Ut
-                  </Button>
+                <GridItem
+                  {...mobileMenuSectionStyles}
+                  cursor="pointer"
+                  onClick={() => {
+                    userSignOut(), navigate("/");
+                  }}
+                >
+                  <Text {...mobileTextStyles}>Logga Ut</Text>
                 </GridItem>
               ) : null}
             </Grid>

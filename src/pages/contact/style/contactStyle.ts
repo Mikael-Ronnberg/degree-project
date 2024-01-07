@@ -118,36 +118,44 @@ export const contactFormTextareaStyles: TextareaProps = {
 };
 
 export const purpleWaveStackStyles: StackProps = {
-  w: { base: "100vw" },
-  spacing: "5rem",
-  h: "fit-content",
-  border: "1px solid black",
-  borderBottom: "none",
   background: "brand.pink",
-  backgroundImage: "url(/svg/waves/purpleBigWaves.svg)",
-  backgroundRepeat: "no-repeat",
-  backgroundPosition: "bottom",
-  backgroundSize: "fit",
-  py: { base: "1rem", md: "2.3rem", lg: "2.4rem" },
+  w: "100vw",
+  maxW: "2000px",
+  spacing: "0",
+  overflow: "hidden",
+  h: "auto",
+  border: "2px solid black",
+  pt: { base: "1rem", md: "2.3rem", lg: "2.4rem" },
 };
 
 export const pinkTextStyles: TextProps = {
+  textAlign: "center",
   fontSize: { base: "3rem", md: "3.4rem", lg: "3.5rem" },
+  px: { base: "1rem", md: "2.3rem" },
+  py: { base: "1rem", md: "1.3rem" },
+};
+
+export const pinkBoxStyles: BoxProps = {
+  h: "auto",
+  w: "100vw",
 };
 
 export const purpleBoxStyles: BoxProps = {
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
-  h: "20vh",
-  w: { base: "90vw", sm: "90vw", md: "75vw", xl: "950px" },
+  px: { base: "1rem", md: "2.3rem", lg: "2.4rem" },
+  background: "brand.purple",
+  h: "auto",
+  w: "100vw",
 };
 
 export const purpleTextStyles: TextProps = {
+  w: { base: "87vw", md: "70vw", xl: "900px" },
   color: "white",
   textAlign: "center",
   fontSize: { base: "1rem", md: "1.2rem", lg: "1.3rem" },
-  pb: { base: "1rem", lg: "0" },
+  pb: { base: "1.5rem", lg: "2rem" },
 };
 
 export const supportWrapperStyles: FlexProps = {

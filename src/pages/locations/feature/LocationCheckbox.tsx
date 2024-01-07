@@ -10,11 +10,11 @@ export const LocationCheckbox = () => {
       <HStack spacing="3rem">
         <Checkbox
           {...mapCheckboxStyles}
+          id="ourLocations"
           onChange={(e) => setShowLocations(e.target.checked)}
         >
           Besökta Platser
         </Checkbox>
-        {/* <Checkbox {...mapCheckboxStyles}>Senaste Besökta Platser</Checkbox> */}
       </HStack>
     </>
   );

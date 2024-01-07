@@ -7,13 +7,9 @@ export const ArticleRoute = () => {
 
   let decodedArticle = "";
 
-  console.log(article);
-
   if (article) {
     decodedArticle = decodeURIComponent(article);
   }
-
-  console.log(decodedArticle);
 
   return (
     <>

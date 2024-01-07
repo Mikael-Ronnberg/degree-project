@@ -37,8 +37,6 @@ export const LeafletMap = () => {
     parseFloat(location.lon),
   ]);
 
-  console.log(selectLocation);
-
   return (
     <>
       <MapContainer

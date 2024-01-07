@@ -37,6 +37,7 @@ export const articleHeadingStyles: HeadingProps = {
   fontSize: { base: "2rem", md: "2.3rem", lg: "2.7rem" },
   letterSpacing: "0.1rem",
   py: { base: "1.7rem", md: "3rem", lg: "4rem" },
+  px: "1rem",
 };
 
 export const articleCardGridStyles: GridProps = {

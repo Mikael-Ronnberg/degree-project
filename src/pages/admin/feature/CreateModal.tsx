@@ -8,7 +8,7 @@ import {
   ModalCloseButton,
   ModalBody,
 } from "@chakra-ui/react";
-import { AddNewLocation } from "../../our-locations/feature/AddNewLocation";
+import { AddNewLocation } from "../../ourLocations/feature/AddNewLocation";
 import { ArticleForm } from "../../write-articles/feature/ArticleForm";
 import { AddUserForm } from "../../add-user/feature/AddUserForm";
 import { EventForm } from "../../create-event/feature/EventForm";

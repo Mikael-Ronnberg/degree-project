@@ -4,11 +4,10 @@ import {
   desktopNavStyles,
   desktopTextStyles,
 } from "./navbarStyle";
-import { Button, Grid, GridItem, Text } from "@chakra-ui/react";
+import { Grid, GridItem, Text } from "@chakra-ui/react";
 import { NavItem } from "../../model/GlobalInterfaces";
 import { userSignOut } from "../../services/AdminServices";
 import { NavLogo } from "../icons/NavLogo";
-import { logoutButtonStyles } from "../buttons/style/buttonStyles";
 
 interface DesktopNavbarProps {
   navItems: NavItem[];
@@ -36,15 +35,14 @@ export const DesktopNavbar = ({ navItems, navType }: DesktopNavbarProps) => {
           </GridItem>
         ))}
         {navType && navType === "admin" ? (
-          <GridItem {...desktopNavSectionStyles}>
-            <Button
-              onClick={() => {
-                userSignOut(), navigate("/");
-              }}
-              {...logoutButtonStyles}
-            >
-              Logga Ut
-            </Button>
+          <GridItem
+            {...desktopNavSectionStyles}
+            cursor="pointer"
+            onClick={() => {
+              userSignOut(), navigate("/");
+            }}
+          >
+            <Text {...desktopTextStyles}>Logga Ut</Text>
           </GridItem>
         ) : null}
       </Grid>

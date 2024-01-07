@@ -7,7 +7,7 @@ import {
   VStack,
   VisuallyHidden,
 } from "@chakra-ui/react";
-import { Formik } from "formik";
+import { Formik, useFormikContext } from "formik";
 import {
   contactFormInputStyles,
   contactFormTextareaStyles,
@@ -19,11 +19,10 @@ import {
   purpleButtonStyles,
   purpleDisabledButtonStyles,
 } from "../../../components/buttons/style/buttonStyles";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export const ContactForm = () => {
   const [submitted, setSubmitted] = useState(false);
-  const [submitTrue, setSubmitTrue] = useState(false);
   const initialValues: ContactValues = {
     name: "",
     email: "",
@@ -60,83 +59,89 @@ export const ContactForm = () => {
           onSubmit={handleFormSubmit}
           enableReinitialize
         >
-          {({ values, handleChange, handleBlur, handleSubmit }) => {
-            if (values.message.length > 0) {
-              setSubmitTrue(true);
-            } else {
-              setSubmitTrue(false);
-            }
-
-            return (
-              <form onSubmit={handleSubmit}>
-                <FormControl>
-                  <VStack spacing="3rem" pb="2rem">
-                    <VStack {...formStackStyles}>
-                      <FormLabel htmlFor="name" as={VisuallyHidden}>
-                        Namn
-                      </FormLabel>
-                      <Input
-                        {...contactFormInputStyles}
-                        id="name"
-                        name="name"
-                        placeholder="Namn... (valfritt)"
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        value={values.name}
-                      />
-                      <FormLabel htmlFor="email" as={VisuallyHidden}>
-                        Email
-                      </FormLabel>
-                      <Input
-                        {...contactFormInputStyles}
-                        id="email"
-                        name="email"
-                        placeholder="Email... (valfritt)"
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        value={values.email}
-                      />
-                      <FormLabel htmlFor="email" as={VisuallyHidden}>
-                        Vad gäller din fråga?
-                      </FormLabel>
-                      <Input
-                        {...contactFormInputStyles}
-                        id="question"
-                        name="question"
-                        placeholder="Fråga... (valfritt)"
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        value={values.question}
-                      />
-                      <FormLabel htmlFor="message" as={VisuallyHidden}>
-                        Skriv ditt meddelande här
-                      </FormLabel>
-                      <Textarea
-                        {...contactFormTextareaStyles}
-                        id="message"
-                        name="message"
-                        placeholder="Skriv ditt meddelande här..."
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        value={values.message}
-                      />
-                    </VStack>
-                    {submitTrue ? (
-                      <Button type="submit" {...purpleButtonStyles}>
-                        Skicka
-                      </Button>
-                    ) : (
-                      <Button {...purpleDisabledButtonStyles}>
-                        Fyll i för att skicka
-                      </Button>
-                    )}
-                  </VStack>
-                </FormControl>
-              </form>
-            );
-          }}
+          <FormContactContent />
         </Formik>
       )}
     </>
+  );
+};
+
+const FormContactContent = () => {
+  const { values, handleChange, handleBlur, handleSubmit } =
+    useFormikContext<ContactValues>();
+  const [submitTrue, setSubmitTrue] = useState(false);
+
+  useEffect(() => {
+    setSubmitTrue(values.message.length > 0);
+  }, [values.message]);
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <FormControl>
+        <VStack spacing="3rem" pb="2rem">
+          <VStack {...formStackStyles}>
+            <FormLabel htmlFor="name" as={VisuallyHidden}>
+              Namn
+            </FormLabel>
+            <Input
+              {...contactFormInputStyles}
+              id="name"
+              name="name"
+              placeholder="Namn... (valfritt)"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.name}
+              autoComplete="name"
+            />
+            <FormLabel htmlFor="email" as={VisuallyHidden}>
+              Email
+            </FormLabel>
+            <Input
+              {...contactFormInputStyles}
+              id="email"
+              name="email"
+              placeholder="Email... (valfritt)"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.email}
+              autoComplete="email"
+            />
+            <FormLabel htmlFor="email" as={VisuallyHidden}>
+              Vad gäller din fråga?
+            </FormLabel>
+            <Input
+              {...contactFormInputStyles}
+              id="question"
+              name="question"
+              placeholder="Fråga... (valfritt)"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.question}
+            />
+            <FormLabel htmlFor="message" as={VisuallyHidden}>
+              Skriv ditt meddelande här
+            </FormLabel>
+            <Textarea
+              {...contactFormTextareaStyles}
+              id="message"
+              name="message"
+              placeholder="Skriv ditt meddelande här..."
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.message}
+            />
+          </VStack>
+          {submitTrue ? (
+            <Button type="submit" {...purpleButtonStyles}>
+              Skicka
+            </Button>
+          ) : (
+            <Button {...purpleDisabledButtonStyles}>
+              Fyll i för att skicka
+            </Button>
+          )}
+        </VStack>
+      </FormControl>
+    </form>
   );
 };

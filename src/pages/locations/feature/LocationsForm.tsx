@@ -1,4 +1,4 @@
-import { Formik, FormikHelpers } from "formik";
+import { Formik, FormikHelpers, useFormikContext } from "formik";
 import { Flex, Input, Button, Textarea } from "@chakra-ui/react";
 import {
   formContentStyles,
@@ -13,12 +13,10 @@ import {
   purpleButtonStyles,
   purpleDisabledButtonStyles,
 } from "../../../components/buttons/style/buttonStyles";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export const LocationsForm = () => {
   const { pinLocation, setPinLocation, setFormSubmitted } = useLocationStore();
-
-  const [submitTrue, setSubmitTrue] = useState(false);
 
   const initialValues: SubLocationsFormValues = {
     name: "",
@@ -44,68 +42,84 @@ export const LocationsForm = () => {
       onSubmit={handleSubmit}
       enableReinitialize
     >
-      {({ values, handleChange, handleBlur, handleSubmit }) => {
-        if (values.message.length > 0 && values.lat !== 0 && values.lng !== 0) {
-          setSubmitTrue(true);
-        } else {
-          setSubmitTrue(false);
-        }
-
-        return (
-          <form onSubmit={handleSubmit}>
-            <Flex {...formContentStyles}>
-              <Input
-                {...inputStyles}
-                name="name"
-                placeholder="Namn... (valfritt)"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.name}
-              />
-              <Input
-                {...inputStyles}
-                name="email"
-                placeholder="Email... (valfritt)"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.email}
-              />
-              <Textarea
-                {...textareaStyles}
-                name="message"
-                placeholder="Meddelande..."
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.message}
-              />
-
-              <Input
-                type="hidden"
-                name="lat"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.lat}
-              />
-              <Input
-                type="hidden"
-                name="lon"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.lng}
-              />
-              {submitTrue ? (
-                <Button type="submit" {...purpleButtonStyles}>
-                  Skicka tipset
-                </Button>
-              ) : (
-                <Button {...purpleDisabledButtonStyles}>
-                  Fyll i för att skicka
-                </Button>
-              )}
-            </Flex>
-          </form>
-        );
-      }}
+      <FormLocationContent />
     </Formik>
+  );
+};
+
+// interface FormLocationContentProps {
+// }
+
+const FormLocationContent = () => {
+  const { values, handleChange, handleBlur, handleSubmit } =
+    useFormikContext<SubLocationsFormValues>();
+  const [submitTrue, setSubmitTrue] = useState(false);
+
+  useEffect(() => {
+    if (values.message.length > 0 && values.lat !== 0 && values.lng !== 0) {
+      setSubmitTrue(true);
+    } else {
+      setSubmitTrue(false);
+    }
+  }, [values]);
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <Flex {...formContentStyles}>
+        <Input
+          {...inputStyles}
+          id="name"
+          name="name"
+          placeholder="Namn... (valfritt)"
+          onChange={handleChange}
+          onBlur={handleBlur}
+          value={values.name}
+          autoComplete="name"
+        />
+        <Input
+          {...inputStyles}
+          id="email"
+          name="email"
+          placeholder="Email... (valfritt)"
+          onChange={handleChange}
+          onBlur={handleBlur}
+          value={values.email}
+          autoComplete="email"
+        />
+        <Textarea
+          {...textareaStyles}
+          id="message"
+          name="message"
+          placeholder="Meddelande..."
+          onChange={handleChange}
+          onBlur={handleBlur}
+          value={values.message}
+        />
+
+        <Input
+          id="lat"
+          type="hidden"
+          name="lat"
+          onChange={handleChange}
+          onBlur={handleBlur}
+          value={values.lat}
+        />
+        <Input
+          id="lng"
+          type="hidden"
+          name="lng"
+          onChange={handleChange}
+          onBlur={handleBlur}
+          value={values.lng}
+        />
+        {submitTrue ? (
+          <Button type="submit" {...purpleButtonStyles}>
+            Skicka tipset
+          </Button>
+        ) : (
+          <Button {...purpleDisabledButtonStyles}>Fyll i för att skicka</Button>
+        )}
+      </Flex>
+    </form>
   );
 };

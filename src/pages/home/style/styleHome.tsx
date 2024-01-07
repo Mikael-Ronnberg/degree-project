@@ -160,11 +160,12 @@ export const aboutImageStyles: ImageProps = {
   backgroundPosition: "center",
   backgroundRepeat: "no-repeat",
   backgroundSize: "contain",
-  h: { base: "14vh", md: "30vh", lg: "auto" },
-  w: { base: "40vw", md: "40vw", lg: "auto" },
+  h: { base: "170px", md: "280px", lg: "auto" },
+  w: { base: "200px", md: "310vw", lg: "auto" },
 };
 
 export const aboutFlexContainerStyles: FlexProps = {
+  h: "auto",
   justify: "center",
   align: "center",
   direction: { base: "column", lg: "row" },
