@@ -270,26 +270,26 @@ export const joinTextStyles: TextProps = {
 
 export const tireAnimation = keyframes`
 0% { transform: rotate(0deg) translateX(0px) translateY(0px); }
-45% { transform: rotate(45deg) translateX(30px) translateY(30px); }
+25% { transform: rotate(45deg) translateX(30px) translateY(30px); }
 74% { transform: translateX(-15px) translateY(-15px);}
 100% {transform: rotate(0deg) translateX(0px) translateY(0px);}
 `;
 export const glassAnimation = keyframes`
 0% { transform: rotate(0deg) translateX(0px) translateY(0px); }
-43% { transform: rotate(-45deg) translateX(30px) translateY(-30px); }
+33% { transform: rotate(-45deg) translateX(30px) translateY(-30px); }
 70% { transform: translateX(-15px) translateY(-15px);}
 100% {transform: rotate(0deg) translateX(0px) translateY(0px);}
 `;
 export const metalAnimation = keyframes`
 0% { transform: rotate(0deg) translateX(0px) translateY(0px); }
 45% { transform: rotate(-45deg) translateX(-30px) translateY(30px); }
-78% { transform: translateX(15px) translateY(-15px);}
+720% { transform: translateX(15px) translateY(-15px);}
 100% {transform: rotate(0deg) translateX(0px) translateY(0px);}
 `;
 export const plasticAnimation = keyframes`
 0% { transform: rotate(0deg) translateX(0px) translateY(0px); }
 55% { transform: rotate(45deg) translateX(30px) translateY(-30px); }
-78% { transform: translateX(-15px) translateY(-15px);}
+88% { transform: translateX(-15px) translateY(-15px);}
 100% {transform: rotate(0deg) translateX(0px) translateY(0px);}
 `;
 export const animalAnimation = keyframes`
