@@ -1,5 +1,6 @@
 import { Flex, Heading, VStack, Button } from "@chakra-ui/react";
 import {
+  adminHeadingStyles,
   adminPageStyles,
   createContainerStyles,
 } from "../admin/style/styleAdmin";
@@ -12,7 +13,7 @@ export const WriteArticle = () => {
     <>
       <Flex {...adminPageStyles}>
         <Flex {...createContainerStyles}>
-          <Heading>Artiklar</Heading>
+          <Heading {...adminHeadingStyles}>Artiklar</Heading>
           <VStack spacing="2.5rem">
             <CreateModal
               modalHeader="Skriv en Artikel"
