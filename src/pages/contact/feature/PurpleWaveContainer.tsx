@@ -16,7 +16,9 @@ export const PurpleWaveContainer = () => {
           <Text {...pinkTextStyles}>Vill Du Stötta Oss?</Text>
         </Box>
         <VStack spacing="0">
-          <BigWave color="#574CFF" />
+          <Box position="relative" top="2px">
+            <BigWave color="#574CFF" />
+          </Box>
           <Box {...purpleBoxStyles}>
             <Text {...purpleTextStyles}>
               För att hjälpa till med ekonomiskt stöd och täcka eventuella
