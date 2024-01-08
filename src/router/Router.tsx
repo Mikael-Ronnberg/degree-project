@@ -5,20 +5,21 @@ import { About } from "../pages/about/About";
 import { Locations } from "../pages/locations/Locations";
 import { Admin } from "../pages/admin/Admin";
 import { Login } from "../pages/login/Login";
-import { SubmittedLocations } from "../pages/submitted-locations/SubmittedLocations";
-import { OurEvents } from "../pages/our-events/OurEvents";
+
+import { OurEvents } from "../pages/ourEvents/OurEvents";
 import { OurArticles } from "../pages/ourArticles/OurArticles";
 import { OurLocations } from "../pages/ourLocations/OurLocations";
-import { CreateEvent } from "../pages/create-event/CreateEvent";
-import { WriteArticle } from "../pages/write-articles/WriteArticle";
+import { CreateEvent } from "../pages/createEvent/CreateEvent";
+import { WriteArticle } from "../pages/writeArticles/WriteArticle";
 import { HandleOurLocations } from "../pages/handleOurLocations/HandleOurLocations";
-import { AddUser } from "../pages/add-user/AddUser";
+import { AddUser } from "../pages/addUser/AddUser";
 import { Events } from "../pages/events/Events";
 import { RequireAuthLayout } from "./RequireAuthLayout";
 import { NormalLayout } from "./NormalLayout";
 import { Articles } from "../pages/articles/Articles";
 import { ArticleRoute } from "../pages/articles/feature/ArticleRoute";
 import { NotFound } from "../pages/notFound/NotFound";
+import { SubmittedLocations } from "../pages/submittedLocations/SubmittedLocations";
 
 export const router = createBrowserRouter([
   {

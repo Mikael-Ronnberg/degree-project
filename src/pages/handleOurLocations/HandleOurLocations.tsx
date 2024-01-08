@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { OurLocationCard } from "./feature/OurLocationCard";
 import { getOurLocations } from "../../services/MapServices";
 import { useOurLocationsStore } from "../../store/useOurLocationsStore";
+import { greySmallButtonStyles } from "../../components/buttons/style/buttonStyles";
 
 const ITEMS_PER_PAGE = 3;
 
@@ -12,14 +13,9 @@ export const HandleOurLocations = () => {
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
-    const fetchLocations = async () => {
-      if (ourLocations.length === 0) {
-        const locations = await getOurLocations();
-        setOurLocations(locations);
-      }
-    };
+    const unsubscribe = getOurLocations(setOurLocations);
 
-    fetchLocations();
+    return () => unsubscribe();
   }, []);
 
   const indexOfLastItem = currentPage * ITEMS_PER_PAGE;
@@ -42,18 +38,22 @@ export const HandleOurLocations = () => {
             <OurLocationCard key={location.id} location={location} />
           ))}
           <HStack spacing="2rem" mb="2rem" mt="2rem">
-            <Button
-              onClick={() => paginate(currentPage - 1)}
-              disabled={currentPage === 1}
-            >
-              Föregående
-            </Button>
-            <Button
-              onClick={() => paginate(currentPage + 1)}
-              disabled={indexOfLastItem >= ourLocations.length}
-            >
-              Nästa
-            </Button>
+            {currentPage > 1 && (
+              <Button
+                {...greySmallButtonStyles}
+                onClick={() => paginate(currentPage - 1)}
+              >
+                Föregående
+              </Button>
+            )}
+            {indexOfLastItem < ourLocations.length && (
+              <Button
+                {...greySmallButtonStyles}
+                onClick={() => paginate(currentPage + 1)}
+              >
+                Nästa
+              </Button>
+            )}
           </HStack>
         </VStack>
       </Flex>

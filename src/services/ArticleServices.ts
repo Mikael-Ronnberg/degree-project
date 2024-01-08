@@ -3,21 +3,19 @@ import {
   serverTimestamp,
   query,
   orderBy,
-  limit,
-  startAfter,
-  getDocs,
   doc,
   deleteDoc,
   updateDoc,
   collection,
+  onSnapshot,
   getDoc,
 } from "firebase/firestore";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { db, storage } from "../config/firebase";
 import {
+  ArticleResponse,
   CreateArticleFormValues,
   TransformedArticleResponse,
-  ArticleResponse,
 } from "../model/ArticlesInterfaces";
 
 const articleCollectionRef = collection(db, "articles");
@@ -34,55 +32,52 @@ export const submitArticle = async (article: CreateArticleFormValues) => {
   }
 };
 
-export const getArticles = async (
-  pageNumber: number,
-  pageSize: number
-): Promise<TransformedArticleResponse[]> => {
-  try {
-    let articlesQuery = query(
-      articleCollectionRef,
-      orderBy("createdAt", "desc"),
-      limit(pageSize)
+export const getArticles = (
+  setArticles: (articles: TransformedArticleResponse[]) => void
+): (() => void) => {
+  const articlesQuery = query(
+    articleCollectionRef,
+    orderBy("createdAt", "desc")
+  );
+
+  const unsubscribe = onSnapshot(articlesQuery, (snapshot) => {
+    const articlesData: TransformedArticleResponse[] = snapshot.docs.map(
+      (doc) => {
+        const data = doc.data();
+        const createdAtTimestamp = data.createdAt;
+        const createdAtDate = createdAtTimestamp.toDate();
+        const readableDate = createdAtDate.toLocaleString();
+
+        return {
+          id: doc.id,
+          createdAt: readableDate,
+          mainHeading: data.mainHeading,
+          mainImg: data.mainImg,
+          mainImgName: data.mainImgName,
+          date: data.date,
+          category: data.category,
+          author: data.author,
+          subHeading1: data.subHeading1,
+          section1: data.section1,
+          subImg1: data.subImg1,
+          subImg1Name: data.subImg1Name,
+          subImgDescription1: data.subImgDescription1,
+          subHeading2: data.subHeading2,
+          section2: data.section2,
+          subImg2: data.subImg2,
+          subImg2Name: data.subImg2Name,
+          subImgDescription2: data.subImgDescription2,
+          subHeading3: data.subHeading3,
+          section3: data.section3,
+        };
+      }
     );
 
-    if (pageNumber > 1) {
-      const lastDoc = await getLastDocumentOfPreviousPage(pageNumber, pageSize);
-      articlesQuery = query(articlesQuery, startAfter(lastDoc));
-    }
+    setArticles(articlesData);
+  });
 
-    const data = await getDocs(articlesQuery);
-    const filteredData: TransformedArticleResponse[] = data.docs.map((doc) => {
-      const docData = doc.data() as ArticleResponse;
-      const createdAtTimestamp = docData.createdAt;
-      const createdAtDate = createdAtTimestamp.toDate();
-      const readableDate = createdAtDate.toLocaleString();
-
-      return {
-        ...docData,
-        createdAt: readableDate,
-        id: doc.id,
-      };
-    });
-
-    return filteredData;
-  } catch (error) {
-    console.error(error);
-    return [];
-  }
+  return unsubscribe;
 };
-
-async function getLastDocumentOfPreviousPage(
-  pageNumber: number,
-  pageSize: number
-) {
-  const lastPageQuery = query(
-    articleCollectionRef,
-    orderBy("createdAt", "desc"),
-    limit((pageNumber - 1) * pageSize)
-  );
-  const lastPageData = await getDocs(lastPageQuery);
-  return lastPageData.docs[lastPageData.docs.length - 1];
-}
 
 export const getArticleById = async (articleId: string) => {
   try {
@@ -134,3 +129,10 @@ export const uploadFile = async (file: File | null): Promise<string> => {
   }
   return "";
 };
+
+// function onSnapshot(
+//   articlesQuery: Query<DocumentData, DocumentData>,
+//   arg1: (snapshot: any) => void
+// ) {
+//   throw new Error("Function not implemented.");
+// }

@@ -1,10 +1,12 @@
 import {
   BoxProps,
+  CardProps,
   FlexProps,
+  FormLabelProps,
+  GridProps,
   HeadingProps,
   ImageProps,
   InputProps,
-  ModalBodyProps,
   ModalContentProps,
   ModalHeaderProps,
   StackProps,
@@ -22,17 +24,36 @@ export const adminPageStyles: FlexProps = {
   py: { base: "4rem", md: "5.5rem", lg: "6rem" },
 };
 
-export const subLocationsStyles: StackProps = {
+export const adminBoardGridStyles: GridProps = {
+  w: "auto",
+  h: "auto",
+  templateColumns: {
+    base: "100%",
+    md: "50% 50%",
+    xl: "33% 33% 33%",
+  },
+  gap: "5",
+  p: "1rem",
+};
+
+//admincontainers
+
+export const adminStackContainer: StackProps = {
   h: "100vh",
   w: { s: "90vw", l: "85vw" },
   backgroundColor: "grey",
 };
 
-export const adminContainerStyles: FlexProps = {
+export const adminContainerFlexStyles: FlexProps = {
   direction: "column",
-  justify: "center",
+  justify: "space-around",
   align: "center",
-  w: { s: "85vw", l: "80vw" },
+  mt: "2rem",
+  w: { base: "90vw", md: "95Vw", xl: "1280px" },
+  minH: "85vh",
+  background: "white",
+  border: "solid 2px black",
+  px: "1rem",
 };
 
 export const adminCardStyles: FlexProps = {
@@ -47,8 +68,34 @@ export const adminCardStyles: FlexProps = {
   m: "2rem",
 };
 
-export const adminCardTextStyles: TextProps = {
-  m: "0.5rem",
+export const adminBoardCardStyles: CardProps = {
+  w: { base: "auto", md: "auto", lg: "auto", xl: "auto" },
+  h: "auto",
+  minH: "30vh",
+  justify: "center",
+  align: "center",
+  border: "black solid 2px",
+  background: "white",
+  py: "1rem",
+  rounded: "sm",
+};
+
+export const adminTextStyles: TextProps = {
+  fontSize: { base: "1rem", md: "1.2rem", lg: "1.3rem" },
+  textAlign: "center",
+  px: "1rem",
+};
+
+export const adminHeadingStyles: HeadingProps = {
+  fontSize: { base: "2rem", md: "2.2rem", lg: "3rem" },
+  py: "2rem",
+  textAlign: "center",
+};
+
+export const generalCardGridStyles: GridProps = {
+  w: { sm: "90vw", lg: "65vw" },
+  templateColumns: { base: "50% 50%" },
+  gap: "0.5rem",
 };
 
 export const subImageTextCardStyles: TextProps = {
@@ -66,8 +113,9 @@ export const subImageCardStyles: ImageProps = {
 export const ourMapContainerStyles: FlexProps = {
   justify: "center",
   align: "center",
-  w: { sm: "90vw", lg: "65vw" },
-  h: "auto",
+  w: { base: "90vw", lg: "65vw" },
+  h: "80vh",
+  gap: "10rem",
   border: "black 1px solid",
   direction: "column",
   background: "white",
@@ -77,15 +125,15 @@ export const ourMapContainerStyles: FlexProps = {
 
 export const ourMapBoxStyles: BoxProps = {
   border: "black 1px solid",
-  w: "40vw",
-  h: "35vh",
+  w: { base: "80vw", lg: "55vw" },
+  h: "55vh",
   zIndex: "1",
 };
 
 export const createContainerStyles: FlexProps = {
   justify: "center",
   align: "center",
-  w: { sm: "90vw", lg: "65vw" },
+  w: { base: "90vw", lg: "65vw" },
   h: "80vh",
   gap: "10rem",
   border: "black 1px solid",
@@ -99,10 +147,11 @@ export const createHeadingStyles: HeadingProps = {
   fontSize: { base: "2.5rem", md: "2.8rem", lg: "3rem" },
 };
 
-export const createFormStyles: FlexProps = {
+export const formFlexStyles: FlexProps = {
   justify: "center",
   align: "center",
   w: { sm: "90vw", lg: "65vw" },
+  gap: "1rem",
   h: "auto",
   border: "black 2px solid",
   direction: "column",
@@ -111,40 +160,57 @@ export const createFormStyles: FlexProps = {
   p: "2rem",
 };
 
-export const createInputFormStyles: InputProps = {
-  variant: "outline",
-  border: "black 2px solid",
+export const inputFormStyles: InputProps = {
+  w: { base: "80vw", md: "60vw", xl: "700px" },
+  h: "60px",
+  mx: { base: "0rem", md: "2rem" },
+  mb: "2rem",
+  border: "2px solid black",
   rounded: "sm",
-  w: "60vw",
-  m: "1rem",
+  _hover: {
+    borderColor: "black",
+  },
+  _focus: {
+    transform: "translateY(-2px)",
+    boxShadow: "-4px 4px 0px 0px",
+    border: "2px black solid",
+  },
 };
 
-export const createTextareaFormStyles: TextareaProps = {
-  border: "black 2px solid",
-  variant: "outline",
+export const textareaFormStyles: TextareaProps = {
+  w: { base: "80vw", md: "60vw", xl: "700px" },
+  h: "150px",
+  mx: { base: "0rem", md: "2rem" },
+  border: "2px solid black",
   rounded: "sm",
-  w: "60vw",
-  h: "40vh",
-  m: "1rem",
+  _hover: {
+    borderColor: "black",
+  },
+  _focus: {
+    transform: "translateY(-2px)",
+    boxShadow: "-4px 4px 0px 0px",
+    border: "2px black solid",
+  },
 };
 
-export const createModalStyles: ModalContentProps = {
-  // background: "brand.pink",
-  // border: "solid 2px black",
-  maxW: { base: "inherit" },
+export const formLabelStyles: FormLabelProps = {
+  fontSize: { base: "1rem", md: "1.2rem", lg: "1.3rem" },
+  textAlign: "center",
+  pt: "1rem",
+  pb: "0",
+};
+
+export const modalStyles: ModalContentProps = {
+  maxW: { base: "90vw", md: "95Vw", xl: "1280px" },
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
-  m: { base: "5rem", md: "6rem" },
-  mx: { lg: "8rem", xl: "20rem" },
   pb: "2rem",
   rounded: "sm",
 };
 
-export const createModalHeaderStyles: ModalHeaderProps = {
-  fontSize: { base: "1.4rem", md: "1.6rem", lg: "2rem" },
-};
-
-export const createModalBodyStyles: ModalBodyProps = {
-  // maxW: "800px",
+export const modalHeaderStyles: ModalHeaderProps = {
+  fontSize: { base: "2rem", md: "2.2rem", lg: "3rem" },
+  py: "2rem",
+  textAlign: "center",
 };

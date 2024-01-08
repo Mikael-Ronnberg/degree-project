@@ -1,38 +1,31 @@
 import { Box, Heading, VStack } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { useEventsStore } from "../../../store/useEventsStore";
-import { TransformedEventResponse } from "../../../model/EventsInterfaces";
 import { getEvents } from "../../../services/EventServices";
 import { eventSlideSettings, eventSlideStyles } from "../style/styleHome";
 import { EventSlideCard } from "./EventSlideCard";
 import { SwiperButtons } from "../../../components/buttons/SwiperButtons";
-import { sortEventsByDate } from "../../../helpers/globalHelpers";
+
 import { GreyButton } from "../../../components/buttons/GreyButton";
+import { sortEventsByDate } from "../../../helpers/globalHelpers";
 
 export const EventSlider = () => {
   const { events, setEvents } = useEventsStore();
-  const [slideEvents, setSlideEvents] = useState<TransformedEventResponse[]>(
-    []
-  );
 
   useEffect(() => {
-    const fetchEvents = async () => {
-      const res: TransformedEventResponse[] = await getEvents();
-      const sortedEvents = sortEventsByDate(res);
+    const unsubscribe = getEvents(setEvents);
 
-      setEvents(sortedEvents);
-      setSlideEvents(sortedEvents.slice(0, 10));
-    };
+    return () => unsubscribe();
+  }, []);
 
-    if (events.length === 0) {
-      fetchEvents();
-    } else {
-      const sortedEvents = sortEventsByDate(events);
-      setSlideEvents(sortedEvents.slice(0, 10));
-    }
-  }, [events, setEvents]);
+  const ITEMS_PER_SLIDE = 10;
+  const indexOfLastItem = 1 * ITEMS_PER_SLIDE;
+  const indexOfFirstItem = indexOfLastItem - ITEMS_PER_SLIDE;
+  const currentItems = events.slice(indexOfFirstItem, indexOfLastItem);
+
+  const sortedEvents = sortEventsByDate(currentItems);
 
   return (
     <>
@@ -56,7 +49,7 @@ export const EventSlider = () => {
           <GreyButton linkTo="/events" buttonText="Kommande Händelser" />
         </VStack>
         <Swiper {...eventSlideSettings}>
-          {slideEvents.map((event) => (
+          {sortedEvents.map((event) => (
             <SwiperSlide key={event.id} style={eventSlideStyles}>
               <EventSlideCard event={event} />
             </SwiperSlide>

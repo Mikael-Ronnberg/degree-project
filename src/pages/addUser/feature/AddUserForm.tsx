@@ -4,8 +4,8 @@ import {
   Flex,
   FormControl,
   FormLabel,
-  HStack,
   Input,
+  VStack,
 } from "@chakra-ui/react";
 import { Formik, FormikHelpers } from "formik";
 import {
@@ -13,10 +13,15 @@ import {
   SubmitUserValues,
 } from "../../../model/AdminInterfaces";
 import {
-  createFormStyles,
-  createInputFormStyles,
+  formFlexStyles,
+  formLabelStyles,
+  inputFormStyles,
 } from "../../admin/style/styleAdmin";
 import { submitUser } from "../../../services/AdminServices";
+import {
+  cancelButtonStyles,
+  greyButtonStyles,
+} from "../../../components/buttons/style/buttonStyles";
 
 interface AddUserFormProps {
   onClose: () => void;
@@ -82,10 +87,12 @@ export const AddUserForm = ({ onClose }: AddUserFormProps) => {
       }) => (
         <form onSubmit={handleSubmit}>
           <FormControl>
-            <Flex {...createFormStyles}>
-              <FormLabel htmlFor="fullName">Namn och Efternamn</FormLabel>
+            <Flex {...formFlexStyles}>
+              <FormLabel {...formLabelStyles} htmlFor="fullName">
+                Namn och Efternamn
+              </FormLabel>
               <Input
-                {...createInputFormStyles}
+                {...inputFormStyles}
                 id="fullName-input"
                 name="fullName"
                 placeholder="Namn och Efternamn"
@@ -93,9 +100,11 @@ export const AddUserForm = ({ onClose }: AddUserFormProps) => {
                 onBlur={handleBlur}
                 value={values.fullName}
               />
-              <FormLabel htmlFor="email">Email</FormLabel>
+              <FormLabel {...formLabelStyles} htmlFor="email">
+                Email
+              </FormLabel>
               <Input
-                {...createInputFormStyles}
+                {...inputFormStyles}
                 id="email-input"
                 name="email"
                 placeholder="email"
@@ -103,9 +112,11 @@ export const AddUserForm = ({ onClose }: AddUserFormProps) => {
                 onBlur={handleBlur}
                 value={values.email}
               />
-              <FormLabel htmlFor="password">Lösenord</FormLabel>
+              <FormLabel {...formLabelStyles} htmlFor="password">
+                Lösenord
+              </FormLabel>
               <Input
-                {...createInputFormStyles}
+                {...inputFormStyles}
                 id="password-input"
                 name="password"
                 type="password"
@@ -114,9 +125,11 @@ export const AddUserForm = ({ onClose }: AddUserFormProps) => {
                 onBlur={handleBlur}
                 value={values.password}
               />
-              <FormLabel htmlFor="repeatPassword">Upprepa Lösenord</FormLabel>
+              <FormLabel {...formLabelStyles} htmlFor="repeatPassword">
+                Upprepa Lösenord
+              </FormLabel>
               <Input
-                {...createInputFormStyles}
+                {...inputFormStyles}
                 id="repeatPassword-input"
                 name="repeatPassword"
                 type="password"
@@ -125,9 +138,11 @@ export const AddUserForm = ({ onClose }: AddUserFormProps) => {
                 onBlur={handleBlur}
                 value={values.repeatPassword}
               />
-              <FormLabel htmlFor="number">Telefonnummer</FormLabel>
+              <FormLabel {...formLabelStyles} htmlFor="number">
+                Telefonnummer
+              </FormLabel>
               <Input
-                {...createInputFormStyles}
+                {...inputFormStyles}
                 id="number-input"
                 name="number"
                 placeholder="Telefonnr."
@@ -135,9 +150,11 @@ export const AddUserForm = ({ onClose }: AddUserFormProps) => {
                 onBlur={handleBlur}
                 value={values.number}
               />
-              <FormLabel htmlFor="city">Stad</FormLabel>
+              <FormLabel {...formLabelStyles} htmlFor="city">
+                Stad
+              </FormLabel>
               <Input
-                {...createInputFormStyles}
+                {...inputFormStyles}
                 id="city-input"
                 name="city"
                 placeholder="Stad"
@@ -153,12 +170,14 @@ export const AddUserForm = ({ onClose }: AddUserFormProps) => {
                 <Box style={{ color: "red" }}>{errors.general}</Box>
               )}
 
-              <HStack spacing="2rem">
-                <Button colorScheme="blue" onClick={onClose}>
+              <VStack spacing="2rem" pt="3rem">
+                <Button {...cancelButtonStyles} onClick={onClose}>
                   Stäng
                 </Button>
-                <Button type="submit">Spara</Button>
-              </HStack>
+                <Button type="submit" {...greyButtonStyles}>
+                  Spara
+                </Button>
+              </VStack>
             </Flex>
           </FormControl>
         </form>

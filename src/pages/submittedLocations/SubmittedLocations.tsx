@@ -5,6 +5,7 @@ import { getSubLocations } from "../../services/MapServices";
 
 import { SubLocationCard } from "./feature/SubLocationCard";
 import { useSubLocationsStore } from "../../store/useSubLocationsStore";
+import { greySmallButtonStyles } from "../../components/buttons/style/buttonStyles";
 
 const ITEMS_PER_PAGE = 3;
 
@@ -14,14 +15,9 @@ export const SubmittedLocations = () => {
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
-    const fetchLocations = async () => {
-      if (subLocations.length === 0) {
-        const locations = await getSubLocations();
-        setSubLocations(locations);
-      }
-    };
+    const unsubscribe = getSubLocations(setSubLocations);
 
-    fetchLocations();
+    return () => unsubscribe();
   }, []);
 
   const indexOfLastItem = currentPage * ITEMS_PER_PAGE;
@@ -44,18 +40,22 @@ export const SubmittedLocations = () => {
             <SubLocationCard key={location.id} location={location} />
           ))}
           <HStack spacing="2rem" mb="2rem" mt="2rem">
-            <Button
-              onClick={() => paginate(currentPage - 1)}
-              disabled={currentPage === 1}
-            >
-              Föregående
-            </Button>
-            <Button
-              onClick={() => paginate(currentPage + 1)}
-              disabled={indexOfLastItem >= subLocations.length}
-            >
-              Nästa
-            </Button>
+            {currentPage > 1 && (
+              <Button
+                {...greySmallButtonStyles}
+                onClick={() => paginate(currentPage - 1)}
+              >
+                Föregående
+              </Button>
+            )}
+            {indexOfLastItem < subLocations.length && (
+              <Button
+                {...greySmallButtonStyles}
+                onClick={() => paginate(currentPage + 1)}
+              >
+                Nästa
+              </Button>
+            )}
           </HStack>
         </VStack>
       </Flex>

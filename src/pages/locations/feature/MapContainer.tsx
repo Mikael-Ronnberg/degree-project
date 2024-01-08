@@ -22,7 +22,7 @@ export const MapContainer = () => {
             <Heading textAlign="center" fontSize="1rem">
               Skriv in en address för att lättare hitta en plats
             </Heading>
-            <SearchInput />
+            <SearchInput dropColor="#F8DBDF" />
           </GridItem>
         </Grid>
       </Flex>

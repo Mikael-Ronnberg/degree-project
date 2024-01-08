@@ -6,33 +6,22 @@ import {
   eventPageStyles,
 } from "./style/eventStyle";
 import { useEventsStore } from "../../store/useEventsStore";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { getEvents } from "../../services/EventServices";
 import { EventCard } from "./feature/EventCard";
 import { Footer } from "./feature/Footer";
 import { sortEventsByDate } from "../../helpers/globalHelpers";
-import { TransformedEventResponse } from "../../model/EventsInterfaces";
 
 export const Events = () => {
   const { events, setEvents } = useEventsStore();
-  const [showEvents, setShowEvents] = useState<TransformedEventResponse[]>([]);
 
   useEffect(() => {
-    const fetchEvents = async () => {
-      const res: TransformedEventResponse[] = await getEvents();
-      const sortedEvents = sortEventsByDate(res);
+    const unsubscribe = getEvents(setEvents);
 
-      setEvents(sortedEvents);
-      setShowEvents(sortedEvents.slice(0, 10));
-    };
+    return () => unsubscribe();
+  }, []);
 
-    if (events.length === 0) {
-      fetchEvents();
-    } else {
-      const sortedEvents = sortEventsByDate(events);
-      setShowEvents(sortedEvents.slice(0, 10));
-    }
-  }, [events, setEvents]);
+  const sortedEvents = sortEventsByDate(events);
 
   return (
     <>
@@ -41,7 +30,7 @@ export const Events = () => {
           <Heading {...eventHeadingStyles}>Kommande Händelser</Heading>
         </Box>
         <Flex {...eventContainerStyles}>
-          {showEvents.map((event) => (
+          {sortedEvents.map((event) => (
             <EventCard key={event.id} event={event} />
           ))}
         </Flex>

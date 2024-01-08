@@ -9,7 +9,11 @@ import {
   searchListItemStyles,
 } from "../style/locationStyle";
 
-export const SearchInput = () => {
+interface SearchInputProps {
+  dropColor: string;
+}
+
+export const SearchInput = ({ dropColor }: SearchInputProps) => {
   const { setSelectLocation, listLocations, setListLocations } =
     useLocationStore();
   const [searchInput, setSearchInput] = useState<string>("");
@@ -48,7 +52,7 @@ export const SearchInput = () => {
         onChange={(e) => setSearchInput(e.target.value)}
       />
       {isDropdownOpen && (
-        <Box {...searchDropdownStyles}>
+        <Box {...searchDropdownStyles} background={dropColor}>
           <List>
             {listLocations.map((item) => (
               <ListItem

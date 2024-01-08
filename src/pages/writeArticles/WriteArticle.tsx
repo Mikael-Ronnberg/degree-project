@@ -1,10 +1,11 @@
-import { Flex, Heading, HStack, Button } from "@chakra-ui/react";
+import { Flex, Heading, VStack, Button } from "@chakra-ui/react";
 import {
   adminPageStyles,
   createContainerStyles,
 } from "../admin/style/styleAdmin";
 import { CreateModal } from "../admin/feature/CreateModal";
 import { Link } from "react-router-dom";
+import { greyButtonStyles } from "../../components/buttons/style/buttonStyles";
 
 export const WriteArticle = () => {
   return (
@@ -12,16 +13,16 @@ export const WriteArticle = () => {
       <Flex {...adminPageStyles}>
         <Flex {...createContainerStyles}>
           <Heading>Artiklar</Heading>
-          <HStack spacing="10rem">
+          <VStack spacing="2.5rem">
             <CreateModal
               modalHeader="Skriv en Artikel"
               buttonLabel="Börja Skriva"
               mode="article"
             />
-            <Button>
+            <Button {...greyButtonStyles}>
               <Link to="/ourArticles">Våra Artiklar</Link>
             </Button>
-          </HStack>
+          </VStack>
         </Flex>
       </Flex>
     </>

@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
-import { ViewArticle } from "../../view-article/ViewArticle";
 import { NotFound } from "../../notFound/NotFound";
+import { ViewArticle } from "../../viewArticle/ViewArticle";
 
 export const ArticleRoute = () => {
   const { article, articleId } = useParams();

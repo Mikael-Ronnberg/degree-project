@@ -1,4 +1,4 @@
-import { Button, Flex, Heading, VStack, Box } from "@chakra-ui/react";
+import { Button, Flex, Heading, VStack, Box, HStack } from "@chakra-ui/react";
 import {
   articleContainerStyles,
   articleHeadingStyles,
@@ -9,36 +9,32 @@ import { useArticlesStore } from "../../store/useArticlesStore";
 import { useEffect, useState } from "react";
 import { getArticles } from "../../services/ArticleServices";
 import { Link } from "react-router-dom";
-import { greyButtonStyles } from "../../components/buttons/style/buttonStyles";
+import { greySmallButtonStyles } from "../../components/buttons/style/buttonStyles";
 import { SmallWave } from "../../components/waves/SmallWave";
 
+const ITEMS_PER_PAGE = 5;
+
 export const Articles = () => {
-  const { articles, setArticles, markPageAsLoaded, isPageLoaded } =
-    useArticlesStore();
+  const { articles, setArticles } = useArticlesStore();
   const [currentPage, setCurrentPage] = useState(1);
-  const [hasMore, setHasMore] = useState(true);
 
   useEffect(() => {
-    const fetchArticles = async () => {
-      if (!isPageLoaded(currentPage)) {
-        const fetchedArticles = await getArticles(currentPage, 10);
-        if (fetchedArticles.length < 10) {
-          setHasMore(false);
-        }
-        setArticles([...articles, ...fetchedArticles]);
-        markPageAsLoaded(currentPage);
-      }
-    };
+    const unsubscribe = getArticles(setArticles);
 
-    fetchArticles();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentPage, articles, markPageAsLoaded, isPageLoaded]);
+    return () => unsubscribe();
+  }, []);
 
-  const loadMoreArticles = () => {
-    if (hasMore) {
-      setCurrentPage((prevPage) => prevPage + 1);
-    }
+  const indexOfLastItem = currentPage * ITEMS_PER_PAGE;
+  const indexOfFirstItem = indexOfLastItem - ITEMS_PER_PAGE;
+  const currentItems = articles.slice(indexOfFirstItem, indexOfLastItem);
+
+  const paginate = (pageNumber: number) => {
+    setCurrentPage(pageNumber);
   };
+
+  const sortedArticles = [...currentItems].sort((a, b) => {
+    return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
+  });
 
   return (
     <>
@@ -46,7 +42,7 @@ export const Articles = () => {
         <Flex {...articleContainerStyles}>
           <Heading {...articleHeadingStyles}>Läs våra artiklar</Heading>
           <VStack spacing="1rem" pb="2rem">
-            {articles.map((article, index) => (
+            {sortedArticles.map((article, index) => (
               <Link
                 key={index}
                 to={`/viewArticle/${article.id}/${encodeURIComponent(
@@ -69,11 +65,24 @@ export const Articles = () => {
             justifyContent="center"
             alignItems="center"
           >
-            {hasMore && (
-              <Button onClick={loadMoreArticles} {...greyButtonStyles}>
-                Visa Fler
-              </Button>
-            )}
+            <HStack spacing="2rem" mb="2rem" mt="2rem">
+              {currentPage > 1 && (
+                <Button
+                  {...greySmallButtonStyles}
+                  onClick={() => paginate(currentPage - 1)}
+                >
+                  Föregående
+                </Button>
+              )}
+              {indexOfLastItem < articles.length && (
+                <Button
+                  {...greySmallButtonStyles}
+                  onClick={() => paginate(currentPage + 1)}
+                >
+                  Nästa
+                </Button>
+              )}
+            </HStack>
           </Box>
         </Flex>
       </Flex>

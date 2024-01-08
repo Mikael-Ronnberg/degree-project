@@ -4,47 +4,56 @@ import { adminPageStyles } from "../admin/style/styleAdmin";
 import { OurArticleCard } from "./feature/OurArticleCard";
 import { useArticlesStore } from "../../store/useArticlesStore";
 import { getArticles } from "../../services/ArticleServices";
+import { greySmallButtonStyles } from "../../components/buttons/style/buttonStyles";
 
 const ITEMS_PER_PAGE = 1;
 
 export const OurArticles = () => {
   const { articles, setArticles } = useArticlesStore();
-
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
-    const fetchArticles = async () => {
-      const fetchedArticles = await getArticles(currentPage, ITEMS_PER_PAGE);
-      setArticles(fetchedArticles);
-    };
+    const unsubscribe = getArticles(setArticles);
 
-    fetchArticles();
-  }, [currentPage]);
+    return () => unsubscribe();
+  }, []);
+
+  const indexOfLastItem = currentPage * ITEMS_PER_PAGE;
+  const indexOfFirstItem = indexOfLastItem - ITEMS_PER_PAGE;
+  const currentItems = articles.slice(indexOfFirstItem, indexOfLastItem);
 
   const paginate = (pageNumber: number) => {
     setCurrentPage(pageNumber);
   };
 
+  const sortedArticles = [...currentItems].sort((a, b) => {
+    return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
+  });
+
   return (
     <>
       <Flex {...adminPageStyles}>
         <VStack>
-          {articles.map((article) => (
+          {sortedArticles.map((article) => (
             <OurArticleCard key={article.id} article={article} />
           ))}
           <HStack spacing="2rem" mb="2rem" mt="2rem">
-            <Button
-              onClick={() => paginate(currentPage - 1)}
-              disabled={currentPage === 1}
-            >
-              Föregående
-            </Button>
-            <Button
-              onClick={() => paginate(currentPage + 1)}
-              disabled={articles.length < ITEMS_PER_PAGE}
-            >
-              Nästa
-            </Button>
+            {currentPage > 1 && (
+              <Button
+                {...greySmallButtonStyles}
+                onClick={() => paginate(currentPage - 1)}
+              >
+                Föregående
+              </Button>
+            )}
+            {indexOfLastItem < articles.length && (
+              <Button
+                {...greySmallButtonStyles}
+                onClick={() => paginate(currentPage + 1)}
+              >
+                Nästa
+              </Button>
+            )}
           </HStack>
         </VStack>
       </Flex>

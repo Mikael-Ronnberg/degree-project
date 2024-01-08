@@ -3,15 +3,16 @@ import {
   Flex,
   FormControl,
   FormLabel,
-  HStack,
   Input,
   Textarea,
+  VStack,
 } from "@chakra-ui/react";
 import { Field, Formik, FormikHelpers } from "formik";
 import {
-  createFormStyles,
-  createInputFormStyles,
-  createTextareaFormStyles,
+  formFlexStyles,
+  formLabelStyles,
+  inputFormStyles,
+  textareaFormStyles,
 } from "../../admin/style/styleAdmin";
 import {
   CreateArticleFormValues,
@@ -24,6 +25,10 @@ import {
 } from "../../../services/ArticleServices";
 import { useState } from "react";
 import { useArticlesStore } from "../../../store/useArticlesStore";
+import {
+  cancelButtonStyles,
+  greyButtonStyles,
+} from "../../../components/buttons/style/buttonStyles";
 
 interface ArticleFormProps {
   formType: "create" | "update";
@@ -143,10 +148,12 @@ export const ArticleForm = ({
       {({ values, handleChange, handleBlur, handleSubmit }) => (
         <form onSubmit={handleSubmit}>
           <FormControl>
-            <Flex {...createFormStyles}>
-              <FormLabel htmlFor="mainHeading">Titel för händelsen</FormLabel>
+            <Flex {...formFlexStyles}>
+              <FormLabel {...formLabelStyles} htmlFor="mainHeading">
+                Titel för händelsen
+              </FormLabel>
               <Input
-                {...createInputFormStyles}
+                {...inputFormStyles}
                 id="mainHeading"
                 name="mainHeading"
                 placeholder="Article Titel"
@@ -156,22 +163,27 @@ export const ArticleForm = ({
               />
               <Field name="mainImg">
                 {() => (
-                  <Input
-                    {...createInputFormStyles}
-                    id="mainImg"
-                    type="file"
-                    name="mainImg"
-                    placeholder="Ladda upp huvudbild"
-                    onChange={handleFileChange(setMainImgFile)}
-                    accept="image/*"
-                  />
+                  <>
+                    <FormLabel {...formLabelStyles} htmlFor="mainImg">
+                      Lägg till huvudbild
+                    </FormLabel>
+                    <Input
+                      {...inputFormStyles}
+                      id="mainImg"
+                      type="file"
+                      name="mainImg"
+                      placeholder="Ladda upp huvudbild"
+                      onChange={handleFileChange(setMainImgFile)}
+                      accept="image/*"
+                    />
+                  </>
                 )}
               </Field>
-              <FormLabel htmlFor="mainImgName">
+              <FormLabel {...formLabelStyles} htmlFor="mainImgName">
                 Ange ett namn för bilden(Viktigt!)
               </FormLabel>
               <Input
-                {...createInputFormStyles}
+                {...inputFormStyles}
                 id="mainImgName"
                 name="mainImgName"
                 placeholder="Namn för bilden"
@@ -179,19 +191,23 @@ export const ArticleForm = ({
                 onBlur={handleBlur}
                 value={values.mainImgName}
               />
-              <FormLabel htmlFor="date">Datum för Artikeln</FormLabel>
+              <FormLabel {...formLabelStyles} htmlFor="date">
+                Datum för Artikeln
+              </FormLabel>
               <Input
-                {...createInputFormStyles}
+                {...inputFormStyles}
                 id="date"
                 name="date"
-                placeholder="Datum"
+                placeholder="(YYYY/MM/DD)"
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.date}
               />
-              <FormLabel htmlFor="date">Kategori för Artikeln</FormLabel>
+              <FormLabel {...formLabelStyles} htmlFor="category">
+                Kategori för Artikeln
+              </FormLabel>
               <Input
-                {...createInputFormStyles}
+                {...inputFormStyles}
                 id="category"
                 name="category"
                 placeholder="Kategori"
@@ -199,9 +215,11 @@ export const ArticleForm = ({
                 onBlur={handleBlur}
                 value={values.category}
               />
-              <FormLabel htmlFor="author">Författare</FormLabel>
+              <FormLabel {...formLabelStyles} htmlFor="author">
+                Författare
+              </FormLabel>
               <Input
-                {...createInputFormStyles}
+                {...inputFormStyles}
                 id="author"
                 name="author"
                 placeholder="Författare"
@@ -209,9 +227,11 @@ export const ArticleForm = ({
                 onBlur={handleBlur}
                 value={values.author}
               />
-              <FormLabel htmlFor="subHeading1">Sektionsrubrik 1</FormLabel>
+              <FormLabel {...formLabelStyles} htmlFor="subHeading1">
+                Sektionsrubrik 1
+              </FormLabel>
               <Textarea
-                {...createTextareaFormStyles}
+                {...textareaFormStyles}
                 id="subHeading1"
                 name="subHeading1"
                 placeholder="Sektionsrubrik"
@@ -219,9 +239,11 @@ export const ArticleForm = ({
                 onBlur={handleBlur}
                 value={values.subHeading1}
               />
-              <FormLabel htmlFor="section1">Sektion 1</FormLabel>
+              <FormLabel {...formLabelStyles} htmlFor="section1">
+                Sektion 1
+              </FormLabel>
               <Textarea
-                {...createTextareaFormStyles}
+                {...textareaFormStyles}
                 id="section1"
                 name="section1"
                 placeholder="Sektion"
@@ -232,7 +254,7 @@ export const ArticleForm = ({
               <Field name="subImg1">
                 {() => (
                   <Input
-                    {...createInputFormStyles}
+                    {...inputFormStyles}
                     id="subImg1"
                     type="file"
                     name="subImg1"
@@ -242,11 +264,11 @@ export const ArticleForm = ({
                   />
                 )}
               </Field>
-              <FormLabel htmlFor="subImg1Name">
+              <FormLabel {...formLabelStyles} htmlFor="subImg1Name">
                 Ange ett namn för bilden(Viktigt!)
               </FormLabel>
               <Input
-                {...createInputFormStyles}
+                {...inputFormStyles}
                 id="subImg1Name"
                 name="subImg1Name"
                 placeholder="Namn för bilden"
@@ -254,11 +276,11 @@ export const ArticleForm = ({
                 onBlur={handleBlur}
                 value={values.subImg1Name}
               />
-              <FormLabel htmlFor="subImgDescription1">
+              <FormLabel {...formLabelStyles} htmlFor="subImgDescription1">
                 Bildtext för Sektionsbild 1
               </FormLabel>
               <Input
-                {...createInputFormStyles}
+                {...inputFormStyles}
                 id="subImgDescription1"
                 name="subImgDescription1"
                 placeholder="Beskrivning (Valfritt)"
@@ -266,9 +288,11 @@ export const ArticleForm = ({
                 onBlur={handleBlur}
                 value={values.subImgDescription1}
               />
-              <FormLabel htmlFor="subHeading2">Sektionsrubrik 2</FormLabel>
+              <FormLabel {...formLabelStyles} htmlFor="subHeading2">
+                Sektionsrubrik 2
+              </FormLabel>
               <Textarea
-                {...createTextareaFormStyles}
+                {...textareaFormStyles}
                 id="subHeading2"
                 name="subHeading2"
                 placeholder="Sektionsrubrik 2 (Valfritt)"
@@ -276,9 +300,11 @@ export const ArticleForm = ({
                 onBlur={handleBlur}
                 value={values.subHeading2}
               />
-              <FormLabel htmlFor="section1">Sektion 2</FormLabel>
+              <FormLabel {...formLabelStyles} htmlFor="section1">
+                Sektion 2
+              </FormLabel>
               <Textarea
-                {...createTextareaFormStyles}
+                {...textareaFormStyles}
                 id="section2"
                 name="section2"
                 placeholder="Sektion 2 (Valfritt)"
@@ -289,7 +315,7 @@ export const ArticleForm = ({
               <Field name="subImg2">
                 {() => (
                   <Input
-                    {...createInputFormStyles}
+                    {...inputFormStyles}
                     id="subImg2"
                     type="file"
                     name="subImg2"
@@ -299,11 +325,11 @@ export const ArticleForm = ({
                   />
                 )}
               </Field>
-              <FormLabel htmlFor="subImg2Name">
+              <FormLabel {...formLabelStyles} htmlFor="subImg2Name">
                 Ange ett namn för bilden(Viktigt!)
               </FormLabel>
               <Input
-                {...createInputFormStyles}
+                {...inputFormStyles}
                 id="subImg2Name"
                 name="subImg2Name"
                 placeholder="Namn för bilden"
@@ -311,11 +337,11 @@ export const ArticleForm = ({
                 onBlur={handleBlur}
                 value={values.subImg2Name}
               />
-              <FormLabel htmlFor="subImgDescription1">
+              <FormLabel {...formLabelStyles} htmlFor="subImgDescription1">
                 Beskrivning Sektionsbild 2
               </FormLabel>
               <Input
-                {...createInputFormStyles}
+                {...inputFormStyles}
                 id="subImgDescription2"
                 name="subImgDescription2"
                 placeholder="Beskrivning (Valfritt)"
@@ -323,9 +349,11 @@ export const ArticleForm = ({
                 onBlur={handleBlur}
                 value={values.subImgDescription2}
               />
-              <FormLabel htmlFor="subHeading3">Sektionsrubrik 3</FormLabel>
+              <FormLabel {...formLabelStyles} htmlFor="subHeading3">
+                Sektionsrubrik 3
+              </FormLabel>
               <Textarea
-                {...createTextareaFormStyles}
+                {...textareaFormStyles}
                 id="subHeading3"
                 name="subHeading3"
                 placeholder="Sektionsrubrik 3 (Valfritt)"
@@ -333,9 +361,11 @@ export const ArticleForm = ({
                 onBlur={handleBlur}
                 value={values.subHeading3}
               />
-              <FormLabel htmlFor="section1">Sektion 3</FormLabel>
+              <FormLabel {...formLabelStyles} htmlFor="section1">
+                Sektion 3
+              </FormLabel>
               <Textarea
-                {...createTextareaFormStyles}
+                {...textareaFormStyles}
                 id="section3"
                 name="section3"
                 placeholder="Sektion 3 (Valfritt)"
@@ -343,12 +373,14 @@ export const ArticleForm = ({
                 onBlur={handleBlur}
                 value={values.section3}
               />
-              <HStack spacing="2rem">
-                <Button colorScheme="blue" onClick={onClose}>
+              <VStack spacing="2rem" pt="3rem">
+                <Button {...cancelButtonStyles} onClick={onClose}>
                   Stäng
                 </Button>
-                <Button type="submit">{submitButtonText}</Button>
-              </HStack>
+                <Button type="submit" {...greyButtonStyles}>
+                  {submitButtonText}
+                </Button>
+              </VStack>
             </Flex>
           </FormControl>
         </form>

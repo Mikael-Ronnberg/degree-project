@@ -1,7 +1,8 @@
 import { Flex, Heading, Box } from "@chakra-ui/react";
 import {
+  adminHeadingStyles,
+  formFlexStyles,
   ourMapBoxStyles,
-  ourMapContainerStyles,
 } from "../../admin/style/styleAdmin";
 import { LeafletMap } from "../../locations/feature/LeafletMap";
 import { SearchInput } from "../../locations/feature/SearchInput";
@@ -9,14 +10,14 @@ import { SearchInput } from "../../locations/feature/SearchInput";
 export const OurMap = () => {
   return (
     <>
-      <Flex {...ourMapContainerStyles}>
-        <Heading m="3rem">Lägg in vår senaste snorkling</Heading>
+      <Flex {...formFlexStyles}>
+        <Heading {...adminHeadingStyles}>Lägg in vår senaste snorkling</Heading>
 
         <Box {...ourMapBoxStyles}>
           <LeafletMap />
         </Box>
         <Box>
-          <SearchInput />
+          <SearchInput dropColor="#FFFFF" />
         </Box>
       </Flex>
     </>

@@ -54,11 +54,11 @@ export interface CreateOurLocationFormValues {
   locationName: string;
   date: string;
   description: string;
-  plastic: number;
-  metal: number;
-  glass: number;
-  other: number;
-  animals: number;
+  plastic: number | undefined;
+  metal: number | undefined;
+  glass: number | undefined;
+  other: number | undefined;
+  animals: number | undefined;
   lat: number;
   lng: number;
 }

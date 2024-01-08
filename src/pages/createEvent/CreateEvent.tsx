@@ -1,28 +1,30 @@
-import { Flex, Heading, HStack, Button } from "@chakra-ui/react";
+import { Flex, Heading, VStack, Button } from "@chakra-ui/react";
 import {
+  adminHeadingStyles,
   adminPageStyles,
   createContainerStyles,
 } from "../admin/style/styleAdmin";
 import { CreateModal } from "../admin/feature/CreateModal";
 import { Link } from "react-router-dom";
+import { greyButtonStyles } from "../../components/buttons/style/buttonStyles";
 
 export const CreateEvent = () => {
   return (
     <>
       <Flex {...adminPageStyles}>
         <Flex {...createContainerStyles}>
-          <Heading>Händelser</Heading>
+          <Heading {...adminHeadingStyles}>Händelser</Heading>
 
-          <HStack spacing="10rem">
+          <VStack spacing="2.5rem">
             <CreateModal
               modalHeader="Skapa en ny händelse"
               buttonLabel="Skapa Händelse"
               mode="event"
             />
-            <Button>
+            <Button {...greyButtonStyles}>
               <Link to="/ourEvents">Våra Händelser</Link>
             </Button>
-          </HStack>
+          </VStack>
         </Flex>
       </Flex>
     </>

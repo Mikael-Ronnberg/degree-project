@@ -23,14 +23,10 @@ export const LeafletMap = () => {
   ];
 
   useEffect(() => {
-    const fetchOurLocations = async () => {
-      if (ourLocations.length === 0) {
-        const locations = await getOurLocations();
-        setOurLocations(locations);
-      }
-    };
-    fetchOurLocations();
-  });
+    const unsubscribe = getOurLocations(setOurLocations);
+
+    return () => unsubscribe();
+  }, []);
 
   const locationLatLngs: [number, number][] = listLocations.map((location) => [
     parseFloat(location.lat),

@@ -1,4 +1,4 @@
-import { Grid } from "@chakra-ui/react";
+import { Flex, Grid } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import {
   fetchAndAggregateData,
@@ -6,6 +6,10 @@ import {
 } from "../../../services/AdminServices";
 import { AdminBoardCard } from "./AdminBoardCard";
 import { Totals } from "../../../model/GlobalInterfaces";
+import {
+  adminBoardGridStyles,
+  adminContainerFlexStyles,
+} from "../style/styleAdmin";
 // import { useTotalLitterStore } from "../../../store/useTotalLitterStore";
 
 export interface RenderData {
@@ -52,38 +56,28 @@ export const AdminContainer = () => {
   }, []);
 
   return (
-    <Grid
-      mt="2rem"
-      w="100vw"
-      templateColumns={{
-        sm: "repeat(1, 1fr)",
-        md: "repeat(2, 2fr)",
-        lg: "repeat(3, 2fr)",
-      }}
-      gap={6}
-      p={5}
-      background="white"
-      border="solid 2px black"
-    >
-      {dataCounts.map((data, index) => {
-        if (data.label === "Totalt") {
-          return (
-            <AdminBoardCard
-              key={index}
-              heading={data.label}
-              renderData={data.data as RenderData[]}
-            />
-          );
-        } else {
-          return (
-            <AdminBoardCard
-              key={index}
-              heading={data.label}
-              renderData={[data]}
-            />
-          );
-        }
-      })}
-    </Grid>
+    <Flex {...adminContainerFlexStyles}>
+      <Grid {...adminBoardGridStyles}>
+        {dataCounts.map((data, index) => {
+          if (data.label === "Totalt") {
+            return (
+              <AdminBoardCard
+                key={index}
+                heading={data.label}
+                renderData={data.data as RenderData[]}
+              />
+            );
+          } else {
+            return (
+              <AdminBoardCard
+                key={index}
+                heading={data.label}
+                renderData={[data]}
+              />
+            );
+          }
+        })}
+      </Grid>
+    </Flex>
   );
 };

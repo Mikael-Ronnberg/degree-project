@@ -1,9 +1,11 @@
 import { Button, Flex, HStack, VStack } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { EventCard } from "./feature/EventCard";
-import { getEvents } from "../../services/EventServices";
 import { adminPageStyles } from "../admin/style/styleAdmin";
 import { useEventsStore } from "../../store/useEventsStore";
+import { greySmallButtonStyles } from "../../components/buttons/style/buttonStyles";
+import { getEvents } from "../../services/EventServices";
+import { sortEventsByDate } from "../../helpers/globalHelpers";
 
 const ITEMS_PER_PAGE = 3;
 
@@ -12,49 +14,45 @@ export const OurEvents = () => {
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
-    const fetchEvents = async () => {
-      if (events.length === 0) {
-        const eventsData = await getEvents();
-        setEvents(eventsData);
-      }
-    };
-    fetchEvents();
+    const unsubscribe = getEvents(setEvents);
+
+    return () => unsubscribe();
   }, []);
 
-  console.log(events);
+  const sortedEvents = sortEventsByDate(events);
 
   const indexOfLastItem = currentPage * ITEMS_PER_PAGE;
   const indexOfFirstItem = indexOfLastItem - ITEMS_PER_PAGE;
-  const currentItems = events.slice(indexOfFirstItem, indexOfLastItem);
+  const currentItems = sortedEvents.slice(indexOfFirstItem, indexOfLastItem);
 
   const paginate = (pageNumber: number) => {
     setCurrentPage(pageNumber);
   };
 
-  const sortedEvents = [...currentItems].sort((a, b) => {
-    return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
-  });
-
   return (
     <>
       <Flex {...adminPageStyles}>
         <VStack>
-          {sortedEvents.map((event) => (
+          {currentItems.map((event) => (
             <EventCard key={event.id} event={event} />
           ))}
           <HStack spacing="2rem" mb="2rem" mt="2rem">
-            <Button
-              onClick={() => paginate(currentPage - 1)}
-              disabled={currentPage === 1}
-            >
-              Föregående
-            </Button>
-            <Button
-              onClick={() => paginate(currentPage + 1)}
-              disabled={indexOfLastItem >= events.length}
-            >
-              Nästa
-            </Button>
+            {currentPage > 1 && (
+              <Button
+                {...greySmallButtonStyles}
+                onClick={() => paginate(currentPage - 1)}
+              >
+                Föregående
+              </Button>
+            )}
+            {indexOfLastItem < events.length && (
+              <Button
+                {...greySmallButtonStyles}
+                onClick={() => paginate(currentPage + 1)}
+              >
+                Nästa
+              </Button>
+            )}
           </HStack>
         </VStack>
       </Flex>

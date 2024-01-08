@@ -4,7 +4,7 @@ import {
   FormLabel,
   Input,
   Textarea,
-  HStack,
+  VStack,
   Button,
 } from "@chakra-ui/react";
 import { Formik, FormikHelpers } from "formik";
@@ -13,10 +13,15 @@ import {
   TransformedEventResponse,
 } from "../../../model/EventsInterfaces";
 import {
-  createFormStyles,
-  createInputFormStyles,
-  createTextareaFormStyles,
+  formFlexStyles,
+  formLabelStyles,
+  inputFormStyles,
+  textareaFormStyles,
 } from "../../admin/style/styleAdmin";
+import {
+  cancelButtonStyles,
+  greyButtonStyles,
+} from "../../../components/buttons/style/buttonStyles";
 
 interface EventFormProps {
   formType: "create" | "update";
@@ -61,10 +66,12 @@ export const EventForm = ({
       {({ values, handleChange, handleBlur, handleSubmit }) => (
         <form onSubmit={handleSubmit}>
           <FormControl>
-            <Flex {...createFormStyles}>
-              <FormLabel htmlFor="heading">Titel för händelsen</FormLabel>
+            <Flex {...formFlexStyles}>
+              <FormLabel {...formLabelStyles} htmlFor="heading">
+                Titel för händelsen
+              </FormLabel>
               <Input
-                {...createInputFormStyles}
+                {...inputFormStyles}
                 id="heading"
                 name="heading"
                 placeholder="Titel"
@@ -72,9 +79,11 @@ export const EventForm = ({
                 onBlur={handleBlur}
                 value={values.heading}
               />
-              <FormLabel htmlFor="date">Datum för händelsen</FormLabel>
+              <FormLabel {...formLabelStyles} htmlFor="date">
+                Datum för händelsen
+              </FormLabel>
               <Input
-                {...createInputFormStyles}
+                {...inputFormStyles}
                 id="date"
                 name="date"
                 placeholder="Datum"
@@ -82,9 +91,11 @@ export const EventForm = ({
                 onBlur={handleBlur}
                 value={values.date}
               />
-              <FormLabel htmlFor="description">Skriv om händelsen</FormLabel>
+              <FormLabel {...formLabelStyles} htmlFor="description">
+                Skriv om händelsen
+              </FormLabel>
               <Textarea
-                {...createTextareaFormStyles}
+                {...textareaFormStyles}
                 id="description"
                 name="description"
                 placeholder="Skriv om kommande händelse och plats"
@@ -92,12 +103,14 @@ export const EventForm = ({
                 onBlur={handleBlur}
                 value={values.description}
               />
-              <HStack spacing="2rem">
-                <Button colorScheme="blue" onClick={onClose}>
+              <VStack spacing="2rem" pt="3rem">
+                <Button {...cancelButtonStyles} onClick={onClose}>
                   Stäng
                 </Button>
-                <Button type="submit">{submitButtonText}</Button>
-              </HStack>
+                <Button type="submit" {...greyButtonStyles}>
+                  {submitButtonText}
+                </Button>
+              </VStack>
             </Flex>
           </FormControl>
         </form>

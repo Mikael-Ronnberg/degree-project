@@ -9,21 +9,20 @@ import {
   ModalBody,
 } from "@chakra-ui/react";
 import { AddNewLocation } from "../../ourLocations/feature/AddNewLocation";
-import { ArticleForm } from "../../write-articles/feature/ArticleForm";
-import { AddUserForm } from "../../add-user/feature/AddUserForm";
-import { EventForm } from "../../create-event/feature/EventForm";
+import { ArticleForm } from "../../writeArticles/feature/ArticleForm";
+import { AddUserForm } from "../../addUser/feature/AddUserForm";
+import { EventForm } from "../../createEvent/feature/EventForm";
 import {
   CreateEventFormValues,
   TransformedEventResponse,
 } from "../../../model/EventsInterfaces";
 import { submitEvent } from "../../../services/EventServices";
 import { useEventsStore } from "../../../store/useEventsStore";
+import { modalHeaderStyles, modalStyles } from "../style/styleAdmin";
 import {
-  createModalBodyStyles,
-  createModalHeaderStyles,
-  createModalStyles,
-} from "../style/styleAdmin";
-import { modalCloseButtonStyles } from "../../../components/buttons/style/buttonStyles";
+  greyButtonStyles,
+  modalCloseButtonStyles,
+} from "../../../components/buttons/style/buttonStyles";
 
 interface CreateModalProps {
   buttonLabel: string;
@@ -68,16 +67,16 @@ export const CreateModal = ({
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <>
-      <Button onClick={onOpen}>{buttonLabel}</Button>
+      <Button onClick={onOpen} {...greyButtonStyles}>
+        {buttonLabel}
+      </Button>
 
       <Modal isOpen={isOpen} onClose={onClose} size="l">
         <ModalOverlay />
-        <ModalContent {...createModalStyles}>
-          <ModalHeader {...createModalHeaderStyles}>{modalHeader}</ModalHeader>
+        <ModalContent {...modalStyles}>
+          <ModalHeader {...modalHeaderStyles}>{modalHeader}</ModalHeader>
           <ModalCloseButton {...modalCloseButtonStyles} />
-          <ModalBody {...createModalBodyStyles}>
-            {renderComponent(mode)}
-          </ModalBody>
+          <ModalBody>{renderComponent(mode)}</ModalBody>
         </ModalContent>
       </Modal>
     </>

@@ -9,9 +9,14 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import { TransformedEventResponse } from "../../../model/EventsInterfaces";
-import { EventForm } from "../../create-event/feature/EventForm";
+import { EventForm } from "../../createEvent/feature/EventForm";
 import { updateEvent } from "../../../services/EventServices";
 import { useEventsStore } from "../../../store/useEventsStore";
+import {
+  greySmallButtonStyles,
+  modalCloseButtonStyles,
+} from "../../../components/buttons/style/buttonStyles";
+import { modalStyles, modalHeaderStyles } from "../../admin/style/styleAdmin";
 
 interface UpdateEventFormProps {
   formValues: TransformedEventResponse;
@@ -22,13 +27,15 @@ export const UpdateEventModal = ({ formValues }: UpdateEventFormProps) => {
   const { updateEventStore } = useEventsStore();
   return (
     <>
-      <Button onClick={onOpen}>Uppdatera</Button>
+      <Button onClick={onOpen} {...greySmallButtonStyles}>
+        Uppdatera
+      </Button>
 
       <Modal isOpen={isOpen} onClose={onClose} size="l">
         <ModalOverlay />
-        <ModalContent>
-          <ModalHeader>Ändra Denna Händelse</ModalHeader>
-          <ModalCloseButton />
+        <ModalContent {...modalStyles}>
+          <ModalHeader {...modalHeaderStyles}>Ändra Denna Händelse</ModalHeader>
+          <ModalCloseButton {...modalCloseButtonStyles} />
           <ModalBody>
             <EventForm
               formType="update"

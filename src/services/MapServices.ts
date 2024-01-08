@@ -1,12 +1,10 @@
 import { db } from "../config/firebase";
 import {
   CreateOurLocationFormValues,
-  OurLocationResponse,
   TransformedOurLocationResponse,
 } from "../model/LocationsInterfaces";
 import {
   SubLocation,
-  SubLocationResponse,
   SubLocationsFormValues,
   TransformedSubLocationResponse,
 } from "../model/LocationsInterfaces";
@@ -15,10 +13,12 @@ import {
   addDoc,
   deleteDoc,
   doc,
-  getDocs,
   collection,
   serverTimestamp,
   updateDoc,
+  onSnapshot,
+  orderBy,
+  query,
 } from "firebase/firestore";
 
 const NOMATIM_BASE_URL = "https://nominatim.openstreetmap.org/search?";
@@ -58,31 +58,38 @@ export const submitLocation = async (location: SubLocationsFormValues) => {
   }
 };
 
-export const getSubLocations = async (): Promise<
-  TransformedSubLocationResponse[]
-> => {
-  try {
-    const data = await getDocs(locationCollectionRef);
-    const filteredData: TransformedSubLocationResponse[] = data.docs.map(
-      (doc) => {
-        const docData = doc.data() as SubLocationResponse;
-        const createdAtTimestamp = docData.createdAt;
+export const getSubLocations = (
+  setSubLocations: (subLocations: TransformedSubLocationResponse[]) => void
+): (() => void) => {
+  const subLocationsQuery = query(
+    locationCollectionRef,
+    orderBy("createdAt", "desc")
+  );
+
+  const unsubscribe = onSnapshot(subLocationsQuery, (snapshot) => {
+    const subLocationsData: TransformedSubLocationResponse[] =
+      snapshot.docs.map((doc) => {
+        const data = doc.data();
+        const createdAtTimestamp = data.createdAt;
         const createdAtDate = createdAtTimestamp.toDate();
         const readableDate = createdAtDate.toLocaleString();
 
         return {
-          ...docData,
-          createdAt: readableDate,
           id: doc.id,
-        };
-      }
-    );
+          createdAt: readableDate,
 
-    return filteredData;
-  } catch (error) {
-    console.error(error);
-    return [];
-  }
+          name: data.name,
+          email: data.email,
+          message: data.message,
+          lat: data.lat,
+          lng: data.lng,
+        };
+      });
+
+    setSubLocations(subLocationsData);
+  });
+
+  return unsubscribe;
 };
 
 export const deleteSubLocation = async (locationId: string) => {
@@ -104,31 +111,42 @@ export const submitOurLocation = async (
   }
 };
 
-export const getOurLocations = async (): Promise<
-  TransformedOurLocationResponse[]
-> => {
-  try {
-    const data = await getDocs(ourLocationCollectionRef);
-    const filteredData: TransformedOurLocationResponse[] = data.docs.map(
-      (doc) => {
-        const docData = doc.data() as OurLocationResponse;
-        const createdAtTimestamp = docData.createdAt;
+export const getOurLocations = (
+  setOurLocations: (ourLocations: TransformedOurLocationResponse[]) => void
+): (() => void) => {
+  const ourLocationsQuery = query(
+    ourLocationCollectionRef,
+    orderBy("createdAt", "desc")
+  );
+
+  const unsubscribe = onSnapshot(ourLocationsQuery, (snapshot) => {
+    const ourLocationsData: TransformedOurLocationResponse[] =
+      snapshot.docs.map((doc) => {
+        const data = doc.data();
+        const createdAtTimestamp = data.createdAt;
         const createdAtDate = createdAtTimestamp.toDate();
         const readableDate = createdAtDate.toLocaleString();
 
         return {
-          ...docData,
-          createdAt: readableDate,
           id: doc.id,
+          createdAt: readableDate,
+          locationName: data.locationName,
+          date: data.date,
+          description: data.description,
+          plastic: data.plastic,
+          metal: data.metal,
+          glass: data.glass,
+          other: data.other,
+          animals: data.animals,
+          lat: data.lat,
+          lng: data.lng,
         };
-      }
-    );
+      });
 
-    return filteredData;
-  } catch (error) {
-    console.error(error);
-    return [];
-  }
+    setOurLocations(ourLocationsData);
+  });
+
+  return unsubscribe;
 };
 
 export const deleteOurLocation = async (locationId: string) => {

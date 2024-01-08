@@ -1,17 +1,18 @@
 import {
   addDoc,
   serverTimestamp,
-  getDocs,
   doc,
   updateDoc,
   deleteDoc,
   collection,
+  onSnapshot,
+  orderBy,
+  query,
 } from "firebase/firestore";
 import { db } from "../config/firebase";
 import {
   CreateEventFormValues,
   TransformedEventResponse,
-  EventResponse,
 } from "../model/EventsInterfaces";
 
 const eventCollectionRef = collection(db, "events");
@@ -28,27 +29,31 @@ export const submitEvent = async (event: CreateEventFormValues) => {
   }
 };
 
-export const getEvents = async (): Promise<TransformedEventResponse[]> => {
-  try {
-    const data = await getDocs(eventCollectionRef);
-    const filteredData: TransformedEventResponse[] = data.docs.map((doc) => {
-      const docData = doc.data() as EventResponse;
-      const createdAtTimestamp = docData.createdAt;
+export const getEvents = (
+  setEvents: (events: TransformedEventResponse[]) => void
+): (() => void) => {
+  const eventsQuery = query(eventCollectionRef, orderBy("createdAt", "desc"));
+
+  const unsubscribe = onSnapshot(eventsQuery, (snapshot) => {
+    const eventsData: TransformedEventResponse[] = snapshot.docs.map((doc) => {
+      const data = doc.data();
+      const createdAtTimestamp = data.createdAt;
       const createdAtDate = createdAtTimestamp.toDate();
       const readableDate = createdAtDate.toLocaleString();
 
       return {
-        ...docData,
-        createdAt: readableDate,
         id: doc.id,
+        createdAt: readableDate,
+        heading: data.heading,
+        date: data.date,
+        description: data.description,
       };
     });
 
-    return filteredData;
-  } catch (error) {
-    console.error(error);
-    return [];
-  }
+    setEvents(eventsData);
+  });
+
+  return unsubscribe;
 };
 
 export const updateEvent = async (

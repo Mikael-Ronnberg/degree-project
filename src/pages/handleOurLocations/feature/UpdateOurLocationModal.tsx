@@ -11,6 +11,11 @@ import {
 import { TransformedOurLocationResponse } from "../../../model/LocationsInterfaces";
 import { OurLocationForm } from "../../admin/feature/OurLocationForm";
 import { updateOurLocation } from "../../../services/MapServices";
+import {
+  greySmallButtonStyles,
+  modalCloseButtonStyles,
+} from "../../../components/buttons/style/buttonStyles";
+import { modalHeaderStyles, modalStyles } from "../../admin/style/styleAdmin";
 
 interface UpdateOurLocationFormProps {
   formValues: TransformedOurLocationResponse;
@@ -22,13 +27,15 @@ export const UpdateOurLocationModal = ({
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <>
-      <Button onClick={onOpen}>Uppdatera</Button>
+      <Button onClick={onOpen} {...greySmallButtonStyles}>
+        Uppdatera
+      </Button>
 
       <Modal isOpen={isOpen} onClose={onClose} size="l">
         <ModalOverlay />
-        <ModalContent>
-          <ModalHeader>Ändra Denna Plats</ModalHeader>
-          <ModalCloseButton />
+        <ModalContent {...modalStyles}>
+          <ModalHeader {...modalHeaderStyles}>Ändra Denna Plats</ModalHeader>
+          <ModalCloseButton {...modalCloseButtonStyles} />
           <ModalBody>
             <OurLocationForm
               formType="update"
