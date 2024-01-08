@@ -17,8 +17,8 @@ export const IntroContainer = () => {
           <Text background="brand.green" {...introTextStyles}>
             Svepa Botten började som en idé bland en grupp miljömedvetna dykare
             och snorklare som ville göra en konkret skillnad för Sveriges
-            vatten. Grundat 2024, har vår organisation en liten grupp
-            entusiaster som delar vår passion för att skydda och bevara våra
+            vatten. Vår organisation grundades 2024 av en liten grupp
+            entusiaster som delar en passion för att skydda och bevara våra
             vatten.
           </Text>
         </GridItem>
