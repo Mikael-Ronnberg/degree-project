@@ -2,7 +2,7 @@
     "name": "Svepa Botten",
     "short_name": "SB",
     "icons": [{
-        "src": "SB-Logo512x512.png",
+        "src": "/SB-Logo512x512.png",
         "sizes": "512x512"
     }],
     "background_color": "#ffffff",

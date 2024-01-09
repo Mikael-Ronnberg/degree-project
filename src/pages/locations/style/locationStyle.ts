@@ -18,6 +18,7 @@ export const locationPageStyles: FlexProps = {
   background: "linear-gradient(to top,#67D8C0 , #0F769F)",
   pt: { base: "5rem", md: "5.5rem", lg: "7.5rem" },
   w: "100vw",
+  border: "2px black solid",
   gap: "0rem",
   minH: "100vh",
   overflow: "hidden",

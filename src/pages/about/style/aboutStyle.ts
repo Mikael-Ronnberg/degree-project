@@ -14,6 +14,7 @@ export const aboutPageStyles: FlexProps = {
   direction: "column",
   background: "linear-gradient(to bottom,white, #e2e8fa)",
   pt: { base: "6rem", md: "5.5rem", lg: "7.5rem" },
+  border: "2px black solid",
   w: "100vw",
   minH: "100vh",
   pb: "2rem",
