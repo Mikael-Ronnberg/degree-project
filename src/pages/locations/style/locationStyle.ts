@@ -61,13 +61,13 @@ export const mapContainerStyles: FlexProps = {
 export const mapContainerGridStyles: GridProps = {
   w: { base: "95vw", md: "100vw", xl: "1280px" },
   templateColumns: { base: "repeat(1, 1fr)", md: "50% 50%" },
-  h: "fit-content",
+  minH: { base: "95vw", md: "auto" },
 };
 
 export const mapItemStyles: GridItemProps = {
   zIndex: "2",
   w: { base: "95vw", md: "auto" },
-  h: { base: "50vh", md: "auto" },
+  h: { base: "50vh", md: "60vh" },
   outline: "2px solid black",
 };
 
@@ -81,8 +81,8 @@ export const mapSearchGridItemSyles: GridItemProps = {
   borderRight: { base: "black 1px solid", lg: "black 2px solid" },
   borderLeft: { base: "black 1px solid", lg: "black 2px solid" },
   background: "brand.pink",
-  minH: { base: "40vh", md: "50vh", lg: "700px" },
-  h: "fit-content",
+  minH: { base: "50vh", md: "60vh" },
+  // h: "fit-content",
   zIndex: "4",
 };
 
@@ -140,6 +140,14 @@ export const formContentStyles: FlexProps = {
   pb: "2rem",
   pt: "2rem",
   direction: "column",
+};
+
+export const formTextStyles: TextProps = {
+  fontSize: { base: "1rem", md: "1.2rem", lg: "1.3rem" },
+  textAlign: "center",
+  fontWeight: "bold",
+  px: { base: "2rem", md: "3rem" },
+  py: { base: "1rem", md: "1.5rem", lg: "1.6rem" },
 };
 
 export const inputStyles: InputProps = {

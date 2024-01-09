@@ -133,7 +133,7 @@ export const ourMapBoxStyles: BoxProps = {
 export const createContainerStyles: FlexProps = {
   justify: "center",
   align: "center",
-  w: { base: "90vw", lg: "65vw" },
+  w: { base: "95vw", lg: "65vw" },
   h: "80vh",
   gap: "10rem",
   border: "black 1px solid",
@@ -150,14 +150,14 @@ export const createHeadingStyles: HeadingProps = {
 export const formFlexStyles: FlexProps = {
   justify: "center",
   align: "center",
-  w: { sm: "90vw", lg: "65vw" },
+  w: { base: "87vw", lg: "65vw" },
   gap: "1rem",
   h: "auto",
   border: "black 2px solid",
   direction: "column",
   background: "white",
-  mt: "3rem",
-  p: "2rem",
+  py: "1rem",
+  mb: "1rem",
 };
 
 export const inputFormStyles: InputProps = {
@@ -210,7 +210,8 @@ export const modalStyles: ModalContentProps = {
 };
 
 export const modalHeaderStyles: ModalHeaderProps = {
-  fontSize: { base: "2rem", md: "2.2rem", lg: "3rem" },
-  py: "2rem",
+  fontSize: { base: "1.5rem", md: "1.7rem", lg: "3rem" },
+  py: "1rem",
+  mx: "1rem",
   textAlign: "center",
 };

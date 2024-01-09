@@ -19,7 +19,7 @@ export const MapContainer = () => {
           </GridItem>
           <GridItem {...mapSearchGridItemSyles}>
             <LocationCheckbox />
-            <Heading textAlign="center" fontSize="1rem">
+            <Heading textAlign="center" fontSize="1rem" px="1rem">
               Skriv in en address för att lättare hitta en plats
             </Heading>
             <SearchInput dropColor="#F8DBDF" />

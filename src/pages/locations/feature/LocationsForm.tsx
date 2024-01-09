@@ -1,9 +1,10 @@
 import { Formik, FormikHelpers, useFormikContext } from "formik";
-import { Flex, Input, Button, Textarea } from "@chakra-ui/react";
+import { Flex, Input, Button, Textarea, Text } from "@chakra-ui/react";
 import {
   formContentStyles,
   textareaStyles,
   inputStyles,
+  formTextStyles,
 } from "../style/locationStyle";
 
 import { useLocationStore } from "../../../store/useLocationsStore";
@@ -47,9 +48,6 @@ export const LocationsForm = () => {
   );
 };
 
-// interface FormLocationContentProps {
-// }
-
 const FormLocationContent = () => {
   const { values, handleChange, handleBlur, handleSubmit } =
     useFormikContext<SubLocationsFormValues>();
@@ -66,6 +64,10 @@ const FormLocationContent = () => {
   return (
     <form onSubmit={handleSubmit}>
       <Flex {...formContentStyles}>
+        <Text {...formTextStyles}>
+          Glöm inte att markera en plats på kartan för att kunna skicka in ett
+          tips
+        </Text>
         <Input
           {...inputStyles}
           id="name"
@@ -113,11 +115,15 @@ const FormLocationContent = () => {
           value={values.lng}
         />
         {submitTrue ? (
-          <Button type="submit" {...purpleButtonStyles}>
+          <Button type="submit" {...purpleButtonStyles} mt="1.5rem" mb="0.5rem">
             Skicka tipset
           </Button>
         ) : (
-          <Button {...purpleDisabledButtonStyles}>Fyll i för att skicka</Button>
+          <>
+            <Button {...purpleDisabledButtonStyles} mt="1.5rem" mb="0.5rem">
+              Fyll i för att skicka
+            </Button>
+          </>
         )}
       </Flex>
     </form>
