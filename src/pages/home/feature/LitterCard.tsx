@@ -1,94 +1,76 @@
 import { Flex, HStack, Heading, Text, VStack } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
 import { useTotalLitterStore } from "../../../store/useTotalLitterStore";
-import { fetchAndAggregateData } from "../../../services/AdminServices";
-import { TempDisplayTotal } from "../../../model/GlobalInterfaces";
+import { totalsDisplay } from "../../../constants/totals";
+import { Tire } from "../../../components/icons/Tire";
+import { Animal } from "../../../components/icons/Animal";
+import { Glass } from "../../../components/icons/Glass";
+import { Metal } from "../../../components/icons/Metal";
+import { Plastic } from "../../../components/icons/Plastic";
 import {
   litterCardStyles,
   litterModalHeadingStyles,
   litterModalTextStyles,
 } from "../style/styleHome";
-import { totalsDisplay } from "../../../constants/totals";
-import { Tire } from "../../../components/icons/Tire";
-import { Plastic } from "../../../components/icons/Plastic";
-import { Animal } from "../../../components/icons/Animal";
-import { Glass } from "../../../components/icons/Glass";
-import { Metal } from "../../../components/icons/Metal";
 
 interface LitterCardProps {
   type: string;
 }
 
 export const LitterCard = ({ type }: LitterCardProps) => {
-  const { totals, setTotals } = useTotalLitterStore();
-  const [tempDisplay, setTempDisplay] = useState<TempDisplayTotal>();
+  const { totals } = useTotalLitterStore();
 
-  useEffect(() => {
-    const fetchData = async () => {
-      // const isDataFetched = Object.values(totals).some(value => value !== 0);
+  const displayObject = totalsDisplay.find((item) => item.label === type);
 
-      // if (!isDataFetched) {
-      // }
-      const totalRes = await fetchAndAggregateData();
-      setTotals(totalRes);
-      const foundDisplay = totalsDisplay.find((item) => item.label === type);
-      if (foundDisplay) {
-        setTempDisplay(foundDisplay);
-      }
-    };
-    fetchData();
-  });
-
-  const getTypeAmount = (type: string) => {
+  const typeDetails = () => {
+    let amount;
+    let icon;
     switch (type) {
       case "other":
-        return totals.totalOther;
+        amount = totals.totalOther;
+        icon = <Tire />;
+        break;
       case "glass":
-        return totals.totalGlass;
+        amount = totals.totalGlass;
+        icon = <Glass />;
+        break;
       case "metal":
-        return totals.totalMetal;
+        amount = totals.totalMetal;
+        icon = <Metal />;
+        break;
       case "plastic":
-        return totals.totalPlastic;
+        amount = totals.totalPlastic;
+        icon = <Plastic />;
+        break;
       case "animal":
-        return totals.totalAnimals;
+        amount = totals.totalAnimals;
+        icon = <Animal />;
+        break;
       default:
-        return 0;
+        amount = 0;
+        icon = null;
     }
+    return { amount, icon };
   };
-  const getTypeIcon = (type: string) => {
-    switch (type) {
-      case "other":
-        return <Tire />;
-      case "glass":
-        return <Glass />;
-      case "metal":
-        return <Metal />;
-      case "plastic":
-        return <Plastic />;
-      case "animal":
-        return <Animal />;
-      default:
-        return 0;
-    }
-  };
+
+  const { amount, icon } = typeDetails();
 
   return (
     <>
-      {tempDisplay && (
+      {displayObject && (
         <Flex {...litterCardStyles}>
           <HStack spacing={{ base: "4rem", md: "5rem" }}>
             <Heading {...litterModalHeadingStyles}>
-              {tempDisplay.heading}
+              {displayObject.heading}
             </Heading>
-            {getTypeIcon(type)}
+            {icon}
           </HStack>
-          <Text {...litterModalTextStyles}>{tempDisplay.description}</Text>
+          <Text {...litterModalTextStyles}>{displayObject.description}</Text>
           <VStack>
             <Heading {...litterModalHeadingStyles}>
               Vi har tagit hand om: {""}
             </Heading>
             <Heading {...litterModalHeadingStyles} color="brand.red">
-              {getTypeAmount(type)} {type === "animal" ? "st" : "kg"}
+              {amount} {type === "animal" ? "st" : "kg"}
             </Heading>
           </VStack>
         </Flex>

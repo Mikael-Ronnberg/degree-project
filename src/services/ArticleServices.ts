@@ -9,6 +9,7 @@ import {
   collection,
   onSnapshot,
   getDoc,
+  Timestamp,
 } from "firebase/firestore";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { db, storage } from "../config/firebase";
@@ -86,11 +87,16 @@ export const getArticleById = async (articleId: string) => {
 
     if (docSnap.exists()) {
       const docData = docSnap.data() as ArticleResponse;
-
-      return {
+      const transformedData = {
         ...docData,
         id: docSnap.id,
+        createdAt:
+          docData.createdAt instanceof Timestamp
+            ? docData.createdAt.toDate().toString()
+            : docData.createdAt,
       };
+
+      return transformedData;
     } else {
       console.log("No such document!");
       return null;
@@ -129,10 +135,3 @@ export const uploadFile = async (file: File | null): Promise<string> => {
   }
   return "";
 };
-
-// function onSnapshot(
-//   articlesQuery: Query<DocumentData, DocumentData>,
-//   arg1: (snapshot: any) => void
-// ) {
-//   throw new Error("Function not implemented.");
-// }

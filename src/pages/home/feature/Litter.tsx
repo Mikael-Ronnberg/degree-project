@@ -24,13 +24,25 @@ import {
   plasticAnimation,
   tireAnimation,
 } from "../style/styleHome";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { LitterCard } from "./LitterCard";
 import { modalCloseButtonStyles } from "../../../components/buttons/style/buttonStyles";
+import { fetchAndAggregateData } from "../../../services/AdminServices";
+import { useTotalLitterStore } from "../../../store/useTotalLitterStore";
 
 export const Litter = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedType, setSelectedType] = useState("");
+  const { setTotals } = useTotalLitterStore();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const totalRes = await fetchAndAggregateData();
+      setTotals(totalRes);
+    };
+
+    fetchData();
+  });
 
   const openModal = (typeName: string) => {
     setSelectedType(typeName);

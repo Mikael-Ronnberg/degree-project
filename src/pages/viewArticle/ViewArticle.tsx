@@ -2,10 +2,7 @@ import { Flex, Box, Spinner } from "@chakra-ui/react";
 import { useArticlesStore } from "../../store/useArticlesStore";
 import { getArticleById } from "../../services/ArticleServices";
 import { useState, useEffect } from "react";
-import {
-  ArticleResponse,
-  TransformedArticleResponse,
-} from "../../model/ArticlesInterfaces";
+import { TransformedArticleResponse } from "../../model/ArticlesInterfaces";
 import {
   viewArticleContainerStyles,
   viewArticlePageStyles,
@@ -24,9 +21,8 @@ interface ViewArticleProps {
 
 export const ViewArticle = ({ articleName, id }: ViewArticleProps) => {
   const { articles } = useArticlesStore();
-  const [displayArticle, setDisplayArticle] = useState<
-    TransformedArticleResponse | ArticleResponse
-  >();
+  const [displayArticle, setDisplayArticle] =
+    useState<TransformedArticleResponse>();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -40,72 +36,72 @@ export const ViewArticle = ({ articleName, id }: ViewArticleProps) => {
     } else {
       const fetchArticle = async () => {
         const fetchedArticle = await getArticleById(id);
-        if (fetchedArticle) {
+        if (fetchedArticle && fetchedArticle.mainHeading === articleName) {
           setDisplayArticle(fetchedArticle);
-          setLoading(false);
         }
+        setLoading(false);
       };
 
       fetchArticle();
     }
   }, [id, articleName, articles]);
 
-  return (
-    <>
-      {loading ? (
-        <Flex align="center" justify="center" height="100vh">
-          <Spinner size="lg" color="brand.green" />
-        </Flex>
-      ) : displayArticle ? (
-        <Flex {...viewArticlePageStyles}>
-          <Flex {...viewArticleContainerStyles}>
-            <HeaderSection
-              mainHeading={displayArticle.mainHeading}
-              mainImg={displayArticle.mainImg}
-              mainImgName={displayArticle.mainImgName}
-              category={displayArticle.category}
-              date={displayArticle.date}
-            />
+  if (loading) {
+    return (
+      <Flex align="center" justify="center" height="100vh">
+        <Spinner size="xl" color="brand.green" />
+      </Flex>
+    );
+  }
 
-            <TextSection
-              subHeading={displayArticle.subHeading1}
-              section={displayArticle.section1}
-            />
+  return displayArticle ? (
+    <Flex {...viewArticlePageStyles}>
+      <Flex {...viewArticleContainerStyles}>
+        <HeaderSection
+          mainHeading={displayArticle.mainHeading}
+          mainImg={displayArticle.mainImg}
+          mainImgName={displayArticle.mainImgName}
+          category={displayArticle.category}
+          date={displayArticle.date}
+        />
 
-            <ImageSection
-              subImg={displayArticle.subImg1}
-              subImgName={displayArticle.subImg1Name}
-              subImgDescription={displayArticle.subImgDescription1}
-            />
+        <TextSection
+          subHeading={displayArticle.subHeading1}
+          section={displayArticle.section1}
+        />
 
-            <TextSection
-              section={displayArticle.section2}
-              subHeading={displayArticle.subHeading2}
-            />
+        <ImageSection
+          subImg={displayArticle.subImg1}
+          subImgName={displayArticle.subImg1Name}
+          subImgDescription={displayArticle.subImgDescription1}
+        />
 
-            <ImageSection
-              subImg={displayArticle.subImg2}
-              subImgName={displayArticle.subImg2Name}
-              subImgDescription={displayArticle.subImgDescription2}
-            />
+        <TextSection
+          section={displayArticle.section2}
+          subHeading={displayArticle.subHeading2}
+        />
 
-            <TextSection
-              section={displayArticle.section3}
-              subHeading={displayArticle.subHeading3}
-            />
-            <AuthorSection
-              author={displayArticle.author}
-              category={displayArticle.category}
-            />
-            <Box position="relative" top="2">
-              <SmallWave color="#01D589" />
-            </Box>
-            <Box w="1285px" background="brand.green" h="40px" />
-          </Flex>
-        </Flex>
-      ) : (
-        <NotFound />
-      )}
-    </>
+        <ImageSection
+          subImg={displayArticle.subImg2}
+          subImgName={displayArticle.subImg2Name}
+          subImgDescription={displayArticle.subImgDescription2}
+        />
+
+        <TextSection
+          section={displayArticle.section3}
+          subHeading={displayArticle.subHeading3}
+        />
+        <AuthorSection
+          author={displayArticle.author}
+          category={displayArticle.category}
+        />
+        <Box position="relative" top="2">
+          <SmallWave color="#01D589" />
+        </Box>
+        <Box w="1285px" background="brand.green" h="40px" />
+      </Flex>
+    </Flex>
+  ) : (
+    <NotFound />
   );
 };
