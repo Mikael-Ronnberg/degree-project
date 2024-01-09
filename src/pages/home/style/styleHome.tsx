@@ -157,6 +157,7 @@ export const aboutPinkCurveStyles: BoxProps = {
 export const aboutImageStyles: ImageProps = {
   pl: { base: "0rem", lg: "2rem" },
   src: "/svg/sunrise.svg",
+  alt: "sunrise",
   backgroundPosition: "center",
   backgroundRepeat: "no-repeat",
   backgroundSize: "contain",

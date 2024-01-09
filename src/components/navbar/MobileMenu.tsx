@@ -40,7 +40,12 @@ export const MobileMenu = ({ navItems, navType }: MobileMenuProps) => {
 
   return (
     <>
-      <Button {...burgerButtonStyles} ref={btnRef} onClick={onOpen}>
+      <Button
+        {...burgerButtonStyles}
+        ref={btnRef}
+        onClick={onOpen}
+        aria-label="hamburger menu"
+      >
         <Burger />
       </Button>
       <Drawer

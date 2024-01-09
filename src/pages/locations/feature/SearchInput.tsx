@@ -49,6 +49,7 @@ export const SearchInput = ({ dropColor }: SearchInputProps) => {
         {...searchInputStyles}
         value={searchInput}
         id="search"
+        aria-label="Input för sökning av plats"
         onChange={(e) => setSearchInput(e.target.value)}
       />
       {isDropdownOpen && (

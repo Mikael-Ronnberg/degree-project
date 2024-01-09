@@ -72,6 +72,7 @@ const FormLocationContent = () => {
           {...inputStyles}
           id="name"
           name="name"
+          aria-label="Input för namn"
           placeholder="Namn... (valfritt)"
           onChange={handleChange}
           onBlur={handleBlur}
@@ -82,6 +83,7 @@ const FormLocationContent = () => {
           {...inputStyles}
           id="email"
           name="email"
+          aria-label="Input för email"
           placeholder="Email... (valfritt)"
           onChange={handleChange}
           onBlur={handleBlur}
@@ -92,6 +94,7 @@ const FormLocationContent = () => {
           {...textareaStyles}
           id="message"
           name="message"
+          aria-label="Fält för meddelande"
           placeholder="Meddelande..."
           onChange={handleChange}
           onBlur={handleBlur}

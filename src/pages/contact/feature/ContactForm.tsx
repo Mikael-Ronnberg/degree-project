@@ -87,6 +87,7 @@ const FormContactContent = () => {
               {...contactFormInputStyles}
               id="name"
               name="name"
+              aria-label="Input för namn"
               placeholder="Namn... (valfritt)"
               onChange={handleChange}
               onBlur={handleBlur}
@@ -100,6 +101,7 @@ const FormContactContent = () => {
               {...contactFormInputStyles}
               id="email"
               name="email"
+              aria-label="Input för email"
               placeholder="Email... (valfritt)"
               onChange={handleChange}
               onBlur={handleBlur}
@@ -113,6 +115,7 @@ const FormContactContent = () => {
               {...contactFormInputStyles}
               id="question"
               name="question"
+              aria-label="Input för fråga"
               placeholder="Fråga... (valfritt)"
               onChange={handleChange}
               onBlur={handleBlur}
@@ -125,6 +128,7 @@ const FormContactContent = () => {
               {...contactFormTextareaStyles}
               id="message"
               name="message"
+              aria-label="Fält för meddelande"
               placeholder="Skriv ditt meddelande här..."
               onChange={handleChange}
               onBlur={handleBlur}

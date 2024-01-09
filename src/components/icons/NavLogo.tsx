@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export const NavLogo = () => {
   return (
     <>
-      <Link to="/">
+      <Link to="/" aria-label="home">
         <Icon viewBox="0 0 40 40" boxSize={{ base: "2.8rem", lg: "3.8rem" }}>
           <svg fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle cx="20" cy="20" r="20" fill="#05286A" />
