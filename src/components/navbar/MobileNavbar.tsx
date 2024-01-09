@@ -13,7 +13,7 @@ export const MobileNavbar = ({ navItems, navType }: MobileNavbarProps) => {
   return (
     <>
       <Flex {...mobileNavContainerStyles}>
-        <Box pl="0.3rem">
+        <Box pl="0.5rem">
           <NavLogo />
         </Box>
         <Box>

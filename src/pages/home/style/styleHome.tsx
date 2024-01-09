@@ -338,11 +338,11 @@ export const plasticAnimation = keyframes`
 100% {transform: rotate(0deg) translateX(0px) translateY(0px);}
 `;
 export const animalAnimation = keyframes`
-  0% { transform: rotate(0deg) translate(-50px, 0); }
+  0% { transform: rotate(0deg) translate(-25px, 0); }
   10% { transform: rotate(45deg) }
-  20% { transform: translate(50px, -25px); } 
+  20% { transform: translate(50px, -50px); } 
   50% { transform: rotate(0deg) translate(25px, 0px); } 
   60% { transform: rotate(-45deg)  } 
-  70% { transform: translate(-50px, -25px); }
+  70% { transform: translate(-50px, -75px); }
   100% { transform: rotate(0deg) translate(-25px, 0px); } 
 `;

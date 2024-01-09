@@ -10,7 +10,7 @@ import {
 export const mobileNavContainerStyles: FlexProps = {
   justify: "space-between",
   align: "center",
-  px: "2rem",
+  px: "1rem",
   py: "0.5rem",
   borderBottom: "2px",
   borderColor: "black",
