@@ -1,4 +1,4 @@
-import { Flex, Box } from "@chakra-ui/react";
+import { Flex, Box, Spinner } from "@chakra-ui/react";
 import { useArticlesStore } from "../../store/useArticlesStore";
 import { getArticleById } from "../../services/ArticleServices";
 import { useState, useEffect } from "react";
@@ -27,6 +27,7 @@ export const ViewArticle = ({ articleName, id }: ViewArticleProps) => {
   const [displayArticle, setDisplayArticle] = useState<
     TransformedArticleResponse | ArticleResponse
   >();
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const foundArticle = articles.find(
@@ -35,11 +36,13 @@ export const ViewArticle = ({ articleName, id }: ViewArticleProps) => {
 
     if (foundArticle) {
       setDisplayArticle(foundArticle);
+      setLoading(false);
     } else {
       const fetchArticle = async () => {
         const fetchedArticle = await getArticleById(id);
         if (fetchedArticle) {
           setDisplayArticle(fetchedArticle);
+          setLoading(false);
         }
       };
 
@@ -49,7 +52,11 @@ export const ViewArticle = ({ articleName, id }: ViewArticleProps) => {
 
   return (
     <>
-      {displayArticle ? (
+      {loading ? (
+        <Flex align="center" justify="center" height="100vh">
+          <Spinner size="lg" color="brand.green" />
+        </Flex>
+      ) : displayArticle ? (
         <Flex {...viewArticlePageStyles}>
           <Flex {...viewArticleContainerStyles}>
             <HeaderSection

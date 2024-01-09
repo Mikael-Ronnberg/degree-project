@@ -43,7 +43,7 @@ export const headerSectionFlexStyles: FlexProps = {
   align: "center",
   justify: "space-between",
   py: { base: "1rem" },
-  px: { base: "0.5rem", md: "1.5rem", lg: "0.2rem" },
+  px: { base: "1rem", md: "1.5rem", lg: "0.2rem" },
 };
 
 export const headerSectionHeadingStyles: HeadingProps = {
@@ -65,8 +65,9 @@ export const headerSectionCategoryStyles: TextProps = {
 
 export const headerSectionImageStyles: ImageProps = {
   w: { base: "100vw", md: "800px", lg: "900px", xl: "1000px" },
-  h: { base: "", md: "400px", lg: "500px", xl: "550px" },
+  h: { base: "", md: "400px", lg: "500px", xl: "600px" },
   objectFit: "cover",
+  // objectPosition: "center",
   loading: "lazy",
   mb: "2rem",
 };
@@ -103,7 +104,7 @@ export const imageSectionStyles: ImageProps = {
 };
 
 export const imageSectionTextStyles: TextProps = {
-  w: { base: "100vw", md: " 90vw", lg: "900px", xl: "1000px" },
+  w: { base: "100vw", md: "90vw", lg: "900px", xl: "1000px" },
   fontSize: { base: "0.7rem", lg: "0.8rem" },
   fontStyle: "italic",
   py: { base: "0.2rem" },
@@ -113,12 +114,11 @@ export const imageSectionTextStyles: TextProps = {
 export const authorSectionBoxStyles: BoxProps = {
   display: "flex",
   justifyContent: "flex-start",
-  alignContent: "center",
   flexDirection: "column",
-  gap: "2rem",
-  w: { base: "95vw", md: "800px", lg: "900px", xl: "1000px" },
-  py: { base: "1rem" },
-  px: { base: "0.7rem", md: "2.5rem", lg: "0.5rem" },
+  gap: "1.5rem",
+  w: { base: "95vw", md: "720px", lg: "900px", xl: "1000px" },
+  py: { base: "1.4rem", md: "2rem", lg: "3rem" },
+  // px: { base: "0.7rem", md: "2.5rem", lg: "0.5rem" },
 };
 
 export const authorSectionTextStyles: TextProps = {
@@ -126,6 +126,7 @@ export const authorSectionTextStyles: TextProps = {
 };
 
 export const authorSectionCategoryStyles: TextProps = {
+  px: "0.5rem",
   minW: "5rem",
   textAlign: "center",
   fontSize: { base: "0.8rem", lg: "1rem" },

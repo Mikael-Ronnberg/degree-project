@@ -21,9 +21,9 @@ export const AuthorSection = ({ author, category }: AuthorSectionProps) => {
           </Text>
         </HStack>
         <Box
-          m="0.5rem"
           background="brand.pink"
           borderRadius="50px"
+          ml="1rem"
           px="1rem"
           w="fit-content"
         >

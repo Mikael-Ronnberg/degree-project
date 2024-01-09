@@ -53,7 +53,7 @@ export const ArticleCard = ({
         <GridItem {...articleTextItemStyles}>
           <VStack>
             <Flex {...articleTextFlexStyles}>
-              <Text {...articleCardCategoryStyles}>{category}</Text>
+              <Text {...articleCardCategoryStyles}>#{category}</Text>
               <Text {...articleCardDateStyles}>{date}</Text>
             </Flex>
             <VStack spacing={{ base: "0rem", md: "2rem", lg: "4rem" }}>

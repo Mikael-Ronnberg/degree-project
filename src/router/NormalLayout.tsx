@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import { Navbar } from "../components/navbar/NavBar";
 import { normalNavItems } from "../constants/normalNavLinks";
-import { ScrollToTop } from "./ScrollToTop";
+import { ScrollToTop } from "../components/scrollToTop/ScrollToTop";
 
 interface NormalLayoutProp {
   children: ReactNode;

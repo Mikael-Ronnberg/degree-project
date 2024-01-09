@@ -3,7 +3,7 @@ import { Navigate } from "react-router-dom";
 import { useAuthStore } from "../store/useAuthStore";
 import { Navbar } from "../components/navbar/NavBar";
 import { adminNavItems } from "../constants/adminNavLinks";
-import { ScrollToTop } from "./ScrollToTop";
+import { ScrollToTop } from "../components/scrollToTop/ScrollToTop";
 
 interface RequireAuthLayoutProp {
   children: ReactNode;
