@@ -62,13 +62,13 @@ export const mapContainerStyles: FlexProps = {
 export const mapContainerGridStyles: GridProps = {
   w: { base: "95vw", md: "100vw", xl: "1280px" },
   templateColumns: { base: "repeat(1, 1fr)", md: "50% 50%" },
-  minH: { base: "95vw", md: "auto" },
+  minH: { base: "95vw", md: "60vh" },
 };
 
 export const mapItemStyles: GridItemProps = {
   zIndex: "2",
   w: { base: "95vw", md: "auto" },
-  h: { base: "50vh", md: "60vh" },
+  h: { base: "50vh", md: "auto" },
   outline: "2px solid black",
 };
 
