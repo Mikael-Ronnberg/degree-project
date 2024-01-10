@@ -15,6 +15,7 @@ export const articlePageStyles: FlexProps = {
   background: "linear-gradient(to bottom, #fcfcfc, #e2e8fa)",
   pt: { base: "6rem", md: "5.5rem", lg: "7.5rem" },
   w: "100vw",
+  border: "2px solid black",
   gap: "5rem",
   minH: "auto",
   overflow: "hidden",
