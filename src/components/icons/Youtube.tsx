@@ -3,7 +3,7 @@ import { Icon, Link } from "@chakra-ui/react";
 export const Youtube = () => {
   return (
     <>
-      <Link href="https://www.youtube.com" isExternal>
+      <Link href="https://www.youtube.com" aria-label="youtube link" isExternal>
         <Icon
           viewBox="0 0 24 24"
           boxSize={{ base: "3rem", md: "3.5rem", lg: "4rem" }}

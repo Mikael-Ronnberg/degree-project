@@ -80,55 +80,51 @@ const FormContactContent = () => {
       <FormControl>
         <VStack spacing="3rem" pb="2rem">
           <VStack {...formStackStyles}>
-            <FormLabel htmlFor="name" as={VisuallyHidden}>
-              Namn
+            <FormLabel htmlFor="name">
+              <VisuallyHidden>Namn</VisuallyHidden>
             </FormLabel>
             <Input
               {...contactFormInputStyles}
               id="name"
               name="name"
-              aria-label="Input för namn"
               placeholder="Namn... (valfritt)"
               onChange={handleChange}
               onBlur={handleBlur}
               value={values.name}
               autoComplete="name"
             />
-            <FormLabel htmlFor="email" as={VisuallyHidden}>
-              Email
+            <FormLabel htmlFor="email">
+              <VisuallyHidden>Email</VisuallyHidden>
             </FormLabel>
             <Input
               {...contactFormInputStyles}
               id="email"
               name="email"
-              aria-label="Input för email"
               placeholder="Email... (valfritt)"
               onChange={handleChange}
               onBlur={handleBlur}
               value={values.email}
               autoComplete="email"
             />
-            <FormLabel htmlFor="email" as={VisuallyHidden}>
-              Vad gäller din fråga?
+            <FormLabel htmlFor="question">
+              <VisuallyHidden>Fråga</VisuallyHidden>
             </FormLabel>
             <Input
               {...contactFormInputStyles}
               id="question"
               name="question"
-              aria-label="Input för fråga"
               placeholder="Fråga... (valfritt)"
               onChange={handleChange}
               onBlur={handleBlur}
               value={values.question}
             />
-            <FormLabel htmlFor="message" as={VisuallyHidden}>
-              Skriv ditt meddelande här
+            <FormLabel htmlFor="message">
+              <VisuallyHidden>Meddelande</VisuallyHidden>
             </FormLabel>
             <Textarea
               {...contactFormTextareaStyles}
               id="message"
               name="message"
-              aria-label="Fält för meddelande"
               placeholder="Skriv ditt meddelande här..."
               onChange={handleChange}
               onBlur={handleBlur}
@@ -140,7 +136,10 @@ const FormContactContent = () => {
               Skicka
             </Button>
           ) : (
-            <Button {...purpleDisabledButtonStyles}>
+            <Button
+              {...purpleDisabledButtonStyles}
+              aria-label="fyll i för att kunna trycka"
+            >
               Fyll i för att skicka
             </Button>
           )}

@@ -123,7 +123,12 @@ const FormLocationContent = () => {
           </Button>
         ) : (
           <>
-            <Button {...purpleDisabledButtonStyles} mt="1.5rem" mb="0.5rem">
+            <Button
+              {...purpleDisabledButtonStyles}
+              mt="1.5rem"
+              mb="0.5rem"
+              aria-label="fyll i för att skicka"
+            >
               Fyll i för att skicka
             </Button>
           </>

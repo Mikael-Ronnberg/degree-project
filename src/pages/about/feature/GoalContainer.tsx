@@ -24,6 +24,7 @@ export const GoalContainer = () => {
             gridColumnStart={{ base: "1", lg: "2" }}
             gridRowStart={{ base: "1", lg: "1" }}
             {...introItemStyles}
+            background="white"
           >
             <VStack>
               <Heading {...introHeadingStyles}>Vilka vi är</Heading>

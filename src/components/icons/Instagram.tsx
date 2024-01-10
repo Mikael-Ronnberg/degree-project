@@ -3,7 +3,11 @@ import { Icon, Link } from "@chakra-ui/react";
 export const Instagram = () => {
   return (
     <>
-      <Link href="https://www.instagram.com" isExternal>
+      <Link
+        href="https://www.instagram.com"
+        aria-labe="Instagram link"
+        isExternal
+      >
         <Icon
           viewBox="0 0 20 20"
           boxSize={{ base: "3rem", md: "3.5rem", lg: "4rem" }}

@@ -3,7 +3,11 @@ import { Icon, Link } from "@chakra-ui/react";
 export const Facebook = () => {
   return (
     <>
-      <Link href="https://www.facebook.com" isExternal>
+      <Link
+        href="https://www.facebook.com"
+        isExternal
+        aria-label="Facebook link"
+      >
         <Icon
           viewBox="0 0 24 24"
           boxSize={{ base: "3rem", md: "3.5rem", lg: "4rem" }}
