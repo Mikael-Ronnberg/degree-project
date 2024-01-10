@@ -2,56 +2,57 @@ import {
   collection,
   doc,
   getDocs,
+  onSnapshot,
   serverTimestamp,
   setDoc,
 } from "firebase/firestore";
 import { auth, db } from "../config/firebase";
 import { SubmitUserResponse, SubmitUserValues } from "../model/AdminInterfaces";
 import { createUserWithEmailAndPassword, signOut } from "firebase/auth";
+import { Totals } from "../model/GlobalInterfaces";
+
+const ourLocationCollectionRef = collection(db, "ourLocations");
 
 export const getCount = async (collectionName: string) => {
   const querySnapshot = await getDocs(collection(db, collectionName));
   return querySnapshot.size;
 };
 
-export const fetchAndAggregateData = async () => {
-  try {
-    const ourLocationCollectionRef = collection(db, "ourLocations");
+export const fetchAndAggregateData = (
+  onDataReceived: (totals: Totals) => void
+) => {
+  const unsubscribe = onSnapshot(
+    ourLocationCollectionRef,
+    (querySnapshot) => {
+      let totalPlastic = 0;
+      let totalMetal = 0;
+      let totalGlass = 0;
+      let totalOther = 0;
+      let totalAnimals = 0;
 
-    const querySnapshot = await getDocs(ourLocationCollectionRef);
+      querySnapshot.forEach((doc) => {
+        const data = doc.data();
+        totalPlastic += Number(data.plastic) || 0;
+        totalMetal += Number(data.metal) || 0;
+        totalGlass += Number(data.glass) || 0;
+        totalOther += Number(data.other) || 0;
+        totalAnimals += Number(data.animals) || 0;
+      });
 
-    let totalPlastic = 0;
-    let totalMetal = 0;
-    let totalGlass = 0;
-    let totalOther = 0;
-    let totalAnimals = 0;
+      onDataReceived({
+        totalPlastic,
+        totalMetal,
+        totalGlass,
+        totalOther,
+        totalAnimals,
+      });
+    },
+    (error) => {
+      console.error("Error listening to documents: ", error);
+    }
+  );
 
-    querySnapshot.forEach((doc) => {
-      const data = doc.data();
-      totalPlastic += Number(data.plastic) || 0;
-      totalMetal += Number(data.metal) || 0;
-      totalGlass += Number(data.glass) || 0;
-      totalOther += Number(data.other) || 0;
-      totalAnimals += Number(data.animals) || 0;
-    });
-
-    return {
-      totalPlastic,
-      totalMetal,
-      totalGlass,
-      totalOther,
-      totalAnimals,
-    };
-  } catch (error) {
-    console.error("Error fetching documents: ", error);
-    return {
-      totalPlastic: 0,
-      totalMetal: 0,
-      totalGlass: 0,
-      totalOther: 0,
-      totalAnimals: 0,
-    };
-  }
+  return unsubscribe;
 };
 
 export const submitUser = async (

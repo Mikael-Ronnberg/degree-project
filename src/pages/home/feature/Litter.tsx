@@ -36,13 +36,10 @@ export const Litter = () => {
   const { setTotals } = useTotalLitterStore();
 
   useEffect(() => {
-    const fetchData = async () => {
-      const totalRes = await fetchAndAggregateData();
-      setTotals(totalRes);
-    };
+    const unsubscribe = fetchAndAggregateData(setTotals);
 
-    fetchData();
-  });
+    return () => unsubscribe();
+  }, []);
 
   const openModal = (typeName: string) => {
     setSelectedType(typeName);

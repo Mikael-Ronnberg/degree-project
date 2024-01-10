@@ -10,7 +10,6 @@ import {
   adminBoardGridStyles,
   adminContainerFlexStyles,
 } from "../style/styleAdmin";
-// import { useTotalLitterStore } from "../../../store/useTotalLitterStore";
 
 export interface RenderData {
   label: string;
@@ -19,7 +18,24 @@ export interface RenderData {
 
 export const AdminContainer = () => {
   const [dataCounts, setDataCounts] = useState<RenderData[]>([]);
-  // const { setTotals } = useTotalLitterStore();
+
+  const transformData = async () => {
+    const usersCount = await getCount("users");
+    const articlesCount = await getCount("articles");
+    const eventsCount = await getCount("events");
+    const ourLocationsCount = await getCount("ourLocations");
+    const subLocationsCount = await getCount("locations");
+
+    const renderData: RenderData[] = [
+      { label: "Användare", data: usersCount },
+      { label: "Artiklar", data: articlesCount },
+      { label: "Händelser", data: eventsCount },
+      { label: "Besökta Platser", data: ourLocationsCount },
+      { label: "Tipsade Platser", data: subLocationsCount },
+    ];
+
+    return renderData;
+  };
 
   const convertTotalsToRenderData = (totals: Totals): RenderData[] => {
     return [
@@ -32,51 +48,27 @@ export const AdminContainer = () => {
   };
 
   useEffect(() => {
-    const fetchData = async () => {
-      const usersCount = await getCount("users");
-      const articlesCount = await getCount("articles");
-      const eventsCount = await getCount("events");
-      const ourLocationsCount = await getCount("ourLocations");
-      const subLocationsCount = await getCount("locations");
-      const aggregatedTotals = await fetchAndAggregateData();
+    transformData().then((renderData) => {
+      const onDataReceived = (totals: Totals) => {
+        const totalsData = convertTotalsToRenderData(totals);
+        setDataCounts([...renderData, { label: "Totalt", data: totalsData }]);
+      };
 
-      const renderData: RenderData[] = [
-        { label: "Användare", data: usersCount },
-        { label: "Artiklar", data: articlesCount },
-        { label: "Händelser", data: eventsCount },
-        { label: "Besökta Platser", data: ourLocationsCount },
-        { label: "Tipsade Platser", data: subLocationsCount },
-      ];
-
-      const totalsData = convertTotalsToRenderData(aggregatedTotals);
-      setDataCounts([...renderData, { label: "Totalt", data: totalsData }]);
-    };
-
-    fetchData();
+      const unsubscribe = fetchAndAggregateData(onDataReceived);
+      return () => unsubscribe();
+    });
   }, []);
 
   return (
     <Flex {...adminContainerFlexStyles}>
       <Grid {...adminBoardGridStyles}>
-        {dataCounts.map((data, index) => {
-          if (data.label === "Totalt") {
-            return (
-              <AdminBoardCard
-                key={index}
-                heading={data.label}
-                renderData={data.data as RenderData[]}
-              />
-            );
-          } else {
-            return (
-              <AdminBoardCard
-                key={index}
-                heading={data.label}
-                renderData={[data]}
-              />
-            );
-          }
-        })}
+        {dataCounts.map((data, index) => (
+          <AdminBoardCard
+            key={index}
+            heading={data.label}
+            renderData={Array.isArray(data.data) ? data.data : [data]}
+          />
+        ))}
       </Grid>
     </Flex>
   );
