@@ -17,13 +17,13 @@ export const AdminBoardCard = ({
 }: AdminBoardCardProps) => {
   return (
     <>
-      <Card {...adminBoardCardStyles}>
+      <Card {...adminBoardCardStyles} m="0.6rem">
         <CardBody>
           <Flex direction="column" gap="2rem" align="center" justify="center">
             <Heading {...adminHeadingStyles}>{heading}</Heading>
             {renderData.map((data, i) => (
               <Text key={i} {...adminTextStyles}>
-                Antal {data.label}: {data.data as number}
+                {data.label}: {data.data as number}
               </Text>
             ))}
           </Flex>

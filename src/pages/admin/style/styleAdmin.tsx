@@ -30,9 +30,8 @@ export const adminBoardGridStyles: GridProps = {
   templateColumns: {
     base: "100%",
     md: "50% 50%",
-    xl: "33% 33% 33%",
+    xl: "33.3% 33.3% 33.3%",
   },
-  gap: "5",
   p: "1rem",
 };
 

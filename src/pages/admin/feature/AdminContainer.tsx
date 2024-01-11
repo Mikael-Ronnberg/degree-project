@@ -39,11 +39,11 @@ export const AdminContainer = () => {
 
   const convertTotalsToRenderData = (totals: Totals): RenderData[] => {
     return [
-      { label: "Plast", data: totals.totalPlastic },
-      { label: "Metall", data: totals.totalMetal },
-      { label: "Glas", data: totals.totalGlass },
-      { label: "Övrigt", data: totals.totalOther },
-      { label: "Invasiva Arter", data: totals.totalAnimals },
+      { label: "Plast kg", data: totals.totalPlastic },
+      { label: "Metall kg", data: totals.totalMetal },
+      { label: "Glas kg", data: totals.totalGlass },
+      { label: "Övrigt kg", data: totals.totalOther },
+      { label: "Invasiva Arter st", data: totals.totalAnimals },
     ];
   };
 

@@ -1,12 +1,4 @@
-import {
-  Button,
-  FormControl,
-  FormLabel,
-  Input,
-  Textarea,
-  VStack,
-  VisuallyHidden,
-} from "@chakra-ui/react";
+import { Button, Input, Textarea, VStack } from "@chakra-ui/react";
 import { Formik, useFormikContext } from "formik";
 import {
   contactFormInputStyles,
@@ -77,74 +69,64 @@ const FormContactContent = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <FormControl>
-        <VStack spacing="3rem" pb="2rem">
-          <VStack {...formStackStyles}>
-            <FormLabel htmlFor="name">
-              <VisuallyHidden>Namn</VisuallyHidden>
-            </FormLabel>
-            <Input
-              {...contactFormInputStyles}
-              id="name"
-              name="name"
-              placeholder="Namn... (valfritt)"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.name}
-              autoComplete="name"
-            />
-            <FormLabel htmlFor="email">
-              <VisuallyHidden>Email</VisuallyHidden>
-            </FormLabel>
-            <Input
-              {...contactFormInputStyles}
-              id="email"
-              name="email"
-              placeholder="Email... (valfritt)"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.email}
-              autoComplete="email"
-            />
-            <FormLabel htmlFor="question">
-              <VisuallyHidden>Fråga</VisuallyHidden>
-            </FormLabel>
-            <Input
-              {...contactFormInputStyles}
-              id="question"
-              name="question"
-              placeholder="Fråga... (valfritt)"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.question}
-            />
-            <FormLabel htmlFor="message">
-              <VisuallyHidden>Meddelande</VisuallyHidden>
-            </FormLabel>
-            <Textarea
-              {...contactFormTextareaStyles}
-              id="message"
-              name="message"
-              placeholder="Skriv ditt meddelande här..."
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.message}
-            />
-          </VStack>
-          {submitTrue ? (
-            <Button type="submit" {...purpleButtonStyles}>
-              Skicka
-            </Button>
-          ) : (
-            <Button
-              {...purpleDisabledButtonStyles}
-              aria-label="fyll i för att kunna trycka"
-            >
-              Fyll i för att skicka
-            </Button>
-          )}
+      <VStack spacing="3rem" pb="2rem">
+        <VStack {...formStackStyles}>
+          <Input
+            {...contactFormInputStyles}
+            id="name"
+            name="name"
+            aria-label="Input för namn"
+            placeholder="Namn... (valfritt)"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={values.name}
+            autoComplete="name"
+          />
+          <Input
+            {...contactFormInputStyles}
+            id="email"
+            name="email"
+            aria-label="Input för namn"
+            placeholder="Email... (valfritt)"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={values.email}
+            autoComplete="email"
+          />
+          <Input
+            {...contactFormInputStyles}
+            id="question"
+            name="question"
+            aria-label="Input för fråga"
+            placeholder="Fråga... (valfritt)"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={values.question}
+          />
+          <Textarea
+            {...contactFormTextareaStyles}
+            id="message"
+            name="message"
+            aria-label="Textfält för meddelande"
+            placeholder="Skriv ditt meddelande här..."
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={values.message}
+          />
         </VStack>
-      </FormControl>
+        {submitTrue ? (
+          <Button type="submit" {...purpleButtonStyles}>
+            Skicka
+          </Button>
+        ) : (
+          <Button
+            {...purpleDisabledButtonStyles}
+            aria-label="fyll i för att kunna trycka"
+          >
+            Fyll i för att skicka
+          </Button>
+        )}
+      </VStack>
     </form>
   );
 };
