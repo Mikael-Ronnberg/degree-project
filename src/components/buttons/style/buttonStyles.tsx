@@ -13,7 +13,7 @@ export const burgerButtonStyles: ButtonProps = {
 
 export const greyButtonStyles: ButtonProps = {
   fontSize: { base: "1.2rem", md: "1.3rem", lg: "1.5rem" },
-  minW: { base: "22rem", md: "27rem", lg: "30rem" },
+  minW: { base: "80vw", md: "27rem", lg: "30rem" },
   fontWeight: "bold",
   px: "2rem",
   borderRadius: "50px",
@@ -50,7 +50,7 @@ export const greySmallButtonStyles: ButtonProps = {
 
 export const cancelButtonStyles: ButtonProps = {
   fontSize: { base: "1.2rem", sm: "1.3rem", md: "1.5rem" },
-  minW: { base: "22rem", md: "27rem", lg: "30rem" },
+  minW: { base: "80vw", md: "27rem", lg: "30rem" },
   fontWeight: "bold",
   px: "2rem",
   borderRadius: "50px",
@@ -69,7 +69,7 @@ export const cancelButtonStyles: ButtonProps = {
 
 export const purpleButtonStyles: ButtonProps = {
   fontSize: { base: "1.2rem", md: "1.3rem", lg: "1.5rem" },
-  minW: { base: "22rem", md: "27rem", lg: "30rem" },
+  minW: { base: "80vw", md: "27rem", lg: "30rem" },
   px: "2rem",
   borderRadius: "50px",
   border: "solid 2px black",
@@ -87,7 +87,7 @@ export const purpleButtonStyles: ButtonProps = {
 };
 export const purpleDisabledButtonStyles: ButtonProps = {
   fontSize: { base: "1.1rem", sm: "1.2rem", md: "1.5rem" },
-  minW: { base: "22rem", md: "27rem", lg: "30rem" },
+  minW: { base: "80vw", md: "27rem", lg: "30rem" },
   px: "2rem",
   opacity: "0.5",
   borderRadius: "50px",

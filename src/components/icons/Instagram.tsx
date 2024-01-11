@@ -5,7 +5,7 @@ export const Instagram = () => {
     <>
       <Link
         href="https://www.instagram.com"
-        aria-labe="Instagram link"
+        aria-label="Instagram link"
         isExternal
       >
         <Icon
