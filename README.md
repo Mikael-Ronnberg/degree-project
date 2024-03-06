@@ -1,6 +1,6 @@
 ## Introduction
 Welcome to my repository for the Svepa Botten website. This project is the culmination of my frontend education degree and aims to support the environmental efforts of Svepa Botten, a dedicated non-profit organization. The organization's primary goal is to clean up litter in aquatic environments and tackle the challenge of invasive species in water bodies. This website serves as a digital platform to enhance their reach and impact.
-The site is deployed using Netlify. You can visit it here [Svepa Botten](https://svepa-botten.netlify.app).
+The site is deployed using Cloudflare Pages. You can visit it here [Svepa Botten](https://svepa-botten.pages.dev/).
 
 
 ![Screenshot 2024-01-12 at 14 44 28](https://github.com/Mikael-Ronnberg/degree-project/assets/113439687/33a08b38-1c74-4b62-98b5-abb9cc7dce9a)
